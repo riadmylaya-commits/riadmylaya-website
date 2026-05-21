@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { jsPDF } from 'jspdf';
@@ -6,60 +6,158 @@ import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import {
   ArrowLeft, Lock, Search, Calendar, Download, FileSpreadsheet,
-  Trash2, Eye, LogOut, Users, CalendarCheck,
+  Trash2, Eye, LogOut, Users, CalendarCheck, KeyRound, Mail,
 } from 'lucide-react';
 import LanguageSelector from '../components/LanguageSelector';
-import {
-  getRegistrations, deleteRegistration, verifyStaffPassword,
-} from '../utils/storage';
+import { api } from '../utils/api';
 import type { GuestRegistration } from '../types';
+
+type View = 'login' | 'forgot' | 'dashboard' | 'detail' | 'image' | 'changePassword';
 
 export default function StaffPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const [authenticated, setAuthenticated] = useState(false);
+  const [view, setView] = useState<View>(() =>
+    localStorage.getItem('staff_token') ? 'dashboard' : 'login'
+  );
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [loginLoading, setLoginLoading] = useState(false);
+
+  const [forgotEmail, setForgotEmail] = useState('');
+  const [forgotMsg, setForgotMsg] = useState('');
+  const [forgotLoading, setForgotLoading] = useState(false);
+
+  const [currentPw, setCurrentPw] = useState('');
+  const [newPw, setNewPw] = useState('');
+  const [confirmPw, setConfirmPw] = useState('');
+  const [changePwMsg, setChangePwMsg] = useState('');
+  const [changePwError, setChangePwError] = useState('');
+  const [changePwLoading, setChangePwLoading] = useState(false);
+
+  const [registrations, setRegistrations] = useState<GuestRegistration[]>([]);
   const [searchName, setSearchName] = useState('');
   const [searchDate, setSearchDate] = useState('');
+  const [todayArrivals, setTodayArrivals] = useState(0);
+  const [loading, setLoading] = useState(false);
+
   const [viewDetail, setViewDetail] = useState<GuestRegistration | null>(null);
   const [viewImage, setViewImage] = useState<{ src: string; title: string } | null>(null);
-  const [refreshKey, setRefreshKey] = useState(0);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const logout = useCallback(() => {
+    localStorage.removeItem('staff_token');
+    setView('login');
+    setRegistrations([]);
+    setUsername('');
+    setPassword('');
+  }, []);
+
+  const loadRegistrations = useCallback(async () => {
+    setLoading(true);
+    try {
+      const data = await api.getRegistrations(searchName, searchDate) as unknown as GuestRegistration[];
+      setRegistrations(data);
+      const stats = await api.getStats();
+      setTodayArrivals(stats.todayArrivals);
+    } catch (err) {
+      if (err instanceof Error && err.message.includes('credentials')) {
+        logout();
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, [searchName, searchDate, logout]);
+
+  useEffect(() => {
+    if (view !== 'dashboard') return;
+    let cancelled = false;
+    (async () => {
+      setLoading(true);
+      try {
+        const data = await api.getRegistrations(searchName, searchDate) as unknown as GuestRegistration[];
+        const stats = await api.getStats();
+        if (!cancelled) {
+          setRegistrations(data);
+          setTodayArrivals(stats.todayArrivals);
+        }
+      } catch (err) {
+        if (!cancelled && err instanceof Error && err.message.includes('credentials')) {
+          logout();
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [view, searchName, searchDate, logout]);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (verifyStaffPassword(password)) {
-      setAuthenticated(true);
-      setPasswordError('');
-    } else {
-      setPasswordError(t('staffWrongPassword'));
+    setLoginError('');
+    setLoginLoading(true);
+    try {
+      const res = await api.login(username, password);
+      localStorage.setItem('staff_token', res.access_token);
+      setView('dashboard');
+    } catch (err) {
+      setLoginError(err instanceof Error ? err.message : t('staffWrongPassword'));
+    } finally {
+      setLoginLoading(false);
     }
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- refreshKey triggers re-read from localStorage
-  const registrations = useMemo(() => getRegistrations(), [refreshKey]);
+  const handleForgotPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setForgotMsg('');
+    setForgotLoading(true);
+    try {
+      await api.forgotPassword(forgotEmail);
+      setForgotMsg(t('resetEmailSent'));
+    } catch {
+      setForgotMsg(t('resetEmailSent'));
+    } finally {
+      setForgotLoading(false);
+    }
+  };
 
-  const filtered = useMemo(() => {
-    return registrations.filter((r) => {
-      const nameMatch = !searchName ||
-        `${r.firstName} ${r.lastName}`.toLowerCase().includes(searchName.toLowerCase()) ||
-        `${r.lastName} ${r.firstName}`.toLowerCase().includes(searchName.toLowerCase());
-      const dateMatch = !searchDate || r.arrivalDate === searchDate;
-      return nameMatch && dateMatch;
-    });
-  }, [registrations, searchName, searchDate]);
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setChangePwError('');
+    setChangePwMsg('');
+    if (newPw !== confirmPw) {
+      setChangePwError(t('passwordsDontMatch'));
+      return;
+    }
+    if (newPw.length < 6) {
+      setChangePwError(t('passwordTooShort'));
+      return;
+    }
+    setChangePwLoading(true);
+    try {
+      await api.changePassword(currentPw, newPw);
+      setChangePwMsg(t('passwordChanged'));
+      setCurrentPw('');
+      setNewPw('');
+      setConfirmPw('');
+    } catch (err) {
+      setChangePwError(err instanceof Error ? err.message : 'Error');
+    } finally {
+      setChangePwLoading(false);
+    }
+  };
 
-  const todayArrivals = useMemo(() => {
-    const today = new Date().toISOString().split('T')[0];
-    return registrations.filter((r) => r.arrivalDate === today).length;
-  }, [registrations]);
-
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     if (window.confirm(t('staffConfirmDelete'))) {
-      deleteRegistration(id);
-      setViewDetail(null);
-      setRefreshKey((k) => k + 1);
+      try {
+        await api.deleteRegistration(id);
+        setViewDetail(null);
+        setView('dashboard');
+        loadRegistrations();
+      } catch {
+        // ignore
+      }
     }
   };
 
@@ -113,7 +211,7 @@ export default function StaffPage() {
   };
 
   const exportAllExcel = () => {
-    const data = filtered.map((r) => ({
+    const data = registrations.map((r) => ({
       Chambre: r.room,
       Nom: r.lastName,
       Prénom: r.firstName,
@@ -141,7 +239,8 @@ export default function StaffPage() {
     XLSX.writeFile(wb, `fiches-riad-mylaya-${new Date().toISOString().split('T')[0]}.xlsx`);
   };
 
-  if (!authenticated) {
+  // ---------- LOGIN ----------
+  if (view === 'login') {
     return (
       <div className="min-h-screen bg-beige-50 flex items-center justify-center p-6">
         <div className="w-full max-w-sm">
@@ -163,20 +262,78 @@ export default function StaffPage() {
 
           <form onSubmit={handleLogin}>
             <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder={t('staffUsername')}
+              className="w-full px-4 py-3 bg-beige-100 border border-beige-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-brown-600"
+            />
+            <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder={t('staffPassword')}
               className="w-full px-4 py-3 bg-beige-100 border border-beige-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-brown-600"
             />
-            {passwordError && (
-              <p className="text-red-600 text-sm mb-3">{passwordError}</p>
+            {loginError && (
+              <p className="text-red-600 text-sm mb-3">{loginError}</p>
             )}
             <button
               type="submit"
-              className="w-full py-3 bg-brown-700 text-beige-50 rounded-lg hover:bg-brown-800 transition-colors"
+              disabled={loginLoading}
+              className="w-full py-3 bg-brown-700 text-beige-50 rounded-lg hover:bg-brown-800 transition-colors disabled:opacity-50"
             >
-              {t('staffLogin')}
+              {loginLoading ? '...' : t('staffLogin')}
+            </button>
+          </form>
+
+          <button
+            onClick={() => { setView('forgot'); setForgotMsg(''); setForgotEmail(''); }}
+            className="w-full mt-4 text-sm text-brown-600 hover:text-brown-800 text-center"
+          >
+            {t('forgotPassword')}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // ---------- FORGOT PASSWORD ----------
+  if (view === 'forgot') {
+    return (
+      <div className="min-h-screen bg-beige-50 flex items-center justify-center p-6">
+        <div className="w-full max-w-sm">
+          <button
+            onClick={() => setView('login')}
+            className="flex items-center gap-1 text-brown-700 hover:text-brown-900 mb-8"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            {t('staffBack')}
+          </button>
+
+          <div className="text-center mb-8">
+            <Mail className="w-12 h-12 text-brown-700 mx-auto mb-4" />
+            <h1 className="text-2xl font-serif text-brown-900">{t('forgotPassword')}</h1>
+            <p className="text-sm text-brown-600 mt-2">{t('forgotPasswordDesc')}</p>
+          </div>
+
+          <form onSubmit={handleForgotPassword}>
+            <input
+              type="email"
+              value={forgotEmail}
+              onChange={(e) => setForgotEmail(e.target.value)}
+              placeholder="Email"
+              className="w-full px-4 py-3 bg-beige-100 border border-beige-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-brown-600"
+            />
+            {forgotMsg && (
+              <p className="text-green-700 text-sm mb-3">{forgotMsg}</p>
+            )}
+            <button
+              type="submit"
+              disabled={forgotLoading}
+              className="w-full py-3 bg-brown-700 text-beige-50 rounded-lg hover:bg-brown-800 transition-colors disabled:opacity-50"
+            >
+              {forgotLoading ? '...' : t('sendResetLink')}
             </button>
           </form>
         </div>
@@ -184,6 +341,66 @@ export default function StaffPage() {
     );
   }
 
+  // ---------- CHANGE PASSWORD ----------
+  if (view === 'changePassword') {
+    return (
+      <div className="min-h-screen bg-beige-50 flex items-center justify-center p-6">
+        <div className="w-full max-w-sm">
+          <button
+            onClick={() => { setView('dashboard'); setChangePwMsg(''); setChangePwError(''); }}
+            className="flex items-center gap-1 text-brown-700 hover:text-brown-900 mb-8"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            {t('staffBack')}
+          </button>
+
+          <div className="text-center mb-8">
+            <KeyRound className="w-12 h-12 text-brown-700 mx-auto mb-4" />
+            <h1 className="text-2xl font-serif text-brown-900">{t('changePassword')}</h1>
+          </div>
+
+          <form onSubmit={handleChangePassword}>
+            <input
+              type="password"
+              value={currentPw}
+              onChange={(e) => setCurrentPw(e.target.value)}
+              placeholder={t('currentPassword')}
+              className="w-full px-4 py-3 bg-beige-100 border border-beige-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-brown-600"
+            />
+            <input
+              type="password"
+              value={newPw}
+              onChange={(e) => setNewPw(e.target.value)}
+              placeholder={t('newPassword')}
+              className="w-full px-4 py-3 bg-beige-100 border border-beige-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-brown-600"
+            />
+            <input
+              type="password"
+              value={confirmPw}
+              onChange={(e) => setConfirmPw(e.target.value)}
+              placeholder={t('confirmPassword')}
+              className="w-full px-4 py-3 bg-beige-100 border border-beige-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-brown-600"
+            />
+            {changePwError && (
+              <p className="text-red-600 text-sm mb-3">{changePwError}</p>
+            )}
+            {changePwMsg && (
+              <p className="text-green-700 text-sm mb-3">{changePwMsg}</p>
+            )}
+            <button
+              type="submit"
+              disabled={changePwLoading}
+              className="w-full py-3 bg-brown-700 text-beige-50 rounded-lg hover:bg-brown-800 transition-colors disabled:opacity-50"
+            >
+              {changePwLoading ? '...' : t('changePassword')}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // ---------- VIEW IMAGE ----------
   if (viewImage) {
     return (
       <div className="min-h-screen bg-beige-50 p-6">
@@ -206,6 +423,7 @@ export default function StaffPage() {
     );
   }
 
+  // ---------- VIEW DETAIL ----------
   if (viewDetail) {
     const r = viewDetail;
     const fields: [string, string][] = [
@@ -295,6 +513,7 @@ export default function StaffPage() {
     );
   }
 
+  // ---------- DASHBOARD ----------
   return (
     <div className="min-h-screen bg-beige-50">
       <div className="max-w-4xl mx-auto px-4 py-6">
@@ -311,7 +530,14 @@ export default function StaffPage() {
           <div className="flex items-center gap-3">
             <LanguageSelector />
             <button
-              onClick={() => setAuthenticated(false)}
+              onClick={() => setView('changePassword')}
+              className="flex items-center gap-1 text-brown-600 hover:text-brown-800 text-sm"
+              title={t('changePassword')}
+            >
+              <KeyRound className="w-4 h-4" />
+            </button>
+            <button
+              onClick={logout}
               className="flex items-center gap-1 text-brown-600 hover:text-brown-800 text-sm"
             >
               <LogOut className="w-4 h-4" />
@@ -366,13 +592,17 @@ export default function StaffPage() {
           </button>
         </div>
 
-        {filtered.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-12 text-brown-600">
+            <p>...</p>
+          </div>
+        ) : registrations.length === 0 ? (
           <div className="text-center py-12 text-brown-600">
             <p>{t('staffNoRecords')}</p>
           </div>
         ) : (
           <div className="space-y-3">
-            {filtered.map((r) => (
+            {registrations.map((r) => (
               <div
                 key={r.id}
                 onClick={() => setViewDetail(r)}

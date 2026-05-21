@@ -5,8 +5,7 @@ import SignatureCanvas from 'react-signature-canvas';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
 import LanguageSelector from '../components/LanguageSelector';
 import FormField from '../components/FormField';
-import { saveRegistration, generateId } from '../utils/storage';
-import type { GuestRegistration } from '../types';
+import { api } from '../utils/api';
 
 const today = () => new Date().toISOString().split('T')[0];
 
@@ -43,6 +42,7 @@ export default function RegisterPage() {
   const [signatureData, setSignatureData] = useState<string>('');
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
 
   const updateField = (field: string, value: string | number) => {
@@ -127,7 +127,7 @@ export default function RegisterPage() {
     return Object.keys(validate()).length === 0;
   }, [validate]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setAttemptedSubmit(true);
 
@@ -139,17 +139,20 @@ export default function RegisterPage() {
       return;
     }
 
-    const registration: GuestRegistration = {
-      id: generateId(),
-      ...form,
-      passportPhoto,
-      signature: signatureData,
-      createdAt: new Date().toISOString(),
-    };
-
-    saveRegistration(registration);
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setSubmitting(true);
+    try {
+      await api.submitRegistration({
+        ...form,
+        passportPhoto,
+        signature: signatureData,
+      });
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch {
+      setErrors({ form: t('submitError') || 'Submission failed. Please try again.' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -359,16 +362,20 @@ export default function RegisterPage() {
             </FormField>
           </div>
 
+          {errors['form'] && (
+            <p className="text-red-600 text-sm mt-4 text-center">{errors['form']}</p>
+          )}
+
           <button
             type="submit"
-            disabled={attemptedSubmit && !isFormValid()}
+            disabled={submitting || (attemptedSubmit && !isFormValid())}
             className={`w-full mt-6 py-4 text-lg rounded-lg transition-colors ${
-              attemptedSubmit && !isFormValid()
+              submitting || (attemptedSubmit && !isFormValid())
                 ? 'bg-beige-300 text-beige-400 cursor-not-allowed'
                 : 'bg-brown-700 text-beige-50 hover:bg-brown-800'
             }`}
           >
-            {t('submit')}
+            {submitting ? '...' : t('submit')}
           </button>
         </form>
       </div>

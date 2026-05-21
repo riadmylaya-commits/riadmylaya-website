@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import QRCodePage from './pages/QRCodePage';
 import StaffPage from './pages/StaffPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/qr" element={<QRCodePage />} />
         <Route path="/staff" element={<StaffPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
       </Routes>
     </BrowserRouter>
   );
