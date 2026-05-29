@@ -11,7 +11,7 @@ from pathlib import Path
 
 import aiosmtplib
 import bcrypt
-from fastapi import Depends, FastAPI, HTTPException, Query, status
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -26,14 +26,14 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 # ─── Config ──────────────────────────────────────────────────────────────────
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./riadmylaya.db")
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:////data/riadmylaya.db" if os.path.isdir("/data") else "sqlite:///./riadmylaya.db")
     SECRET_KEY: str = os.getenv("SECRET_KEY", "riadmylaya-secret-key-change-in-production-2024")
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 480
     GMAIL_EMAIL: str = "riadmylaya@gmail.com"
     GMAIL_APP_PASSWORD: str = os.getenv("GMAIL_APP_PASSWORD", "")
     NOTIFICATION_EMAIL: str = "riadmylaya@gmail.com"
-    FRONTEND_URL: str = os.getenv("FRONTEND_URL", "https://dist-tnkcpowt.devinapps.com")
+    FRONTEND_URL: str = os.getenv("FRONTEND_URL", "")
     PASSWORD_RESET_EXPIRE_MINUTES: int = 30
     model_config = {"env_file": ".env", "extra": "ignore"}
 
@@ -387,7 +387,7 @@ app = FastAPI(title="Riad Mylaya API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_URL, "http://localhost:5173", "http://localhost:3000"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -514,15 +514,16 @@ def change_password(data: ChangePassword, user: StaffUser = Depends(get_current_
     return {"message": "Password changed"}
 
 @app.post("/api/auth/forgot-password")
-async def forgot_password(data: ForgotPassword, db: Session = Depends(get_db)):
+async def forgot_password(data: ForgotPassword, request: Request, db: Session = Depends(get_db)):
     user = db.query(StaffUser).filter(StaffUser.email == data.email).first()
     if user:
         token = secrets.token_urlsafe(32)
         db.add(PasswordResetToken(user_id=user.id, token=token,
             expires_at=datetime.now(timezone.utc) + timedelta(minutes=settings.PASSWORD_RESET_EXPIRE_MINUTES)))
         db.commit()
+        base = settings.FRONTEND_URL or str(request.base_url).rstrip("/")
         await send_password_reset_email(user.email, user.username,
-            f"{settings.FRONTEND_URL}/reset-password?token={token}")
+            f"{base}/reset-password?token={token}")
     return {"message": "If the email exists, a reset link has been sent"}
 
 @app.post("/api/auth/reset-password")
