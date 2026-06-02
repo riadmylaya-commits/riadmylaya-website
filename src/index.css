@@ -28,6 +28,15 @@ input, select, textarea {
   font-family: var(--font-sans);
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-0.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
 @media print {
   body {
     background: white;
