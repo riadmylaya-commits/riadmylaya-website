@@ -14,7 +14,7 @@ define('GMAIL_EMAIL', 'riadmylaya@gmail.com');
 define('GMAIL_APP_PASSWORD', 'mjzv iefe qrdv stop');
 define('NOTIFICATION_EMAIL', 'riadmylaya@gmail.com');
 
-define('SITE_URL', 'https://yourdomain.com'); // Your actual domain
+define('SITE_URL', 'https://police.riadmylaya.com');
 
 define('DEFAULT_ADMIN_USER', 'admin');
 define('DEFAULT_ADMIN_PASS', 'mylaya2024');
