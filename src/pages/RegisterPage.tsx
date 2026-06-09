@@ -177,10 +177,11 @@ export default function RegisterPage() {
     );
   }
 
-  const renderInput = (field: string, labelKey: string, labelEnKey: string, type = 'text') => (
+  const renderInput = (field: string, labelKey: string, labelEnKey: string, type = 'text', helpTextKey?: string) => (
     <FormField
       label={t(labelKey)}
       labelEn={isFr ? t(labelEnKey) || undefined : undefined}
+      helpText={helpTextKey ? t(helpTextKey) : undefined}
       error={errors[field]}
     >
       <div data-error={!!errors[field]}>
@@ -196,10 +197,11 @@ export default function RegisterPage() {
     </FormField>
   );
 
-  const renderDateInput = (field: string, labelKey: string, labelEnKey: string) => (
+  const renderDateInput = (field: string, labelKey: string, labelEnKey: string, helpTextKey?: string) => (
     <FormField
       label={t(labelKey)}
       labelEn={isFr ? t(labelEnKey) || undefined : undefined}
+      helpText={helpTextKey ? t(helpTextKey) : undefined}
       error={errors[field]}
     >
       <div data-error={!!errors[field]}>
@@ -248,8 +250,8 @@ export default function RegisterPage() {
             {renderInput('placeOfBirth', 'placeOfBirth', 'placeOfBirthEn')}
             {renderInput('nationality', 'nationality', 'nationalityEn')}
             {renderInput('occupation', 'occupation', 'occupationEn')}
-            {renderInput('cinNumber', 'cinNumber', 'cinNumberEn')}
-            {renderInput('moroccoEntryNumber', 'moroccoEntryNumber', 'moroccoEntryNumberEn')}
+            {renderInput('cinNumber', 'cinNumber', 'cinNumberEn', 'text', 'cinNumberHelp')}
+            {renderInput('moroccoEntryNumber', 'moroccoEntryNumber', 'moroccoEntryNumberEn', 'text', 'moroccoEntryNumberHelp')}
             {renderDateInput('arrivalDate', 'arrivalDate', 'arrivalDateEn')}
             {renderDateInput('departureDate', 'departureDate', 'departureDateEn')}
 
@@ -266,11 +268,11 @@ export default function RegisterPage() {
               />
             </FormField>
 
-            {renderInput('comingFrom', 'comingFrom', 'comingFromEn')}
-            {renderInput('goingTo', 'goingTo', 'goingToEn')}
+            {renderInput('comingFrom', 'comingFrom', 'comingFromEn', 'text', 'comingFromHelp')}
+            {renderInput('goingTo', 'goingTo', 'goingToEn', 'text', 'goingToHelp')}
             {renderInput('passportNumber', 'passportNumber', 'passportNumberEn')}
-            {renderDateInput('passportIssueDate', 'passportIssueDate', 'passportIssueDateEn')}
-            {renderInput('passportIssuePlace', 'passportIssuePlace', 'passportIssuePlaceEn')}
+            {renderDateInput('passportIssueDate', 'passportIssueDate', 'passportIssueDateEn', 'passportIssueDateHelp')}
+            {renderInput('passportIssuePlace', 'passportIssuePlace', 'passportIssuePlaceEn', 'text', 'passportIssuePlaceHelp')}
 
             <FormField
               label={t('permanentAddress')}
