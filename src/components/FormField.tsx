@@ -3,11 +3,12 @@ import { useTranslation } from 'react-i18next';
 interface FormFieldProps {
   label: string;
   labelEn?: string;
+  hint?: string;
   error?: string;
   children: React.ReactNode;
 }
 
-export default function FormField({ label, labelEn, error, children }: FormFieldProps) {
+export default function FormField({ label, labelEn, hint, error, children }: FormFieldProps) {
   const { i18n } = useTranslation();
   const showBilingual = i18n.language === 'fr' && labelEn;
 
@@ -19,6 +20,9 @@ export default function FormField({ label, labelEn, error, children }: FormField
           <span className="text-brown-600 text-sm ml-1">/ {labelEn}</span>
         )}
       </label>
+      {hint && (
+        <p className="text-brown-500 text-xs mb-1.5 -mt-0.5">{hint}</p>
+      )}
       {children}
       {error && (
         <p className="text-red-600 text-sm mt-1">{error}</p>
