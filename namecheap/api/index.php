@@ -43,6 +43,9 @@ try {
     if ($path === '/registrations' && $method === 'POST') {
         handleCreateRegistration($pdo, $body);
     }
+    elseif (preg_match('#^/photo/([a-zA-Z0-9_\-\.]+)$#', $path, $m) && $method === 'GET') {
+        servePhoto($m[1]);
+    }
     elseif ($path === '/registrations' && $method === 'GET') {
         $user = requireAuth($pdo);
         handleListRegistrations($pdo);
@@ -109,6 +112,20 @@ try {
 
 function handleCreateRegistration(PDO $pdo, array $body): void {
     $id = generateUUID();
+
+    // Save photos as files to avoid MySQL max_allowed_packet truncation
+    $photoFile = '';
+    $signatureFile = '';
+    $rawPhoto = $body['passportPhoto'] ?? '';
+    $rawSignature = $body['signature'] ?? '';
+
+    if ($rawPhoto && strpos($rawPhoto, 'base64') !== false) {
+        $photoFile = saveBase64ToFile($rawPhoto, 'passport_' . $id);
+    }
+    if ($rawSignature && strpos($rawSignature, 'base64') !== false) {
+        $signatureFile = saveBase64ToFile($rawSignature, 'signature_' . $id);
+    }
+
     $stmt = $pdo->prepare("INSERT INTO registrations 
         (id, room, last_name, first_name, date_of_birth, place_of_birth, nationality, 
          occupation, cin_number, morocco_entry_number, arrival_date, departure_date, 
@@ -136,12 +153,12 @@ function handleCreateRegistration(PDO $pdo, array $body): void {
         $body['passportIssueDate'] ?? '',
         $body['passportIssuePlace'] ?? '',
         $body['permanentAddress'] ?? '',
-        $body['passportPhoto'] ?? '',
-        $body['signature'] ?? '',
+        $photoFile,
+        $signatureFile,
         $body['registrationDate'] ?? '',
     ]);
 
-    // Send email notification in background (non-blocking on error)
+    // Send email notification with original base64 data
     $regData = $body;
     $regData['id'] = $id;
     sendRegistrationEmail($regData);
@@ -382,6 +399,17 @@ function handleDeleteStaff(PDO $pdo, array $admin, string $uid): void {
 // ─── Formatters ──────────────────────────────────────────────────────────────
 
 function formatRegistration(array $row): array {
+    $photo = $row['passport_photo'] ?? '';
+    $sig = $row['signature'] ?? '';
+
+    // Convert file references to URLs
+    if ($photo && strpos($photo, 'data:') !== 0) {
+        $photo = SITE_URL . '/api/photo/' . $photo;
+    }
+    if ($sig && strpos($sig, 'data:') !== 0) {
+        $sig = SITE_URL . '/api/photo/' . $sig;
+    }
+
     return [
         'id' => $row['id'],
         'room' => $row['room'],
@@ -402,11 +430,54 @@ function formatRegistration(array $row): array {
         'passportIssueDate' => $row['passport_issue_date'],
         'passportIssuePlace' => $row['passport_issue_place'],
         'permanentAddress' => $row['permanent_address'],
-        'passportPhoto' => $row['passport_photo'] ?? '',
-        'signature' => $row['signature'] ?? '',
+        'passportPhoto' => $photo,
+        'signature' => $sig,
         'registrationDate' => $row['registration_date'],
         'createdAt' => $row['created_at'] ?? '',
     ];
+}
+
+// ─── File Helpers ─────────────────────────────────────────────────────────────
+
+function saveBase64ToFile(string $dataUrl, string $prefix): string {
+    $uploadsDir = __DIR__ . '/../uploads';
+    if (!is_dir($uploadsDir)) {
+        mkdir($uploadsDir, 0755, true);
+    }
+
+    // Determine extension from MIME type
+    $ext = 'jpg';
+    if (preg_match('#^data:image/(\w+);#', $dataUrl, $m)) {
+        $ext = ($m[1] === 'png') ? 'png' : 'jpg';
+    }
+
+    $filename = $prefix . '.' . $ext;
+    $filepath = $uploadsDir . '/' . $filename;
+
+    // Decode and save
+    $data = decodeBase64Image($dataUrl);
+    file_put_contents($filepath, $data);
+
+    return $filename;
+}
+
+function servePhoto(string $filename): void {
+    $filepath = __DIR__ . '/../uploads/' . $filename;
+
+    if (!file_exists($filepath)) {
+        http_response_code(404);
+        echo json_encode(['detail' => 'Photo not found']);
+        return;
+    }
+
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    $mime = ($ext === 'png') ? 'image/png' : 'image/jpeg';
+
+    header('Content-Type: ' . $mime);
+    header('Content-Length: ' . filesize($filepath));
+    header('Cache-Control: public, max-age=86400');
+    readfile($filepath);
+    exit;
 }
 
 function formatUser(array $row): array {

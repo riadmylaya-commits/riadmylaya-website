@@ -161,7 +161,23 @@ export default function StaffPage() {
     }
   };
 
-  const exportPdf = (reg: GuestRegistration) => {
+  const fetchImageAsBase64 = async (url: string): Promise<string | null> => {
+    if (!url) return null;
+    if (url.startsWith('data:')) return url;
+    try {
+      const res = await fetch(url);
+      const blob = await res.blob();
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result as string);
+        reader.readAsDataURL(blob);
+      });
+    } catch {
+      return null;
+    }
+  };
+
+  const exportPdf = async (reg: GuestRegistration) => {
     const doc = new jsPDF();
     doc.setFontSize(18);
     doc.text('Riad Mylaya — Fiche de Police', 14, 20);
@@ -197,11 +213,28 @@ export default function StaffPage() {
       columnStyles: { 0: { fontStyle: 'bold', cellWidth: 50 } },
     });
 
+    const finalY = (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable.finalY || 200;
+
+    if (reg.passportPhoto) {
+      try {
+        const photoData = await fetchImageAsBase64(reg.passportPhoto);
+        if (photoData) {
+          doc.text('Photo du passeport:', 14, finalY + 10);
+          doc.addImage(photoData, 'JPEG', 14, finalY + 14, 50, 35);
+        }
+      } catch {
+        // Photo image failed
+      }
+    }
+
     if (reg.signature) {
       try {
-        const finalY = (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable.finalY || 200;
-        doc.text('Signature:', 14, finalY + 10);
-        doc.addImage(reg.signature, 'PNG', 14, finalY + 14, 60, 30);
+        const sigData = await fetchImageAsBase64(reg.signature);
+        if (sigData) {
+          const sigY = reg.passportPhoto ? finalY + 55 : finalY + 10;
+          doc.text('Signature:', 14, sigY);
+          doc.addImage(sigData, 'PNG', 14, sigY + 4, 60, 30);
+        }
       } catch {
         // Signature image failed
       }
