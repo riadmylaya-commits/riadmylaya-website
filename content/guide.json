@@ -42,6 +42,8 @@
           "eyebrow": "Présentation",
           "title": "Riad Bilkis",
           "lead": "Une maison d'hôtes pensée comme un foyer, au cœur de Bab Doukkala.",
+          "image": "/assets/images/riad-patio.jpg",
+          "imageAlt": "Patio du Riad Bilkis avec ses carreaux colorés et son mobilier traditionnel",
           "items": [
             {
               "title": "Adresse",
@@ -64,6 +66,8 @@
           "eyebrow": "Présentation",
           "title": "Khadija et Ali",
           "lead": "Vos hôtes sont à votre écoute pour rendre votre séjour confortable.",
+          "image": "/assets/images/hosts-ali-khadija.jpg",
+          "imageAlt": "Ali et Khadija, vos hôtes au Riad Bilkis",
           "body": [
             "Le Riad Bilkis n'est pas seulement une maison d'hôtes : c'est notre foyer et notre passion. Nous aimons partager notre région, son histoire, sa culture et sa cuisine avec nos invités."
           ],
@@ -362,6 +366,8 @@
           "eyebrow": "Overview",
           "title": "Riad Bilkis",
           "lead": "A guest house designed as a home, in the heart of Bab Doukkala.",
+          "image": "/assets/images/riad-patio.jpg",
+          "imageAlt": "Riad Bilkis patio with colorful tiles and traditional furniture",
           "items": [
             {
               "title": "Address",
@@ -384,6 +390,8 @@
           "eyebrow": "Meet your hosts",
           "title": "Khadija and Ali",
           "lead": "Your hosts are here to make your stay comfortable.",
+          "image": "/assets/images/hosts-ali-khadija.jpg",
+          "imageAlt": "Ali and Khadija, your hosts at Riad Bilkis",
           "body": [
             "Riad Bilkis is not only a guest house: it is our home and our passion. We love sharing our region, its history, culture and cuisine with our guests."
           ],
@@ -682,6 +690,8 @@
           "eyebrow": "Presentación",
           "title": "Riad Bilkis",
           "lead": "Una casa de huéspedes pensada como un hogar, en el corazón de Bab Doukkala.",
+          "image": "/assets/images/riad-patio.jpg",
+          "imageAlt": "Patio del Riad Bilkis con azulejos de colores y muebles tradicionales",
           "items": [
             {
               "title": "Dirección",
@@ -704,6 +714,8 @@
           "eyebrow": "Presentación",
           "title": "Khadija y Ali",
           "lead": "Sus anfitriones están disponibles para que su estancia sea cómoda.",
+          "image": "/assets/images/hosts-ali-khadija.jpg",
+          "imageAlt": "Ali y Khadija, sus anfitriones en Riad Bilkis",
           "body": [
             "Riad Bilkis no es solo una casa de huéspedes: es nuestro hogar y nuestra pasión. Nos encanta compartir nuestra región, su historia, cultura y cocina con nuestros invitados."
           ],
