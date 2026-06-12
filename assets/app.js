@@ -93,6 +93,14 @@ function createSection(section, ui) {
   if (section.lead) {
     heading.append(createText("p", section.lead, "lead"));
   }
+  if (section.image) {
+    const img = document.createElement("img");
+    img.className = "section-image";
+    img.src = section.image;
+    img.alt = section.imageAlt || section.title;
+    img.loading = "lazy";
+    heading.append(img);
+  }
 
   const body = document.createElement("div");
   body.className = "section-body";
