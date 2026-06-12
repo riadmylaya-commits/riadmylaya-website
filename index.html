@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta
+      name="description"
+      content="Guide digital d'accueil du Riad Bilkis à Marrakech : arrivée, Wi-Fi, services, règles et contacts utiles."
+    />
+    <meta name="theme-color" content="#7a4f32" />
+    <title>Guide d'accueil - Riad Bilkis</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <script type="module" src="/assets/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#guide-content">Aller au contenu</a>
+
+    <header class="hero" id="top">
+      <nav class="topbar" aria-label="Navigation principale">
+        <a class="brand" href="#top" aria-label="Riad Bilkis">
+          <span class="brand-mark" aria-hidden="true">RB</span>
+          <span>
+            <strong>Riad Bilkis</strong>
+            <small>Marrakech Medina</small>
+          </span>
+        </a>
+        <div class="language-switcher" aria-label="Choisir la langue">
+          <button type="button" data-lang="fr">FR</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="es">ES</button>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="kicker" data-field="hero.eyebrow">Livret d'accueil digital</p>
+          <h1 data-field="hero.title">Bienvenue au Riad Bilkis</h1>
+          <p data-field="hero.subtitle">
+            Les informations essentielles pour profiter simplement de votre séjour à Marrakech.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#wifi" data-field="hero.primaryAction">Voir le Wi‑Fi</a>
+            <a class="button ghost" href="#contacts" data-field="hero.secondaryAction">Contacter les hôtes</a>
+          </div>
+        </div>
+        <aside class="arrival-card" aria-live="polite">
+          <span data-field="arrivalCard.label">Arrivée / départ</span>
+          <strong data-field="arrivalCard.times">Arrivée dès 13h · Départ avant 11h</strong>
+          <a href="#arrival" data-field="arrivalCard.link">Voir les détails</a>
+        </aside>
+      </div>
+    </header>
+
+    <nav class="quick-nav" aria-label="Sections du guide">
+      <div id="quick-nav-items"></div>
+    </nav>
+
+    <main id="guide-content" class="content" tabindex="-1">
+      <div id="sections" class="sections" aria-live="polite"></div>
+    </main>
+
+    <footer class="footer">
+      <a href="#top" data-field="footer.backToTop">Retour en haut</a>
+      <p data-field="footer.note">Guide digital conçu pour les voyageurs du Riad Bilkis.</p>
+    </footer>
+  </body>
+</html>

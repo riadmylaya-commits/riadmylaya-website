@@ -1,0 +1,9 @@
+{
+  "name": "Guide d'accueil Riad Bilkis",
+  "short_name": "Riad Bilkis",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffaf3",
+  "theme_color": "#7a4f32",
+  "lang": "fr"
+}

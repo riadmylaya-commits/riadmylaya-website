@@ -1,0 +1,964 @@
+{
+  "languages": {
+    "fr": {
+      "meta": {
+        "title": "Guide d'accueil - Riad Bilkis"
+      },
+      "hero": {
+        "eyebrow": "Livret d'accueil digital",
+        "title": "Bienvenue au Riad Bilkis",
+        "subtitle": "Les informations essentielles pour profiter simplement de votre séjour dans la médina de Marrakech.",
+        "primaryAction": "Voir le Wi‑Fi",
+        "secondaryAction": "Contacter les hôtes"
+      },
+      "arrivalCard": {
+        "label": "Arrivée / départ",
+        "times": "Arrivée dès 13h · Départ avant 11h",
+        "link": "Voir les détails"
+      },
+      "footer": {
+        "backToTop": "Retour en haut",
+        "note": "Guide digital conçu pour les voyageurs du Riad Bilkis."
+      },
+      "ui": {
+        "copyPassword": "Copier le mot de passe",
+        "passwordCopied": "Mot de passe copié."
+      },
+      "sections": [
+        {
+          "id": "welcome",
+          "shortTitle": "Bienvenue",
+          "eyebrow": "Accueil",
+          "title": "Bonjour et bienvenue",
+          "lead": "Nous sommes heureux de vous accueillir chez nous.",
+          "body": [
+            "Nous espérons que vous passerez un séjour mémorable et que vous repartirez avec de merveilleux souvenirs de Marrakech.",
+            "Ce guide rassemble les informations essentielles pour que votre séjour se déroule dans les meilleures conditions. En cas de besoin, contactez-nous à tout moment."
+          ]
+        },
+        {
+          "id": "riad",
+          "shortTitle": "Le riad",
+          "eyebrow": "Présentation",
+          "title": "Riad Bilkis",
+          "lead": "Une maison d'hôtes pensée comme un foyer, au cœur de Bab Doukkala.",
+          "items": [
+            {
+              "title": "Adresse",
+              "text": "117 Derb Jdid, Bab Doukkala, Médina, Marrakech."
+            },
+            {
+              "title": "Équipements principaux",
+              "list": [
+                "3 chambres et 3 salles de bain",
+                "Terrasse, jacuzzi et espaces de détente",
+                "Cuisine équipée avec lave-vaisselle",
+                "Lave-linge, sèche-linge et lit bébé"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hosts",
+          "shortTitle": "Vos hôtes",
+          "eyebrow": "Présentation",
+          "title": "Khadija et Ali",
+          "lead": "Vos hôtes sont à votre écoute pour rendre votre séjour confortable.",
+          "body": [
+            "Le Riad Bilkis n'est pas seulement une maison d'hôtes : c'est notre foyer et notre passion. Nous aimons partager notre région, son histoire, sa culture et sa cuisine avec nos invités."
+          ],
+          "items": [
+            {
+              "title": "Nous contacter",
+              "text": "Téléphone : +212625675494 · Email : riadbilkis@yahoo.com"
+            }
+          ]
+        },
+        {
+          "id": "practical",
+          "shortTitle": "Pratique",
+          "eyebrow": "Informations",
+          "title": "Informations pratiques",
+          "lead": "Les repères utiles dès votre arrivée.",
+          "items": [
+            {
+              "title": "Accueil",
+              "text": "À votre arrivée, profitez d'un thé à la menthe et d'une bouteille d'eau offerts pour vous rafraîchir."
+            },
+            {
+              "title": "Petit-déjeuner",
+              "text": "Servi de 8h00 à 10h30. Avant 7h30, un petit-déjeuner à emporter peut être préparé. Après 10h30, il est proposé au tarif de 6 € par personne."
+            },
+            {
+              "title": "Ménage",
+              "text": "La femme de ménage est à votre disposition pour le petit-déjeuner et l'entretien des chambres. Elle travaille de 7h30 à 15h."
+            },
+            {
+              "title": "Parking",
+              "text": "Si vous avez une voiture, un parking est disponible à proximité pour 4 € par tranche de 24 heures."
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "shortTitle": "Arrivée / départ",
+          "type": "times",
+          "eyebrow": "Horaires",
+          "title": "Arrivée et départ",
+          "lead": "Merci de nous transmettre les informations utiles pour organiser votre arrivée.",
+          "times": [
+            {
+              "label": "Votre arrivée",
+              "value": "13h",
+              "detail": "Arrivée possible à partir de 13h."
+            },
+            {
+              "label": "Votre départ",
+              "value": "11h",
+              "detail": "Départ au plus tard à 11h."
+            }
+          ],
+          "items": [
+            {
+              "title": "Transfert aéroport",
+              "text": "Pour organiser votre transfert vers le Riad Bilkis, communiquez-nous votre provenance, compagnie, numéro de vol, heure d'arrivée et nombre de personnes."
+            },
+            {
+              "title": "Avant de partir",
+              "list": [
+                "Éteindre le chauffage ou la climatisation",
+                "Éteindre les lumières",
+                "Vérifier le coffre",
+                "Laisser les serviettes au sol",
+                "Remettre les clés à Khadija"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wifi",
+          "shortTitle": "Wi‑Fi",
+          "type": "wifi",
+          "eyebrow": "Connexion",
+          "title": "Wi‑Fi",
+          "lead": "Connectez-vous rapidement au réseau de la maison.",
+          "networkLabel": "Réseau",
+          "network": "Orange-A96D",
+          "passwordLabel": "Mot de passe",
+          "password": "F90N3G0TT21"
+        },
+        {
+          "id": "services",
+          "shortTitle": "Services",
+          "eyebrow": "Confort",
+          "title": "Services du riad",
+          "items": [
+            {
+              "title": "Eau et thé à la menthe",
+              "text": "Offerts à l'arrivée pour vous immerger dans l'hospitalité marocaine."
+            },
+            {
+              "title": "Espaces de détente",
+              "text": "Cour intérieure et terrasse sont à votre disposition pour vous relaxer après une journée de visite."
+            },
+            {
+              "title": "Climatisation et chauffage",
+              "text": "Votre confort est assuré toute l'année grâce aux systèmes de climatisation et de chauffage."
+            },
+            {
+              "title": "Carte de secours",
+              "text": "Une petite carte du quartier avec des points d'intérêt et informations d'urgence est disponible en cas de besoin."
+            }
+          ]
+        },
+        {
+          "id": "kitchen",
+          "shortTitle": "Cuisine",
+          "eyebrow": "Équipements",
+          "title": "Cuisine et équipements",
+          "lead": "La cuisine est équipée pour votre confort.",
+          "items": [
+            {
+              "title": "Équipements disponibles",
+              "list": [
+                "Four",
+                "Micro-ondes",
+                "Réfrigérateur",
+                "Cafetière"
+              ]
+            },
+            {
+              "title": "Disponibilité",
+              "text": "De 8h à 16h, pendant l'entretien du riad, les équipements peuvent être utilisés sous supervision. Après 16h, ils sont entièrement à votre disposition."
+            },
+            {
+              "title": "Bonnes pratiques",
+              "list": [
+                "Utiliser uniquement des plats adaptés au four",
+                "Ne pas mettre d'objets métalliques dans le micro-ondes",
+                "Éviter de surcharger le réfrigérateur",
+                "Nettoyer le filtre de la cafetière et la laisser propre"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "linen",
+          "shortTitle": "Linge",
+          "eyebrow": "Blanchisserie",
+          "title": "Linge et blanchisserie",
+          "items": [
+            {
+              "title": "Serviettes et linge de lit",
+              "text": "Pour les séjours de six nuits, changement tous les trois jours. Pour les séjours de quatre nuits, changement tous les deux jours."
+            },
+            {
+              "title": "Machine à laver",
+              "text": "Une machine à laver est disponible pour votre linge personnel. Chaque charge est facturée 5 €. Service disponible chaque jour de 9h à 15h."
+            },
+            {
+              "title": "Articles de salle de bain",
+              "list": [
+                "Shampoing et gel douche",
+                "Savon",
+                "Démaquillant",
+                "Coton-tiges"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rules",
+          "shortTitle": "Règles",
+          "eyebrow": "Maison",
+          "title": "Règlement intérieur",
+          "items": [
+            {
+              "title": "Respect des lieux",
+              "text": "Respecter la maison et les extérieurs en évitant toute dégradation."
+            },
+            {
+              "title": "Animaux",
+              "text": "Nous adorons les animaux, mais ils ne sont pas acceptés pendant votre séjour."
+            },
+            {
+              "title": "Ne pas fumer",
+              "text": "Merci de ne pas fumer à l'intérieur. Un fumoir abrité est disponible sur la terrasse."
+            },
+            {
+              "title": "Fêtes et réceptions",
+              "text": "Merci de ne pas organiser de fêtes de grande ampleur et de limiter le bruit après 22h."
+            },
+            {
+              "title": "Personne supplémentaire",
+              "text": "Aucun voyageur supplémentaire imprévu ne peut être accueilli sans nous en informer."
+            },
+            {
+              "title": "Sécurité",
+              "text": "Merci de respecter les règles de sécurité et de ne pas utiliser de matériel électrique dangereux."
+            }
+          ]
+        },
+        {
+          "id": "contacts",
+          "shortTitle": "Contacts",
+          "eyebrow": "Aide",
+          "title": "Contacts utiles",
+          "items": [
+            {
+              "title": "Riad Bilkis",
+              "text": "Téléphone : +212625675494 · Email : riadbilkis@yahoo.com",
+              "actions": [
+                {
+                  "label": "Appeler",
+                  "href": "tel:+212625675494"
+                },
+                {
+                  "label": "Envoyer un email",
+                  "href": "mailto:riadbilkis@yahoo.com"
+                }
+              ]
+            },
+            {
+              "title": "Adresse",
+              "text": "117 Derb Jdid, Bab Doukkala, Médina, Marrakech."
+            }
+          ]
+        },
+        {
+          "id": "map",
+          "shortTitle": "Carte",
+          "type": "map",
+          "eyebrow": "Localisation",
+          "title": "Carte du riad",
+          "lead": "Ouvrez l'itinéraire dans Google Maps pour rejoindre facilement le riad.",
+          "address": "Riad Bilkis, 117 Derb Jdid, Bab Doukkala, Médina, Marrakech",
+          "mapText": "Carte légère : l'itinéraire s'ouvre dans Google Maps pour préserver la rapidité du guide.",
+          "actions": [
+            {
+              "label": "Ouvrir dans Google Maps",
+              "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+              "external": true
+            }
+          ]
+        },
+        {
+          "id": "reviews",
+          "shortTitle": "Avis",
+          "type": "reviews",
+          "eyebrow": "Votre avis",
+          "title": "Avis clients",
+          "heading": "Votre satisfaction est notre satisfaction",
+          "text": "Vous avez apprécié votre séjour ? Votre avis aide les prochains voyageurs à nous découvrir.",
+          "actions": [
+            {
+              "label": "Laisser un avis",
+              "href": "https://www.google.com/search?q=Riad+Bilkis+Marrakech+avis",
+              "external": true
+            }
+          ]
+        }
+      ]
+    },
+    "en": {
+      "meta": {
+        "title": "Welcome guide - Riad Bilkis"
+      },
+      "hero": {
+        "eyebrow": "Digital welcome guide",
+        "title": "Welcome to Riad Bilkis",
+        "subtitle": "Essential information to enjoy your stay in Marrakech Medina with ease.",
+        "primaryAction": "View Wi‑Fi",
+        "secondaryAction": "Contact your hosts"
+      },
+      "arrivalCard": {
+        "label": "Arrival / departure",
+        "times": "Check-in from 1 pm · Check-out before 11 am",
+        "link": "View details"
+      },
+      "footer": {
+        "backToTop": "Back to top",
+        "note": "Digital guide created for Riad Bilkis guests."
+      },
+      "ui": {
+        "copyPassword": "Copy password",
+        "passwordCopied": "Password copied."
+      },
+      "sections": [
+        {
+          "id": "welcome",
+          "shortTitle": "Welcome",
+          "eyebrow": "Welcome",
+          "title": "Hello and welcome",
+          "lead": "We are delighted to welcome you.",
+          "body": [
+            "We hope you will have a memorable stay and leave with wonderful memories of Marrakech.",
+            "This guide gathers the essential information you need for a smooth and comfortable stay. If you need anything, please contact us at any time."
+          ]
+        },
+        {
+          "id": "riad",
+          "shortTitle": "Riad",
+          "eyebrow": "Overview",
+          "title": "Riad Bilkis",
+          "lead": "A guest house designed as a home, in the heart of Bab Doukkala.",
+          "items": [
+            {
+              "title": "Address",
+              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech."
+            },
+            {
+              "title": "Main amenities",
+              "list": [
+                "3 bedrooms and 3 bathrooms",
+                "Terrace, jacuzzi and relaxation areas",
+                "Equipped kitchen with dishwasher",
+                "Washing machine, dryer and baby bed"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hosts",
+          "shortTitle": "Hosts",
+          "eyebrow": "Meet your hosts",
+          "title": "Khadija and Ali",
+          "lead": "Your hosts are here to make your stay comfortable.",
+          "body": [
+            "Riad Bilkis is not only a guest house: it is our home and our passion. We love sharing our region, its history, culture and cuisine with our guests."
+          ],
+          "items": [
+            {
+              "title": "Contact us",
+              "text": "Phone: +212625675494 · Email: riadbilkis@yahoo.com"
+            }
+          ]
+        },
+        {
+          "id": "practical",
+          "shortTitle": "Practical",
+          "eyebrow": "Information",
+          "title": "Practical information",
+          "lead": "Useful details from the moment you arrive.",
+          "items": [
+            {
+              "title": "Arrival welcome",
+              "text": "On arrival, enjoy complimentary mint tea and a bottle of water."
+            },
+            {
+              "title": "Breakfast",
+              "text": "Served from 8:00 am to 10:30 am. Before 7:30 am, a takeaway breakfast can be prepared. After 10:30 am, breakfast is available for 6 € per person."
+            },
+            {
+              "title": "Housekeeping",
+              "text": "The housekeeper is available for breakfast and room cleaning from 7:30 am to 3:00 pm."
+            },
+            {
+              "title": "Parking",
+              "text": "If you have a car, nearby parking is available for 4 € per 24-hour period."
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "shortTitle": "Arrival / departure",
+          "type": "times",
+          "eyebrow": "Times",
+          "title": "Arrival and departure",
+          "lead": "Please send us the useful details so we can organize your arrival.",
+          "times": [
+            {
+              "label": "Check-in",
+              "value": "1 pm",
+              "detail": "Arrival is possible from 1 pm."
+            },
+            {
+              "label": "Check-out",
+              "value": "11 am",
+              "detail": "Departure is no later than 11 am."
+            }
+          ],
+          "items": [
+            {
+              "title": "Airport transfer",
+              "text": "To arrange your airport transfer to Riad Bilkis, please send us your departure city, airline, flight number, arrival time and number of guests."
+            },
+            {
+              "title": "Before leaving",
+              "list": [
+                "Turn off heating or air conditioning",
+                "Turn off the lights",
+                "Check the safe",
+                "Leave towels on the floor",
+                "Return the keys to Khadija"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wifi",
+          "shortTitle": "Wi‑Fi",
+          "type": "wifi",
+          "eyebrow": "Connection",
+          "title": "Wi‑Fi",
+          "lead": "Connect quickly to the house network.",
+          "networkLabel": "Network",
+          "network": "Orange-A96D",
+          "passwordLabel": "Password",
+          "password": "F90N3G0TT21"
+        },
+        {
+          "id": "services",
+          "shortTitle": "Services",
+          "eyebrow": "Comfort",
+          "title": "Riad services",
+          "items": [
+            {
+              "title": "Water and mint tea",
+              "text": "Offered on arrival to introduce you to Moroccan hospitality."
+            },
+            {
+              "title": "Relaxation areas",
+              "text": "The inner courtyard and terrace are available for relaxing after a day of visits."
+            },
+            {
+              "title": "Air conditioning and heating",
+              "text": "Comfort is ensured all year with air conditioning and heating systems."
+            },
+            {
+              "title": "Emergency card",
+              "text": "A small neighborhood card with points of interest and emergency information is available if needed."
+            }
+          ]
+        },
+        {
+          "id": "kitchen",
+          "shortTitle": "Kitchen",
+          "eyebrow": "Equipment",
+          "title": "Kitchen and equipment",
+          "lead": "The kitchen is equipped for your comfort.",
+          "items": [
+            {
+              "title": "Available equipment",
+              "list": [
+                "Oven",
+                "Microwave",
+                "Refrigerator",
+                "Coffee maker"
+              ]
+            },
+            {
+              "title": "Availability",
+              "text": "From 8 am to 4 pm, while the riad is being maintained, equipment can be used under supervision. After 4 pm, it is fully available to you."
+            },
+            {
+              "title": "Good practices",
+              "list": [
+                "Use only oven-safe dishes",
+                "Do not put metal objects in the microwave",
+                "Avoid overloading the refrigerator",
+                "Clean the coffee maker filter and leave it clean"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "linen",
+          "shortTitle": "Linen",
+          "eyebrow": "Laundry",
+          "title": "Linen and laundry",
+          "items": [
+            {
+              "title": "Towels and bed linen",
+              "text": "For six-night stays, changed every three days. For four-night stays, changed every two days."
+            },
+            {
+              "title": "Washing machine",
+              "text": "A washing machine is available for personal laundry. Each load costs 5 €. Service available daily from 9 am to 3 pm."
+            },
+            {
+              "title": "Bathroom amenities",
+              "list": [
+                "Shampoo and shower gel",
+                "Soap",
+                "Make-up remover",
+                "Cotton buds"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rules",
+          "shortTitle": "Rules",
+          "eyebrow": "House",
+          "title": "House rules",
+          "items": [
+            {
+              "title": "Respect the property",
+              "text": "Please respect the house and outdoor areas and avoid any damage."
+            },
+            {
+              "title": "Pets",
+              "text": "We love animals, but pets are not accepted during your stay."
+            },
+            {
+              "title": "No smoking",
+              "text": "Please do not smoke inside. A sheltered smoking area is available on the terrace."
+            },
+            {
+              "title": "Parties and receptions",
+              "text": "Please do not organize large parties and keep noise down after 10 pm."
+            },
+            {
+              "title": "Extra guests",
+              "text": "No unexpected extra guest can be hosted without informing us first."
+            },
+            {
+              "title": "Safety",
+              "text": "Please follow safety rules and do not use dangerous electrical equipment."
+            }
+          ]
+        },
+        {
+          "id": "contacts",
+          "shortTitle": "Contacts",
+          "eyebrow": "Help",
+          "title": "Useful contacts",
+          "items": [
+            {
+              "title": "Riad Bilkis",
+              "text": "Phone: +212625675494 · Email: riadbilkis@yahoo.com",
+              "actions": [
+                {
+                  "label": "Call",
+                  "href": "tel:+212625675494"
+                },
+                {
+                  "label": "Send email",
+                  "href": "mailto:riadbilkis@yahoo.com"
+                }
+              ]
+            },
+            {
+              "title": "Address",
+              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech."
+            }
+          ]
+        },
+        {
+          "id": "map",
+          "shortTitle": "Map",
+          "type": "map",
+          "eyebrow": "Location",
+          "title": "Riad map",
+          "lead": "Open directions in Google Maps to reach the riad easily.",
+          "address": "Riad Bilkis, 117 Derb Jdid, Bab Doukkala, Medina, Marrakech",
+          "mapText": "Lightweight map section: directions open in Google Maps to keep the guide fast.",
+          "actions": [
+            {
+              "label": "Open in Google Maps",
+              "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+              "external": true
+            }
+          ]
+        },
+        {
+          "id": "reviews",
+          "shortTitle": "Reviews",
+          "type": "reviews",
+          "eyebrow": "Your review",
+          "title": "Guest reviews",
+          "heading": "Your satisfaction is our satisfaction",
+          "text": "Did you enjoy your stay? Your review helps future travelers discover us.",
+          "actions": [
+            {
+              "label": "Leave a review",
+              "href": "https://www.google.com/search?q=Riad+Bilkis+Marrakech+avis",
+              "external": true
+            }
+          ]
+        }
+      ]
+    },
+    "es": {
+      "meta": {
+        "title": "Guía de bienvenida - Riad Bilkis"
+      },
+      "hero": {
+        "eyebrow": "Guía digital de bienvenida",
+        "title": "Bienvenido a Riad Bilkis",
+        "subtitle": "Información esencial para disfrutar fácilmente de su estancia en la medina de Marrakech.",
+        "primaryAction": "Ver Wi‑Fi",
+        "secondaryAction": "Contactar con los anfitriones"
+      },
+      "arrivalCard": {
+        "label": "Llegada / salida",
+        "times": "Llegada desde las 13:00 · Salida antes de las 11:00",
+        "link": "Ver detalles"
+      },
+      "footer": {
+        "backToTop": "Volver arriba",
+        "note": "Guía digital creada para los huéspedes de Riad Bilkis."
+      },
+      "ui": {
+        "copyPassword": "Copiar contraseña",
+        "passwordCopied": "Contraseña copiada."
+      },
+      "sections": [
+        {
+          "id": "welcome",
+          "shortTitle": "Bienvenida",
+          "eyebrow": "Bienvenida",
+          "title": "Hola y bienvenido",
+          "lead": "Nos alegra recibirle en nuestra casa.",
+          "body": [
+            "Esperamos que disfrute de una estancia memorable y se marche con maravillosos recuerdos de Marrakech.",
+            "Esta guía reúne la información esencial para que su estancia sea cómoda y sencilla. Si necesita algo, no dude en contactarnos."
+          ]
+        },
+        {
+          "id": "riad",
+          "shortTitle": "El riad",
+          "eyebrow": "Presentación",
+          "title": "Riad Bilkis",
+          "lead": "Una casa de huéspedes pensada como un hogar, en el corazón de Bab Doukkala.",
+          "items": [
+            {
+              "title": "Dirección",
+              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech."
+            },
+            {
+              "title": "Equipamiento principal",
+              "list": [
+                "3 habitaciones y 3 baños",
+                "Terraza, jacuzzi y zonas de descanso",
+                "Cocina equipada con lavavajillas",
+                "Lavadora, secadora y cuna"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hosts",
+          "shortTitle": "Anfitriones",
+          "eyebrow": "Presentación",
+          "title": "Khadija y Ali",
+          "lead": "Sus anfitriones están disponibles para que su estancia sea cómoda.",
+          "body": [
+            "Riad Bilkis no es solo una casa de huéspedes: es nuestro hogar y nuestra pasión. Nos encanta compartir nuestra región, su historia, cultura y cocina con nuestros invitados."
+          ],
+          "items": [
+            {
+              "title": "Contactarnos",
+              "text": "Teléfono: +212625675494 · Email: riadbilkis@yahoo.com"
+            }
+          ]
+        },
+        {
+          "id": "practical",
+          "shortTitle": "Práctico",
+          "eyebrow": "Información",
+          "title": "Información práctica",
+          "lead": "Detalles útiles desde su llegada.",
+          "items": [
+            {
+              "title": "Bienvenida",
+              "text": "A su llegada, disfrute de té de menta y una botella de agua de cortesía."
+            },
+            {
+              "title": "Desayuno",
+              "text": "Se sirve de 8:00 a 10:30. Antes de las 7:30, puede prepararse un desayuno para llevar. Después de las 10:30, se ofrece por 6 € por persona."
+            },
+            {
+              "title": "Limpieza",
+              "text": "La persona de limpieza está disponible para el desayuno y la limpieza de habitaciones de 7:30 a 15:00."
+            },
+            {
+              "title": "Aparcamiento",
+              "text": "Si tiene coche, hay aparcamiento cercano disponible por 4 € cada 24 horas."
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "shortTitle": "Llegada / salida",
+          "type": "times",
+          "eyebrow": "Horarios",
+          "title": "Llegada y salida",
+          "lead": "Envíenos los datos necesarios para organizar su llegada.",
+          "times": [
+            {
+              "label": "Llegada",
+              "value": "13:00",
+              "detail": "La llegada es posible a partir de las 13:00."
+            },
+            {
+              "label": "Salida",
+              "value": "11:00",
+              "detail": "La salida debe realizarse antes de las 11:00."
+            }
+          ],
+          "items": [
+            {
+              "title": "Traslado al aeropuerto",
+              "text": "Para organizar su traslado al Riad Bilkis, envíenos procedencia, compañía, número de vuelo, hora de llegada y número de personas."
+            },
+            {
+              "title": "Antes de salir",
+              "list": [
+                "Apagar la calefacción o el aire acondicionado",
+                "Apagar las luces",
+                "Comprobar la caja fuerte",
+                "Dejar las toallas en el suelo",
+                "Entregar las llaves a Khadija"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wifi",
+          "shortTitle": "Wi‑Fi",
+          "type": "wifi",
+          "eyebrow": "Conexión",
+          "title": "Wi‑Fi",
+          "lead": "Conéctese rápidamente a la red de la casa.",
+          "networkLabel": "Red",
+          "network": "Orange-A96D",
+          "passwordLabel": "Contraseña",
+          "password": "F90N3G0TT21"
+        },
+        {
+          "id": "services",
+          "shortTitle": "Servicios",
+          "eyebrow": "Comodidad",
+          "title": "Servicios del riad",
+          "items": [
+            {
+              "title": "Agua y té de menta",
+              "text": "Ofrecidos a la llegada para darle la bienvenida con hospitalidad marroquí."
+            },
+            {
+              "title": "Zonas de descanso",
+              "text": "El patio interior y la terraza están disponibles para relajarse después de un día de visitas."
+            },
+            {
+              "title": "Aire acondicionado y calefacción",
+              "text": "Su comodidad está asegurada todo el año con sistemas de climatización y calefacción."
+            },
+            {
+              "title": "Tarjeta de emergencia",
+              "text": "Hay una pequeña tarjeta del barrio con puntos de interés e información de emergencia si la necesita."
+            }
+          ]
+        },
+        {
+          "id": "kitchen",
+          "shortTitle": "Cocina",
+          "eyebrow": "Equipamiento",
+          "title": "Cocina y equipos",
+          "lead": "La cocina está equipada para su comodidad.",
+          "items": [
+            {
+              "title": "Equipos disponibles",
+              "list": [
+                "Horno",
+                "Microondas",
+                "Frigorífico",
+                "Cafetera"
+              ]
+            },
+            {
+              "title": "Disponibilidad",
+              "text": "De 8:00 a 16:00, durante el mantenimiento del riad, los equipos pueden utilizarse bajo supervisión. Después de las 16:00, están completamente a su disposición."
+            },
+            {
+              "title": "Buenas prácticas",
+              "list": [
+                "Usar solo recipientes aptos para horno",
+                "No poner objetos metálicos en el microondas",
+                "Evitar sobrecargar el frigorífico",
+                "Limpiar el filtro de la cafetera y dejarla limpia"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "linen",
+          "shortTitle": "Ropa",
+          "eyebrow": "Lavandería",
+          "title": "Ropa de casa y lavandería",
+          "items": [
+            {
+              "title": "Toallas y ropa de cama",
+              "text": "Para estancias de seis noches, cambio cada tres días. Para estancias de cuatro noches, cambio cada dos días."
+            },
+            {
+              "title": "Lavadora",
+              "text": "Hay una lavadora disponible para ropa personal. Cada carga cuesta 5 €. Servicio disponible todos los días de 9:00 a 15:00."
+            },
+            {
+              "title": "Artículos de baño",
+              "list": [
+                "Champú y gel de ducha",
+                "Jabón",
+                "Desmaquillante",
+                "Bastoncillos de algodón"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rules",
+          "shortTitle": "Reglas",
+          "eyebrow": "Casa",
+          "title": "Reglamento interior",
+          "items": [
+            {
+              "title": "Respeto del lugar",
+              "text": "Respete la casa y los espacios exteriores evitando cualquier daño."
+            },
+            {
+              "title": "Animales",
+              "text": "Nos encantan los animales, pero no se aceptan durante la estancia."
+            },
+            {
+              "title": "No fumar",
+              "text": "Gracias por no fumar dentro. Hay una zona cubierta para fumadores en la terraza."
+            },
+            {
+              "title": "Fiestas y recepciones",
+              "text": "Gracias por no organizar grandes fiestas y limitar el ruido después de las 22:00."
+            },
+            {
+              "title": "Persona adicional",
+              "text": "No se puede alojar a ningún viajero adicional imprevisto sin informarnos previamente."
+            },
+            {
+              "title": "Seguridad",
+              "text": "Respete las normas de seguridad y no utilice material eléctrico peligroso."
+            }
+          ]
+        },
+        {
+          "id": "contacts",
+          "shortTitle": "Contactos",
+          "eyebrow": "Ayuda",
+          "title": "Contactos útiles",
+          "items": [
+            {
+              "title": "Riad Bilkis",
+              "text": "Teléfono: +212625675494 · Email: riadbilkis@yahoo.com",
+              "actions": [
+                {
+                  "label": "Llamar",
+                  "href": "tel:+212625675494"
+                },
+                {
+                  "label": "Enviar email",
+                  "href": "mailto:riadbilkis@yahoo.com"
+                }
+              ]
+            },
+            {
+              "title": "Dirección",
+              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech."
+            }
+          ]
+        },
+        {
+          "id": "map",
+          "shortTitle": "Mapa",
+          "type": "map",
+          "eyebrow": "Ubicación",
+          "title": "Mapa del riad",
+          "lead": "Abra la ruta en Google Maps para llegar fácilmente al riad.",
+          "address": "Riad Bilkis, 117 Derb Jdid, Bab Doukkala, Medina, Marrakech",
+          "mapText": "Sección de mapa ligera: la ruta se abre en Google Maps para mantener la guía rápida.",
+          "actions": [
+            {
+              "label": "Abrir en Google Maps",
+              "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+              "external": true
+            }
+          ]
+        },
+        {
+          "id": "reviews",
+          "shortTitle": "Opiniones",
+          "type": "reviews",
+          "eyebrow": "Su opinión",
+          "title": "Opiniones de clientes",
+          "heading": "Su satisfacción es nuestra satisfacción",
+          "text": "¿Disfrutó de su estancia? Su opinión ayuda a futuros viajeros a descubrirnos.",
+          "actions": [
+            {
+              "label": "Dejar una opinión",
+              "href": "https://www.google.com/search?q=Riad+Bilkis+Marrakech+avis",
+              "external": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
