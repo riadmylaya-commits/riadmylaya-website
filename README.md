@@ -11,6 +11,7 @@ Site statique multilingue pour remplacer le livret d'accueil PDF du Riad Bilkis.
 - **Wi-Fi pratique** : bouton pour copier le mot de passe.
 - **QR Code prêt** : déployer le site sur `https://guide.riadbilkis.com/`, puis générer un QR Code vers cette URL.
 - **Confidentialité** : le site contient le mot de passe Wi-Fi, donc `robots.txt` et la balise `noindex` empêchent l'indexation par les moteurs de recherche.
+- **Attention GitHub public** : si ce repo reste public, le mot de passe Wi-Fi sera visible dans l'historique GitHub. Pour garder le mot de passe dans le guide, utiliser un repo privé ou remplacer le mot de passe uniquement au moment du déploiement cPanel.
 
 ## Structure
 
