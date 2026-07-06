@@ -295,8 +295,9 @@
               "text": "Téléphone : +212625675494 · Email : riadbilkis@yahoo.com",
               "actions": [
                 {
-                  "label": "Appeler",
-                  "href": "tel:+212625675494"
+                  "label": "WhatsApp",
+                  "href": "https://wa.me/212625675494",
+                  "external": true
                 },
                 {
                   "label": "Envoyer un email",
@@ -306,7 +307,14 @@
             },
             {
               "title": "Adresse",
-              "text": "117 Derb Jdid, Bab Doukkala, Médina, Marrakech."
+              "text": "117 Derb Jdid, Bab Doukkala, Médina, Marrakech.",
+              "actions": [
+                {
+                  "label": "Ouvrir dans Google Maps",
+                  "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+                  "external": true
+                }
+              ]
             }
           ]
         },
@@ -319,13 +327,7 @@
           "lead": "Ouvrez l'itinéraire dans Google Maps pour rejoindre facilement le riad.",
           "address": "Riad Bilkis, 117 Derb Jdid, Bab Doukkala, Médina, Marrakech",
           "mapText": "Carte légère : l'itinéraire s'ouvre dans Google Maps pour préserver la rapidité du guide.",
-          "actions": [
-            {
-              "label": "Ouvrir dans Google Maps",
-              "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
-              "external": true
-            }
-          ]
+          "actions": []
         },
         {
           "id": "reviews",
@@ -640,8 +642,9 @@
               "text": "Phone: +212625675494 · Email: riadbilkis@yahoo.com",
               "actions": [
                 {
-                  "label": "Call",
-                  "href": "tel:+212625675494"
+                  "label": "WhatsApp",
+                  "href": "https://wa.me/212625675494",
+                  "external": true
                 },
                 {
                   "label": "Send email",
@@ -651,7 +654,14 @@
             },
             {
               "title": "Address",
-              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech."
+              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech.",
+              "actions": [
+                {
+                  "label": "Open in Google Maps",
+                  "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+                  "external": true
+                }
+              ]
             }
           ]
         },
@@ -664,13 +674,7 @@
           "lead": "Open directions in Google Maps to reach the riad easily.",
           "address": "Riad Bilkis, 117 Derb Jdid, Bab Doukkala, Medina, Marrakech",
           "mapText": "Lightweight map section: directions open in Google Maps to keep the guide fast.",
-          "actions": [
-            {
-              "label": "Open in Google Maps",
-              "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
-              "external": true
-            }
-          ]
+          "actions": []
         },
         {
           "id": "reviews",
@@ -985,8 +989,9 @@
               "text": "Teléfono: +212625675494 · Email: riadbilkis@yahoo.com",
               "actions": [
                 {
-                  "label": "Llamar",
-                  "href": "tel:+212625675494"
+                  "label": "WhatsApp",
+                  "href": "https://wa.me/212625675494",
+                  "external": true
                 },
                 {
                   "label": "Enviar email",
@@ -996,7 +1001,14 @@
             },
             {
               "title": "Dirección",
-              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech."
+              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech.",
+              "actions": [
+                {
+                  "label": "Abrir en Google Maps",
+                  "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+                  "external": true
+                }
+              ]
             }
           ]
         },
@@ -1009,13 +1021,7 @@
           "lead": "Abra la ruta en Google Maps para llegar fácilmente al riad.",
           "address": "Riad Bilkis, 117 Derb Jdid, Bab Doukkala, Medina, Marrakech",
           "mapText": "Sección de mapa ligera: la ruta se abre en Google Maps para mantener la guía rápida.",
-          "actions": [
-            {
-              "label": "Abrir en Google Maps",
-              "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
-              "external": true
-            }
-          ]
+          "actions": []
         },
         {
           "id": "reviews",
