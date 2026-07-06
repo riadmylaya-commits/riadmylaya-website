@@ -114,6 +114,8 @@ function createSection(section, ui) {
     }
   } else if (section.type === "dinner") {
     body.append(createDinnerPanel(section));
+  } else if (section.type === "rules") {
+    body.append(createRulesCards(section.items));
   } else if (section.type === "map") {
     body.append(createMapPanel(section));
   } else if (section.type === "reviews") {
@@ -397,21 +399,43 @@ function createDinnerPanel(section) {
   const panel = document.createElement("div");
   panel.className = "dinner-panel";
 
-  const menuGrid = document.createElement("div");
-  menuGrid.className = "dinner-grid";
-  section.menus.forEach((menu) => {
-    const card = document.createElement("div");
-    card.className = "dinner-card";
-    card.innerHTML = `<span class="dinner-icon">${menu.icon}</span><strong>${menu.label}</strong>${menu.detail ? `<span class="dinner-detail">${menu.detail}</span>` : ""}<span class="dinner-price">${menu.price}</span>`;
-    menuGrid.append(card);
-  });
-  panel.append(menuGrid);
+  const card = document.createElement("div");
+  card.className = "dinner-premium-card";
 
-  const bookBtn = document.createElement("button");
-  bookBtn.className = "button primary dinner-book-btn";
-  bookBtn.type = "button";
-  bookBtn.textContent = section.bookButton;
-  panel.append(bookBtn);
+  const header = document.createElement("div");
+  header.className = "dinner-card-header";
+  header.innerHTML = `<span class="dinner-card-header-icon">🍽️</span><div class="dinner-card-header-text"><strong>${section.dinnerHeader.title}</strong><span>${section.dinnerHeader.subtitle}</span></div>`;
+  card.append(header);
+
+  const menuGrid = document.createElement("div");
+  menuGrid.className = "dinner-menu-grid";
+  section.menus.forEach((menu) => {
+    const menuCard = document.createElement("div");
+    menuCard.className = "dinner-menu-card";
+    menuCard.innerHTML = `<span class="dinner-menu-icon">${menu.icon}</span><strong>${menu.label}</strong><span class="dinner-menu-detail">${menu.detail || ""}</span><span class="dinner-menu-price">${menu.price}</span>`;
+    menuGrid.append(menuCard);
+  });
+  card.append(menuGrid);
+
+  const ctaBtn = document.createElement("button");
+  ctaBtn.className = "dinner-cta";
+  ctaBtn.type = "button";
+  ctaBtn.innerHTML = `🍽️ ${section.bookButton}`;
+  card.append(ctaBtn);
+
+  if (section.badges) {
+    const badgeRow = document.createElement("div");
+    badgeRow.className = "dinner-badges";
+    section.badges.forEach((b) => {
+      const badge = document.createElement("div");
+      badge.className = "dinner-badge-item";
+      badge.innerHTML = `<span>${b.icon}</span><span>${b.text}</span>`;
+      badgeRow.append(badge);
+    });
+    card.append(badgeRow);
+  }
+
+  panel.append(card);
 
   const modal = document.createElement("div");
   modal.className = "dinner-modal";
@@ -513,7 +537,7 @@ function createDinnerPanel(section) {
   modal.append(overlay, dialog);
   document.body.append(modal);
 
-  bookBtn.addEventListener("click", () => {
+  ctaBtn.addEventListener("click", () => {
     modal.classList.add("active");
     modal.setAttribute("aria-hidden", "false");
   });
@@ -525,6 +549,18 @@ function createDinnerPanel(section) {
   overlay.addEventListener("click", closeModal);
 
   return panel;
+}
+
+function createRulesCards(items) {
+  const grid = document.createElement("div");
+  grid.className = "rules-grid";
+  items.forEach((item) => {
+    const card = document.createElement("section");
+    card.className = "rules-card rules-" + (item.color || "gray");
+    card.innerHTML = `<div class="rules-icon-circle">${item.icon || ""}</div><h3>${item.title}</h3><p>${item.text}</p>`;
+    grid.append(card);
+  });
+  return grid;
 }
 
 function createReviewPanel(section) {

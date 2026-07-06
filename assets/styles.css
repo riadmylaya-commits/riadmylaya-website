@@ -632,45 +632,167 @@ h1 {
   color: var(--terracotta);
 }
 
-/* Dinner panel */
+/* Dinner panel — premium card */
 .dinner-panel { text-align: center; }
 
-.dinner-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+.dinner-premium-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  background: var(--white);
 }
 
-.dinner-card {
+.dinner-card-header {
+  background: linear-gradient(135deg, #3e2723 0%, #5d4037 100%);
+  color: #fff;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dinner-card-header-icon {
+  font-size: 2rem;
+  background: rgba(255,255,255,0.15);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.dinner-card-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.dinner-card-header-text strong { font-size: 1.2rem; }
+.dinner-card-header-text span { font-size: 0.85rem; opacity: 0.85; }
+
+.dinner-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
+}
+.dinner-menu-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  padding: 1.4rem 1rem;
-  border-radius: 16px;
-  background: var(--white);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  gap: 0.3rem;
+  padding: 1.2rem 0.8rem;
+  border-radius: 14px;
+  background: #faf6f2;
+  text-align: center;
+  transition: transform 0.15s;
 }
-.dinner-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+.dinner-menu-card:hover { transform: translateY(-2px); }
+.dinner-menu-icon {
+  font-size: 2rem;
+  background: rgba(184,115,51,0.12);
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.dinner-icon { font-size: 2rem; }
-.dinner-card strong { font-size: 1.05rem; }
-.dinner-detail { font-size: 0.82rem; color: var(--text-muted); }
-.dinner-price {
+.dinner-menu-card strong { font-size: 0.95rem; }
+.dinner-menu-detail { font-size: 0.78rem; color: var(--text-muted); min-height: 1rem; }
+.dinner-menu-price {
   font-size: 1.3rem;
   font-weight: 800;
   color: var(--terracotta);
-  margin-top: 0.3rem;
 }
 
-.dinner-book-btn {
-  font-size: 1.1rem;
-  padding: 1rem 2.5rem;
+.dinner-cta {
+  display: block;
+  width: calc(100% - 2.4rem);
+  margin: 0.4rem 1.2rem 0.6rem;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #b87333, #d4a05a);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.15s;
 }
+.dinner-cta:hover { opacity: 0.9; }
+
+.dinner-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.8rem 1.2rem 1.2rem;
+  flex-wrap: wrap;
+}
+.dinner-badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 7rem;
+}
+.dinner-badge-item span:first-child { font-size: 1.2rem; }
+
+/* Rules — colored cards */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.rules-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.4rem 1rem;
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.15s;
+}
+.rules-card:hover { transform: translateY(-2px); }
+
+.rules-icon-circle {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+.rules-card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+.rules-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.rules-red .rules-icon-circle { background: #fde8e8; }
+.rules-red h3 { color: #c62828; }
+.rules-orange .rules-icon-circle { background: #fff3e0; }
+.rules-orange h3 { color: #e65100; }
+.rules-yellow .rules-icon-circle { background: #fff8e1; }
+.rules-yellow h3 { color: #f9a825; }
+.rules-green .rules-icon-circle { background: #e8f5e9; }
+.rules-green h3 { color: #2e7d32; }
+.rules-blue .rules-icon-circle { background: #e3f2fd; }
+.rules-blue h3 { color: #1565c0; }
+.rules-purple .rules-icon-circle { background: #f3e5f5; }
+.rules-purple h3 { color: #7b1fa2; }
 
 /* Dinner modal */
 .dinner-modal {
