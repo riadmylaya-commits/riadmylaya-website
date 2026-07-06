@@ -319,17 +319,6 @@
           ]
         },
         {
-          "id": "map",
-          "shortTitle": "Carte",
-          "type": "map",
-          "eyebrow": "Localisation",
-          "title": "Carte du riad",
-          "lead": "Ouvrez l'itinéraire dans Google Maps pour rejoindre facilement le riad.",
-          "address": "Riad Bilkis, 117 Derb Jdid, Bab Doukkala, Médina, Marrakech",
-          "mapText": "Carte légère : l'itinéraire s'ouvre dans Google Maps pour préserver la rapidité du guide.",
-          "actions": []
-        },
-        {
           "id": "reviews",
           "shortTitle": "Avis",
           "type": "reviews",
@@ -666,17 +655,6 @@
           ]
         },
         {
-          "id": "map",
-          "shortTitle": "Map",
-          "type": "map",
-          "eyebrow": "Location",
-          "title": "Riad map",
-          "lead": "Open directions in Google Maps to reach the riad easily.",
-          "address": "Riad Bilkis, 117 Derb Jdid, Bab Doukkala, Medina, Marrakech",
-          "mapText": "Lightweight map section: directions open in Google Maps to keep the guide fast.",
-          "actions": []
-        },
-        {
           "id": "reviews",
           "shortTitle": "Reviews",
           "type": "reviews",
@@ -1011,17 +989,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "map",
-          "shortTitle": "Mapa",
-          "type": "map",
-          "eyebrow": "Ubicación",
-          "title": "Mapa del riad",
-          "lead": "Abra la ruta en Google Maps para llegar fácilmente al riad.",
-          "address": "Riad Bilkis, 117 Derb Jdid, Bab Doukkala, Medina, Marrakech",
-          "mapText": "Sección de mapa ligera: la ruta se abre en Google Maps para mantener la guía rápida.",
-          "actions": []
         },
         {
           "id": "reviews",
