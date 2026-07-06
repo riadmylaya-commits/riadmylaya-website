@@ -213,12 +213,21 @@
           "title": "Expérience Dîner Marocain",
           "lead": "Offrez-vous une véritable immersion dans la gastronomie marocaine. Khadija, notre excellente cuisinière, prépare chaque jour de délicieux plats faits maison avec des produits frais et des recettes traditionnelles.",
           "menus": [
-            { "icon": "🍽️", "label": "Menu complet", "detail": "Entrée + plat + dessert", "price": "25 €" },
-            { "icon": "🍽️", "label": "Entrée + plat", "detail": "", "price": "20 €" },
-            { "icon": "🍽️", "label": "Plat + dessert", "detail": "", "price": "20 €" },
-            { "icon": "🍽️", "label": "Plat principal", "detail": "", "price": "15 €" }
+            { "icon": "🍲", "label": "Menu complet", "detail": "Entrée + plat + dessert", "price": "25 €" },
+            { "icon": "🍴", "label": "Entrée + plat", "detail": "Entrée et plat au choix", "price": "20 €" },
+            { "icon": "🍽️", "label": "Plat + dessert", "detail": "Plat principal et dessert", "price": "20 €" },
+            { "icon": "☕", "label": "Plat principal", "detail": "Un plat savoureux au choix", "price": "15 €" }
           ],
-          "bookButton": "Réserver le dîner",
+          "dinnerHeader": {
+            "title": "Réserver le dîner",
+            "subtitle": "Savourez un repas authentique sans quitter le riad"
+          },
+          "bookButton": "Réserver maintenant",
+          "badges": [
+            { "icon": "🍳", "text": "Réservation facile en quelques clics" },
+            { "icon": "🌿", "text": "Produits frais et locaux" },
+            { "icon": "❤️", "text": "Préparé avec passion" }
+          ],
           "form": {
             "title": "Réservation dîner",
             "fields": {
@@ -264,32 +273,46 @@
         {
           "id": "rules",
           "shortTitle": "Règles",
+          "type": "rules",
           "eyebrow": "Maison",
           "title": "Règlement intérieur",
+          "lead": "Merci de respecter ces règles pour le confort de tous et la préservation de notre riad.",
           "items": [
             {
+              "icon": "🏠",
               "title": "Respect des lieux",
-              "text": "Respecter la maison et les extérieurs en évitant toute dégradation."
+              "text": "Respecter la maison et les extérieurs en évitant toute dégradation.",
+              "color": "yellow"
             },
             {
+              "icon": "🐾",
               "title": "Animaux",
-              "text": "Nous adorons les animaux, mais ils ne sont pas acceptés pendant votre séjour."
+              "text": "Nous adorons les animaux, mais ils ne sont pas acceptés pendant votre séjour.",
+              "color": "green"
             },
             {
+              "icon": "🚭",
               "title": "Ne pas fumer",
-              "text": "Merci de ne pas fumer à l'intérieur. Un fumoir abrité est disponible sur la terrasse."
+              "text": "Merci de ne pas fumer à l'intérieur. Un fumoir abrité est disponible sur la terrasse.",
+              "color": "orange"
             },
             {
+              "icon": "🎉",
               "title": "Fêtes et réceptions",
-              "text": "Merci de ne pas organiser de fêtes de grande ampleur et de limiter le bruit après 22h."
+              "text": "Merci de ne pas organiser de fêtes de grande ampleur et de limiter le bruit après 22h.",
+              "color": "purple"
             },
             {
+              "icon": "🚪",
               "title": "Personne supplémentaire",
-              "text": "Aucun voyageur supplémentaire imprévu ne peut être accueilli sans nous en informer."
+              "text": "Aucun voyageur supplémentaire imprévu ne peut être accueilli sans nous en informer.",
+              "color": "blue"
             },
             {
+              "icon": "⚠️",
               "title": "Sécurité",
-              "text": "Merci de respecter les règles de sécurité et de ne pas utiliser de matériel électrique dangereux."
+              "text": "Merci de respecter les règles de sécurité et de ne pas utiliser de matériel électrique dangereux.",
+              "color": "red"
             }
           ]
         },
@@ -558,12 +581,21 @@
           "title": "Moroccan Dinner Experience",
           "lead": "Treat yourself to a true immersion in Moroccan cuisine. Khadija, our excellent cook, prepares delicious homemade dishes every day with fresh ingredients and traditional recipes.",
           "menus": [
-            { "icon": "🍽️", "label": "Full menu", "detail": "Starter + main + dessert", "price": "€25" },
-            { "icon": "🍽️", "label": "Starter + main", "detail": "", "price": "€20" },
-            { "icon": "🍽️", "label": "Main + dessert", "detail": "", "price": "€20" },
-            { "icon": "🍽️", "label": "Main course", "detail": "", "price": "€15" }
+            { "icon": "🍲", "label": "Full menu", "detail": "Starter + main + dessert", "price": "€25" },
+            { "icon": "🍴", "label": "Starter + main", "detail": "Starter and main of your choice", "price": "€20" },
+            { "icon": "🍽️", "label": "Main + dessert", "detail": "Main course and dessert", "price": "€20" },
+            { "icon": "☕", "label": "Main course", "detail": "A delicious dish of your choice", "price": "€15" }
           ],
-          "bookButton": "Book dinner",
+          "dinnerHeader": {
+            "title": "Book dinner",
+            "subtitle": "Enjoy an authentic meal without leaving the riad"
+          },
+          "bookButton": "Book now",
+          "badges": [
+            { "icon": "🍳", "text": "Easy booking in a few clicks" },
+            { "icon": "🌿", "text": "Fresh local produce" },
+            { "icon": "❤️", "text": "Made with passion" }
+          ],
           "form": {
             "title": "Dinner reservation",
             "fields": {
@@ -609,32 +641,46 @@
         {
           "id": "rules",
           "shortTitle": "Rules",
+          "type": "rules",
           "eyebrow": "House",
           "title": "House rules",
+          "lead": "Please follow these rules for everyone's comfort and to preserve our riad.",
           "items": [
             {
+              "icon": "🏠",
               "title": "Respect the property",
-              "text": "Please respect the house and outdoor areas and avoid any damage."
+              "text": "Please respect the house and outdoor areas and avoid any damage.",
+              "color": "yellow"
             },
             {
+              "icon": "🐾",
               "title": "Pets",
-              "text": "We love animals, but pets are not accepted during your stay."
+              "text": "We love animals, but pets are not accepted during your stay.",
+              "color": "green"
             },
             {
+              "icon": "🚭",
               "title": "No smoking",
-              "text": "Please do not smoke inside. A sheltered smoking area is available on the terrace."
+              "text": "Please do not smoke inside. A sheltered smoking area is available on the terrace.",
+              "color": "orange"
             },
             {
+              "icon": "🎉",
               "title": "Parties and receptions",
-              "text": "Please do not organize large parties and keep noise down after 10 pm."
+              "text": "Please do not organize large parties and keep noise down after 10 pm.",
+              "color": "purple"
             },
             {
+              "icon": "🚪",
               "title": "Extra guests",
-              "text": "No unexpected extra guest can be hosted without informing us first."
+              "text": "No unexpected extra guest can be hosted without informing us first.",
+              "color": "blue"
             },
             {
+              "icon": "⚠️",
               "title": "Safety",
-              "text": "Please follow safety rules and do not use dangerous electrical equipment."
+              "text": "Please follow safety rules and do not use dangerous electrical equipment.",
+              "color": "red"
             }
           ]
         },
@@ -903,12 +949,21 @@
           "title": "Experiencia Cena Marroquí",
           "lead": "Regálese una verdadera inmersión en la gastronomía marroquí. Khadija, nuestra excelente cocinera, prepara cada día deliciosos platos caseros con productos frescos y recetas tradicionales.",
           "menus": [
-            { "icon": "🍽️", "label": "Menú completo", "detail": "Entrada + plato + postre", "price": "25 €" },
-            { "icon": "🍽️", "label": "Entrada + plato", "detail": "", "price": "20 €" },
-            { "icon": "🍽️", "label": "Plato + postre", "detail": "", "price": "20 €" },
-            { "icon": "🍽️", "label": "Plato principal", "detail": "", "price": "15 €" }
+            { "icon": "🍲", "label": "Menú completo", "detail": "Entrada + plato + postre", "price": "25 €" },
+            { "icon": "🍴", "label": "Entrada + plato", "detail": "Entrada y plato a elegir", "price": "20 €" },
+            { "icon": "🍽️", "label": "Plato + postre", "detail": "Plato principal y postre", "price": "20 €" },
+            { "icon": "☕", "label": "Plato principal", "detail": "Un plato delicioso a elegir", "price": "15 €" }
           ],
-          "bookButton": "Reservar la cena",
+          "dinnerHeader": {
+            "title": "Reservar la cena",
+            "subtitle": "Disfrute de una comida auténtica sin salir del riad"
+          },
+          "bookButton": "Reservar ahora",
+          "badges": [
+            { "icon": "🍳", "text": "Reserva fácil en unos clics" },
+            { "icon": "🌿", "text": "Productos frescos y locales" },
+            { "icon": "❤️", "text": "Preparado con pasión" }
+          ],
           "form": {
             "title": "Reserva de cena",
             "fields": {
@@ -954,32 +1009,46 @@
         {
           "id": "rules",
           "shortTitle": "Reglas",
+          "type": "rules",
           "eyebrow": "Casa",
           "title": "Reglamento interior",
+          "lead": "Gracias por respetar estas normas para el confort de todos y la preservación de nuestro riad.",
           "items": [
             {
+              "icon": "🏠",
               "title": "Respeto del lugar",
-              "text": "Respete la casa y los espacios exteriores evitando cualquier daño."
+              "text": "Respete la casa y los espacios exteriores evitando cualquier daño.",
+              "color": "yellow"
             },
             {
+              "icon": "🐾",
               "title": "Animales",
-              "text": "Nos encantan los animales, pero no se aceptan durante la estancia."
+              "text": "Nos encantan los animales, pero no se aceptan durante la estancia.",
+              "color": "green"
             },
             {
+              "icon": "🚭",
               "title": "No fumar",
-              "text": "Gracias por no fumar dentro. Hay una zona cubierta para fumadores en la terraza."
+              "text": "Gracias por no fumar dentro. Hay una zona cubierta para fumadores en la terraza.",
+              "color": "orange"
             },
             {
+              "icon": "🎉",
               "title": "Fiestas y recepciones",
-              "text": "Gracias por no organizar grandes fiestas y limitar el ruido después de las 22:00."
+              "text": "Gracias por no organizar grandes fiestas y limitar el ruido después de las 22:00.",
+              "color": "purple"
             },
             {
+              "icon": "🚪",
               "title": "Persona adicional",
-              "text": "No se puede alojar a ningún viajero adicional imprevisto sin informarnos previamente."
+              "text": "No se puede alojar a ningún viajero adicional imprevisto sin informarnos previamente.",
+              "color": "blue"
             },
             {
+              "icon": "⚠️",
               "title": "Seguridad",
-              "text": "Respete las normas de seguridad y no utilice material eléctrico peligroso."
+              "text": "Respete las normas de seguridad y no utilice material eléctrico peligroso.",
+              "color": "red"
             }
           ]
         },
