@@ -520,6 +520,26 @@ h1 {
   }
 }
 
+/* Transfer panel */
+.transfer-panel {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.transfer-book-btn {
+  font-size: 1.1rem;
+  padding: 1rem 2.5rem;
+}
+
+.form-section-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #eee;
+  color: var(--terracotta);
+}
+
 /* Dinner panel */
 .dinner-panel { text-align: center; }
 

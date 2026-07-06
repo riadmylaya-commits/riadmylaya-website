@@ -137,7 +137,28 @@
                 "Remettre les clés à Khadija"
               ]
             }
-          ]
+          ],
+          "transferForm": {
+            "bookButton": "Réserver le transfert",
+            "title": "Réservation transfert aéroport",
+            "arrivalHeading": "Arrivée",
+            "departureHeading": "Départ",
+            "fields": {
+              "name": "Nom et prénom",
+              "email": "E-mail",
+              "phone": "Numéro de téléphone (avec indicatif)",
+              "guests": "Nombre de personnes",
+              "arrivalDate": "Date d'arrivée",
+              "arrivalTime": "Heure d'arrivée à l'aéroport",
+              "arrivalFlight": "Numéro de vol",
+              "departureDate": "Date de départ",
+              "departureTime": "Heure souhaitée pour le départ du riad",
+              "departureFlight": "Numéro de vol de départ (si disponible)"
+            },
+            "submit": "Envoyer la demande",
+            "success": "Merci ! Votre demande de transfert a été envoyée. Nous vous confirmerons par e-mail.",
+            "close": "Fermer"
+          }
         },
         {
           "id": "wifi",
@@ -461,7 +482,28 @@
                 "Return the keys to Khadija"
               ]
             }
-          ]
+          ],
+          "transferForm": {
+            "bookButton": "Book transfer",
+            "title": "Airport transfer reservation",
+            "arrivalHeading": "Arrival",
+            "departureHeading": "Departure",
+            "fields": {
+              "name": "Full name",
+              "email": "Email",
+              "phone": "Phone number (with country code)",
+              "guests": "Number of guests",
+              "arrivalDate": "Arrival date",
+              "arrivalTime": "Arrival time at airport",
+              "arrivalFlight": "Flight number",
+              "departureDate": "Departure date",
+              "departureTime": "Preferred pickup time from riad",
+              "departureFlight": "Departure flight number (if available)"
+            },
+            "submit": "Send request",
+            "success": "Thank you! Your transfer request has been sent. We will confirm by email.",
+            "close": "Close"
+          }
         },
         {
           "id": "wifi",
@@ -785,7 +827,28 @@
                 "Entregar las llaves a Khadija"
               ]
             }
-          ]
+          ],
+          "transferForm": {
+            "bookButton": "Reservar el traslado",
+            "title": "Reserva de traslado al aeropuerto",
+            "arrivalHeading": "Llegada",
+            "departureHeading": "Salida",
+            "fields": {
+              "name": "Nombre y apellido",
+              "email": "Correo electrónico",
+              "phone": "Número de teléfono (con prefijo)",
+              "guests": "Número de personas",
+              "arrivalDate": "Fecha de llegada",
+              "arrivalTime": "Hora de llegada al aeropuerto",
+              "arrivalFlight": "Número de vuelo",
+              "departureDate": "Fecha de salida",
+              "departureTime": "Hora deseada para la salida del riad",
+              "departureFlight": "Número de vuelo de salida (si disponible)"
+            },
+            "submit": "Enviar solicitud",
+            "success": "¡Gracias! Su solicitud de traslado ha sido enviada. Le confirmaremos por correo electrónico.",
+            "close": "Cerrar"
+          }
         },
         {
           "id": "wifi",

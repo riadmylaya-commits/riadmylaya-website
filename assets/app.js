@@ -109,6 +109,9 @@ function createSection(section, ui) {
     body.append(createWifiPanel(section, ui));
   } else if (section.type === "times") {
     body.append(createTimes(section), createCards(section.items));
+    if (section.transferForm) {
+      body.append(createTransferPanel(section.transferForm));
+    }
   } else if (section.type === "dinner") {
     body.append(createDinnerPanel(section));
   } else if (section.type === "map") {
@@ -241,6 +244,121 @@ function createMapPanel(section) {
 
   const actions = createActions(section.actions);
   panel.append(placeholder, actions);
+  return panel;
+}
+
+function createTransferPanel(tf) {
+  const panel = document.createElement("div");
+  panel.className = "transfer-panel";
+
+  const bookBtn = document.createElement("button");
+  bookBtn.className = "button primary transfer-book-btn";
+  bookBtn.type = "button";
+  bookBtn.textContent = tf.bookButton;
+  panel.append(bookBtn);
+
+  const modal = document.createElement("div");
+  modal.className = "dinner-modal";
+  modal.setAttribute("aria-hidden", "true");
+
+  const overlay = document.createElement("div");
+  overlay.className = "dinner-modal-overlay";
+
+  const dialog = document.createElement("div");
+  dialog.className = "dinner-modal-dialog";
+  dialog.setAttribute("role", "dialog");
+
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "dinner-modal-close";
+  closeBtn.type = "button";
+  closeBtn.textContent = "\u00d7";
+  closeBtn.setAttribute("aria-label", tf.close);
+
+  const title = createText("h3", tf.title);
+  const form = document.createElement("form");
+  form.action = "https://formsubmit.co/riadbilkis@yahoo.com";
+  form.method = "POST";
+
+  const hiddenSubject = document.createElement("input");
+  hiddenSubject.type = "hidden";
+  hiddenSubject.name = "_subject";
+  hiddenSubject.value = "Nouvelle demande de transfert - Riad Bilkis";
+  form.append(hiddenSubject);
+
+  const hiddenNext = document.createElement("input");
+  hiddenNext.type = "hidden";
+  hiddenNext.name = "_next";
+  hiddenNext.value = window.location.href;
+  form.append(hiddenNext);
+
+  const hiddenCaptcha = document.createElement("input");
+  hiddenCaptcha.type = "hidden";
+  hiddenCaptcha.name = "_captcha";
+  hiddenCaptcha.value = "false";
+  form.append(hiddenCaptcha);
+
+  const fields = tf.fields;
+
+  function addField(name, label, type, required) {
+    const group = document.createElement("div");
+    group.className = "form-group";
+    const lbl = document.createElement("label");
+    lbl.textContent = label;
+    lbl.setAttribute("for", "transfer-" + name);
+    group.append(lbl);
+    const input = document.createElement("input");
+    input.type = type;
+    input.name = name;
+    input.id = "transfer-" + name;
+    input.required = required;
+    group.append(input);
+    form.append(group);
+  }
+
+  addField("name", fields.name, "text", true);
+  addField("email", fields.email, "email", true);
+  addField("phone", fields.phone, "tel", true);
+  addField("guests", fields.guests, "number", true);
+
+  const arrHeading = document.createElement("h4");
+  arrHeading.className = "form-section-heading";
+  arrHeading.textContent = tf.arrivalHeading;
+  form.append(arrHeading);
+
+  addField("arrivalDate", fields.arrivalDate, "date", true);
+  addField("arrivalTime", fields.arrivalTime, "time", true);
+  addField("arrivalFlight", fields.arrivalFlight, "text", true);
+
+  const depHeading = document.createElement("h4");
+  depHeading.className = "form-section-heading";
+  depHeading.textContent = tf.departureHeading;
+  form.append(depHeading);
+
+  addField("departureDate", fields.departureDate, "date", false);
+  addField("departureTime", fields.departureTime, "time", false);
+  addField("departureFlight", fields.departureFlight, "text", false);
+
+  const submitBtn = document.createElement("button");
+  submitBtn.className = "button primary";
+  submitBtn.type = "submit";
+  submitBtn.textContent = tf.submit;
+  form.append(submitBtn);
+
+  dialog.append(closeBtn, title, form);
+  modal.append(overlay, dialog);
+  document.body.append(modal);
+
+  bookBtn.addEventListener("click", () => {
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+  });
+  function closeModal() {
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+  }
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+
   return panel;
 }
 
