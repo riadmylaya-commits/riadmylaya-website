@@ -154,7 +154,13 @@ function createCards(items = []) {
     }
     card.append(createText("h3", item.title));
     if (item.text) {
-      card.append(createText("p", item.text));
+      const p = document.createElement("p");
+      if (item.text.includes("<")) {
+        p.innerHTML = item.text;
+      } else {
+        p.textContent = item.text;
+      }
+      card.append(p);
     }
     if (item.list?.length) {
       card.append(createList(item.list));
@@ -251,11 +257,36 @@ function createTransferPanel(tf) {
   const panel = document.createElement("div");
   panel.className = "transfer-panel";
 
-  const bookBtn = document.createElement("button");
-  bookBtn.className = "button primary transfer-book-btn";
-  bookBtn.type = "button";
-  bookBtn.textContent = tf.bookButton;
-  panel.append(bookBtn);
+  const card = document.createElement("div");
+  card.className = "transfer-card";
+
+  const header = document.createElement("div");
+  header.className = "transfer-card-header";
+  header.innerHTML = `<div class="transfer-card-header-text"><strong>${tf.bookButton}</strong><span>${tf.subtitle}</span></div><span class="transfer-card-icon">✈</span>`;
+  card.append(header);
+
+  const featureList = document.createElement("div");
+  featureList.className = "transfer-features";
+  tf.features.forEach((f) => {
+    const row = document.createElement("div");
+    row.className = "transfer-feature-row";
+    row.innerHTML = `<span class="transfer-feature-icon">${f.icon}</span><div class="transfer-feature-text"><strong>${f.label}</strong><span>${f.detail}</span></div><span class="transfer-feature-arrow">›</span>`;
+    featureList.append(row);
+  });
+  card.append(featureList);
+
+  const ctaBtn = document.createElement("button");
+  ctaBtn.className = "transfer-cta";
+  ctaBtn.type = "button";
+  ctaBtn.innerHTML = `📅 ${tf.cta}`;
+  card.append(ctaBtn);
+
+  const badge = document.createElement("div");
+  badge.className = "transfer-badge";
+  badge.innerHTML = `✅ ${tf.badge}`;
+  card.append(badge);
+
+  panel.append(card);
 
   const modal = document.createElement("div");
   modal.className = "dinner-modal";
@@ -348,7 +379,7 @@ function createTransferPanel(tf) {
   modal.append(overlay, dialog);
   document.body.append(modal);
 
-  bookBtn.addEventListener("click", () => {
+  ctaBtn.addEventListener("click", () => {
     modal.classList.add("active");
     modal.setAttribute("aria-hidden", "false");
   });

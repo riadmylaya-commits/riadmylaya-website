@@ -87,19 +87,19 @@
           "items": [
             {
               "title": "Accueil",
-              "text": "À votre arrivée, profitez d'un thé à la menthe et d'une bouteille d'eau offerts pour vous rafraîchir."
+              "text": "À votre arrivée, profitez d'un thé à la menthe, de délicieuses pâtisseries marocaines et d'une bouteille d'eau offerts pour vous rafraîchir dans votre chambre. Nous mettons également à votre disposition un plan de la ville avec des explications afin de vous aider à découvrir Marrakech en toute sérénité."
             },
             {
               "title": "Petit-déjeuner",
-              "text": "Servi de 8h00 à 10h30. Avant 7h30, un petit-déjeuner à emporter peut être préparé. Après 10h30, il est proposé au tarif de 6 € par personne."
+              "text": "Servi de <strong>8h00 à 10h30</strong>. Avant 7h30, un petit-déjeuner à emporter peut être préparé. Après 10h30, il est proposé au tarif de <strong>6 € par personne</strong>."
             },
             {
               "title": "Ménage",
-              "text": "La femme de ménage est à votre disposition pour le petit-déjeuner et l'entretien des chambres. Elle travaille de 7h30 à 15h."
+              "text": "Mme Khadija est à votre disposition pour le petit-déjeuner et l'entretien des chambres. Elle travaille de <strong>7h30 à 15h</strong>."
             },
             {
               "title": "Parking",
-              "text": "Si vous avez une voiture, un parking est disponible à proximité pour 4 € par tranche de 24 heures."
+              "text": "Parking pour les personnes venant chez nous en voiture. Si vous avez une voiture, un parking est disponible à proximité pour <strong>4 € par tranche de 24 heures</strong>."
             }
           ]
         },
@@ -140,6 +140,15 @@
           ],
           "transferForm": {
             "bookButton": "Réserver le transfert",
+            "subtitle": "Organisez votre transfert en quelques clics",
+            "features": [
+              { "icon": "✈️", "label": "Arrivée à l'aéroport", "detail": "Nous vous accueillons à votre arrivée" },
+              { "icon": "🛫", "label": "Départ de l'aéroport", "detail": "Nous vous raccompagnons lors de votre départ" },
+              { "icon": "⏱️", "label": "Simple et rapide", "detail": "Réservez en moins de 2 minutes" },
+              { "icon": "👤", "label": "Chauffeur professionnel", "detail": "Service fiable et confortable" }
+            ],
+            "cta": "Réserver maintenant",
+            "badge": "Confirmation immédiate",
             "title": "Réservation transfert aéroport",
             "arrivalHeading": "Arrivée",
             "departureHeading": "Départ",
@@ -423,19 +432,19 @@
           "items": [
             {
               "title": "Arrival welcome",
-              "text": "On arrival, enjoy complimentary mint tea and a bottle of water."
+              "text": "On arrival, enjoy complimentary mint tea, delicious Moroccan pastries and a bottle of water in your room. We also provide a city map with explanations to help you discover Marrakech with peace of mind."
             },
             {
               "title": "Breakfast",
-              "text": "Served from 8:00 am to 10:30 am. Before 7:30 am, a takeaway breakfast can be prepared. After 10:30 am, breakfast is available for 6 € per person."
+              "text": "Served from <strong>8:00 am to 10:30 am</strong>. Before 7:30 am, a takeaway breakfast can be prepared. After 10:30 am, breakfast is available for <strong>6 € per person</strong>."
             },
             {
               "title": "Housekeeping",
-              "text": "The housekeeper is available for breakfast and room cleaning from 7:30 am to 3:00 pm."
+              "text": "Mrs. Khadija is available for breakfast and room cleaning. She works from <strong>7:30 am to 3:00 pm</strong>."
             },
             {
               "title": "Parking",
-              "text": "If you have a car, nearby parking is available for 4 € per 24-hour period."
+              "text": "Parking for guests arriving by car. If you have a car, nearby parking is available for <strong>4 € per 24-hour period</strong>."
             }
           ]
         },
@@ -476,6 +485,15 @@
           ],
           "transferForm": {
             "bookButton": "Book transfer",
+            "subtitle": "Arrange your transfer in a few clicks",
+            "features": [
+              { "icon": "✈️", "label": "Airport arrival", "detail": "We welcome you on arrival" },
+              { "icon": "🛫", "label": "Airport departure", "detail": "We take you back for your departure" },
+              { "icon": "⏱️", "label": "Quick and easy", "detail": "Book in less than 2 minutes" },
+              { "icon": "👤", "label": "Professional driver", "detail": "Reliable and comfortable service" }
+            ],
+            "cta": "Book now",
+            "badge": "Instant confirmation",
             "title": "Airport transfer reservation",
             "arrivalHeading": "Arrival",
             "departureHeading": "Departure",
@@ -759,19 +777,19 @@
           "items": [
             {
               "title": "Bienvenida",
-              "text": "A su llegada, disfrute de té de menta y una botella de agua de cortesía."
+              "text": "A su llegada, disfrute de té de menta, deliciosos pasteles marroquíes y una botella de agua de cortesía en su habitación. También ponemos a su disposición un plano de la ciudad con explicaciones para ayudarle a descubrir Marrakech con tranquilidad."
             },
             {
               "title": "Desayuno",
-              "text": "Se sirve de 8:00 a 10:30. Antes de las 7:30, puede prepararse un desayuno para llevar. Después de las 10:30, se ofrece por 6 € por persona."
+              "text": "Se sirve de <strong>8:00 a 10:30</strong>. Antes de las 7:30, puede prepararse un desayuno para llevar. Después de las 10:30, se ofrece por <strong>6 € por persona</strong>."
             },
             {
               "title": "Limpieza",
-              "text": "La persona de limpieza está disponible para el desayuno y la limpieza de habitaciones de 7:30 a 15:00."
+              "text": "Sra. Khadija está a su disposición para el desayuno y la limpieza de habitaciones. Trabaja de <strong>7:30 a 15:00</strong>."
             },
             {
               "title": "Aparcamiento",
-              "text": "Si tiene coche, hay aparcamiento cercano disponible por 4 € cada 24 horas."
+              "text": "Aparcamiento para personas que vienen en coche. Si tiene coche, hay aparcamiento cercano disponible por <strong>4 € cada 24 horas</strong>."
             }
           ]
         },
@@ -812,6 +830,15 @@
           ],
           "transferForm": {
             "bookButton": "Reservar el traslado",
+            "subtitle": "Organice su traslado en unos clics",
+            "features": [
+              { "icon": "✈️", "label": "Llegada al aeropuerto", "detail": "Le recibimos a su llegada" },
+              { "icon": "🛫", "label": "Salida del aeropuerto", "detail": "Le acompañamos en su partida" },
+              { "icon": "⏱️", "label": "Sencillo y rápido", "detail": "Reserve en menos de 2 minutos" },
+              { "icon": "👤", "label": "Chófer profesional", "detail": "Servicio fiable y cómodo" }
+            ],
+            "cta": "Reservar ahora",
+            "badge": "Confirmación inmediata",
             "title": "Reserva de traslado al aeropuerto",
             "arrivalHeading": "Llegada",
             "departureHeading": "Salida",
