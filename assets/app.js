@@ -109,6 +109,8 @@ function createSection(section, ui) {
     body.append(createWifiPanel(section, ui));
   } else if (section.type === "times") {
     body.append(createTimes(section), createCards(section.items));
+  } else if (section.type === "dinner") {
+    body.append(createDinnerPanel(section));
   } else if (section.type === "map") {
     body.append(createMapPanel(section));
   } else if (section.type === "reviews") {
@@ -239,6 +241,140 @@ function createMapPanel(section) {
 
   const actions = createActions(section.actions);
   panel.append(placeholder, actions);
+  return panel;
+}
+
+function createDinnerPanel(section) {
+  const panel = document.createElement("div");
+  panel.className = "dinner-panel";
+
+  const menuGrid = document.createElement("div");
+  menuGrid.className = "dinner-grid";
+  section.menus.forEach((menu) => {
+    const card = document.createElement("div");
+    card.className = "dinner-card";
+    card.innerHTML = `<span class="dinner-icon">${menu.icon}</span><strong>${menu.label}</strong>${menu.detail ? `<span class="dinner-detail">${menu.detail}</span>` : ""}<span class="dinner-price">${menu.price}</span>`;
+    menuGrid.append(card);
+  });
+  panel.append(menuGrid);
+
+  const bookBtn = document.createElement("button");
+  bookBtn.className = "button primary dinner-book-btn";
+  bookBtn.type = "button";
+  bookBtn.textContent = section.bookButton;
+  panel.append(bookBtn);
+
+  const modal = document.createElement("div");
+  modal.className = "dinner-modal";
+  modal.setAttribute("aria-hidden", "true");
+
+  const overlay = document.createElement("div");
+  overlay.className = "dinner-modal-overlay";
+
+  const dialog = document.createElement("div");
+  dialog.className = "dinner-modal-dialog";
+  dialog.setAttribute("role", "dialog");
+
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "dinner-modal-close";
+  closeBtn.type = "button";
+  closeBtn.textContent = "\u00d7";
+  closeBtn.setAttribute("aria-label", section.form.close);
+
+  const title = createText("h3", section.form.title);
+  const form = document.createElement("form");
+  form.action = "https://formsubmit.co/riadbilkis@yahoo.com";
+  form.method = "POST";
+
+  const hiddenSubject = document.createElement("input");
+  hiddenSubject.type = "hidden";
+  hiddenSubject.name = "_subject";
+  hiddenSubject.value = "Nouvelle réservation dîner - Riad Bilkis";
+  form.append(hiddenSubject);
+
+  const hiddenNext = document.createElement("input");
+  hiddenNext.type = "hidden";
+  hiddenNext.name = "_next";
+  hiddenNext.value = window.location.href;
+  form.append(hiddenNext);
+
+  const hiddenCaptcha = document.createElement("input");
+  hiddenCaptcha.type = "hidden";
+  hiddenCaptcha.name = "_captcha";
+  hiddenCaptcha.value = "false";
+  form.append(hiddenCaptcha);
+
+  const fields = section.form.fields;
+
+  function addField(name, label, type, required) {
+    const group = document.createElement("div");
+    group.className = "form-group";
+    const lbl = document.createElement("label");
+    lbl.textContent = label;
+    lbl.setAttribute("for", "dinner-" + name);
+    group.append(lbl);
+    if (name === "menu") {
+      const select = document.createElement("select");
+      select.name = name;
+      select.id = "dinner-" + name;
+      select.required = true;
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = "—";
+      select.append(placeholder);
+      section.form.menuOptions.forEach((opt) => {
+        const option = document.createElement("option");
+        option.value = opt;
+        option.textContent = opt;
+        select.append(option);
+      });
+      group.append(select);
+    } else if (name === "message") {
+      const textarea = document.createElement("textarea");
+      textarea.name = name;
+      textarea.id = "dinner-" + name;
+      textarea.rows = 3;
+      group.append(textarea);
+    } else {
+      const input = document.createElement("input");
+      input.type = type;
+      input.name = name;
+      input.id = "dinner-" + name;
+      input.required = required;
+      group.append(input);
+    }
+    form.append(group);
+  }
+
+  addField("name", fields.name, "text", true);
+  addField("email", fields.email, "email", true);
+  addField("date", fields.date, "date", true);
+  addField("time", fields.time, "time", true);
+  addField("guests", fields.guests, "number", true);
+  addField("menu", fields.menu, "select", true);
+  addField("message", fields.message, "textarea", false);
+
+  const submitBtn = document.createElement("button");
+  submitBtn.className = "button primary";
+  submitBtn.type = "submit";
+  submitBtn.textContent = section.form.submit;
+  form.append(submitBtn);
+
+  dialog.append(closeBtn, title, form);
+  modal.append(overlay, dialog);
+  document.body.append(modal);
+
+  bookBtn.addEventListener("click", () => {
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+  });
+  function closeModal() {
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+  }
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+
   return panel;
 }
 
