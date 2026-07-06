@@ -177,34 +177,34 @@
         },
         {
           "id": "kitchen",
-          "shortTitle": "Cuisine",
-          "eyebrow": "Équipements",
-          "title": "Cuisine et équipements",
-          "lead": "La cuisine est équipée pour votre confort.",
-          "items": [
-            {
-              "title": "Équipements disponibles",
-              "list": [
-                "Four",
-                "Micro-ondes",
-                "Réfrigérateur",
-                "Cafetière"
-              ]
+          "shortTitle": "Dîner",
+          "type": "dinner",
+          "eyebrow": "Gastronomie",
+          "title": "Expérience Dîner Marocain",
+          "lead": "Offrez-vous une véritable immersion dans la gastronomie marocaine. Khadija, notre excellente cuisinière, prépare chaque jour de délicieux plats faits maison avec des produits frais et des recettes traditionnelles.",
+          "menus": [
+            { "icon": "🍽️", "label": "Menu complet", "detail": "Entrée + plat + dessert", "price": "25 €" },
+            { "icon": "🍽️", "label": "Entrée + plat", "detail": "", "price": "20 €" },
+            { "icon": "🍽️", "label": "Plat + dessert", "detail": "", "price": "20 €" },
+            { "icon": "🍽️", "label": "Plat principal", "detail": "", "price": "15 €" }
+          ],
+          "bookButton": "Réserver le dîner",
+          "form": {
+            "title": "Réservation dîner",
+            "fields": {
+              "name": "Nom",
+              "email": "E-mail",
+              "date": "Date souhaitée",
+              "time": "Heure du dîner",
+              "guests": "Nombre de personnes",
+              "menu": "Choix de la formule",
+              "message": "Message / allergies / préférences alimentaires"
             },
-            {
-              "title": "Disponibilité",
-              "text": "De 8h à 16h, pendant l'entretien du riad, les équipements peuvent être utilisés sous supervision. Après 16h, ils sont entièrement à votre disposition."
-            },
-            {
-              "title": "Bonnes pratiques",
-              "list": [
-                "Utiliser uniquement des plats adaptés au four",
-                "Ne pas mettre d'objets métalliques dans le micro-ondes",
-                "Éviter de surcharger le réfrigérateur",
-                "Nettoyer le filtre de la cafetière et la laisser propre"
-              ]
-            }
-          ]
+            "menuOptions": ["Menu complet (25 €)", "Entrée + plat (20 €)", "Plat + dessert (20 €)", "Plat principal (15 €)"],
+            "submit": "Envoyer la réservation",
+            "success": "Merci ! Votre demande de réservation a été envoyée. Nous vous confirmerons par e-mail.",
+            "close": "Fermer"
+          }
         },
         {
           "id": "linen",
@@ -501,34 +501,34 @@
         },
         {
           "id": "kitchen",
-          "shortTitle": "Kitchen",
-          "eyebrow": "Equipment",
-          "title": "Kitchen and equipment",
-          "lead": "The kitchen is equipped for your comfort.",
-          "items": [
-            {
-              "title": "Available equipment",
-              "list": [
-                "Oven",
-                "Microwave",
-                "Refrigerator",
-                "Coffee maker"
-              ]
+          "shortTitle": "Dinner",
+          "type": "dinner",
+          "eyebrow": "Gastronomy",
+          "title": "Moroccan Dinner Experience",
+          "lead": "Treat yourself to a true immersion in Moroccan cuisine. Khadija, our excellent cook, prepares delicious homemade dishes every day with fresh ingredients and traditional recipes.",
+          "menus": [
+            { "icon": "🍽️", "label": "Full menu", "detail": "Starter + main + dessert", "price": "€25" },
+            { "icon": "🍽️", "label": "Starter + main", "detail": "", "price": "€20" },
+            { "icon": "🍽️", "label": "Main + dessert", "detail": "", "price": "€20" },
+            { "icon": "🍽️", "label": "Main course", "detail": "", "price": "€15" }
+          ],
+          "bookButton": "Book dinner",
+          "form": {
+            "title": "Dinner reservation",
+            "fields": {
+              "name": "Name",
+              "email": "Email",
+              "date": "Preferred date",
+              "time": "Dinner time",
+              "guests": "Number of guests",
+              "menu": "Menu choice",
+              "message": "Message / allergies / dietary preferences"
             },
-            {
-              "title": "Availability",
-              "text": "From 8 am to 4 pm, while the riad is being maintained, equipment can be used under supervision. After 4 pm, it is fully available to you."
-            },
-            {
-              "title": "Good practices",
-              "list": [
-                "Use only oven-safe dishes",
-                "Do not put metal objects in the microwave",
-                "Avoid overloading the refrigerator",
-                "Clean the coffee maker filter and leave it clean"
-              ]
-            }
-          ]
+            "menuOptions": ["Full menu (€25)", "Starter + main (€20)", "Main + dessert (€20)", "Main course (€15)"],
+            "submit": "Send reservation",
+            "success": "Thank you! Your reservation request has been sent. We will confirm by email.",
+            "close": "Close"
+          }
         },
         {
           "id": "linen",
@@ -825,34 +825,34 @@
         },
         {
           "id": "kitchen",
-          "shortTitle": "Cocina",
-          "eyebrow": "Equipamiento",
-          "title": "Cocina y equipos",
-          "lead": "La cocina está equipada para su comodidad.",
-          "items": [
-            {
-              "title": "Equipos disponibles",
-              "list": [
-                "Horno",
-                "Microondas",
-                "Frigorífico",
-                "Cafetera"
-              ]
+          "shortTitle": "Cena",
+          "type": "dinner",
+          "eyebrow": "Gastronomía",
+          "title": "Experiencia Cena Marroquí",
+          "lead": "Regálese una verdadera inmersión en la gastronomía marroquí. Khadija, nuestra excelente cocinera, prepara cada día deliciosos platos caseros con productos frescos y recetas tradicionales.",
+          "menus": [
+            { "icon": "🍽️", "label": "Menú completo", "detail": "Entrada + plato + postre", "price": "25 €" },
+            { "icon": "🍽️", "label": "Entrada + plato", "detail": "", "price": "20 €" },
+            { "icon": "🍽️", "label": "Plato + postre", "detail": "", "price": "20 €" },
+            { "icon": "🍽️", "label": "Plato principal", "detail": "", "price": "15 €" }
+          ],
+          "bookButton": "Reservar la cena",
+          "form": {
+            "title": "Reserva de cena",
+            "fields": {
+              "name": "Nombre",
+              "email": "Correo electrónico",
+              "date": "Fecha deseada",
+              "time": "Hora de la cena",
+              "guests": "Número de personas",
+              "menu": "Elección del menú",
+              "message": "Mensaje / alergias / preferencias alimentarias"
             },
-            {
-              "title": "Disponibilidad",
-              "text": "De 8:00 a 16:00, durante el mantenimiento del riad, los equipos pueden utilizarse bajo supervisión. Después de las 16:00, están completamente a su disposición."
-            },
-            {
-              "title": "Buenas prácticas",
-              "list": [
-                "Usar solo recipientes aptos para horno",
-                "No poner objetos metálicos en el microondas",
-                "Evitar sobrecargar el frigorífico",
-                "Limpiar el filtro de la cafetera y dejarla limpia"
-              ]
-            }
-          ]
+            "menuOptions": ["Menú completo (25 €)", "Entrada + plato (20 €)", "Plato + postre (20 €)", "Plato principal (15 €)"],
+            "submit": "Enviar reserva",
+            "success": "¡Gracias! Su solicitud de reserva ha sido enviada. Le confirmaremos por correo electrónico.",
+            "close": "Cerrar"
+          }
         },
         {
           "id": "linen",
