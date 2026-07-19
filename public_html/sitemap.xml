@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage FR -->
+  <url>
+    <loc>https://riadmylaya.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Homepage EN -->
+  <url>
+    <loc>https://riadmylaya.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Homepage ES -->
+  <url>
+    <loc>https://riadmylaya.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- rooms -->
+  <url>
+    <loc>https://riadmylaya.com/rooms</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/rooms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/rooms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/rooms"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/rooms</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/rooms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/rooms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/rooms"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/rooms</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/rooms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/rooms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/rooms"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- chambrebleue -->
+  <url>
+    <loc>https://riadmylaya.com/chambrebleue</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/chambrebleue"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/chambrebleue"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/chambrebleue</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/chambrebleue"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/chambrebleue"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- chambreone -->
+  <url>
+    <loc>https://riadmylaya.com/chambreone</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/chambreone"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/chambreone"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/chambreone</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/chambreone"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/chambreone"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- chambreorange -->
+  <url>
+    <loc>https://riadmylaya.com/chambreorange</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/chambreorange"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/chambreorange"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/chambreorange</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/chambreorange"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/chambreorange"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- chambrerouge -->
+  <url>
+    <loc>https://riadmylaya.com/chambrerouge</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/chambrerouge"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/chambrerouge"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/chambrerouge</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/chambrerouge"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/chambrerouge"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- visit -->
+  <url>
+    <loc>https://riadmylaya.com/visit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/visit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/visit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/visit"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/visit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/visit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/visit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/visit"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/visit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/visit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/visit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/visit"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- activities -->
+  <url>
+    <loc>https://riadmylaya.com/activities</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/activities"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/activities"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/activities"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/activities</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/activities"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/activities"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/activities"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/activities</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/activities"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/activities"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/activities"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- contact -->
+  <url>
+    <loc>https://riadmylaya.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/contact"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/contact"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/contact"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- page14 (Découvrir Marrakech) -->
+  <url>
+    <loc>https://riadmylaya.com/page14</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/page14"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/page14"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/page14</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/page14"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/page14"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- page16 (Cours de cuisine) -->
+  <url>
+    <loc>https://riadmylaya.com/page16</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/page16"/>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- page18 (Autres plaisirs) -->
+  <url>
+    <loc>https://riadmylaya.com/page18</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- page19 (Dîner traditionnel) -->
+  <url>
+    <loc>https://riadmylaya.com/page19</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- hammam-spa -->
+  <url>
+    <loc>https://riadmylaya.com/hammam-spa</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- photographe -->
+  <url>
+    <loc>https://riadmylaya.com/photographe</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- excursions -->
+  <url>
+    <loc>https://riadmylaya.com/excursions</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- mentions-legales -->
+  <url>
+    <loc>https://riadmylaya.com/mentions-legales</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>
