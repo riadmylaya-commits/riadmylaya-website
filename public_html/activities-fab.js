@@ -28,7 +28,8 @@
         { title: "Hammam & Massage", icon: "\ud83d\udec1", href: "/en/hammam-spa" },
         { title: "Cooking class", icon: "\ud83d\udc68\u200d\ud83c\udf73", href: "/en/page13" },
         { title: "Excursions", icon: "\u26f0\ufe0f", href: "/en/page14" },
-        { title: "Other activities", icon: "\u2728", href: "/en/page15" }
+        { title: "Other activities", icon: "\u2728", href: "/en/page15" },
+        { title: "Photographer & Video", icon: "\ud83d\udcf8", href: "/en/photographe" }
       ]
     },
     es: {
@@ -39,7 +40,8 @@
         { title: "Hammam y Masaje", icon: "\ud83d\udec1", href: "/es/hammam-spa" },
         { title: "Clase de cocina", icon: "\ud83d\udc68\u200d\ud83c\udf73", href: "/es/page13" },
         { title: "Excursiones", icon: "\u26f0\ufe0f", href: "/es/page14" },
-        { title: "Otras actividades", icon: "\u2728", href: "/es/page15" }
+        { title: "Otras actividades", icon: "\u2728", href: "/es/page15" },
+        { title: "Fotograf\u00eda y V\u00eddeo", icon: "\ud83d\udcf8", href: "/es/photographe" }
       ]
     }
   };

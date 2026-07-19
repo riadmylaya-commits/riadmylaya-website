@@ -263,9 +263,30 @@
   <!-- photographe -->
   <url>
     <loc>https://riadmylaya.com/photographe</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/photographe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/photographe"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/photographe"/>
     <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/photographe</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/photographe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/photographe"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/photographe"/>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/photographe</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/photographe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/photographe"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/photographe"/>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <!-- excursions -->
   <url>
