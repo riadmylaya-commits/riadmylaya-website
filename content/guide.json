@@ -223,6 +223,7 @@
             "subtitle": "Savourez un repas authentique sans quitter le riad"
           },
           "bookButton": "Réserver maintenant",
+          "perPerson": "/ personne",
           "badges": [
             { "icon": "🍳", "text": "Réservation facile en quelques clics" },
             { "icon": "🌿", "text": "Produits frais et locaux" },
@@ -239,7 +240,21 @@
               "menu": "Choix de la formule",
               "message": "Message / allergies / préférences alimentaires"
             },
-            "menuOptions": ["Menu complet (25 €)", "Entrée + plat (20 €)", "Plat + dessert (20 €)", "Plat principal (15 €)"],
+            "menuOptions": [
+              { "label": "Menu complet", "price": 25 },
+              { "label": "Entrée + plat", "price": 20 },
+              { "label": "Plat + dessert", "price": 20 },
+              { "label": "Plat principal", "price": 15 }
+            ],
+            "currency": "€",
+            "currencyBefore": false,
+            "perPerson": "/ personne",
+            "summary": {
+              "guestsLabel": "Nombre de personnes",
+              "priceLabel": "Prix",
+              "totalLabel": "Total",
+              "placeholder": "Choisissez une formule pour voir le total."
+            },
             "submit": "Envoyer la réservation",
             "success": "Merci ! Votre demande de réservation a été envoyée. Nous vous confirmerons par e-mail.",
             "close": "Fermer"
@@ -591,6 +606,7 @@
             "subtitle": "Enjoy an authentic meal without leaving the riad"
           },
           "bookButton": "Book now",
+          "perPerson": "/ person",
           "badges": [
             { "icon": "🍳", "text": "Easy booking in a few clicks" },
             { "icon": "🌿", "text": "Fresh local produce" },
@@ -607,7 +623,21 @@
               "menu": "Menu choice",
               "message": "Message / allergies / dietary preferences"
             },
-            "menuOptions": ["Full menu (€25)", "Starter + main (€20)", "Main + dessert (€20)", "Main course (€15)"],
+            "menuOptions": [
+              { "label": "Full menu", "price": 25 },
+              { "label": "Starter + main", "price": 20 },
+              { "label": "Main + dessert", "price": 20 },
+              { "label": "Main course", "price": 15 }
+            ],
+            "currency": "€",
+            "currencyBefore": true,
+            "perPerson": "/ person",
+            "summary": {
+              "guestsLabel": "Number of guests",
+              "priceLabel": "Price",
+              "totalLabel": "Total",
+              "placeholder": "Choose a menu to see the total."
+            },
             "submit": "Send reservation",
             "success": "Thank you! Your reservation request has been sent. We will confirm by email.",
             "close": "Close"
@@ -959,6 +989,7 @@
             "subtitle": "Disfrute de una comida auténtica sin salir del riad"
           },
           "bookButton": "Reservar ahora",
+          "perPerson": "/ persona",
           "badges": [
             { "icon": "🍳", "text": "Reserva fácil en unos clics" },
             { "icon": "🌿", "text": "Productos frescos y locales" },
@@ -975,7 +1006,21 @@
               "menu": "Elección del menú",
               "message": "Mensaje / alergias / preferencias alimentarias"
             },
-            "menuOptions": ["Menú completo (25 €)", "Entrada + plato (20 €)", "Plato + postre (20 €)", "Plato principal (15 €)"],
+            "menuOptions": [
+              { "label": "Menú completo", "price": 25 },
+              { "label": "Entrada + plato", "price": 20 },
+              { "label": "Plato + postre", "price": 20 },
+              { "label": "Plato principal", "price": 15 }
+            ],
+            "currency": "€",
+            "currencyBefore": false,
+            "perPerson": "/ persona",
+            "summary": {
+              "guestsLabel": "Número de personas",
+              "priceLabel": "Precio",
+              "totalLabel": "Total",
+              "placeholder": "Elija un menú para ver el total."
+            },
             "submit": "Enviar reserva",
             "success": "¡Gracias! Su solicitud de reserva ha sido enviada. Le confirmaremos por correo electrónico.",
             "close": "Cerrar"

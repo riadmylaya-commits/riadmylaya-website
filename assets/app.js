@@ -412,7 +412,8 @@ function createDinnerPanel(section) {
   section.menus.forEach((menu) => {
     const menuCard = document.createElement("div");
     menuCard.className = "dinner-menu-card";
-    menuCard.innerHTML = `<span class="dinner-menu-icon">${menu.icon}</span><strong>${menu.label}</strong><span class="dinner-menu-detail">${menu.detail || ""}</span><span class="dinner-menu-price">${menu.price}</span>`;
+    const perPerson = section.perPerson ? `<span class="dinner-menu-perperson">${section.perPerson}</span>` : "";
+    menuCard.innerHTML = `<span class="dinner-menu-icon">${menu.icon}</span><strong>${menu.label}</strong><span class="dinner-menu-detail">${menu.detail || ""}</span><span class="dinner-menu-price">${menu.price}${perPerson}</span>`;
     menuGrid.append(menuCard);
   });
   card.append(menuGrid);
@@ -478,6 +479,12 @@ function createDinnerPanel(section) {
   form.append(hiddenCaptcha);
 
   const fields = section.form.fields;
+  const formCfg = section.form;
+  const currency = formCfg.currency || "€";
+  const perPersonLabel = formCfg.perPerson || "";
+  function formatPrice(amount) {
+    return formCfg.currencyBefore ? `${currency}${amount}` : `${amount} ${currency}`;
+  }
 
   function addField(name, label, type, required) {
     const group = document.createElement("div");
@@ -497,8 +504,10 @@ function createDinnerPanel(section) {
       select.append(placeholder);
       section.form.menuOptions.forEach((opt) => {
         const option = document.createElement("option");
-        option.value = opt;
-        option.textContent = opt;
+        const priceText = `${formatPrice(opt.price)}${perPersonLabel ? " " + perPersonLabel : ""}`;
+        option.value = `${opt.label} (${priceText})`;
+        option.textContent = `${opt.label} — ${priceText}`;
+        option.dataset.price = String(opt.price);
         select.append(option);
       });
       group.append(select);
@@ -514,6 +523,10 @@ function createDinnerPanel(section) {
       input.name = name;
       input.id = "dinner-" + name;
       input.required = required;
+      if (type === "number") {
+        input.min = "1";
+        input.value = "1";
+      }
       group.append(input);
     }
     form.append(group);
@@ -526,6 +539,42 @@ function createDinnerPanel(section) {
   addField("guests", fields.guests, "number", true);
   addField("menu", fields.menu, "select", true);
   addField("message", fields.message, "textarea", false);
+
+  const summaryCfg = formCfg.summary;
+  const summaryBox = document.createElement("div");
+  summaryBox.className = "dinner-summary";
+  const summaryPlaceholder = summaryCfg ? summaryCfg.placeholder : "";
+  summaryBox.innerHTML = `<p class="dinner-summary-empty">${summaryPlaceholder}</p>`;
+  form.append(summaryBox);
+
+  const hiddenTotal = document.createElement("input");
+  hiddenTotal.type = "hidden";
+  hiddenTotal.name = "Total estimé";
+  form.append(hiddenTotal);
+
+  const guestsInput = form.querySelector("#dinner-guests");
+  const menuSelect = form.querySelector("#dinner-menu");
+
+  function updateSummary() {
+    const selected = menuSelect.options[menuSelect.selectedIndex];
+    const unit = selected && selected.dataset.price ? Number(selected.dataset.price) : NaN;
+    const guests = parseInt(guestsInput.value, 10);
+    if (!summaryCfg || Number.isNaN(unit) || Number.isNaN(guests) || guests < 1) {
+      summaryBox.innerHTML = `<p class="dinner-summary-empty">${summaryPlaceholder}</p>`;
+      hiddenTotal.value = "";
+      return;
+    }
+    const total = unit * guests;
+    const unitText = `${formatPrice(unit)}${perPersonLabel ? " " + perPersonLabel : ""}`;
+    summaryBox.innerHTML =
+      `<div class="dinner-summary-row"><span>${summaryCfg.guestsLabel}</span><span>${guests}</span></div>` +
+      `<div class="dinner-summary-row"><span>${summaryCfg.priceLabel}</span><span>${unitText}</span></div>` +
+      `<div class="dinner-summary-row dinner-summary-total"><span>${summaryCfg.totalLabel}</span><span>${formatPrice(total)}</span></div>`;
+    hiddenTotal.value = `${formatPrice(total)} (${guests} × ${formatPrice(unit)})`;
+  }
+
+  guestsInput.addEventListener("input", updateSummary);
+  menuSelect.addEventListener("change", updateSummary);
 
   const submitBtn = document.createElement("button");
   submitBtn.className = "button primary";
