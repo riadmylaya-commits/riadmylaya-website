@@ -302,4 +302,49 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <!-- Landing page réservation directe -->
+  <url>
+    <loc>https://riadmylaya.com/reservation</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/reservation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/reservation"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/reservation"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://riadmylaya.com/it/reservation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/reservation"/>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/reservation</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/reservation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/reservation"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/reservation"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://riadmylaya.com/it/reservation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/reservation"/>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/reservation</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/reservation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/reservation"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/reservation"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://riadmylaya.com/it/reservation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/reservation"/>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/it/reservation</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/reservation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/reservation"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/reservation"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://riadmylaya.com/it/reservation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/reservation"/>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
