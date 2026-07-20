@@ -28,53 +28,38 @@
         {
           "id": "welcome",
           "shortTitle": "Bienvenue",
+          "type": "intro",
           "eyebrow": "Accueil",
           "title": "Bonjour et bienvenue",
           "lead": "Nous sommes heureux de vous accueillir chez nous.",
           "body": [
             "Nous espérons que vous passerez un séjour mémorable et que vous repartirez avec de merveilleux souvenirs de Marrakech.",
             "Ce guide rassemble les informations essentielles pour que votre séjour se déroule dans les meilleures conditions. En cas de besoin, contactez-nous à tout moment."
-          ]
-        },
-        {
-          "id": "riad",
-          "shortTitle": "Le riad",
-          "eyebrow": "Présentation",
-          "title": "Riad Bilkis",
-          "lead": "Une maison d'hôtes pensée comme un foyer, au cœur de Bab Doukkala.",
-          "image": "/assets/images/riad-patio.jpg",
-          "imageAlt": "Patio du Riad Bilkis avec ses carreaux colorés et son mobilier traditionnel",
-          "items": [
+          ],
+          "blocks": [
             {
-              "title": "Adresse",
-              "text": "117 Derb Jdid, Bab Doukkala, Médina, Marrakech."
+              "eyebrow": "Présentation",
+              "title": "Riad Bilkis",
+              "lead": "Une maison d'hôtes pensée comme un foyer, au cœur de Bab Doukkala.",
+              "image": "/assets/images/riad-patio.jpg",
+              "imageAlt": "Patio du Riad Bilkis avec ses carreaux colorés et son mobilier traditionnel",
+              "features": {
+                "title": "Équipements principaux",
+                "list": [
+                  "3 chambres et 3 salles de bain",
+                  "Terrasse, jacuzzi et espaces de détente",
+                  "Cuisine équipée avec lave-vaisselle",
+                  "Lave-linge, sèche-linge et lit bébé"
+                ]
+              }
             },
             {
-              "title": "Équipements principaux",
-              "list": [
-                "3 chambres et 3 salles de bain",
-                "Terrasse, jacuzzi et espaces de détente",
-                "Cuisine équipée avec lave-vaisselle",
-                "Lave-linge, sèche-linge et lit bébé"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "hosts",
-          "shortTitle": "Vos hôtes",
-          "eyebrow": "Présentation",
-          "title": "Khadija et Ali",
-          "lead": "Vos hôtes sont à votre écoute pour rendre votre séjour confortable.",
-          "image": "/assets/images/hosts-ali-khadija.jpg",
-          "imageAlt": "Ali et Khadija, vos hôtes au Riad Bilkis",
-          "body": [
-            "Le Riad Bilkis n'est pas seulement une maison d'hôtes : c'est notre foyer et notre passion. Nous aimons partager notre région, son histoire, sa culture et sa cuisine avec nos invités."
-          ],
-          "items": [
-            {
-              "title": "Nous contacter",
-              "text": "Téléphone : +212625675494 · Email : riadbilkis@yahoo.com"
+              "eyebrow": "Vos hôtes",
+              "title": "Khadija et Ali",
+              "lead": "Vos hôtes sont à votre écoute pour rendre votre séjour confortable.",
+              "image": "/assets/images/hosts-ali-khadija.jpg",
+              "imageAlt": "Ali et Khadija, vos hôtes au Riad Bilkis",
+              "text": "Le Riad Bilkis n'est pas seulement une maison d'hôtes : c'est notre foyer et notre passion. Nous aimons partager notre région, son histoire, sa culture et sa cuisine avec nos invités."
             }
           ]
         },
@@ -411,53 +396,38 @@
         {
           "id": "welcome",
           "shortTitle": "Welcome",
+          "type": "intro",
           "eyebrow": "Welcome",
           "title": "Hello and welcome",
           "lead": "We are delighted to welcome you.",
           "body": [
             "We hope you will have a memorable stay and leave with wonderful memories of Marrakech.",
             "This guide gathers the essential information you need for a smooth and comfortable stay. If you need anything, please contact us at any time."
-          ]
-        },
-        {
-          "id": "riad",
-          "shortTitle": "Riad",
-          "eyebrow": "Overview",
-          "title": "Riad Bilkis",
-          "lead": "A guest house designed as a home, in the heart of Bab Doukkala.",
-          "image": "/assets/images/riad-patio.jpg",
-          "imageAlt": "Riad Bilkis patio with colorful tiles and traditional furniture",
-          "items": [
+          ],
+          "blocks": [
             {
-              "title": "Address",
-              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech."
+              "eyebrow": "Overview",
+              "title": "Riad Bilkis",
+              "lead": "A guest house designed as a home, in the heart of Bab Doukkala.",
+              "image": "/assets/images/riad-patio.jpg",
+              "imageAlt": "Riad Bilkis patio with colorful tiles and traditional furniture",
+              "features": {
+                "title": "Main amenities",
+                "list": [
+                  "3 bedrooms and 3 bathrooms",
+                  "Terrace, jacuzzi and relaxation areas",
+                  "Equipped kitchen with dishwasher",
+                  "Washing machine, dryer and baby bed"
+                ]
+              }
             },
             {
-              "title": "Main amenities",
-              "list": [
-                "3 bedrooms and 3 bathrooms",
-                "Terrace, jacuzzi and relaxation areas",
-                "Equipped kitchen with dishwasher",
-                "Washing machine, dryer and baby bed"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "hosts",
-          "shortTitle": "Hosts",
-          "eyebrow": "Meet your hosts",
-          "title": "Khadija and Ali",
-          "lead": "Your hosts are here to make your stay comfortable.",
-          "image": "/assets/images/hosts-ali-khadija.jpg",
-          "imageAlt": "Ali and Khadija, your hosts at Riad Bilkis",
-          "body": [
-            "Riad Bilkis is not only a guest house: it is our home and our passion. We love sharing our region, its history, culture and cuisine with our guests."
-          ],
-          "items": [
-            {
-              "title": "Contact us",
-              "text": "Phone: +212625675494 · Email: riadbilkis@yahoo.com"
+              "eyebrow": "Meet your hosts",
+              "title": "Khadija and Ali",
+              "lead": "Your hosts are here to make your stay comfortable.",
+              "image": "/assets/images/hosts-ali-khadija.jpg",
+              "imageAlt": "Ali and Khadija, your hosts at Riad Bilkis",
+              "text": "Riad Bilkis is not only a guest house: it is our home and our passion. We love sharing our region, its history, culture and cuisine with our guests."
             }
           ]
         },
@@ -794,53 +764,38 @@
         {
           "id": "welcome",
           "shortTitle": "Bienvenida",
+          "type": "intro",
           "eyebrow": "Bienvenida",
           "title": "Hola y bienvenido",
           "lead": "Nos alegra recibirle en nuestra casa.",
           "body": [
             "Esperamos que disfrute de una estancia memorable y se marche con maravillosos recuerdos de Marrakech.",
             "Esta guía reúne la información esencial para que su estancia sea cómoda y sencilla. Si necesita algo, no dude en contactarnos."
-          ]
-        },
-        {
-          "id": "riad",
-          "shortTitle": "El riad",
-          "eyebrow": "Presentación",
-          "title": "Riad Bilkis",
-          "lead": "Una casa de huéspedes pensada como un hogar, en el corazón de Bab Doukkala.",
-          "image": "/assets/images/riad-patio.jpg",
-          "imageAlt": "Patio del Riad Bilkis con azulejos de colores y muebles tradicionales",
-          "items": [
+          ],
+          "blocks": [
             {
-              "title": "Dirección",
-              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech."
+              "eyebrow": "Presentación",
+              "title": "Riad Bilkis",
+              "lead": "Una casa de huéspedes pensada como un hogar, en el corazón de Bab Doukkala.",
+              "image": "/assets/images/riad-patio.jpg",
+              "imageAlt": "Patio del Riad Bilkis con azulejos de colores y muebles tradicionales",
+              "features": {
+                "title": "Equipamiento principal",
+                "list": [
+                  "3 habitaciones y 3 baños",
+                  "Terraza, jacuzzi y zonas de descanso",
+                  "Cocina equipada con lavavajillas",
+                  "Lavadora, secadora y cuna"
+                ]
+              }
             },
             {
-              "title": "Equipamiento principal",
-              "list": [
-                "3 habitaciones y 3 baños",
-                "Terraza, jacuzzi y zonas de descanso",
-                "Cocina equipada con lavavajillas",
-                "Lavadora, secadora y cuna"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "hosts",
-          "shortTitle": "Anfitriones",
-          "eyebrow": "Presentación",
-          "title": "Khadija y Ali",
-          "lead": "Sus anfitriones están disponibles para que su estancia sea cómoda.",
-          "image": "/assets/images/hosts-ali-khadija.jpg",
-          "imageAlt": "Ali y Khadija, sus anfitriones en Riad Bilkis",
-          "body": [
-            "Riad Bilkis no es solo una casa de huéspedes: es nuestro hogar y nuestra pasión. Nos encanta compartir nuestra región, su historia, cultura y cocina con nuestros invitados."
-          ],
-          "items": [
-            {
-              "title": "Contactarnos",
-              "text": "Teléfono: +212625675494 · Email: riadbilkis@yahoo.com"
+              "eyebrow": "Sus anfitriones",
+              "title": "Khadija y Ali",
+              "lead": "Sus anfitriones están disponibles para que su estancia sea cómoda.",
+              "image": "/assets/images/hosts-ali-khadija.jpg",
+              "imageAlt": "Ali y Khadija, sus anfitriones en Riad Bilkis",
+              "text": "Riad Bilkis no es solo una casa de huéspedes: es nuestro hogar y nuestra pasión. Nos encanta compartir nuestra región, su historia, cultura y cocina con nuestros invitados."
             }
           ]
         },
