@@ -83,6 +83,14 @@ function createNavLink(section) {
 }
 
 function createSection(section, ui) {
+  if (section.type === "intro") {
+    const article = document.createElement("article");
+    article.className = "section full intro-section";
+    article.id = section.id;
+    article.append(createIntroPanel(section));
+    return article;
+  }
+
   const article = document.createElement("article");
   article.className = `section ${section.fullWidth ? "full" : ""}`;
   article.id = section.id;
@@ -134,6 +142,61 @@ function createSection(section, ui) {
 
   article.append(heading, body);
   return article;
+}
+
+function createIntroPanel(section) {
+  const panel = document.createElement("div");
+  panel.className = "intro-panel";
+
+  const welcome = document.createElement("div");
+  welcome.className = "intro-welcome";
+  welcome.append(createText("p", section.eyebrow, "eyebrow"), createText("h2", section.title));
+  if (section.lead) {
+    welcome.append(createText("p", section.lead, "intro-welcome-lead"));
+  }
+  if (section.body) {
+    section.body.forEach((paragraph) => welcome.append(createText("p", paragraph, "lead")));
+  }
+  panel.append(welcome);
+
+  (section.blocks || []).forEach((block) => {
+    const blockEl = document.createElement("div");
+    blockEl.className = "intro-block";
+
+    const media = document.createElement("div");
+    media.className = "intro-block-media";
+    if (block.image) {
+      const img = document.createElement("img");
+      img.src = block.image;
+      img.alt = block.imageAlt || block.title;
+      img.loading = "lazy";
+      media.append(img);
+    }
+
+    const content = document.createElement("div");
+    content.className = "intro-block-content";
+    if (block.eyebrow) {
+      content.append(createText("p", block.eyebrow, "eyebrow"));
+    }
+    content.append(createText("h3", block.title));
+    if (block.lead) {
+      content.append(createText("p", block.lead, "intro-block-lead"));
+    }
+    if (block.text) {
+      content.append(createText("p", block.text));
+    }
+    if (block.features?.list?.length) {
+      if (block.features.title) {
+        content.append(createText("h4", block.features.title, "intro-features-title"));
+      }
+      content.append(createList(block.features.list));
+    }
+
+    blockEl.append(media, content);
+    panel.append(blockEl);
+  });
+
+  return panel;
 }
 
 function createText(tagName, text, className = "") {
