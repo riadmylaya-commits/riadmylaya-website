@@ -741,6 +741,44 @@ h1 {
 }
 .dinner-badge-item span:first-child { font-size: 1.2rem; }
 
+.dinner-menu-perperson {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+/* Dinner form — live total summary */
+.dinner-summary {
+  margin: 0.6rem 0 0.2rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: #fbf6ef;
+  border: 1px solid #ecdcc7;
+}
+.dinner-summary-empty {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+.dinner-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+}
+.dinner-summary-row span:last-child { font-weight: 600; }
+.dinner-summary-total {
+  margin-top: 0.3rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #ecdcc7;
+  font-size: 1.05rem;
+}
+.dinner-summary-total span { color: var(--terracotta); font-weight: 800; }
+
 /* Rules — colored cards */
 .rules-grid {
   display: grid;
