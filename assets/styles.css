@@ -443,6 +443,25 @@ h1 {
   color: var(--muted);
 }
 
+.hl-time {
+  display: block;
+  margin: 0.2rem 0 0.55rem;
+  color: var(--terracotta-dark);
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hl-price {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border-radius: 8px;
+  background: rgba(36, 77, 63, 0.12);
+  color: #1f7a4d;
+  font-weight: 800;
+}
+
 .list {
   display: grid;
   gap: 0.8rem;
