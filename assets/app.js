@@ -116,9 +116,12 @@ function createSection(section, ui) {
   if (section.type === "wifi") {
     body.append(createWifiPanel(section, ui));
   } else if (section.type === "times") {
-    body.append(createTimes(section), createCards(section.items));
+    body.append(createTimes(section));
     if (section.transferForm) {
       body.append(createTransferPanel(section.transferForm));
+    }
+    if (section.items?.length) {
+      body.append(createCards(section.items));
     }
   } else if (section.type === "dinner") {
     body.append(createDinnerPanel(section));
