@@ -133,6 +133,12 @@
             "cta": "Réserver maintenant",
             "badge": "Confirmation immédiate",
             "title": "Réservation transfert aéroport",
+            "transferTypeLabel": "Type de transfert",
+            "transferTypeOptions": {
+              "both": "Arrivée et départ",
+              "arrival": "Arrivée uniquement",
+              "departure": "Départ uniquement"
+            },
             "arrivalHeading": "Arrivée",
             "departureHeading": "Départ",
             "fields": {
@@ -504,6 +510,12 @@
             "cta": "Book now",
             "badge": "Instant confirmation",
             "title": "Airport transfer reservation",
+            "transferTypeLabel": "Transfer type",
+            "transferTypeOptions": {
+              "both": "Arrival and departure",
+              "arrival": "Arrival only",
+              "departure": "Departure only"
+            },
             "arrivalHeading": "Arrival",
             "departureHeading": "Departure",
             "fields": {
@@ -875,6 +887,12 @@
             "cta": "Reservar ahora",
             "badge": "Confirmación inmediata",
             "title": "Reserva de traslado al aeropuerto",
+            "transferTypeLabel": "Tipo de traslado",
+            "transferTypeOptions": {
+              "both": "Llegada y salida",
+              "arrival": "Solo llegada",
+              "departure": "Solo salida"
+            },
             "arrivalHeading": "Llegada",
             "departureHeading": "Salida",
             "fields": {

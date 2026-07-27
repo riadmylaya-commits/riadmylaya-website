@@ -398,7 +398,7 @@ function createTransferPanel(tf) {
 
   const fields = tf.fields;
 
-  function addField(name, label, type, required) {
+  function addField(name, label, type, required, parent, attrs) {
     const group = document.createElement("div");
     group.className = "form-group";
     const lbl = document.createElement("label");
@@ -410,32 +410,89 @@ function createTransferPanel(tf) {
     input.name = name;
     input.id = "transfer-" + name;
     input.required = required;
+    if (attrs) {
+      Object.keys(attrs).forEach((key) => input.setAttribute(key, attrs[key]));
+    }
     group.append(input);
-    form.append(group);
+    (parent || form).append(group);
+    return input;
   }
 
   addField("name", fields.name, "text", true);
   addField("email", fields.email, "email", true);
   addField("phone", fields.phone, "tel", true);
-  addField("guests", fields.guests, "number", true);
+  addField("guests", fields.guests, "number", true, form, { min: "1", max: "6" });
 
+  if (tf.transferTypeLabel && tf.transferTypeOptions) {
+    const typeGroup = document.createElement("div");
+    typeGroup.className = "form-group";
+    const typeLbl = document.createElement("label");
+    typeLbl.textContent = tf.transferTypeLabel;
+    typeLbl.setAttribute("for", "transfer-transferType");
+    typeGroup.append(typeLbl);
+    const typeSelect = document.createElement("select");
+    typeSelect.name = "transferType";
+    typeSelect.id = "transfer-transferType";
+    typeSelect.required = true;
+    [
+      ["both", tf.transferTypeOptions.both],
+      ["arrival", tf.transferTypeOptions.arrival],
+      ["departure", tf.transferTypeOptions.departure],
+    ].forEach(([value, label]) => {
+      const opt = document.createElement("option");
+      opt.value = value;
+      opt.textContent = label;
+      typeSelect.append(opt);
+    });
+    typeGroup.append(typeSelect);
+    form.append(typeGroup);
+
+    var transferTypeSelect = typeSelect;
+  }
+
+  const arrivalBlock = document.createElement("div");
   const arrHeading = document.createElement("h4");
   arrHeading.className = "form-section-heading";
   arrHeading.textContent = tf.arrivalHeading;
-  form.append(arrHeading);
+  arrivalBlock.append(arrHeading);
+  const arrivalInputs = [
+    addField("arrivalDate", fields.arrivalDate, "date", true, arrivalBlock),
+    addField("arrivalTime", fields.arrivalTime, "time", true, arrivalBlock),
+    addField("arrivalFlight", fields.arrivalFlight, "text", true, arrivalBlock),
+  ];
+  form.append(arrivalBlock);
 
-  addField("arrivalDate", fields.arrivalDate, "date", true);
-  addField("arrivalTime", fields.arrivalTime, "time", true);
-  addField("arrivalFlight", fields.arrivalFlight, "text", true);
-
+  const departureBlock = document.createElement("div");
   const depHeading = document.createElement("h4");
   depHeading.className = "form-section-heading";
   depHeading.textContent = tf.departureHeading;
-  form.append(depHeading);
+  departureBlock.append(depHeading);
+  const departureInputs = [
+    addField("departureDate", fields.departureDate, "date", true, departureBlock),
+    addField("departureTime", fields.departureTime, "time", true, departureBlock),
+    addField("departureFlight", fields.departureFlight, "text", false, departureBlock),
+  ];
+  form.append(departureBlock);
 
-  addField("departureDate", fields.departureDate, "date", false);
-  addField("departureTime", fields.departureTime, "time", false);
-  addField("departureFlight", fields.departureFlight, "text", false);
+  if (typeof transferTypeSelect !== "undefined") {
+    const applyTransferType = () => {
+      const value = transferTypeSelect.value;
+      const showArrival = value === "both" || value === "arrival";
+      const showDeparture = value === "both" || value === "departure";
+      arrivalBlock.style.display = showArrival ? "" : "none";
+      departureBlock.style.display = showDeparture ? "" : "none";
+      arrivalInputs.forEach((input) => {
+        input.disabled = !showArrival;
+        input.required = showArrival && input.name !== "arrivalFlight";
+      });
+      departureInputs.forEach((input) => {
+        input.disabled = !showDeparture;
+        input.required = showDeparture && input.name !== "departureFlight";
+      });
+    };
+    transferTypeSelect.addEventListener("change", applyTransferType);
+    applyTransferType();
+  }
 
   const submitBtn = document.createElement("button");
   submitBtn.className = "button primary";
