@@ -183,8 +183,8 @@
               "text": "Votre confort est assuré toute l'année grâce aux systèmes de climatisation et de chauffage."
             },
             {
-              "title": "Carte de secours",
-              "text": "Une petite carte du quartier avec des points d'intérêt et informations d'urgence est disponible en cas de besoin."
+              "title": "Plan de la ville",
+              "text": "Retrouvez une carte complète de Marrakech avec les principaux quartiers, les sites touristiques incontournables, les monuments, les musées, les jardins, les restaurants, ainsi que les informations utiles et les numéros d'urgence. Cette carte est disponible pour vous aider à découvrir la ville en toute simplicité."
             }
           ]
         },
@@ -194,7 +194,7 @@
           "type": "dinner",
           "eyebrow": "Gastronomie",
           "title": "Expérience Dîner Marocain",
-          "lead": "Offrez-vous une véritable immersion dans la gastronomie marocaine. Khadija, notre excellente cuisinière, prépare chaque jour de délicieux plats faits maison avec des produits frais et des recettes traditionnelles.",
+          "lead": "Offrez-vous une véritable immersion dans la gastronomie marocaine. Mme Sinan, notre excellente cuisinière, prépare chaque jour de délicieux plats faits maison avec des produits frais et des recettes traditionnelles marocaines.",
           "menus": [
             { "icon": "🍲", "label": "Menu complet", "detail": "Entrée + plat + dessert", "price": "25 €" },
             { "icon": "🍴", "label": "Entrée + plat", "detail": "Entrée et plat au choix", "price": "20 €" },
@@ -255,14 +255,14 @@
             },
             {
               "title": "Machine à laver",
-              "text": "Une machine à laver est disponible pour votre linge personnel. Chaque charge est facturée 5 €. Service disponible chaque jour de 9h à 15h."
+              "text": "Mme Sinan s'occupera de votre linge. Merci de placer vos vêtements dans un sac et de le déposer à côté de la machine à laver.<br><strong>5 € par machine</strong><br><strong>Service disponible de 9h à 15h</strong>"
             },
             {
               "title": "Articles de salle de bain",
               "list": [
                 "Shampoing et gel douche",
                 "Savon",
-                "Démaquillant",
+                "Coton démaquillant",
                 "Coton-tiges"
               ]
             }
@@ -342,6 +342,11 @@
                 {
                   "label": "Ouvrir dans Google Maps",
                   "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+                  "external": true
+                },
+                {
+                  "label": "Visiter le site internet",
+                  "href": "https://www.riadbilkis.com",
                   "external": true
                 }
               ]
@@ -549,8 +554,8 @@
               "text": "Comfort is ensured all year with air conditioning and heating systems."
             },
             {
-              "title": "Emergency card",
-              "text": "A small neighborhood card with points of interest and emergency information is available if needed."
+              "title": "City map",
+              "text": "Find a complete map of Marrakech with the main districts, must-see tourist sites, monuments, museums, gardens, restaurants, as well as useful information and emergency numbers. This map is available to help you discover the city with ease."
             }
           ]
         },
@@ -560,7 +565,7 @@
           "type": "dinner",
           "eyebrow": "Gastronomy",
           "title": "Moroccan Dinner Experience",
-          "lead": "Treat yourself to a true immersion in Moroccan cuisine. Khadija, our excellent cook, prepares delicious homemade dishes every day with fresh ingredients and traditional recipes.",
+          "lead": "Treat yourself to a true immersion in Moroccan cuisine. Mrs. Sinan, our excellent cook, prepares delicious homemade dishes every day with fresh ingredients and traditional Moroccan recipes.",
           "menus": [
             { "icon": "🍲", "label": "Full menu", "detail": "Starter + main + dessert", "price": "€25" },
             { "icon": "🍴", "label": "Starter + main", "detail": "Starter and main of your choice", "price": "€20" },
@@ -621,14 +626,14 @@
             },
             {
               "title": "Washing machine",
-              "text": "A washing machine is available for personal laundry. Each load costs 5 €. Service available daily from 9 am to 3 pm."
+              "text": "Mrs. Sinan will take care of your laundry. Please place your clothes in a bag and leave it next to the washing machine.<br><strong>5 € per load</strong><br><strong>Service available from 9 am to 3 pm</strong>"
             },
             {
               "title": "Bathroom amenities",
               "list": [
                 "Shampoo and shower gel",
                 "Soap",
-                "Make-up remover",
+                "Make-up remover cotton",
                 "Cotton buds"
               ]
             }
@@ -708,6 +713,11 @@
                 {
                   "label": "Open in Google Maps",
                   "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+                  "external": true
+                },
+                {
+                  "label": "Visit the website",
+                  "href": "https://www.riadbilkis.com",
                   "external": true
                 }
               ]
@@ -915,8 +925,8 @@
               "text": "Su comodidad está asegurada todo el año con sistemas de climatización y calefacción."
             },
             {
-              "title": "Tarjeta de emergencia",
-              "text": "Hay una pequeña tarjeta del barrio con puntos de interés e información de emergencia si la necesita."
+              "title": "Plano de la ciudad",
+              "text": "Encuentre un plano completo de Marrakech con los principales barrios, los sitios turísticos imprescindibles, los monumentos, los museos, los jardines, los restaurantes, así como información útil y los números de emergencia. Este plano está disponible para ayudarle a descubrir la ciudad con toda facilidad."
             }
           ]
         },
@@ -926,7 +936,7 @@
           "type": "dinner",
           "eyebrow": "Gastronomía",
           "title": "Experiencia Cena Marroquí",
-          "lead": "Regálese una verdadera inmersión en la gastronomía marroquí. Khadija, nuestra excelente cocinera, prepara cada día deliciosos platos caseros con productos frescos y recetas tradicionales.",
+          "lead": "Regálese una verdadera inmersión en la gastronomía marroquí. La Sra. Sinan, nuestra excelente cocinera, prepara cada día deliciosos platos caseros con productos frescos y recetas tradicionales marroquíes.",
           "menus": [
             { "icon": "🍲", "label": "Menú completo", "detail": "Entrada + plato + postre", "price": "25 €" },
             { "icon": "🍴", "label": "Entrada + plato", "detail": "Entrada y plato a elegir", "price": "20 €" },
@@ -987,14 +997,14 @@
             },
             {
               "title": "Lavadora",
-              "text": "Hay una lavadora disponible para ropa personal. Cada carga cuesta 5 €. Servicio disponible todos los días de 9:00 a 15:00."
+              "text": "La Sra. Sinan se encargará de su ropa. Por favor, coloque su ropa en una bolsa y déjela junto a la lavadora.<br><strong>5 € por lavado</strong><br><strong>Servicio disponible de 9:00 a 15:00</strong>"
             },
             {
               "title": "Artículos de baño",
               "list": [
                 "Champú y gel de ducha",
                 "Jabón",
-                "Desmaquillante",
+                "Algodón desmaquillante",
                 "Bastoncillos de algodón"
               ]
             }
@@ -1074,6 +1084,11 @@
                 {
                   "label": "Abrir en Google Maps",
                   "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+                  "external": true
+                },
+                {
+                  "label": "Visitar el sitio web",
+                  "href": "https://www.riadbilkis.com",
                   "external": true
                 }
               ]
