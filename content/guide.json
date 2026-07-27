@@ -69,6 +69,8 @@
           "eyebrow": "Informations",
           "title": "Informations pratiques",
           "lead": "Les repères utiles dès votre arrivée.",
+          "image": "/assets/images/breakfast.jpg",
+          "imageAlt": "Petit-déjeuner marocain servi au Riad Bilkis",
           "items": [
             {
               "title": "Accueil",
@@ -76,7 +78,7 @@
             },
             {
               "title": "Petit-déjeuner",
-              "text": "Servi de <strong>8h00 à 10h30</strong>. Avant 7h30, un petit-déjeuner à emporter peut être préparé. Après 10h30, il est proposé au tarif de <strong>6 € par personne</strong>."
+              "text": "Servi de <span class=\"hl-time\">8h00 à 10h30</span>Avant 7h30, un petit-déjeuner à emporter peut être préparé. Après 10h30, il est proposé au tarif de <span class=\"hl-price\">6 € par personne</span>."
             },
             {
               "title": "Ménage",
@@ -84,7 +86,7 @@
             },
             {
               "title": "Parking",
-              "text": "Parking pour les personnes venant chez nous en voiture. Si vous avez une voiture, un parking est disponible à proximité pour <strong>4 € par tranche de 24 heures</strong>."
+              "text": "Parking pour les personnes venant chez nous en voiture. Si vous avez une voiture, un parking est disponible à proximité pour <span class=\"hl-price\">4 € par tranche de 24 heures</span>."
             }
           ]
         },
@@ -437,6 +439,8 @@
           "eyebrow": "Information",
           "title": "Practical information",
           "lead": "Useful details from the moment you arrive.",
+          "image": "/assets/images/breakfast.jpg",
+          "imageAlt": "Moroccan breakfast served at Riad Bilkis",
           "items": [
             {
               "title": "Arrival welcome",
@@ -444,7 +448,7 @@
             },
             {
               "title": "Breakfast",
-              "text": "Served from <strong>8:00 am to 10:30 am</strong>. Before 7:30 am, a takeaway breakfast can be prepared. After 10:30 am, breakfast is available for <strong>6 € per person</strong>."
+              "text": "Served from <span class=\"hl-time\">8:00 am to 10:30 am</span>Before 7:30 am, a takeaway breakfast can be prepared. After 10:30 am, breakfast is available for <span class=\"hl-price\">6 € per person</span>."
             },
             {
               "title": "Housekeeping",
@@ -452,7 +456,7 @@
             },
             {
               "title": "Parking",
-              "text": "Parking for guests arriving by car. If you have a car, nearby parking is available for <strong>4 € per 24-hour period</strong>."
+              "text": "Parking for guests arriving by car. If you have a car, nearby parking is available for <span class=\"hl-price\">4 € per 24-hour period</span>."
             }
           ]
         },
@@ -805,6 +809,8 @@
           "eyebrow": "Información",
           "title": "Información práctica",
           "lead": "Detalles útiles desde su llegada.",
+          "image": "/assets/images/breakfast.jpg",
+          "imageAlt": "Desayuno marroquí servido en el Riad Bilkis",
           "items": [
             {
               "title": "Bienvenida",
@@ -812,7 +818,7 @@
             },
             {
               "title": "Desayuno",
-              "text": "Se sirve de <strong>8:00 a 10:30</strong>. Antes de las 7:30, puede prepararse un desayuno para llevar. Después de las 10:30, se ofrece por <strong>6 € por persona</strong>."
+              "text": "Se sirve de <span class=\"hl-time\">8:00 a 10:30</span>Antes de las 7:30, puede prepararse un desayuno para llevar. Después de las 10:30, se ofrece por <span class=\"hl-price\">6 € por persona</span>."
             },
             {
               "title": "Limpieza",
@@ -820,7 +826,7 @@
             },
             {
               "title": "Aparcamiento",
-              "text": "Aparcamiento para personas que vienen en coche. Si tiene coche, hay aparcamiento cercano disponible por <strong>4 € cada 24 horas</strong>."
+              "text": "Aparcamiento para personas que vienen en coche. Si tiene coche, hay aparcamiento cercano disponible por <span class=\"hl-price\">4 € cada 24 horas</span>."
             }
           ]
         },
