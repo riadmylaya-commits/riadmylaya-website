@@ -111,10 +111,6 @@
           ],
           "items": [
             {
-              "title": "Transfert aéroport",
-              "text": "Pour organiser votre transfert vers le Riad Bilkis, communiquez-nous votre provenance, compagnie, numéro de vol, heure d'arrivée et nombre de personnes."
-            },
-            {
               "title": "Avant de partir",
               "list": [
                 "Éteindre le chauffage ou la climatisation",
@@ -481,10 +477,6 @@
           ],
           "items": [
             {
-              "title": "Airport transfer",
-              "text": "To arrange your airport transfer to Riad Bilkis, please send us your departure city, airline, flight number, arrival time and number of guests."
-            },
-            {
               "title": "Before leaving",
               "list": [
                 "Turn off heating or air conditioning",
@@ -850,10 +842,6 @@
             }
           ],
           "items": [
-            {
-              "title": "Traslado al aeropuerto",
-              "text": "Para organizar su traslado al Riad Bilkis, envíenos procedencia, compañía, número de vuelo, hora de llegada y número de personas."
-            },
             {
               "title": "Antes de salir",
               "list": [
