@@ -61,8 +61,8 @@ a {
   min-height: 76vh;
   padding: 1rem clamp(1rem, 4vw, 4rem) 3rem;
   background:
-    linear-gradient(120deg, rgba(30, 25, 22, 0.76), rgba(30, 25, 22, 0.24)),
-    url("/assets/images/hero-patio.jpg") center/cover;
+    linear-gradient(120deg, rgba(30, 25, 22, 0.62), rgba(30, 25, 22, 0.18)),
+    url("/assets/images/hero-courtyard.jpg") center/cover;
   color: var(--white);
 }
 
