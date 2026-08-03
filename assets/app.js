@@ -69,6 +69,54 @@ function render() {
 
   quickNav.replaceChildren(...copy.sections.map(createNavLink));
   sectionsContainer.replaceChildren(...copy.sections.map((section) => createSection(section, copy.ui)));
+
+  setupScrollSpy();
+}
+
+let scrollSpyObserver = null;
+
+function setupScrollSpy() {
+  if (scrollSpyObserver) {
+    scrollSpyObserver.disconnect();
+  }
+
+  const links = new Map();
+  quickNav.querySelectorAll("a[data-target]").forEach((link) => {
+    links.set(link.dataset.target, link);
+  });
+
+  const scrollContainer = quickNav.querySelector("div") || quickNav;
+  const setActive = (id) => {
+    links.forEach((link, target) => {
+      const isActive = target === id;
+      link.classList.toggle("active", isActive);
+      if (isActive) {
+        const offset =
+          link.offsetLeft - scrollContainer.clientWidth / 2 + link.offsetWidth / 2;
+        scrollContainer.scrollTo({ left: offset, behavior: "smooth" });
+      }
+    });
+  };
+
+  const sections = Array.from(sectionsContainer.querySelectorAll("[id]"));
+  if (!sections.length) {
+    return;
+  }
+
+  scrollSpyObserver = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      if (visible.length) {
+        setActive(visible[0].target.id);
+      }
+    },
+    { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] }
+  );
+
+  sections.forEach((section) => scrollSpyObserver.observe(section));
+  setActive(sections[0].id);
 }
 
 function readPath(object, path) {
@@ -78,6 +126,7 @@ function readPath(object, path) {
 function createNavLink(section) {
   const link = document.createElement("a");
   link.href = `#${section.id}`;
+  link.dataset.target = section.id;
   link.textContent = section.shortTitle || section.title;
   return link;
 }

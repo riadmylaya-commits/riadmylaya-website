@@ -270,6 +270,14 @@ h1 {
   font-weight: 750;
   text-decoration: none;
   padding: 0.65rem 0.9rem;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.quick-nav a.active {
+  background: var(--terracotta-dark);
+  border-color: var(--terracotta-dark);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(108, 61, 37, 0.28);
 }
 
 .content {
