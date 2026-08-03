@@ -1,0 +1,1306 @@
+{
+  "languages": {
+    "fr": {
+      "meta": {
+        "title": "Guide d'accueil - Riad Bilkis"
+      },
+      "hero": {
+        "eyebrow": "Livret d'accueil digital",
+        "title": "Bienvenue au Riad Bilkis",
+        "subtitle": "Les informations essentielles pour profiter simplement de votre séjour dans la médina de Marrakech.",
+        "primaryAction": "Voir le Wi‑Fi",
+        "secondaryAction": "Contacter les hôtes"
+      },
+      "arrivalCard": {
+        "label": "Arrivée / départ",
+        "times": "Arrivée dès 13h · Départ avant 11h",
+        "link": "Voir les détails"
+      },
+      "footer": {
+        "backToTop": "Retour en haut",
+        "note": "Guide digital conçu pour les voyageurs du Riad Bilkis."
+      },
+      "ui": {
+        "copyPassword": "Copier le mot de passe",
+        "passwordCopied": "Mot de passe copié."
+      },
+      "sections": [
+        {
+          "id": "welcome",
+          "shortTitle": "Bienvenue",
+          "type": "intro",
+          "eyebrow": "Accueil",
+          "title": "Bonjour et bienvenue",
+          "lead": "Nous sommes heureux de vous accueillir chez nous.",
+          "body": [
+            "Nous espérons que vous passerez un séjour mémorable et que vous repartirez avec de merveilleux souvenirs de Marrakech.",
+            "Ce guide rassemble les informations essentielles pour que votre séjour se déroule dans les meilleures conditions. En cas de besoin, contactez-nous à tout moment."
+          ],
+          "blocks": [
+            {
+              "eyebrow": "Présentation",
+              "title": "Riad Bilkis",
+              "lead": "Une maison d'hôtes pensée comme un foyer, au cœur de Bab Doukkala.",
+              "image": "/assets/images/riad-patio.jpg",
+              "imageAlt": "Patio du Riad Bilkis avec ses carreaux colorés et son mobilier traditionnel",
+              "features": {
+                "title": "Équipements principaux",
+                "list": [
+                  "3 chambres et 3 salles de bain",
+                  "Terrasse, jacuzzi et espaces de détente",
+                  "Cuisine équipée avec lave-vaisselle",
+                  "Lave-linge, sèche-linge et lit bébé"
+                ]
+              }
+            },
+            {
+              "eyebrow": "Vos hôtes",
+              "title": "Khadija et Ali",
+              "lead": "Vos hôtes sont à votre écoute pour rendre votre séjour confortable.",
+              "image": "/assets/images/hosts-ali-khadija.jpg",
+              "imageAlt": "Ali et Khadija, vos hôtes au Riad Bilkis",
+              "text": "Le Riad Bilkis n'est pas seulement une maison d'hôtes : c'est notre foyer et notre passion. Nous aimons partager notre région, son histoire, sa culture et sa cuisine avec nos invités."
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "shortTitle": "Arrivée / départ",
+          "type": "times",
+          "eyebrow": "Horaires",
+          "title": "Arrivée et départ",
+          "lead": "Merci de nous transmettre les informations utiles pour organiser votre arrivée.",
+          "times": [
+            {
+              "label": "Votre arrivée",
+              "value": "13h",
+              "detail": "Arrivée possible à partir de 13h."
+            },
+            {
+              "label": "Votre départ",
+              "value": "11h",
+              "detail": "Départ au plus tard à 11h."
+            }
+          ],
+          "items": [
+            {
+              "title": "Avant de partir",
+              "list": [
+                "Éteindre le chauffage ou la climatisation",
+                "Éteindre les lumières",
+                "Vérifier le coffre",
+                "Laisser les serviettes au sol",
+                "Remettre les clés à Mme Sinan"
+              ]
+            }
+          ],
+          "transferForm": {
+            "bookButton": "Réserver le transfert",
+            "subtitle": "Organisez votre transfert en quelques clics",
+            "features": [
+              {
+                "icon": "✈️",
+                "label": "Arrivée à l'aéroport",
+                "detail": "Nous vous accueillons à votre arrivée"
+              },
+              {
+                "icon": "🛫",
+                "label": "Départ de l'aéroport",
+                "detail": "Nous vous raccompagnons lors de votre départ"
+              },
+              {
+                "icon": "⏱️",
+                "label": "Simple et rapide",
+                "detail": "Réservez en moins de 2 minutes"
+              },
+              {
+                "icon": "👤",
+                "label": "Chauffeur professionnel",
+                "detail": "Service fiable et confortable"
+              }
+            ],
+            "cta": "Réserver maintenant",
+            "badge": "Confirmation immédiate",
+            "title": "Réservation transfert aéroport",
+            "transferTypeLabel": "Type de transfert",
+            "transferTypeOptions": {
+              "both": "Arrivée et départ",
+              "arrival": "Arrivée uniquement",
+              "departure": "Départ uniquement"
+            },
+            "arrivalHeading": "Arrivée",
+            "departureHeading": "Départ",
+            "fields": {
+              "name": "Nom et prénom",
+              "email": "E-mail",
+              "phone": "Numéro de téléphone (avec indicatif)",
+              "guests": "Nombre de personnes",
+              "arrivalDate": "Date d'arrivée",
+              "arrivalTime": "Heure d'arrivée à l'aéroport",
+              "arrivalFlight": "Numéro de vol",
+              "departureDate": "Date de départ",
+              "departureTime": "Heure souhaitée pour le départ du riad",
+              "departureFlight": "Numéro de vol de départ (si disponible)"
+            },
+            "submit": "Envoyer la demande",
+            "success": "Merci ! Votre demande de transfert a été envoyée. Nous vous confirmerons par e-mail.",
+            "close": "Fermer"
+          }
+        },
+        {
+          "id": "kitchen",
+          "shortTitle": "Dîner",
+          "type": "dinner",
+          "eyebrow": "Gastronomie",
+          "title": "Expérience Dîner Marocain",
+          "lead": "Offrez-vous une véritable immersion dans la gastronomie marocaine. Mme Sinan, notre excellente cuisinière, prépare chaque jour de délicieux plats faits maison avec des produits frais et des recettes traditionnelles marocaines.",
+          "menus": [
+            {
+              "icon": "🍲",
+              "label": "Menu complet",
+              "detail": "Entrée + plat + dessert",
+              "price": "25 €"
+            },
+            {
+              "icon": "🍴",
+              "label": "Entrée + plat",
+              "detail": "Entrée et plat au choix",
+              "price": "20 €"
+            },
+            {
+              "icon": "🍽️",
+              "label": "Plat + dessert",
+              "detail": "Plat principal et dessert",
+              "price": "20 €"
+            },
+            {
+              "icon": "☕",
+              "label": "Plat principal",
+              "detail": "Un plat savoureux au choix",
+              "price": "15 €"
+            }
+          ],
+          "dinnerHeader": {
+            "title": "Réserver le dîner",
+            "subtitle": "Savourez un repas authentique sans quitter le riad"
+          },
+          "bookButton": "Réserver maintenant",
+          "perPerson": "/ personne",
+          "badges": [
+            {
+              "icon": "🍳",
+              "text": "Réservation facile en quelques clics"
+            },
+            {
+              "icon": "🌿",
+              "text": "Produits frais et locaux"
+            },
+            {
+              "icon": "❤️",
+              "text": "Préparé avec passion"
+            }
+          ],
+          "form": {
+            "title": "Réservation dîner",
+            "fields": {
+              "name": "Nom",
+              "email": "E-mail",
+              "date": "Date souhaitée",
+              "time": "Heure du dîner",
+              "guests": "Nombre de personnes",
+              "menu": "Choix de la formule",
+              "message": "Message / allergies / préférences alimentaires"
+            },
+            "menuOptions": [
+              {
+                "label": "Menu complet",
+                "price": 25
+              },
+              {
+                "label": "Entrée + plat",
+                "price": 20
+              },
+              {
+                "label": "Plat + dessert",
+                "price": 20
+              },
+              {
+                "label": "Plat principal",
+                "price": 15
+              }
+            ],
+            "currency": "€",
+            "currencyBefore": false,
+            "perPerson": "/ personne",
+            "summary": {
+              "guestsLabel": "Nombre de personnes",
+              "priceLabel": "Prix",
+              "totalLabel": "Total",
+              "placeholder": "Choisissez une formule pour voir le total."
+            },
+            "submit": "Envoyer la réservation",
+            "success": "Merci ! Votre demande de réservation a été envoyée. Nous vous confirmerons par e-mail.",
+            "close": "Fermer"
+          }
+        },
+        {
+          "id": "linen",
+          "shortTitle": "Linge",
+          "eyebrow": "Blanchisserie",
+          "title": "Linge et blanchisserie",
+          "items": [
+            {
+              "title": "Serviettes et linge de lit",
+              "text": "Pour les séjours de six nuits, changement tous les trois jours. Pour les séjours de quatre nuits, changement tous les deux jours."
+            },
+            {
+              "title": "Machine à laver",
+              "text": "Mme Sinan s'occupera de votre linge. Merci de placer vos vêtements dans un sac et de le déposer à côté de la machine à laver.<br><strong>5 € par machine</strong><br><strong>Service disponible de 9h à 15h</strong>"
+            },
+            {
+              "title": "Articles de salle de bain",
+              "list": [
+                "Shampoing et gel douche",
+                "Savon",
+                "Coton démaquillant",
+                "Coton-tiges"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "practical",
+          "shortTitle": "Pratique",
+          "eyebrow": "Informations",
+          "title": "Informations pratiques",
+          "lead": "Les repères utiles dès votre arrivée.",
+          "image": "/assets/images/breakfast.jpg",
+          "imageAlt": "Petit-déjeuner marocain servi au Riad Bilkis",
+          "items": [
+            {
+              "title": "Accueil",
+              "text": "À votre arrivée, profitez d'un thé à la menthe, de délicieuses pâtisseries marocaines et d'une bouteille d'eau offerts pour vous rafraîchir dans votre chambre. Nous mettons également à votre disposition un plan de la ville avec des explications afin de vous aider à découvrir Marrakech en toute sérénité."
+            },
+            {
+              "title": "Petit-déjeuner",
+              "text": "Servi de <span class=\"hl-time\">8h00 à 10h30</span>Avant 7h30, un petit-déjeuner à emporter peut être préparé. Après 10h30, il est proposé au tarif de <span class=\"hl-price\">6 € par personne</span>."
+            },
+            {
+              "title": "Ménage",
+              "text": "Mme Khadija est à votre disposition pour le petit-déjeuner et l'entretien des chambres. Elle travaille de <strong>7h30 à 15h</strong>."
+            },
+            {
+              "title": "Parking",
+              "text": "Parking pour les personnes venant chez nous en voiture. Si vous avez une voiture, un parking est disponible à proximité pour <span class=\"hl-price\">4 € par tranche de 24 heures</span>."
+            }
+          ]
+        },
+        {
+          "id": "wifi",
+          "shortTitle": "Wi‑Fi",
+          "type": "wifi",
+          "eyebrow": "Connexion",
+          "title": "Wi‑Fi",
+          "lead": "Connectez-vous rapidement au réseau de la maison.",
+          "networkLabel": "Réseau",
+          "network": "Orange-A96D",
+          "passwordLabel": "Mot de passe",
+          "password": "F90N3G0TT21"
+        },
+        {
+          "id": "services",
+          "shortTitle": "Services",
+          "eyebrow": "Confort",
+          "title": "Services du riad",
+          "items": [
+            {
+              "title": "Eau et thé à la menthe",
+              "text": "Offerts à l'arrivée pour vous immerger dans l'hospitalité marocaine."
+            },
+            {
+              "title": "Espaces de détente",
+              "text": "Cour intérieure et terrasse sont à votre disposition pour vous relaxer après une journée de visite."
+            },
+            {
+              "title": "Climatisation et chauffage",
+              "text": "Votre confort est assuré toute l'année grâce aux systèmes de climatisation et de chauffage."
+            },
+            {
+              "title": "Plan de la ville",
+              "text": "Retrouvez une carte complète de Marrakech avec les principaux quartiers, les sites touristiques incontournables, les monuments, les musées, les jardins, les restaurants, ainsi que les informations utiles et les numéros d'urgence. Cette carte est disponible pour vous aider à découvrir la ville en toute simplicité."
+            }
+          ]
+        },
+        {
+          "id": "rules",
+          "shortTitle": "Règles",
+          "type": "rules",
+          "eyebrow": "Maison",
+          "title": "Règlement intérieur",
+          "lead": "Merci de respecter ces règles pour le confort de tous et la préservation de notre riad.",
+          "items": [
+            {
+              "icon": "🏠",
+              "title": "Respect des lieux",
+              "text": "Respecter la maison et les extérieurs en évitant toute dégradation.",
+              "color": "yellow"
+            },
+            {
+              "icon": "🐾",
+              "title": "Animaux",
+              "text": "Nous adorons les animaux, mais ils ne sont pas acceptés pendant votre séjour.",
+              "color": "green"
+            },
+            {
+              "icon": "🚭",
+              "title": "Ne pas fumer",
+              "text": "Merci de ne pas fumer à l'intérieur. Un fumoir abrité est disponible sur la terrasse.",
+              "color": "orange"
+            },
+            {
+              "icon": "🎉",
+              "title": "Fêtes et réceptions",
+              "text": "Merci de ne pas organiser de fêtes de grande ampleur et de limiter le bruit après 22h.",
+              "color": "purple"
+            },
+            {
+              "icon": "🚪",
+              "title": "Personne supplémentaire",
+              "text": "Aucun voyageur supplémentaire imprévu ne peut être accueilli sans nous en informer.",
+              "color": "blue"
+            },
+            {
+              "icon": "⚠️",
+              "title": "Sécurité",
+              "text": "Merci de respecter les règles de sécurité et de ne pas utiliser de matériel électrique dangereux.",
+              "color": "red"
+            }
+          ]
+        },
+        {
+          "id": "contacts",
+          "shortTitle": "Contacts",
+          "eyebrow": "Aide",
+          "title": "Contacts utiles",
+          "items": [
+            {
+              "title": "Riad Bilkis",
+              "text": "Téléphone : +212625675494 · Email : riadbilkis@yahoo.com",
+              "actions": [
+                {
+                  "label": "WhatsApp",
+                  "href": "https://wa.me/212625675494",
+                  "external": true
+                },
+                {
+                  "label": "Envoyer un email",
+                  "href": "mailto:riadbilkis@yahoo.com"
+                }
+              ]
+            },
+            {
+              "title": "Adresse",
+              "text": "117 Derb Jdid, Bab Doukkala, Médina, Marrakech.",
+              "actions": [
+                {
+                  "label": "Ouvrir dans Google Maps",
+                  "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+                  "external": true
+                },
+                {
+                  "label": "Visiter le site internet",
+                  "href": "https://www.riadbilkis.com",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "reviews",
+          "shortTitle": "Avis",
+          "type": "reviews",
+          "eyebrow": "Votre avis",
+          "title": "Avis clients",
+          "heading": "Votre satisfaction est notre satisfaction",
+          "text": "Vous avez apprécié votre séjour ? Votre avis aide les prochains voyageurs à nous découvrir.",
+          "actions": [
+            {
+              "label": "Laisser un avis",
+              "href": "https://www.google.com/search?q=Riad+Bilkis+Marrakech+avis",
+              "external": true
+            }
+          ]
+        }
+      ]
+    },
+    "en": {
+      "meta": {
+        "title": "Welcome guide - Riad Bilkis"
+      },
+      "hero": {
+        "eyebrow": "Digital welcome guide",
+        "title": "Welcome to Riad Bilkis",
+        "subtitle": "Essential information to enjoy your stay in Marrakech Medina with ease.",
+        "primaryAction": "View Wi‑Fi",
+        "secondaryAction": "Contact your hosts"
+      },
+      "arrivalCard": {
+        "label": "Arrival / departure",
+        "times": "Check-in from 1 pm · Check-out before 11 am",
+        "link": "View details"
+      },
+      "footer": {
+        "backToTop": "Back to top",
+        "note": "Digital guide created for Riad Bilkis guests."
+      },
+      "ui": {
+        "copyPassword": "Copy password",
+        "passwordCopied": "Password copied."
+      },
+      "sections": [
+        {
+          "id": "welcome",
+          "shortTitle": "Welcome",
+          "type": "intro",
+          "eyebrow": "Welcome",
+          "title": "Hello and welcome",
+          "lead": "We are delighted to welcome you.",
+          "body": [
+            "We hope you will have a memorable stay and leave with wonderful memories of Marrakech.",
+            "This guide gathers the essential information you need for a smooth and comfortable stay. If you need anything, please contact us at any time."
+          ],
+          "blocks": [
+            {
+              "eyebrow": "Overview",
+              "title": "Riad Bilkis",
+              "lead": "A guest house designed as a home, in the heart of Bab Doukkala.",
+              "image": "/assets/images/riad-patio.jpg",
+              "imageAlt": "Riad Bilkis patio with colorful tiles and traditional furniture",
+              "features": {
+                "title": "Main amenities",
+                "list": [
+                  "3 bedrooms and 3 bathrooms",
+                  "Terrace, jacuzzi and relaxation areas",
+                  "Equipped kitchen with dishwasher",
+                  "Washing machine, dryer and baby bed"
+                ]
+              }
+            },
+            {
+              "eyebrow": "Meet your hosts",
+              "title": "Khadija and Ali",
+              "lead": "Your hosts are here to make your stay comfortable.",
+              "image": "/assets/images/hosts-ali-khadija.jpg",
+              "imageAlt": "Ali and Khadija, your hosts at Riad Bilkis",
+              "text": "Riad Bilkis is not only a guest house: it is our home and our passion. We love sharing our region, its history, culture and cuisine with our guests."
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "shortTitle": "Arrival / departure",
+          "type": "times",
+          "eyebrow": "Times",
+          "title": "Arrival and departure",
+          "lead": "Please send us the useful details so we can organize your arrival.",
+          "times": [
+            {
+              "label": "Check-in",
+              "value": "1 pm",
+              "detail": "Arrival is possible from 1 pm."
+            },
+            {
+              "label": "Check-out",
+              "value": "11 am",
+              "detail": "Departure is no later than 11 am."
+            }
+          ],
+          "items": [
+            {
+              "title": "Before leaving",
+              "list": [
+                "Turn off heating or air conditioning",
+                "Turn off the lights",
+                "Check the safe",
+                "Leave towels on the floor",
+                "Return the keys to Mrs. Sinan"
+              ]
+            }
+          ],
+          "transferForm": {
+            "bookButton": "Book transfer",
+            "subtitle": "Arrange your transfer in a few clicks",
+            "features": [
+              {
+                "icon": "✈️",
+                "label": "Airport arrival",
+                "detail": "We welcome you on arrival"
+              },
+              {
+                "icon": "🛫",
+                "label": "Airport departure",
+                "detail": "We take you back for your departure"
+              },
+              {
+                "icon": "⏱️",
+                "label": "Quick and easy",
+                "detail": "Book in less than 2 minutes"
+              },
+              {
+                "icon": "👤",
+                "label": "Professional driver",
+                "detail": "Reliable and comfortable service"
+              }
+            ],
+            "cta": "Book now",
+            "badge": "Instant confirmation",
+            "title": "Airport transfer reservation",
+            "transferTypeLabel": "Transfer type",
+            "transferTypeOptions": {
+              "both": "Arrival and departure",
+              "arrival": "Arrival only",
+              "departure": "Departure only"
+            },
+            "arrivalHeading": "Arrival",
+            "departureHeading": "Departure",
+            "fields": {
+              "name": "Full name",
+              "email": "Email",
+              "phone": "Phone number (with country code)",
+              "guests": "Number of guests",
+              "arrivalDate": "Arrival date",
+              "arrivalTime": "Arrival time at airport",
+              "arrivalFlight": "Flight number",
+              "departureDate": "Departure date",
+              "departureTime": "Preferred pickup time from riad",
+              "departureFlight": "Departure flight number (if available)"
+            },
+            "submit": "Send request",
+            "success": "Thank you! Your transfer request has been sent. We will confirm by email.",
+            "close": "Close"
+          }
+        },
+        {
+          "id": "kitchen",
+          "shortTitle": "Dinner",
+          "type": "dinner",
+          "eyebrow": "Gastronomy",
+          "title": "Moroccan Dinner Experience",
+          "lead": "Treat yourself to a true immersion in Moroccan cuisine. Mrs. Sinan, our excellent cook, prepares delicious homemade dishes every day with fresh ingredients and traditional Moroccan recipes.",
+          "menus": [
+            {
+              "icon": "🍲",
+              "label": "Full menu",
+              "detail": "Starter + main + dessert",
+              "price": "€25"
+            },
+            {
+              "icon": "🍴",
+              "label": "Starter + main",
+              "detail": "Starter and main of your choice",
+              "price": "€20"
+            },
+            {
+              "icon": "🍽️",
+              "label": "Main + dessert",
+              "detail": "Main course and dessert",
+              "price": "€20"
+            },
+            {
+              "icon": "☕",
+              "label": "Main course",
+              "detail": "A delicious dish of your choice",
+              "price": "€15"
+            }
+          ],
+          "dinnerHeader": {
+            "title": "Book dinner",
+            "subtitle": "Enjoy an authentic meal without leaving the riad"
+          },
+          "bookButton": "Book now",
+          "perPerson": "/ person",
+          "badges": [
+            {
+              "icon": "🍳",
+              "text": "Easy booking in a few clicks"
+            },
+            {
+              "icon": "🌿",
+              "text": "Fresh local produce"
+            },
+            {
+              "icon": "❤️",
+              "text": "Made with passion"
+            }
+          ],
+          "form": {
+            "title": "Dinner reservation",
+            "fields": {
+              "name": "Name",
+              "email": "Email",
+              "date": "Preferred date",
+              "time": "Dinner time",
+              "guests": "Number of guests",
+              "menu": "Menu choice",
+              "message": "Message / allergies / dietary preferences"
+            },
+            "menuOptions": [
+              {
+                "label": "Full menu",
+                "price": 25
+              },
+              {
+                "label": "Starter + main",
+                "price": 20
+              },
+              {
+                "label": "Main + dessert",
+                "price": 20
+              },
+              {
+                "label": "Main course",
+                "price": 15
+              }
+            ],
+            "currency": "€",
+            "currencyBefore": true,
+            "perPerson": "/ person",
+            "summary": {
+              "guestsLabel": "Number of guests",
+              "priceLabel": "Price",
+              "totalLabel": "Total",
+              "placeholder": "Choose a menu to see the total."
+            },
+            "submit": "Send reservation",
+            "success": "Thank you! Your reservation request has been sent. We will confirm by email.",
+            "close": "Close"
+          }
+        },
+        {
+          "id": "linen",
+          "shortTitle": "Linen",
+          "eyebrow": "Laundry",
+          "title": "Linen and laundry",
+          "items": [
+            {
+              "title": "Towels and bed linen",
+              "text": "For six-night stays, changed every three days. For four-night stays, changed every two days."
+            },
+            {
+              "title": "Washing machine",
+              "text": "Mrs. Sinan will take care of your laundry. Please place your clothes in a bag and leave it next to the washing machine.<br><strong>5 € per load</strong><br><strong>Service available from 9 am to 3 pm</strong>"
+            },
+            {
+              "title": "Bathroom amenities",
+              "list": [
+                "Shampoo and shower gel",
+                "Soap",
+                "Make-up remover cotton",
+                "Cotton buds"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "practical",
+          "shortTitle": "Practical",
+          "eyebrow": "Information",
+          "title": "Practical information",
+          "lead": "Useful details from the moment you arrive.",
+          "image": "/assets/images/breakfast.jpg",
+          "imageAlt": "Moroccan breakfast served at Riad Bilkis",
+          "items": [
+            {
+              "title": "Arrival welcome",
+              "text": "On arrival, enjoy complimentary mint tea, delicious Moroccan pastries and a bottle of water in your room. We also provide a city map with explanations to help you discover Marrakech with peace of mind."
+            },
+            {
+              "title": "Breakfast",
+              "text": "Served from <span class=\"hl-time\">8:00 am to 10:30 am</span>Before 7:30 am, a takeaway breakfast can be prepared. After 10:30 am, breakfast is available for <span class=\"hl-price\">6 € per person</span>."
+            },
+            {
+              "title": "Housekeeping",
+              "text": "Mrs. Khadija is available for breakfast and room cleaning. She works from <strong>7:30 am to 3:00 pm</strong>."
+            },
+            {
+              "title": "Parking",
+              "text": "Parking for guests arriving by car. If you have a car, nearby parking is available for <span class=\"hl-price\">4 € per 24-hour period</span>."
+            }
+          ]
+        },
+        {
+          "id": "wifi",
+          "shortTitle": "Wi‑Fi",
+          "type": "wifi",
+          "eyebrow": "Connection",
+          "title": "Wi‑Fi",
+          "lead": "Connect quickly to the house network.",
+          "networkLabel": "Network",
+          "network": "Orange-A96D",
+          "passwordLabel": "Password",
+          "password": "F90N3G0TT21"
+        },
+        {
+          "id": "services",
+          "shortTitle": "Services",
+          "eyebrow": "Comfort",
+          "title": "Riad services",
+          "items": [
+            {
+              "title": "Water and mint tea",
+              "text": "Offered on arrival to introduce you to Moroccan hospitality."
+            },
+            {
+              "title": "Relaxation areas",
+              "text": "The inner courtyard and terrace are available for relaxing after a day of visits."
+            },
+            {
+              "title": "Air conditioning and heating",
+              "text": "Comfort is ensured all year with air conditioning and heating systems."
+            },
+            {
+              "title": "City map",
+              "text": "Find a complete map of Marrakech with the main districts, must-see tourist sites, monuments, museums, gardens, restaurants, as well as useful information and emergency numbers. This map is available to help you discover the city with ease."
+            }
+          ]
+        },
+        {
+          "id": "rules",
+          "shortTitle": "Rules",
+          "type": "rules",
+          "eyebrow": "House",
+          "title": "House rules",
+          "lead": "Please follow these rules for everyone's comfort and to preserve our riad.",
+          "items": [
+            {
+              "icon": "🏠",
+              "title": "Respect the property",
+              "text": "Please respect the house and outdoor areas and avoid any damage.",
+              "color": "yellow"
+            },
+            {
+              "icon": "🐾",
+              "title": "Pets",
+              "text": "We love animals, but pets are not accepted during your stay.",
+              "color": "green"
+            },
+            {
+              "icon": "🚭",
+              "title": "No smoking",
+              "text": "Please do not smoke inside. A sheltered smoking area is available on the terrace.",
+              "color": "orange"
+            },
+            {
+              "icon": "🎉",
+              "title": "Parties and receptions",
+              "text": "Please do not organize large parties and keep noise down after 10 pm.",
+              "color": "purple"
+            },
+            {
+              "icon": "🚪",
+              "title": "Extra guests",
+              "text": "No unexpected extra guest can be hosted without informing us first.",
+              "color": "blue"
+            },
+            {
+              "icon": "⚠️",
+              "title": "Safety",
+              "text": "Please follow safety rules and do not use dangerous electrical equipment.",
+              "color": "red"
+            }
+          ]
+        },
+        {
+          "id": "contacts",
+          "shortTitle": "Contacts",
+          "eyebrow": "Help",
+          "title": "Useful contacts",
+          "items": [
+            {
+              "title": "Riad Bilkis",
+              "text": "Phone: +212625675494 · Email: riadbilkis@yahoo.com",
+              "actions": [
+                {
+                  "label": "WhatsApp",
+                  "href": "https://wa.me/212625675494",
+                  "external": true
+                },
+                {
+                  "label": "Send email",
+                  "href": "mailto:riadbilkis@yahoo.com"
+                }
+              ]
+            },
+            {
+              "title": "Address",
+              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech.",
+              "actions": [
+                {
+                  "label": "Open in Google Maps",
+                  "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+                  "external": true
+                },
+                {
+                  "label": "Visit the website",
+                  "href": "https://www.riadbilkis.com",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "reviews",
+          "shortTitle": "Reviews",
+          "type": "reviews",
+          "eyebrow": "Your review",
+          "title": "Guest reviews",
+          "heading": "Your satisfaction is our satisfaction",
+          "text": "Did you enjoy your stay? Your review helps future travelers discover us.",
+          "actions": [
+            {
+              "label": "Leave a review",
+              "href": "https://www.google.com/search?q=Riad+Bilkis+Marrakech+avis",
+              "external": true
+            }
+          ]
+        }
+      ]
+    },
+    "es": {
+      "meta": {
+        "title": "Guía de bienvenida - Riad Bilkis"
+      },
+      "hero": {
+        "eyebrow": "Guía digital de bienvenida",
+        "title": "Bienvenido a Riad Bilkis",
+        "subtitle": "Información esencial para disfrutar fácilmente de su estancia en la medina de Marrakech.",
+        "primaryAction": "Ver Wi‑Fi",
+        "secondaryAction": "Contactar con los anfitriones"
+      },
+      "arrivalCard": {
+        "label": "Llegada / salida",
+        "times": "Llegada desde las 13:00 · Salida antes de las 11:00",
+        "link": "Ver detalles"
+      },
+      "footer": {
+        "backToTop": "Volver arriba",
+        "note": "Guía digital creada para los huéspedes de Riad Bilkis."
+      },
+      "ui": {
+        "copyPassword": "Copiar contraseña",
+        "passwordCopied": "Contraseña copiada."
+      },
+      "sections": [
+        {
+          "id": "welcome",
+          "shortTitle": "Bienvenida",
+          "type": "intro",
+          "eyebrow": "Bienvenida",
+          "title": "Hola y bienvenido",
+          "lead": "Nos alegra recibirle en nuestra casa.",
+          "body": [
+            "Esperamos que disfrute de una estancia memorable y se marche con maravillosos recuerdos de Marrakech.",
+            "Esta guía reúne la información esencial para que su estancia sea cómoda y sencilla. Si necesita algo, no dude en contactarnos."
+          ],
+          "blocks": [
+            {
+              "eyebrow": "Presentación",
+              "title": "Riad Bilkis",
+              "lead": "Una casa de huéspedes pensada como un hogar, en el corazón de Bab Doukkala.",
+              "image": "/assets/images/riad-patio.jpg",
+              "imageAlt": "Patio del Riad Bilkis con azulejos de colores y muebles tradicionales",
+              "features": {
+                "title": "Equipamiento principal",
+                "list": [
+                  "3 habitaciones y 3 baños",
+                  "Terraza, jacuzzi y zonas de descanso",
+                  "Cocina equipada con lavavajillas",
+                  "Lavadora, secadora y cuna"
+                ]
+              }
+            },
+            {
+              "eyebrow": "Sus anfitriones",
+              "title": "Khadija y Ali",
+              "lead": "Sus anfitriones están disponibles para que su estancia sea cómoda.",
+              "image": "/assets/images/hosts-ali-khadija.jpg",
+              "imageAlt": "Ali y Khadija, sus anfitriones en Riad Bilkis",
+              "text": "Riad Bilkis no es solo una casa de huéspedes: es nuestro hogar y nuestra pasión. Nos encanta compartir nuestra región, su historia, cultura y cocina con nuestros invitados."
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "shortTitle": "Llegada / salida",
+          "type": "times",
+          "eyebrow": "Horarios",
+          "title": "Llegada y salida",
+          "lead": "Envíenos los datos necesarios para organizar su llegada.",
+          "times": [
+            {
+              "label": "Llegada",
+              "value": "13:00",
+              "detail": "La llegada es posible a partir de las 13:00."
+            },
+            {
+              "label": "Salida",
+              "value": "11:00",
+              "detail": "La salida debe realizarse antes de las 11:00."
+            }
+          ],
+          "items": [
+            {
+              "title": "Antes de salir",
+              "list": [
+                "Apagar la calefacción o el aire acondicionado",
+                "Apagar las luces",
+                "Comprobar la caja fuerte",
+                "Dejar las toallas en el suelo",
+                "Entregar las llaves a la Sra. Sinan"
+              ]
+            }
+          ],
+          "transferForm": {
+            "bookButton": "Reservar el traslado",
+            "subtitle": "Organice su traslado en unos clics",
+            "features": [
+              {
+                "icon": "✈️",
+                "label": "Llegada al aeropuerto",
+                "detail": "Le recibimos a su llegada"
+              },
+              {
+                "icon": "🛫",
+                "label": "Salida del aeropuerto",
+                "detail": "Le acompañamos en su partida"
+              },
+              {
+                "icon": "⏱️",
+                "label": "Sencillo y rápido",
+                "detail": "Reserve en menos de 2 minutos"
+              },
+              {
+                "icon": "👤",
+                "label": "Chófer profesional",
+                "detail": "Servicio fiable y cómodo"
+              }
+            ],
+            "cta": "Reservar ahora",
+            "badge": "Confirmación inmediata",
+            "title": "Reserva de traslado al aeropuerto",
+            "transferTypeLabel": "Tipo de traslado",
+            "transferTypeOptions": {
+              "both": "Llegada y salida",
+              "arrival": "Solo llegada",
+              "departure": "Solo salida"
+            },
+            "arrivalHeading": "Llegada",
+            "departureHeading": "Salida",
+            "fields": {
+              "name": "Nombre y apellido",
+              "email": "Correo electrónico",
+              "phone": "Número de teléfono (con prefijo)",
+              "guests": "Número de personas",
+              "arrivalDate": "Fecha de llegada",
+              "arrivalTime": "Hora de llegada al aeropuerto",
+              "arrivalFlight": "Número de vuelo",
+              "departureDate": "Fecha de salida",
+              "departureTime": "Hora deseada para la salida del riad",
+              "departureFlight": "Número de vuelo de salida (si disponible)"
+            },
+            "submit": "Enviar solicitud",
+            "success": "¡Gracias! Su solicitud de traslado ha sido enviada. Le confirmaremos por correo electrónico.",
+            "close": "Cerrar"
+          }
+        },
+        {
+          "id": "kitchen",
+          "shortTitle": "Cena",
+          "type": "dinner",
+          "eyebrow": "Gastronomía",
+          "title": "Experiencia Cena Marroquí",
+          "lead": "Regálese una verdadera inmersión en la gastronomía marroquí. La Sra. Sinan, nuestra excelente cocinera, prepara cada día deliciosos platos caseros con productos frescos y recetas tradicionales marroquíes.",
+          "menus": [
+            {
+              "icon": "🍲",
+              "label": "Menú completo",
+              "detail": "Entrada + plato + postre",
+              "price": "25 €"
+            },
+            {
+              "icon": "🍴",
+              "label": "Entrada + plato",
+              "detail": "Entrada y plato a elegir",
+              "price": "20 €"
+            },
+            {
+              "icon": "🍽️",
+              "label": "Plato + postre",
+              "detail": "Plato principal y postre",
+              "price": "20 €"
+            },
+            {
+              "icon": "☕",
+              "label": "Plato principal",
+              "detail": "Un plato delicioso a elegir",
+              "price": "15 €"
+            }
+          ],
+          "dinnerHeader": {
+            "title": "Reservar la cena",
+            "subtitle": "Disfrute de una comida auténtica sin salir del riad"
+          },
+          "bookButton": "Reservar ahora",
+          "perPerson": "/ persona",
+          "badges": [
+            {
+              "icon": "🍳",
+              "text": "Reserva fácil en unos clics"
+            },
+            {
+              "icon": "🌿",
+              "text": "Productos frescos y locales"
+            },
+            {
+              "icon": "❤️",
+              "text": "Preparado con pasión"
+            }
+          ],
+          "form": {
+            "title": "Reserva de cena",
+            "fields": {
+              "name": "Nombre",
+              "email": "Correo electrónico",
+              "date": "Fecha deseada",
+              "time": "Hora de la cena",
+              "guests": "Número de personas",
+              "menu": "Elección del menú",
+              "message": "Mensaje / alergias / preferencias alimentarias"
+            },
+            "menuOptions": [
+              {
+                "label": "Menú completo",
+                "price": 25
+              },
+              {
+                "label": "Entrada + plato",
+                "price": 20
+              },
+              {
+                "label": "Plato + postre",
+                "price": 20
+              },
+              {
+                "label": "Plato principal",
+                "price": 15
+              }
+            ],
+            "currency": "€",
+            "currencyBefore": false,
+            "perPerson": "/ persona",
+            "summary": {
+              "guestsLabel": "Número de personas",
+              "priceLabel": "Precio",
+              "totalLabel": "Total",
+              "placeholder": "Elija un menú para ver el total."
+            },
+            "submit": "Enviar reserva",
+            "success": "¡Gracias! Su solicitud de reserva ha sido enviada. Le confirmaremos por correo electrónico.",
+            "close": "Cerrar"
+          }
+        },
+        {
+          "id": "linen",
+          "shortTitle": "Ropa",
+          "eyebrow": "Lavandería",
+          "title": "Ropa de casa y lavandería",
+          "items": [
+            {
+              "title": "Toallas y ropa de cama",
+              "text": "Para estancias de seis noches, cambio cada tres días. Para estancias de cuatro noches, cambio cada dos días."
+            },
+            {
+              "title": "Lavadora",
+              "text": "La Sra. Sinan se encargará de su ropa. Por favor, coloque su ropa en una bolsa y déjela junto a la lavadora.<br><strong>5 € por lavado</strong><br><strong>Servicio disponible de 9:00 a 15:00</strong>"
+            },
+            {
+              "title": "Artículos de baño",
+              "list": [
+                "Champú y gel de ducha",
+                "Jabón",
+                "Algodón desmaquillante",
+                "Bastoncillos de algodón"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "practical",
+          "shortTitle": "Práctico",
+          "eyebrow": "Información",
+          "title": "Información práctica",
+          "lead": "Detalles útiles desde su llegada.",
+          "image": "/assets/images/breakfast.jpg",
+          "imageAlt": "Desayuno marroquí servido en el Riad Bilkis",
+          "items": [
+            {
+              "title": "Bienvenida",
+              "text": "A su llegada, disfrute de té de menta, deliciosos pasteles marroquíes y una botella de agua de cortesía en su habitación. También ponemos a su disposición un plano de la ciudad con explicaciones para ayudarle a descubrir Marrakech con tranquilidad."
+            },
+            {
+              "title": "Desayuno",
+              "text": "Se sirve de <span class=\"hl-time\">8:00 a 10:30</span>Antes de las 7:30, puede prepararse un desayuno para llevar. Después de las 10:30, se ofrece por <span class=\"hl-price\">6 € por persona</span>."
+            },
+            {
+              "title": "Limpieza",
+              "text": "Sra. Khadija está a su disposición para el desayuno y la limpieza de habitaciones. Trabaja de <strong>7:30 a 15:00</strong>."
+            },
+            {
+              "title": "Aparcamiento",
+              "text": "Aparcamiento para personas que vienen en coche. Si tiene coche, hay aparcamiento cercano disponible por <span class=\"hl-price\">4 € cada 24 horas</span>."
+            }
+          ]
+        },
+        {
+          "id": "wifi",
+          "shortTitle": "Wi‑Fi",
+          "type": "wifi",
+          "eyebrow": "Conexión",
+          "title": "Wi‑Fi",
+          "lead": "Conéctese rápidamente a la red de la casa.",
+          "networkLabel": "Red",
+          "network": "Orange-A96D",
+          "passwordLabel": "Contraseña",
+          "password": "F90N3G0TT21"
+        },
+        {
+          "id": "services",
+          "shortTitle": "Servicios",
+          "eyebrow": "Comodidad",
+          "title": "Servicios del riad",
+          "items": [
+            {
+              "title": "Agua y té de menta",
+              "text": "Ofrecidos a la llegada para darle la bienvenida con hospitalidad marroquí."
+            },
+            {
+              "title": "Zonas de descanso",
+              "text": "El patio interior y la terraza están disponibles para relajarse después de un día de visitas."
+            },
+            {
+              "title": "Aire acondicionado y calefacción",
+              "text": "Su comodidad está asegurada todo el año con sistemas de climatización y calefacción."
+            },
+            {
+              "title": "Plano de la ciudad",
+              "text": "Encuentre un plano completo de Marrakech con los principales barrios, los sitios turísticos imprescindibles, los monumentos, los museos, los jardines, los restaurantes, así como información útil y los números de emergencia. Este plano está disponible para ayudarle a descubrir la ciudad con toda facilidad."
+            }
+          ]
+        },
+        {
+          "id": "rules",
+          "shortTitle": "Reglas",
+          "type": "rules",
+          "eyebrow": "Casa",
+          "title": "Reglamento interior",
+          "lead": "Gracias por respetar estas normas para el confort de todos y la preservación de nuestro riad.",
+          "items": [
+            {
+              "icon": "🏠",
+              "title": "Respeto del lugar",
+              "text": "Respete la casa y los espacios exteriores evitando cualquier daño.",
+              "color": "yellow"
+            },
+            {
+              "icon": "🐾",
+              "title": "Animales",
+              "text": "Nos encantan los animales, pero no se aceptan durante la estancia.",
+              "color": "green"
+            },
+            {
+              "icon": "🚭",
+              "title": "No fumar",
+              "text": "Gracias por no fumar dentro. Hay una zona cubierta para fumadores en la terraza.",
+              "color": "orange"
+            },
+            {
+              "icon": "🎉",
+              "title": "Fiestas y recepciones",
+              "text": "Gracias por no organizar grandes fiestas y limitar el ruido después de las 22:00.",
+              "color": "purple"
+            },
+            {
+              "icon": "🚪",
+              "title": "Persona adicional",
+              "text": "No se puede alojar a ningún viajero adicional imprevisto sin informarnos previamente.",
+              "color": "blue"
+            },
+            {
+              "icon": "⚠️",
+              "title": "Seguridad",
+              "text": "Respete las normas de seguridad y no utilice material eléctrico peligroso.",
+              "color": "red"
+            }
+          ]
+        },
+        {
+          "id": "contacts",
+          "shortTitle": "Contactos",
+          "eyebrow": "Ayuda",
+          "title": "Contactos útiles",
+          "items": [
+            {
+              "title": "Riad Bilkis",
+              "text": "Teléfono: +212625675494 · Email: riadbilkis@yahoo.com",
+              "actions": [
+                {
+                  "label": "WhatsApp",
+                  "href": "https://wa.me/212625675494",
+                  "external": true
+                },
+                {
+                  "label": "Enviar email",
+                  "href": "mailto:riadbilkis@yahoo.com"
+                }
+              ]
+            },
+            {
+              "title": "Dirección",
+              "text": "117 Derb Jdid, Bab Doukkala, Medina, Marrakech.",
+              "actions": [
+                {
+                  "label": "Abrir en Google Maps",
+                  "href": "https://www.google.com/maps/search/?api=1&query=Riad%20Bilkis%20117%20Derb%20Jdid%20Bab%20Doukkala%20Marrakech",
+                  "external": true
+                },
+                {
+                  "label": "Visitar el sitio web",
+                  "href": "https://www.riadbilkis.com",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "reviews",
+          "shortTitle": "Opiniones",
+          "type": "reviews",
+          "eyebrow": "Su opinión",
+          "title": "Opiniones de clientes",
+          "heading": "Su satisfacción es nuestra satisfacción",
+          "text": "¿Disfrutó de su estancia? Su opinión ayuda a futuros viajeros a descubrirnos.",
+          "actions": [
+            {
+              "label": "Dejar una opinión",
+              "href": "https://www.google.com/search?q=Riad+Bilkis+Marrakech+avis",
+              "external": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

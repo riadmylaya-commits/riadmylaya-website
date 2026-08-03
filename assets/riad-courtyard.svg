@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Cour intérieure stylisée</title>
+  <desc id="desc">Illustration abstraite inspirée d'un riad marocain.</desc>
+  <defs>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#d9b38c" />
+      <stop offset="0.58" stop-color="#9b5d3a" />
+      <stop offset="1" stop-color="#244d3f" />
+    </linearGradient>
+    <pattern id="tiles" width="90" height="90" patternUnits="userSpaceOnUse">
+      <rect width="90" height="90" fill="#c57947" />
+      <rect width="45" height="45" fill="#244d3f" opacity="0.85" />
+      <rect x="45" y="45" width="45" height="45" fill="#f0c36d" opacity="0.9" />
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#wall)" />
+  <path d="M0 650h1600v350H0z" fill="url(#tiles)" opacity="0.78" />
+  <path d="M170 120h1260v560H170z" fill="#f7efe6" opacity="0.2" />
+  <path d="M270 220h260v360H270zM660 220h280v360H660zM1070 220h260v360h-260z" fill="#1e1916" opacity="0.28" />
+  <path d="M310 590c0-145 84-250 210-250s210 105 210 250v220H310z" fill="#fffaf3" opacity="0.22" />
+  <path d="M920 590c0-145 84-250 210-250s210 105 210 250v220H920z" fill="#fffaf3" opacity="0.22" />
+  <circle cx="790" cy="190" r="72" fill="#f0c36d" opacity="0.82" />
+  <path d="M790 0v150" stroke="#1e1916" stroke-width="10" opacity="0.45" />
+  <path d="M0 0h1600v1000H0z" fill="#1e1916" opacity="0.08" />
+</svg>
