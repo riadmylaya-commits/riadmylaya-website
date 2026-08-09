@@ -1,0 +1,1686 @@
+{
+  "languages": {
+    "fr": {
+      "meta": {
+        "title": "Guide d'accueil - Riad Mylaya"
+      },
+      "hero": {
+        "eyebrow": "Livret d'accueil digital",
+        "title": "Bienvenue au Riad Mylaya",
+        "subtitle": "Toutes les informations utiles pour profiter simplement de votre séjour au cœur de la médina de Marrakech.",
+        "primaryAction": "Voir le Wi‑Fi",
+        "secondaryAction": "Nous contacter"
+      },
+      "arrivalCard": {
+        "label": "Arrivée / départ",
+        "times": "Arrivée dès 14h · Départ avant 12h",
+        "link": "Voir les détails"
+      },
+      "footer": {
+        "backToTop": "Retour en haut",
+        "note": "Guide digital conçu pour les voyageurs du Riad Mylaya · 163 Derb Bounba, Arset Ihiri — Médina, Marrakech"
+      },
+      "ui": {
+        "copyPassword": "Copier le mot de passe",
+        "passwordCopied": "Mot de passe copié."
+      },
+      "sections": [
+        {
+          "id": "welcome",
+          "shortTitle": "Bienvenue",
+          "type": "intro",
+          "eyebrow": "Accueil",
+          "title": "Bonjour et bienvenue",
+          "lead": "Nous sommes heureux de vous accueillir au Riad Mylaya.",
+          "body": [
+            "Nous espérons que vous passerez un séjour mémorable et que vous repartirez avec de merveilleux souvenirs de Marrakech.",
+            "Ce guide rassemble tout ce dont vous avez besoin : horaires, services, transferts, excursions et contacts. En cas de besoin, écrivez-nous à tout moment sur WhatsApp."
+          ],
+          "blocks": [
+            {
+              "eyebrow": "La maison",
+              "title": "Riad Mylaya",
+              "lead": "Une maison d'hôtes traditionnelle, pensée comme un foyer, au cœur de la médina.",
+              "image": "/assets/images/patio.jpg",
+              "imageAlt": "Patio du Riad Mylaya",
+              "features": {
+                "title": "Les espaces à votre disposition",
+                "list": [
+                  "Patio intérieur et salons de détente",
+                  "Terrasse panoramique sur la médina",
+                  "Hammam traditionnel (sur réservation)",
+                  "Chambres authentiques climatisées",
+                  "Petit-déjeuner marocain fait maison"
+                ]
+              }
+            },
+            {
+              "eyebrow": "Votre équipe",
+              "title": "Une équipe à votre écoute",
+              "lead": "Nous sommes présents tous les jours pour vous aider.",
+              "image": "/assets/images/salon.jpg",
+              "imageAlt": "Salon traditionnel du Riad Mylaya",
+              "text": "Réservation d'un taxi, conseils sur les souks, réservation d'un dîner ou d'une excursion : n'hésitez jamais à nous solliciter. Un simple message WhatsApp suffit, et nous vous répondons en français, anglais, espagnol ou arabe."
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "shortTitle": "Arrivée",
+          "type": "times",
+          "eyebrow": "Séjour",
+          "title": "Arrivée & départ",
+          "lead": "Réservez votre transfert aéroport en quelques clics et profitez de notre service bagages.",
+          "times": [
+            {
+              "label": "Arrivée",
+              "value": "À partir de 14h",
+              "detail": "Arrivée anticipée possible selon disponibilité — prévenez-nous."
+            },
+            {
+              "label": "Départ",
+              "value": "Avant 12h",
+              "detail": "Départ tardif possible sur demande, selon disponibilité."
+            },
+            {
+              "label": "Arrivée tardive",
+              "value": "24h/24",
+              "detail": "Nous vous accueillons à toute heure : indiquez-nous votre heure d'arrivée."
+            }
+          ],
+          "transferForm": {
+            "bookButton": "Réserver le transfert aéroport",
+            "subtitle": "Organisez votre transfert en quelques clics",
+            "features": [
+              {
+                "icon": "✈️",
+                "label": "Arrivée à l'aéroport",
+                "detail": "Notre chauffeur vous attend avec une pancarte à votre nom"
+              },
+              {
+                "icon": "🛫",
+                "label": "Départ vers l'aéroport",
+                "detail": "Nous vous raccompagnons à l'heure qui vous convient"
+              },
+              {
+                "icon": "🧭",
+                "label": "Accompagnement jusqu'au riad",
+                "detail": "Le riad est piéton : on vous guide sur les derniers mètres"
+              },
+              {
+                "icon": "👤",
+                "label": "Chauffeur professionnel",
+                "detail": "Véhicule climatisé, service fiable et ponctuel"
+              }
+            ],
+            "cta": "Réserver maintenant",
+            "badge": "Réponse rapide de l'équipe du riad",
+            "title": "Réservation transfert aéroport",
+            "transferTypeLabel": "Type de transfert",
+            "transferTypeOptions": {
+              "both": "Arrivée et départ",
+              "arrival": "Arrivée uniquement",
+              "departure": "Départ uniquement"
+            },
+            "arrivalHeading": "Arrivée",
+            "departureHeading": "Départ",
+            "fields": {
+              "name": "Nom et prénom",
+              "email": "E-mail",
+              "phone": "Numéro de téléphone (avec indicatif)",
+              "guests": "Nombre de personnes",
+              "arrivalDate": "Date d'arrivée",
+              "arrivalTime": "Heure d'atterrissage",
+              "arrivalFlight": "Numéro de vol",
+              "departureDate": "Date de départ",
+              "departureTime": "Heure souhaitée de départ du riad",
+              "departureFlight": "Numéro de vol de départ (si disponible)"
+            },
+            "submit": "Envoyer la demande",
+            "success": "Merci ! Votre demande de transfert a bien été envoyée. Nous vous confirmerons rapidement.",
+            "close": "Fermer"
+          },
+          "items": [
+            {
+              "title": "Service bagages",
+              "text": "Vous arrivez tôt ou repartez tard ? Nous gardons vos bagages gratuitement avant l'enregistrement et après le départ.",
+              "actions": [
+                {
+                  "label": "Demander ce service",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20souhaite%20utiliser%20le%20service%20bagages%20du%20Riad%20Mylaya.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Arrivée anticipée / départ tardif",
+              "text": "Selon la disponibilité des chambres, nous faisons notre maximum pour vous accueillir plus tôt ou vous laisser partir plus tard.",
+              "actions": [
+                {
+                  "label": "Faire la demande",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20souhaite%20demander%20une%20arriv%C3%A9e%20anticip%C3%A9e%20/%20un%20d%C3%A9part%20tardif.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Nous rejoindre à pied",
+              "text": "Le riad se situe dans une ruelle piétonne. Prévenez-nous 15 minutes avant votre arrivée : quelqu'un vient vous chercher au bout de la rue.",
+              "actions": [
+                {
+                  "label": "Prévenir de mon arrivée",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20j%27arrive%20au%20Riad%20Mylaya%20dans%20environ%2015%20minutes.",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "breakfast",
+          "shortTitle": "Petit-déj",
+          "type": "times",
+          "eyebrow": "Gastronomie",
+          "title": "Petit-déjeuner",
+          "lead": "Un petit-déjeuner marocain fait maison, inclus dans votre séjour.",
+          "times": [
+            {
+              "label": "Horaires",
+              "value": "8h00 – 10h30",
+              "detail": "Servi tous les jours."
+            },
+            {
+              "label": "Où",
+              "value": "Patio ou terrasse",
+              "detail": "Vous choisissez l'endroit qui vous plaît le plus."
+            },
+            {
+              "label": "Formule",
+              "value": "Inclus",
+              "detail": "Crêpes marocaines, pain maison, confitures, œufs, jus frais, thé et café."
+            }
+          ],
+          "items": [
+            {
+              "title": "Régime particulier ou allergie",
+              "text": "Végétarien, sans gluten, sans lactose : prévenez-nous la veille et nous adaptons votre petit-déjeuner.",
+              "actions": [
+                {
+                  "label": "Signaler un régime",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20j%27ai%20un%20r%C3%A9gime%20alimentaire%20particulier%20pour%20le%20petit-d%C3%A9jeuner%20%3A",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Petit-déjeuner plus tôt ou plus tard",
+              "text": "Excursion matinale ou grasse matinée ? Nous pouvons décaler l'heure de votre petit-déjeuner sur simple demande.",
+              "actions": [
+                {
+                  "label": "Demander un horaire",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20souhaite%20d%C3%A9caler%20l%27heure%20de%20mon%20petit-d%C3%A9jeuner.",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dinner",
+          "shortTitle": "Dîner",
+          "type": "dinner",
+          "eyebrow": "Gastronomie",
+          "title": "Dîner marocain au riad",
+          "lead": "Dînez sous les étoiles, sur la terrasse ou dans le patio. Nos plats sont préparés le jour même avec des produits frais du marché, selon les recettes traditionnelles marocaines.",
+          "image": "/assets/images/dinner.jpg",
+          "imageAlt": "Dîner traditionnel servi au Riad Mylaya",
+          "menus": [
+            {
+              "icon": "🍲",
+              "label": "Tajine traditionnel",
+              "detail": "Poulet citron confit, agneau pruneaux ou kefta",
+              "price": "Sur demande"
+            },
+            {
+              "icon": "🥘",
+              "label": "Couscous royal",
+              "detail": "Le vendredi ou sur commande la veille",
+              "price": "Sur demande"
+            },
+            {
+              "icon": "🍽️",
+              "label": "Menu complet",
+              "detail": "Salades marocaines + plat + dessert",
+              "price": "Sur demande"
+            },
+            {
+              "icon": "🌿",
+              "label": "Menu végétarien",
+              "detail": "Légumes de saison et épices douces",
+              "price": "Sur demande"
+            }
+          ],
+          "dinnerHeader": {
+            "title": "Réserver le dîner",
+            "subtitle": "Prévenez-nous avant 16h le jour même"
+          },
+          "bookButton": "Réserver le dîner",
+          "perPerson": "",
+          "badges": [
+            {
+              "icon": "🕯️",
+              "text": "Dîner sur la terrasse ou dans le patio"
+            },
+            {
+              "icon": "🌿",
+              "text": "Produits frais du marché, faits maison"
+            },
+            {
+              "icon": "❤️",
+              "text": "Recettes traditionnelles de la famille"
+            }
+          ],
+          "form": {
+            "title": "Réservation dîner",
+            "fields": {
+              "name": "Nom",
+              "email": "E-mail",
+              "date": "Date souhaitée",
+              "time": "Heure du dîner",
+              "guests": "Nombre de personnes",
+              "menu": "Choix de la formule",
+              "message": "Message / allergies / préférences alimentaires"
+            },
+            "menuOptions": [
+              {
+                "label": "Tajine traditionnel"
+              },
+              {
+                "label": "Couscous royal"
+              },
+              {
+                "label": "Menu complet"
+              },
+              {
+                "label": "Menu végétarien"
+              }
+            ],
+            "currency": "€",
+            "currencyBefore": false,
+            "perPerson": "/ personne",
+            "summary": {
+              "guestsLabel": "Nombre de personnes",
+              "priceLabel": "Prix",
+              "totalLabel": "Total",
+              "placeholder": "L'équipe du riad vous confirmera le tarif exact avec votre réservation."
+            },
+            "submit": "Envoyer la réservation",
+            "success": "Merci ! Votre demande de dîner a bien été envoyée. Nous vous confirmerons rapidement.",
+            "close": "Fermer"
+          }
+        },
+        {
+          "id": "cooking",
+          "shortTitle": "Cours de cuisine",
+          "type": "dinner",
+          "eyebrow": "Expérience",
+          "title": "Cours de cuisine marocaine",
+          "lead": "Apprenez à préparer un tajine ou un couscous avec notre cuisinière, puis dégustez votre plat sur la terrasse. Une expérience conviviale de 3 heures environ, du marché à l'assiette.",
+          "image": "/assets/images/cooking.jpg",
+          "imageAlt": "Cours de cuisine marocaine au Riad Mylaya",
+          "menus": [
+            {
+              "icon": "🍋",
+              "label": "Tajine",
+              "detail": "Poulet au citron confit ou agneau",
+              "price": "45 €"
+            },
+            {
+              "icon": "🥣",
+              "label": "Couscous",
+              "detail": "Semoule roulée à la main et légumes",
+              "price": "45 €"
+            },
+            {
+              "icon": "🥗",
+              "label": "Salades marocaines",
+              "detail": "Assortiment d'entrées traditionnelles",
+              "price": "45 €"
+            },
+            {
+              "icon": "🍪",
+              "label": "Pâtisseries marocaines",
+              "detail": "Cornes de gazelle, briouates au miel",
+              "price": "45 €"
+            }
+          ],
+          "dinnerHeader": {
+            "title": "Réserver le cours",
+            "subtitle": "À réserver au moins 24h à l'avance"
+          },
+          "bookButton": "Réserver le cours de cuisine",
+          "perPerson": "/ personne",
+          "badges": [
+            {
+              "icon": "🧑‍🍳",
+              "text": "Avec notre cuisinière, en petit groupe"
+            },
+            {
+              "icon": "🛒",
+              "text": "Visite du marché possible en option"
+            },
+            {
+              "icon": "🍽️",
+              "text": "Vous dégustez ce que vous cuisinez"
+            }
+          ],
+          "form": {
+            "title": "Réservation cours de cuisine",
+            "fields": {
+              "name": "Nom",
+              "email": "E-mail",
+              "date": "Date souhaitée",
+              "time": "Heure souhaitée",
+              "guests": "Nombre de personnes",
+              "menu": "Plat souhaité",
+              "message": "Message / allergies / préférences"
+            },
+            "menuOptions": [
+              {
+                "label": "Tajine",
+                "price": 45
+              },
+              {
+                "label": "Couscous",
+                "price": 45
+              },
+              {
+                "label": "Salades marocaines",
+                "price": 45
+              },
+              {
+                "label": "Pâtisseries marocaines",
+                "price": 45
+              }
+            ],
+            "currency": "€",
+            "currencyBefore": false,
+            "perPerson": "/ personne",
+            "summary": {
+              "guestsLabel": "Nombre de personnes",
+              "priceLabel": "Prix",
+              "totalLabel": "Total",
+              "placeholder": "Choisissez un plat pour voir le total."
+            },
+            "submit": "Envoyer la réservation",
+            "success": "Merci ! Votre demande de cours de cuisine a bien été envoyée.",
+            "close": "Fermer"
+          }
+        },
+        {
+          "id": "transport",
+          "shortTitle": "Transport",
+          "type": "times",
+          "eyebrow": "Se déplacer",
+          "title": "Transferts & transport",
+          "lead": "Tout ce qu'il faut savoir pour vous déplacer facilement depuis le riad.",
+          "times": [
+            {
+              "label": "Aéroport Ménara",
+              "value": "20–25 min",
+              "detail": "Transfert privé organisé par le riad, sur réservation."
+            },
+            {
+              "label": "Place Jemaa el-Fna",
+              "value": "10 min à pied",
+              "detail": "Le cœur de la médina est tout proche."
+            },
+            {
+              "label": "Gare de Marrakech",
+              "value": "15 min",
+              "detail": "En taxi depuis l'entrée de la médina."
+            }
+          ],
+          "items": [
+            {
+              "title": "Transfert aéroport",
+              "text": "Chauffeur privé, véhicule climatisé, accueil avec pancarte à votre nom. Réservez directement depuis la section « Arrivée & départ ».",
+              "actions": [
+                {
+                  "label": "Réserver un transfert",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20un%20transfert%20a%C3%A9roport%20avec%20le%20Riad%20Mylaya.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Taxi en ville",
+              "text": "Nous pouvons vous appeler un petit taxi à toute heure. Pensez à négocier le prix avant de monter, ou demandez-nous le tarif habituel.",
+              "actions": [
+                {
+                  "label": "Demander un taxi",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20pouvez-vous%20m%27appeler%20un%20taxi%20depuis%20le%20Riad%20Mylaya%20%3F",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Voiture avec chauffeur",
+              "text": "Pour une journée d'excursion ou plusieurs jours, nous organisons une voiture avec chauffeur francophone ou anglophone.",
+              "actions": [
+                {
+                  "label": "Je suis intéressé(e)",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20voiture%20avec%20chauffeur.",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "excursions",
+          "shortTitle": "Excursions",
+          "eyebrow": "À découvrir",
+          "title": "Excursions & activités",
+          "lead": "Nous organisons pour vous les plus belles excursions au départ du riad. Tarifs et horaires communiqués sur demande, selon la saison et le nombre de participants.",
+          "image": "/assets/images/excursions.jpg",
+          "imageAlt": "Jardin Majorelle à Marrakech",
+          "items": [
+            {
+              "title": "Les 3 Vallées de l'Atlas",
+              "text": "Journée dans les vallées berbères de l'Atlas, villages traditionnels et paysages de montagne.",
+              "actions": [
+                {
+                  "label": "Je suis intéressé(e)",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20l%27excursion%20%3A%20Les%203%20Vall%C3%A9es%20de%20l%27Atlas.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Randonnée d'Imlil dans le Haut Atlas",
+              "text": "Randonnée au pied du Toubkal, déjeuner chez l'habitant possible.",
+              "actions": [
+                {
+                  "label": "Je suis intéressé(e)",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20l%27excursion%20%3A%20Randonn%C3%A9e%20d%27Imlil%20dans%20le%20Haut%20Atlas.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Désert d'Agafay & Lac Lalla Takerkoust",
+              "text": "Désert de pierres à 40 min de Marrakech, lac et vues sur l'Atlas.",
+              "actions": [
+                {
+                  "label": "Je suis intéressé(e)",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20l%27excursion%20%3A%20D%C3%A9sert%20d%27Agafay%20%26%20Lac%20Lalla%20Takerkoust.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Coucher de soleil & balade en dromadaire",
+              "text": "Balade à dos de dromadaire dans l'Agafay au coucher du soleil.",
+              "actions": [
+                {
+                  "label": "Je suis intéressé(e)",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20l%27excursion%20%3A%20Coucher%20de%20soleil%20%26%20balade%20en%20dromadaire.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Essaouira – Côte Atlantique",
+              "text": "Journée à Essaouira, sa médina classée, son port et ses plages.",
+              "actions": [
+                {
+                  "label": "Je suis intéressé(e)",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20l%27excursion%20%3A%20Essaouira%20%E2%80%93%20C%C3%B4te%20Atlantique.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Cascades d'Ouzoud",
+              "text": "Les plus hautes cascades du Maroc, singes en liberté et déjeuner au bord de l'eau.",
+              "actions": [
+                {
+                  "label": "Je suis intéressé(e)",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20l%27excursion%20%3A%20Cascades%20d%27Ouzoud.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Vallée de l'Ourika",
+              "text": "Rivière, jardins et villages berbères à moins d'une heure du riad.",
+              "actions": [
+                {
+                  "label": "Je suis intéressé(e)",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20l%27excursion%20%3A%20Vall%C3%A9e%20de%20l%27Ourika.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Ouarzazate & Aït Ben Haddou",
+              "text": "Traversée du col du Tichka et visite du ksar classé au patrimoine mondial.",
+              "actions": [
+                {
+                  "label": "Je suis intéressé(e)",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20l%27excursion%20%3A%20Ouarzazate%20%26%20A%C3%AFt%20Ben%20Haddou.",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "services",
+          "shortTitle": "Services",
+          "eyebrow": "Au riad",
+          "title": "Services supplémentaires",
+          "lead": "Des petits plus pour rendre votre séjour encore plus agréable.",
+          "items": [
+            {
+              "title": "Hammam & Massage",
+              "text": "Hammam traditionnel et massage à l'huile d'argan, sur réservation.",
+              "actions": [
+                {
+                  "label": "Demander ce service",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20un%20hammam%20/%20massage%20au%20Riad%20Mylaya.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Découverte de Marrakech",
+              "text": "Visite guidée de la médina, des souks et des monuments avec un guide officiel.",
+              "actions": [
+                {
+                  "label": "Demander ce service",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20souhaite%20organiser%20une%20visite%20guid%C3%A9e%20de%20Marrakech.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Photographe & Vidéo",
+              "text": "Séance photo professionnelle au riad ou dans la médina (couples, familles, demandes en mariage).",
+              "actions": [
+                {
+                  "label": "Demander ce service",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20une%20s%C3%A9ance%20photo%20/%20vid%C3%A9o.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Blanchisserie",
+              "text": "Service de lavage et repassage, remis sous 24 h.",
+              "actions": [
+                {
+                  "label": "Demander ce service",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20souhaite%20utiliser%20le%20service%20de%20blanchisserie.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Location de voiture & chauffeur",
+              "text": "Voiture avec chauffeur à la journée pour vos déplacements.",
+              "actions": [
+                {
+                  "label": "Demander ce service",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20voiture%20avec%20chauffeur.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Occasions spéciales",
+              "text": "Anniversaire, lune de miel, demande en mariage : décoration, fleurs et gâteau sur demande.",
+              "actions": [
+                {
+                  "label": "Demander ce service",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20souhaite%20organiser%20une%20occasion%20sp%C3%A9ciale%20au%20Riad%20Mylaya.",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wifi",
+          "shortTitle": "Wi‑Fi",
+          "type": "wifi",
+          "eyebrow": "Connexion",
+          "title": "Wi‑Fi",
+          "lead": "Le Wi‑Fi est gratuit et disponible dans tout le riad.",
+          "networkLabel": "Réseau",
+          "network": "Riad Mylaya",
+          "passwordLabel": "Mot de passe",
+          "password": "à demander à la réception"
+        },
+        {
+          "id": "practical",
+          "shortTitle": "Infos pratiques",
+          "eyebrow": "Bon à savoir",
+          "title": "Informations pratiques",
+          "lead": "Quelques repères utiles pendant votre séjour à Marrakech.",
+          "items": [
+            {
+              "title": "Électricité",
+              "text": "220V, prises européennes (type C/E). Pensez à un adaptateur si vous venez du Royaume-Uni ou des États-Unis."
+            },
+            {
+              "title": "Eau",
+              "text": "Nous vous recommandons de boire de l'eau en bouteille. Une bouteille d'eau est offerte à l'arrivée."
+            },
+            {
+              "title": "Climatisation & chauffage",
+              "text": "Chaque chambre est équipée. Merci de fermer les fenêtres lorsque la climatisation fonctionne."
+            },
+            {
+              "title": "Monnaie & paiement",
+              "text": "La monnaie est le dirham (MAD). Des distributeurs se trouvent à 5 minutes à pied. Prévoyez du liquide pour les souks."
+            },
+            {
+              "title": "Pharmacie & médecin",
+              "text": "Une pharmacie se situe à proximité du riad. En cas de besoin médical, prévenez-nous : nous appelons un médecin qui se déplace au riad."
+            },
+            {
+              "title": "Numéros d'urgence",
+              "text": "Police : 19 · Pompiers / ambulance : 15 · Police touristique : +212 524 38 46 01"
+            }
+          ]
+        },
+        {
+          "id": "access",
+          "shortTitle": "Accès & parking",
+          "type": "map",
+          "eyebrow": "Nous trouver",
+          "title": "Parking & accès au riad",
+          "lead": "Le riad se trouve dans une ruelle piétonne de la médina : les voitures ne peuvent pas arriver jusqu'à la porte.",
+          "address": "Riad Mylaya — 163 Derb Bounba, Arset Ihiri, Médina, 40000 Marrakech, Maroc",
+          "mapText": "🚗 Déposez-vous à l'entrée du derb, puis 2 minutes à pied. Prévenez-nous 15 min avant : nous venons vous chercher avec vos bagages.\n\n🅿️ Parking gardé payant à environ 5 minutes à pied (24h/24). Nous vous indiquons l'emplacement exact sur demande.",
+          "actions": [
+            {
+              "label": "Ouvrir dans Google Maps",
+              "href": "https://maps.app.goo.gl/f6u2Dhybbw8uzf637",
+              "external": true
+            },
+            {
+              "label": "Besoin d'aide pour arriver",
+              "href": "https://wa.me/212661351989?text=Bonjour%2C%20j%27ai%20besoin%20d%27aide%20pour%20trouver%20le%20Riad%20Mylaya.",
+              "external": true
+            }
+          ]
+        },
+        {
+          "id": "rules",
+          "shortTitle": "Règlement",
+          "type": "rules",
+          "eyebrow": "Vivre ensemble",
+          "title": "Règlement intérieur",
+          "lead": "Quelques règles simples pour le confort de tous.",
+          "items": [
+            {
+              "icon": "🔇",
+              "color": "amber",
+              "title": "Calme après 22h",
+              "text": "Le riad est une maison ouverte : merci de baisser le ton sur le patio et la terrasse en soirée."
+            },
+            {
+              "icon": "🚭",
+              "color": "red",
+              "title": "Non-fumeur",
+              "text": "Il est interdit de fumer dans les chambres et les espaces intérieurs. La terrasse est à votre disposition."
+            },
+            {
+              "icon": "👟",
+              "color": "gray",
+              "title": "Chaussures",
+              "text": "Merci de retirer vos chaussures dans les salons tapissés, comme le veut la tradition marocaine."
+            },
+            {
+              "icon": "🔑",
+              "color": "gray",
+              "title": "Clés & départ",
+              "text": "Merci de remettre vos clés à l'équipe avant votre départ et de libérer la chambre avant 12h."
+            },
+            {
+              "icon": "👶",
+              "color": "amber",
+              "title": "Enfants",
+              "text": "Les escaliers et la terrasse ne sont pas sécurisés : les enfants doivent rester accompagnés."
+            },
+            {
+              "icon": "💎",
+              "color": "green",
+              "title": "Objets de valeur",
+              "text": "Un coffre est disponible sur demande. Le riad ne peut être tenu responsable des objets laissés dans les chambres."
+            }
+          ]
+        },
+        {
+          "id": "contacts",
+          "shortTitle": "Contact",
+          "eyebrow": "Nous joindre",
+          "title": "Contact & WhatsApp",
+          "lead": "Une question, une envie, un imprévu ? Nous répondons rapidement, 7j/7.",
+          "items": [
+            {
+              "title": "WhatsApp (le plus rapide)",
+              "text": "+212 661 351 989",
+              "actions": [
+                {
+                  "label": "Écrire sur WhatsApp",
+                  "href": "https://wa.me/212661351989?text=Bonjour%2C%20je%20s%C3%A9journe%20au%20Riad%20Mylaya%20et%20j%27ai%20une%20question.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Téléphone",
+              "text": "+212 808 644 081 · +212 661 351 989",
+              "actions": [
+                {
+                  "label": "Appeler le riad",
+                  "href": "tel:+212661351989",
+                  "external": false
+                }
+              ]
+            },
+            {
+              "title": "E-mail",
+              "text": "contact@riadmylaya.com",
+              "actions": [
+                {
+                  "label": "Envoyer un e-mail",
+                  "href": "mailto:contact@riadmylaya.com",
+                  "external": false
+                }
+              ]
+            },
+            {
+              "title": "Prolonger votre séjour",
+              "text": "Envie de rester une nuit de plus ? Vérifiez nos disponibilités en direct, au meilleur prix.",
+              "actions": [
+                {
+                  "label": "Voir les disponibilités",
+                  "href": "https://portal.freetobook.com/reservations?w_id=45823&w_tkn=WyeaTPwj6MSYcDxNHIPuXgqvOYtlIS2H086gviFbewghhARIYxSGLtJxULb49",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "reviews",
+          "shortTitle": "Avis",
+          "type": "reviews",
+          "eyebrow": "Merci",
+          "title": "Votre avis compte",
+          "lead": "",
+          "heading": "Vous avez passé un bon séjour ?",
+          "text": "Votre avis nous aide énormément et permet à d'autres voyageurs de nous découvrir. Cela ne prend qu'une minute — merci du fond du cœur !",
+          "actions": [
+            {
+              "label": "Laisser un avis sur Google",
+              "href": "https://maps.app.goo.gl/f6u2Dhybbw8uzf637",
+              "external": true
+            },
+            {
+              "label": "Laisser un avis sur TripAdvisor",
+              "href": "https://www.tripadvisor.fr/Hotel_Review-g293734-d23740759-Reviews-Riad_Mylaya-Marrakech_Marrakech_Safi.html",
+              "external": true
+            }
+          ]
+        }
+      ]
+    },
+    "en": {
+      "meta": {
+        "title": "Welcome Guide - Riad Mylaya"
+      },
+      "hero": {
+        "eyebrow": "Digital welcome book",
+        "title": "Welcome to Riad Mylaya",
+        "subtitle": "Everything you need to enjoy your stay in the heart of the Marrakech medina.",
+        "primaryAction": "See the Wi‑Fi",
+        "secondaryAction": "Contact us"
+      },
+      "arrivalCard": {
+        "label": "Check-in / check-out",
+        "times": "Check-in from 2pm · Check-out before 12pm",
+        "link": "See the details"
+      },
+      "footer": {
+        "backToTop": "Back to top",
+        "note": "Digital guide for the guests of Riad Mylaya · 163 Derb Bounba, Arset Ihiri — Medina, Marrakech"
+      },
+      "ui": {
+        "copyPassword": "Copy the password",
+        "passwordCopied": "Password copied."
+      },
+      "sections": [
+        {
+          "id": "welcome",
+          "shortTitle": "Welcome",
+          "type": "intro",
+          "eyebrow": "Welcome",
+          "title": "Hello and welcome",
+          "lead": "We are delighted to welcome you to Riad Mylaya.",
+          "body": [
+            "We hope you will have a memorable stay and leave with wonderful memories of Marrakech.",
+            "This guide gathers everything you need: opening times, services, transfers, excursions and contacts. If anything is missing, just message us on WhatsApp."
+          ],
+          "blocks": [
+            {
+              "eyebrow": "The house",
+              "title": "Riad Mylaya",
+              "lead": "A traditional guest house, designed to feel like a home, in the heart of the medina.",
+              "image": "/assets/images/patio.jpg",
+              "imageAlt": "Patio of Riad Mylaya",
+              "features": {
+                "title": "Spaces available to you",
+                "list": [
+                  "Inner patio and relaxation lounges",
+                  "Panoramic terrace over the medina",
+                  "Traditional hammam (on request)",
+                  "Authentic air-conditioned rooms",
+                  "Homemade Moroccan breakfast"
+                ]
+              }
+            },
+            {
+              "eyebrow": "Your hosts",
+              "title": "A team at your service",
+              "lead": "We are here every day to help you.",
+              "image": "/assets/images/salon.jpg",
+              "imageAlt": "Traditional lounge at Riad Mylaya",
+              "text": "Booking a taxi, advice about the souks, reserving a dinner or an excursion: never hesitate to ask. A simple WhatsApp message is enough, and we reply in English, French, Spanish or Arabic."
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "shortTitle": "Arrival",
+          "type": "times",
+          "eyebrow": "Your stay",
+          "title": "Check-in & check-out",
+          "lead": "Book your airport transfer in a few clicks and use our luggage service.",
+          "times": [
+            {
+              "label": "Check-in",
+              "value": "From 2:00 pm",
+              "detail": "Early check-in possible subject to availability — please let us know."
+            },
+            {
+              "label": "Check-out",
+              "value": "Before 12:00 pm",
+              "detail": "Late check-out possible on request, subject to availability."
+            },
+            {
+              "label": "Late arrival",
+              "value": "24/7",
+              "detail": "We welcome you at any hour: just tell us your arrival time."
+            }
+          ],
+          "transferForm": {
+            "bookButton": "Book your airport transfer",
+            "subtitle": "Arrange your transfer in a few clicks",
+            "features": [
+              {
+                "icon": "✈️",
+                "label": "Airport pick-up",
+                "detail": "Our driver waits for you with a sign with your name"
+              },
+              {
+                "icon": "🛫",
+                "label": "Departure to the airport",
+                "detail": "We take you back at the time that suits you"
+              },
+              {
+                "icon": "🧭",
+                "label": "Walk to the riad",
+                "detail": "The riad is car-free: we guide you on the last few metres"
+              },
+              {
+                "icon": "👤",
+                "label": "Professional driver",
+                "detail": "Air-conditioned vehicle, reliable and punctual"
+              }
+            ],
+            "cta": "Book now",
+            "badge": "Fast reply from the riad team",
+            "title": "Airport transfer request",
+            "transferTypeLabel": "Type of transfer",
+            "transferTypeOptions": {
+              "both": "Arrival and departure",
+              "arrival": "Arrival only",
+              "departure": "Departure only"
+            },
+            "arrivalHeading": "Arrival",
+            "departureHeading": "Departure",
+            "fields": {
+              "name": "Full name",
+              "email": "E-mail",
+              "phone": "Phone number (with country code)",
+              "guests": "Number of people",
+              "arrivalDate": "Arrival date",
+              "arrivalTime": "Landing time",
+              "arrivalFlight": "Flight number",
+              "departureDate": "Departure date",
+              "departureTime": "Preferred pick-up time at the riad",
+              "departureFlight": "Departure flight number (if known)"
+            },
+            "submit": "Send the request",
+            "success": "Thank you! Your transfer request has been sent. We will confirm shortly.",
+            "close": "Close"
+          },
+          "items": [
+            {
+              "title": "Luggage service",
+              "text": "Arriving early or leaving late? We store your luggage free of charge before check-in and after check-out.",
+              "actions": [
+                {
+                  "label": "Request this service",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20use%20the%20luggage%20service%20at%20Riad%20Mylaya.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Early check-in / late check-out",
+              "text": "Depending on room availability, we do our best to welcome you earlier or let you leave later.",
+              "actions": [
+                {
+                  "label": "Make a request",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20request%20an%20early%20check-in%20/%20late%20check-out.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Walking to the riad",
+              "text": "The riad is in a pedestrian lane. Let us know 15 minutes before you arrive and someone will meet you at the end of the street.",
+              "actions": [
+                {
+                  "label": "Tell us I'm arriving",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20will%20arrive%20at%20Riad%20Mylaya%20in%20about%2015%20minutes.",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "breakfast",
+          "shortTitle": "Breakfast",
+          "type": "times",
+          "eyebrow": "Food",
+          "title": "Breakfast",
+          "lead": "A homemade Moroccan breakfast, included in your stay.",
+          "times": [
+            {
+              "label": "Times",
+              "value": "8:00 – 10:30 am",
+              "detail": "Served every day."
+            },
+            {
+              "label": "Where",
+              "value": "Patio or terrace",
+              "detail": "Choose whichever spot you prefer."
+            },
+            {
+              "label": "Included",
+              "value": "Yes",
+              "detail": "Moroccan pancakes, homemade bread, jams, eggs, fresh juice, tea and coffee."
+            }
+          ],
+          "items": [
+            {
+              "title": "Special diet or allergy",
+              "text": "Vegetarian, gluten-free, lactose-free: let us know the day before and we will adapt your breakfast.",
+              "actions": [
+                {
+                  "label": "Tell us about a diet",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20have%20a%20special%20dietary%20requirement%20for%20breakfast%3A",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Earlier or later breakfast",
+              "text": "Early excursion or a lie-in? We can shift your breakfast time on request.",
+              "actions": [
+                {
+                  "label": "Request a time",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20change%20my%20breakfast%20time.",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dinner",
+          "shortTitle": "Dinner",
+          "type": "dinner",
+          "eyebrow": "Food",
+          "title": "Moroccan dinner at the riad",
+          "lead": "Dine under the stars, on the terrace or in the patio. Our dishes are prepared the same day with fresh market produce, following traditional Moroccan recipes.",
+          "image": "/assets/images/dinner.jpg",
+          "imageAlt": "Traditional dinner served at Riad Mylaya",
+          "menus": [
+            {
+              "icon": "🍲",
+              "label": "Traditional tagine",
+              "detail": "Chicken with preserved lemon, lamb with prunes or kefta",
+              "price": "On request"
+            },
+            {
+              "icon": "🥘",
+              "label": "Royal couscous",
+              "detail": "On Fridays or ordered the day before",
+              "price": "On request"
+            },
+            {
+              "icon": "🍽️",
+              "label": "Full menu",
+              "detail": "Moroccan salads + main course + dessert",
+              "price": "On request"
+            },
+            {
+              "icon": "🌿",
+              "label": "Vegetarian menu",
+              "detail": "Seasonal vegetables and mild spices",
+              "price": "On request"
+            }
+          ],
+          "dinnerHeader": {
+            "title": "Book dinner",
+            "subtitle": "Please let us know before 4pm on the day"
+          },
+          "bookButton": "Book dinner",
+          "perPerson": "",
+          "badges": [
+            {
+              "icon": "🕯️",
+              "text": "Dinner on the terrace or in the patio"
+            },
+            {
+              "icon": "🌿",
+              "text": "Fresh market produce, homemade"
+            },
+            {
+              "icon": "❤️",
+              "text": "Traditional family recipes"
+            }
+          ],
+          "form": {
+            "title": "Dinner reservation",
+            "fields": {
+              "name": "Name",
+              "email": "E-mail",
+              "date": "Preferred date",
+              "time": "Dinner time",
+              "guests": "Number of people",
+              "menu": "Choice of menu",
+              "message": "Message / allergies / dietary preferences"
+            },
+            "menuOptions": [
+              {
+                "label": "Traditional tagine"
+              },
+              {
+                "label": "Royal couscous"
+              },
+              {
+                "label": "Full menu"
+              },
+              {
+                "label": "Vegetarian menu"
+              }
+            ],
+            "currency": "€",
+            "currencyBefore": false,
+            "perPerson": "/ person",
+            "summary": {
+              "guestsLabel": "Number of people",
+              "priceLabel": "Price",
+              "totalLabel": "Total",
+              "placeholder": "The riad team will confirm the exact price with your booking."
+            },
+            "submit": "Send the reservation",
+            "success": "Thank you! Your dinner request has been sent. We will confirm shortly.",
+            "close": "Close"
+          }
+        },
+        {
+          "id": "cooking",
+          "shortTitle": "Cooking class",
+          "type": "dinner",
+          "eyebrow": "Experience",
+          "title": "Moroccan cooking class",
+          "lead": "Learn to prepare a tagine or a couscous with our cook, then enjoy your dish on the terrace. A friendly 3-hour experience, from the market to the plate.",
+          "image": "/assets/images/cooking.jpg",
+          "imageAlt": "Moroccan cooking class at Riad Mylaya",
+          "menus": [
+            {
+              "icon": "🍋",
+              "label": "Tagine",
+              "detail": "Chicken with preserved lemon or lamb",
+              "price": "€45"
+            },
+            {
+              "icon": "🥣",
+              "label": "Couscous",
+              "detail": "Hand-rolled semolina and vegetables",
+              "price": "€45"
+            },
+            {
+              "icon": "🥗",
+              "label": "Moroccan salads",
+              "detail": "A selection of traditional starters",
+              "price": "€45"
+            },
+            {
+              "icon": "🍪",
+              "label": "Moroccan pastries",
+              "detail": "Gazelle horns, honey briouates",
+              "price": "€45"
+            }
+          ],
+          "dinnerHeader": {
+            "title": "Book the class",
+            "subtitle": "To be booked at least 24h in advance"
+          },
+          "bookButton": "Book the cooking class",
+          "perPerson": "/ person",
+          "badges": [
+            {
+              "icon": "🧑‍🍳",
+              "text": "With our cook, in a small group"
+            },
+            {
+              "icon": "🛒",
+              "text": "Optional market visit"
+            },
+            {
+              "icon": "🍽️",
+              "text": "You eat what you cook"
+            }
+          ],
+          "form": {
+            "title": "Cooking class reservation",
+            "fields": {
+              "name": "Name",
+              "email": "E-mail",
+              "date": "Preferred date",
+              "time": "Preferred time",
+              "guests": "Number of people",
+              "menu": "Dish you would like to cook",
+              "message": "Message / allergies / preferences"
+            },
+            "menuOptions": [
+              {
+                "label": "Tagine",
+                "price": 45
+              },
+              {
+                "label": "Couscous",
+                "price": 45
+              },
+              {
+                "label": "Moroccan salads",
+                "price": 45
+              },
+              {
+                "label": "Moroccan pastries",
+                "price": 45
+              }
+            ],
+            "currency": "€",
+            "currencyBefore": true,
+            "perPerson": "/ person",
+            "summary": {
+              "guestsLabel": "Number of people",
+              "priceLabel": "Price",
+              "totalLabel": "Total",
+              "placeholder": "Choose a dish to see the total."
+            },
+            "submit": "Send the reservation",
+            "success": "Thank you! Your cooking class request has been sent.",
+            "close": "Close"
+          }
+        },
+        {
+          "id": "transport",
+          "shortTitle": "Transport",
+          "type": "times",
+          "eyebrow": "Getting around",
+          "title": "Transfers & transport",
+          "lead": "Everything you need to move around easily from the riad.",
+          "times": [
+            {
+              "label": "Menara Airport",
+              "value": "20–25 min",
+              "detail": "Private transfer arranged by the riad, on request."
+            },
+            {
+              "label": "Jemaa el-Fna square",
+              "value": "10 min walk",
+              "detail": "The heart of the medina is very close."
+            },
+            {
+              "label": "Marrakech station",
+              "value": "15 min",
+              "detail": "By taxi from the edge of the medina."
+            }
+          ],
+          "items": [
+            {
+              "title": "Airport transfer",
+              "text": "Private driver, air-conditioned vehicle, welcome with a name sign. Book it directly from the “Check-in & check-out” section.",
+              "actions": [
+                {
+                  "label": "Book a transfer",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20book%20an%20airport%20transfer%20with%20Riad%20Mylaya.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Taxi in town",
+              "text": "We can call you a petit taxi at any time. Agree the fare before getting in, or ask us the usual price.",
+              "actions": [
+                {
+                  "label": "Ask for a taxi",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20could%20you%20call%20me%20a%20taxi%20from%20Riad%20Mylaya%3F",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Car with driver",
+              "text": "For a day trip or several days, we arrange a car with an English- or French-speaking driver.",
+              "actions": [
+                {
+                  "label": "I'm interested",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20book%20a%20car%20with%20a%20driver.",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "excursions",
+          "shortTitle": "Excursions",
+          "eyebrow": "Discover",
+          "title": "Excursions & activities",
+          "lead": "We arrange the finest excursions departing from the riad. Prices and times are given on request, depending on the season and number of guests.",
+          "image": "/assets/images/excursions.jpg",
+          "imageAlt": "Majorelle Garden in Marrakech",
+          "items": [
+            {
+              "title": "The 3 Valleys of the Atlas",
+              "text": "A day through the Berber valleys of the Atlas, traditional villages and mountain landscapes.",
+              "actions": [
+                {
+                  "label": "I'm interested",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20am%20interested%20in%20the%20excursion%3A%20The%203%20Valleys%20of%20the%20Atlas.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Imlil trek in the High Atlas",
+              "text": "Trekking at the foot of Mount Toubkal, with an optional lunch with a local family.",
+              "actions": [
+                {
+                  "label": "I'm interested",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20am%20interested%20in%20the%20excursion%3A%20Imlil%20trek%20in%20the%20High%20Atlas.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Agafay Desert & Lalla Takerkoust Lake",
+              "text": "The stone desert 40 min from Marrakech, the lake and views over the Atlas.",
+              "actions": [
+                {
+                  "label": "I'm interested",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20am%20interested%20in%20the%20excursion%3A%20Agafay%20Desert%20%26%20Lalla%20Takerkoust%20Lake.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Sunset & camel ride",
+              "text": "A camel ride across the Agafay desert at sunset.",
+              "actions": [
+                {
+                  "label": "I'm interested",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20am%20interested%20in%20the%20excursion%3A%20Sunset%20%26%20camel%20ride.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Essaouira – Atlantic coast",
+              "text": "A day in Essaouira, its UNESCO medina, harbour and beaches.",
+              "actions": [
+                {
+                  "label": "I'm interested",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20am%20interested%20in%20the%20excursion%3A%20Essaouira%20%E2%80%93%20Atlantic%20coast.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Ouzoud Waterfalls",
+              "text": "Morocco's highest waterfalls, wild monkeys and lunch by the water.",
+              "actions": [
+                {
+                  "label": "I'm interested",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20am%20interested%20in%20the%20excursion%3A%20Ouzoud%20Waterfalls.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Ourika Valley",
+              "text": "River, gardens and Berber villages less than an hour from the riad.",
+              "actions": [
+                {
+                  "label": "I'm interested",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20am%20interested%20in%20the%20excursion%3A%20Ourika%20Valley.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Ouarzazate & Aït Ben Haddou",
+              "text": "Crossing the Tichka pass and visiting the UNESCO-listed ksar.",
+              "actions": [
+                {
+                  "label": "I'm interested",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20am%20interested%20in%20the%20excursion%3A%20Ouarzazate%20%26%20A%C3%AFt%20Ben%20Haddou.",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "services",
+          "shortTitle": "Services",
+          "eyebrow": "At the riad",
+          "title": "Additional services",
+          "lead": "Little extras to make your stay even more enjoyable.",
+          "items": [
+            {
+              "title": "Hammam & Massage",
+              "text": "Traditional hammam and argan-oil massage, on request.",
+              "actions": [
+                {
+                  "label": "Request this service",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20book%20a%20hammam%20/%20massage%20at%20Riad%20Mylaya.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Discover Marrakech",
+              "text": "Guided tour of the medina, souks and monuments with an official guide.",
+              "actions": [
+                {
+                  "label": "Request this service",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20arrange%20a%20guided%20tour%20of%20Marrakech.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Photographer & Video",
+              "text": "Professional photo shoot at the riad or in the medina (couples, families, proposals).",
+              "actions": [
+                {
+                  "label": "Request this service",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20am%20interested%20in%20a%20photo%20/%20video%20session.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Laundry",
+              "text": "Washing and ironing service, returned within 24 hours.",
+              "actions": [
+                {
+                  "label": "Request this service",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20use%20the%20laundry%20service.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Car & driver hire",
+              "text": "Car with driver by the day for your trips.",
+              "actions": [
+                {
+                  "label": "Request this service",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20book%20a%20car%20with%20a%20driver.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Special occasions",
+              "text": "Birthday, honeymoon, proposal: decoration, flowers and cake on request.",
+              "actions": [
+                {
+                  "label": "Request this service",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20arrange%20a%20special%20occasion%20at%20Riad%20Mylaya.",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wifi",
+          "shortTitle": "Wi‑Fi",
+          "type": "wifi",
+          "eyebrow": "Connection",
+          "title": "Wi‑Fi",
+          "lead": "Wi‑Fi is free and available throughout the riad.",
+          "networkLabel": "Network",
+          "network": "Riad Mylaya",
+          "passwordLabel": "Password",
+          "password": "please ask at reception"
+        },
+        {
+          "id": "practical",
+          "shortTitle": "Practical info",
+          "eyebrow": "Good to know",
+          "title": "Practical information",
+          "lead": "A few useful pointers during your stay in Marrakech.",
+          "items": [
+            {
+              "title": "Electricity",
+              "text": "220V, European sockets (type C/E). Bring an adapter if you come from the UK or the US."
+            },
+            {
+              "title": "Water",
+              "text": "We recommend drinking bottled water. A bottle of water is offered on arrival."
+            },
+            {
+              "title": "Air conditioning & heating",
+              "text": "Every room is equipped. Please close the windows while the air conditioning is running."
+            },
+            {
+              "title": "Currency & payment",
+              "text": "The currency is the dirham (MAD). Cash machines are a 5-minute walk away. Bring cash for the souks."
+            },
+            {
+              "title": "Pharmacy & doctor",
+              "text": "There is a pharmacy near the riad. If you need medical help, tell us: we can call a doctor who comes to the riad."
+            },
+            {
+              "title": "Emergency numbers",
+              "text": "Police: 19 · Fire / ambulance: 15 · Tourist police: +212 524 38 46 01"
+            }
+          ]
+        },
+        {
+          "id": "access",
+          "shortTitle": "Access & parking",
+          "type": "map",
+          "eyebrow": "Finding us",
+          "title": "Parking & access to the riad",
+          "lead": "The riad is in a pedestrian lane of the medina: cars cannot reach the door.",
+          "address": "Riad Mylaya — 163 Derb Bounba, Arset Ihiri, Medina, 40000 Marrakech, Morocco",
+          "mapText": "🚗 Get dropped at the entrance of the derb, then it is a 2-minute walk. Tell us 15 min before and we will come and meet you with your luggage.\n\n🅿️ Guarded paid car park about 5 minutes' walk away (24/7). We will show you the exact spot on request.",
+          "actions": [
+            {
+              "label": "Open in Google Maps",
+              "href": "https://maps.app.goo.gl/f6u2Dhybbw8uzf637",
+              "external": true
+            },
+            {
+              "label": "I need help getting here",
+              "href": "https://wa.me/212661351989?text=Hello%2C%20I%20need%20help%20finding%20Riad%20Mylaya.",
+              "external": true
+            }
+          ]
+        },
+        {
+          "id": "rules",
+          "shortTitle": "House rules",
+          "type": "rules",
+          "eyebrow": "Living together",
+          "title": "House rules",
+          "lead": "A few simple rules for everyone's comfort.",
+          "items": [
+            {
+              "icon": "🔇",
+              "color": "amber",
+              "title": "Quiet after 10pm",
+              "text": "The riad is an open house: please keep your voice down on the patio and terrace in the evening."
+            },
+            {
+              "icon": "🚭",
+              "color": "red",
+              "title": "No smoking",
+              "text": "Smoking is not allowed in the rooms or indoor areas. The terrace is available to you."
+            },
+            {
+              "icon": "👟",
+              "color": "gray",
+              "title": "Shoes",
+              "text": "Please take off your shoes in the carpeted lounges, as Moroccan tradition requires."
+            },
+            {
+              "icon": "🔑",
+              "color": "gray",
+              "title": "Keys & departure",
+              "text": "Please hand your keys back to the team before leaving and vacate the room before 12pm."
+            },
+            {
+              "icon": "👶",
+              "color": "amber",
+              "title": "Children",
+              "text": "The stairs and terrace are not childproof: children must be accompanied at all times."
+            },
+            {
+              "icon": "💎",
+              "color": "green",
+              "title": "Valuables",
+              "text": "A safe is available on request. The riad cannot be held responsible for items left in the rooms."
+            }
+          ]
+        },
+        {
+          "id": "contacts",
+          "shortTitle": "Contact",
+          "eyebrow": "Reach us",
+          "title": "Contact & WhatsApp",
+          "lead": "A question, a wish, something unexpected? We reply quickly, 7 days a week.",
+          "items": [
+            {
+              "title": "WhatsApp (fastest)",
+              "text": "+212 661 351 989",
+              "actions": [
+                {
+                  "label": "Message us on WhatsApp",
+                  "href": "https://wa.me/212661351989?text=Hello%2C%20I%20am%20staying%20at%20Riad%20Mylaya%20and%20I%20have%20a%20question.",
+                  "external": true
+                }
+              ]
+            },
+            {
+              "title": "Phone",
+              "text": "+212 808 644 081 · +212 661 351 989",
+              "actions": [
+                {
+                  "label": "Call the riad",
+                  "href": "tel:+212661351989",
+                  "external": false
+                }
+              ]
+            },
+            {
+              "title": "E-mail",
+              "text": "contact@riadmylaya.com",
+              "actions": [
+                {
+                  "label": "Send an e-mail",
+                  "href": "mailto:contact@riadmylaya.com",
+                  "external": false
+                }
+              ]
+            },
+            {
+              "title": "Extend your stay",
+              "text": "Fancy one more night? Check our live availability at the best price.",
+              "actions": [
+                {
+                  "label": "Check availability",
+                  "href": "https://portal.freetobook.com/reservations?w_id=45823&w_tkn=WyeaTPwj6MSYcDxNHIPuXgqvOYtlIS2H086gviFbewghhARIYxSGLtJxULb49",
+                  "external": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "reviews",
+          "shortTitle": "Reviews",
+          "type": "reviews",
+          "eyebrow": "Thank you",
+          "title": "Your review matters",
+          "lead": "",
+          "heading": "Did you enjoy your stay?",
+          "text": "Your review helps us enormously and lets other travellers discover us. It only takes a minute — thank you so much!",
+          "actions": [
+            {
+              "label": "Leave a review on Google",
+              "href": "https://maps.app.goo.gl/f6u2Dhybbw8uzf637",
+              "external": true
+            },
+            {
+              "label": "Leave a review on TripAdvisor",
+              "href": "https://www.tripadvisor.fr/Hotel_Review-g293734-d23740759-Reviews-Riad_Mylaya-Marrakech_Marrakech_Safi.html",
+              "external": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
