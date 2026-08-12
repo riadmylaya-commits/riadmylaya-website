@@ -1081,3 +1081,33 @@ h1 {
     width: auto;
   }
 }
+
+/* Single-price experiences (cooking class) */
+.dinner-price-banner {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0 1.1rem 1rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(192, 117, 74, 0.25);
+  border-radius: 18px;
+  background: var(--sand);
+  text-align: center;
+}
+
+.dinner-price-banner strong {
+  color: var(--terracotta-dark);
+  font-size: 1.45rem;
+  font-family: "Yanone Kaffeesatz", "Quicksand", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.dinner-price-banner span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.section-list-title {
+  margin: 1.6rem 0 0.6rem;
+  color: var(--terracotta-dark);
+}

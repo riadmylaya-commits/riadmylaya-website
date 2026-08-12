@@ -164,6 +164,16 @@ function createSection(section, ui) {
   const body = document.createElement("div");
   body.className = "section-body";
 
+  if (section.body) {
+    section.body.forEach((paragraph) => body.append(createText("p", paragraph, "lead")));
+  }
+  if (section.list?.length) {
+    if (section.listTitle) {
+      body.append(createText("h3", section.listTitle, "section-list-title"));
+    }
+    body.append(createList(section.list));
+  }
+
   if (section.type === "wifi") {
     body.append(createWifiPanel(section, ui));
   } else if (section.type === "times") {
@@ -182,16 +192,8 @@ function createSection(section, ui) {
     body.append(createMapPanel(section));
   } else if (section.type === "reviews") {
     body.append(createReviewPanel(section));
-  } else {
-    if (section.body) {
-      section.body.forEach((paragraph) => body.append(createText("p", paragraph, "lead")));
-    }
-    if (section.items?.length) {
-      body.append(createCards(section.items));
-    }
-    if (section.list?.length) {
-      body.append(createList(section.list));
-    }
+  } else if (section.items?.length) {
+    body.append(createCards(section.items));
   }
 
   article.append(heading, body);
@@ -586,21 +588,30 @@ function createDinnerPanel(section) {
   header.innerHTML = `<span class="dinner-card-header-icon">🍽️</span><div class="dinner-card-header-text"><strong>${section.dinnerHeader.title}</strong><span>${section.dinnerHeader.subtitle}</span></div>`;
   card.append(header);
 
-  const menuGrid = document.createElement("div");
-  menuGrid.className = "dinner-menu-grid";
-  section.menus.forEach((menu) => {
-    const menuCard = document.createElement("div");
-    menuCard.className = "dinner-menu-card";
-    const perPerson = section.perPerson ? `<span class="dinner-menu-perperson">${section.perPerson}</span>` : "";
-    menuCard.innerHTML = `<span class="dinner-menu-icon">${menu.icon}</span><strong>${menu.label}</strong><span class="dinner-menu-detail">${menu.detail || ""}</span><span class="dinner-menu-price">${menu.price}${perPerson}</span>`;
-    menuGrid.append(menuCard);
-  });
-  card.append(menuGrid);
+  if (section.menus?.length) {
+    const menuGrid = document.createElement("div");
+    menuGrid.className = "dinner-menu-grid";
+    section.menus.forEach((menu) => {
+      const menuCard = document.createElement("div");
+      menuCard.className = "dinner-menu-card";
+      const perPerson = section.perPerson ? `<span class="dinner-menu-perperson">${section.perPerson}</span>` : "";
+      menuCard.innerHTML = `<span class="dinner-menu-icon">${menu.icon}</span><strong>${menu.label}</strong><span class="dinner-menu-detail">${menu.detail || ""}</span><span class="dinner-menu-price">${menu.price}${perPerson}</span>`;
+      menuGrid.append(menuCard);
+    });
+    card.append(menuGrid);
+  }
+
+  if (section.priceBanner) {
+    const banner = document.createElement("div");
+    banner.className = "dinner-price-banner";
+    banner.innerHTML = `<strong>${section.priceBanner.amount}</strong><span>${section.priceBanner.note || ""}</span>`;
+    card.append(banner);
+  }
 
   const ctaBtn = document.createElement("button");
   ctaBtn.className = "dinner-cta";
   ctaBtn.type = "button";
-  ctaBtn.innerHTML = `🍽️ ${section.bookButton}`;
+  ctaBtn.innerHTML = `${section.bookButtonIcon || "🍽️"} ${section.bookButton}`;
   card.append(ctaBtn);
 
   if (section.badges) {
@@ -670,59 +681,83 @@ function createDinnerPanel(section) {
     return formCfg.currencyBefore ? `${currency}${amount}` : `${amount} ${currency}`;
   }
 
-  function addField(name, label, type, required) {
+  const DEFAULT_FIELDS = [
+    { name: "name", type: "text", required: true },
+    { name: "email", type: "email", required: true },
+    { name: "date", type: "date", required: true },
+    { name: "time", type: "time", required: true },
+    { name: "guests", type: "number", required: true, min: 1 },
+    { name: "menu", type: "menu", required: true },
+    { name: "message", type: "textarea" },
+  ];
+
+  function addField(cfg) {
+    const id = `${section.id}-${cfg.name}`;
     const group = document.createElement("div");
     group.className = "form-group";
     const lbl = document.createElement("label");
-    lbl.textContent = label;
-    lbl.setAttribute("for", "dinner-" + name);
+    lbl.textContent = fields[cfg.name] || cfg.name;
+    lbl.setAttribute("for", id);
     group.append(lbl);
-    if (name === "menu") {
+
+    if (cfg.type === "menu" || cfg.type === "select") {
       const select = document.createElement("select");
-      select.name = name;
-      select.id = "dinner-" + name;
-      select.required = true;
+      select.name = cfg.name;
+      select.id = id;
+      select.required = cfg.required !== false;
       const placeholder = document.createElement("option");
       placeholder.value = "";
       placeholder.textContent = "—";
       select.append(placeholder);
-      section.form.menuOptions.forEach((opt) => {
-        const option = document.createElement("option");
-        const priceText = `${formatPrice(opt.price)}${perPersonLabel ? " " + perPersonLabel : ""}`;
-        option.value = `${opt.label} (${priceText})`;
-        option.textContent = `${opt.label} — ${priceText}`;
-        option.dataset.price = String(opt.price);
-        select.append(option);
-      });
+      if (cfg.type === "menu") {
+        (formCfg.menuOptions || []).forEach((opt) => {
+          const option = document.createElement("option");
+          const hasPrice = opt.price !== undefined && opt.price !== null;
+          const priceText = hasPrice
+            ? `${formatPrice(opt.price)}${perPersonLabel ? " " + perPersonLabel : ""}`
+            : "";
+          option.value = hasPrice ? `${opt.label} (${priceText})` : opt.label;
+          option.textContent = hasPrice ? `${opt.label} — ${priceText}` : opt.label;
+          if (hasPrice) {
+            option.dataset.price = String(opt.price);
+          }
+          select.append(option);
+        });
+      } else {
+        (cfg.options || []).forEach((opt) => {
+          const option = document.createElement("option");
+          option.value = opt;
+          option.textContent = opt;
+          select.append(option);
+        });
+      }
       group.append(select);
-    } else if (name === "message") {
+    } else if (cfg.type === "textarea") {
       const textarea = document.createElement("textarea");
-      textarea.name = name;
-      textarea.id = "dinner-" + name;
-      textarea.rows = 3;
+      textarea.name = cfg.name;
+      textarea.id = id;
+      textarea.rows = cfg.rows || 3;
+      textarea.required = cfg.required === true;
       group.append(textarea);
     } else {
       const input = document.createElement("input");
-      input.type = type;
-      input.name = name;
-      input.id = "dinner-" + name;
-      input.required = required;
-      if (type === "number") {
-        input.min = "1";
-        input.value = "1";
+      input.type = cfg.type;
+      input.name = cfg.name;
+      input.id = id;
+      input.required = cfg.required === true;
+      if (cfg.type === "number") {
+        input.min = String(cfg.min ?? 1);
+        input.value = String(cfg.min ?? 1);
+        if (cfg.max) {
+          input.max = String(cfg.max);
+        }
       }
       group.append(input);
     }
     form.append(group);
   }
 
-  addField("name", fields.name, "text", true);
-  addField("email", fields.email, "email", true);
-  addField("date", fields.date, "date", true);
-  addField("time", fields.time, "time", true);
-  addField("guests", fields.guests, "number", true);
-  addField("menu", fields.menu, "select", true);
-  addField("message", fields.message, "textarea", false);
+  (formCfg.fieldOrder || DEFAULT_FIELDS).forEach(addField);
 
   const summaryCfg = formCfg.summary;
   const summaryBox = document.createElement("div");
@@ -736,13 +771,20 @@ function createDinnerPanel(section) {
   hiddenTotal.name = "Total estimé";
   form.append(hiddenTotal);
 
-  const guestsInput = form.querySelector("#dinner-guests");
-  const menuSelect = form.querySelector("#dinner-menu");
+  const guestsInput = form.querySelector(`#${section.id}-guests`);
+  const menuSelect = form.querySelector(`#${section.id}-menu`);
+
+  function unitPrice() {
+    if (!menuSelect) {
+      return formCfg.unitPrice ?? NaN;
+    }
+    const selected = menuSelect.options[menuSelect.selectedIndex];
+    return selected && selected.dataset.price ? Number(selected.dataset.price) : NaN;
+  }
 
   function updateSummary() {
-    const selected = menuSelect.options[menuSelect.selectedIndex];
-    const unit = selected && selected.dataset.price ? Number(selected.dataset.price) : NaN;
-    const guests = parseInt(guestsInput.value, 10);
+    const unit = unitPrice();
+    const guests = guestsInput ? parseInt(guestsInput.value, 10) : NaN;
     if (!summaryCfg || Number.isNaN(unit) || Number.isNaN(guests) || guests < 1) {
       summaryBox.innerHTML = `<p class="dinner-summary-empty">${summaryPlaceholder}</p>`;
       hiddenTotal.value = "";
@@ -757,8 +799,13 @@ function createDinnerPanel(section) {
     hiddenTotal.value = `${formatPrice(total)} (${guests} × ${formatPrice(unit)})`;
   }
 
-  guestsInput.addEventListener("input", updateSummary);
-  menuSelect.addEventListener("change", updateSummary);
+  if (guestsInput) {
+    guestsInput.addEventListener("input", updateSummary);
+  }
+  if (menuSelect) {
+    menuSelect.addEventListener("change", updateSummary);
+  }
+  updateSummary();
 
   const submitBtn = document.createElement("button");
   submitBtn.className = "button primary";
