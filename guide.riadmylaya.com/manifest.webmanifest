@@ -1,0 +1,11 @@
+{
+  "name": "Guide Riad Mylaya",
+  "short_name": "Riad Mylaya",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf7f0",
+  "theme_color": "#c0754a",
+  "icons": [
+    { "src": "https://www.riadmylaya.com/assets/images/logo-notxt.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
