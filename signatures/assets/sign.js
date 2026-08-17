@@ -1,28 +1,6 @@
 /* Page publique : lecture du document, saisie des informations et signature. */
 (function () {
   const API = "api/index.php";
-  const L = window.DOC_LAYOUT;
-
-  async function renderDocument() {
-    const host = document.getElementById("doc-pages");
-    try {
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "vendor/pdf.worker.min.js";
-      const pdf = await pdfjsLib.getDocument(L.pdfUrl).promise;
-      host.innerHTML = "";
-      for (let n = 1; n <= pdf.numPages; n++) {
-        const page = await pdf.getPage(n);
-        const viewport = page.getViewport({ scale: 2 });
-        const canvas = document.createElement("canvas");
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        host.appendChild(canvas);
-        await page.render({ canvasContext: canvas.getContext("2d"), viewport: viewport }).promise;
-      }
-    } catch (error) {
-      host.innerHTML =
-        '<p class="error">تعذّر عرض الوثيقة داخل الصفحة. يمكنك تحميلها من الرابط أسفله.</p>';
-    }
-  }
 
   async function refreshCount() {
     try {
@@ -97,7 +75,6 @@
       }
     });
 
-    renderDocument();
     refreshCount();
   }
 

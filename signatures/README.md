@@ -14,6 +14,8 @@ mise en page reste identique à l'original.
 | `admin.html` | Page protégée par mot de passe : liste des signatures, PDF final, export CSV |
 | `api/index.php` | API JSON (enregistrement, comptage, liste, suppression) — base **SQLite**, aucune configuration MySQL |
 | `assets/document.pdf` | PDF original, jamais modifié : il sert de fond au PDF final |
+| `assets/preview/page-*.png` | Images pré-rendues du PDF, affichées sur la page publique |
+| `tools/build-preview.sh` | Régénère ces images si le PDF original change |
 | `assets/layout.js` | Coordonnées exactes du tableau de la page de signatures (colonnes / 20 lignes) |
 | `assets/pdf-build.js` | Construction du PDF final avec `pdf-lib` dans le navigateur |
 
@@ -29,6 +31,10 @@ Points importants :
   contenant sa propre signature.
 - Un même numéro de CIN ne peut signer qu'une seule fois (`UNIQUE_CIN`).
 - Les pages sont en `noindex` : elles ne seront pas référencées par Google.
+- La lettre est affichée sous forme d'**images pré-rendues** et non via `pdf.js` :
+  le moteur de rendu de `pdf.js` casse les liaisons des lettres arabes de ce PDF
+  (`Warning: TT: undefined function: 21`), ce qui rendait le texte illisible sur
+  la page publique. Le PDF original reste téléchargeable tel quel.
 
 ## Déploiement sur l'hébergement Namecheap (cPanel)
 
@@ -68,8 +74,8 @@ php -S 127.0.0.1:8080
 
 ## Si un jour la mise en page du PDF original change
 
-Mettre à jour `assets/document.pdf` **et** les coordonnées dans
-`assets/layout.js` (`columns`, `firstRowTop`, `rowHeight`, `rowsPerPage`).
+Mettre à jour `assets/document.pdf`, relancer `tools/build-preview.sh` **et**
+vérifier les coordonnées dans `assets/layout.js` (`columns`, `firstRowTop`, `rowHeight`, `rowsPerPage`).
 Ces valeurs ont été mesurées directement dans le PDF fourni :
 colonnes `56.4 / 212.2 / 368.0 / 523.7`, première ligne à `177.6`,
 hauteur de ligne `28.355`, 20 lignes par page.

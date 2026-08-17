@@ -55,7 +55,8 @@ main {
 .card h2 { margin: 0 0 12px; font-size: 21px; color: var(--accent-dark); }
 
 .doc-pages { display: grid; gap: 12px; }
-.doc-pages canvas {
+.doc-pages a { display: block; }
+.doc-pages img {
   width: 100%;
   height: auto;
   border: 1px solid var(--border);
