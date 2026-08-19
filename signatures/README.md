@@ -36,12 +36,36 @@ Points importants :
   (`Warning: TT: undefined function: 21`), ce qui rendait le texte illisible sur
   la page publique. Le PDF original reste téléchargeable tel quel.
 
-## Déploiement sur l'hébergement Namecheap (cPanel)
+## Anonymat vis-à-vis du site hôte (exigence du projet)
 
-1. **Créer un sous-domaine** dans cPanel → *Subdomains*, par ex.
-   `tawqi3` + `riadmylaya.com` → dossier `tawqi3.riadmylaya.com/`.
+La page doit apparaître comme une **plateforme indépendante et neutre** : aucun
+visiteur ne doit pouvoir la relier au site principal. Ce qui est déjà garanti par
+le code :
+
+- aucune mention du site hôte dans `index.html`, `admin.html`, le CSS ou le PDF
+  final (métadonnées `Title/Author/Creator/Producer` volontairement neutres) ;
+- `Referrer-Policy: no-referrer` et `X-Powered-By` supprimé (`.htaccess`) ;
+- `noindex, nofollow` : la page n'apparaîtra pas dans Google ;
+- aucun lien depuis le site principal vers cette page (et inversement).
+
+Ce qui dépend du **choix de l'hébergement** (à décider) :
+
+| Option | URL vue par les signataires | Lien possible avec le site hôte |
+| --- | --- | --- |
+| Sous-domaine du site existant | contient forcément le domaine hôte | ❌ visible dans l'URL |
+| **Domaine neutre dédié** (ex. `tawqi3-taourirt.com`), même hébergement cPanel en *Addon Domain* | totalement neutre | ⚠️ même adresse IP : un *reverse IP lookup* peut rapprocher les deux sites ; enregistrer le domaine avec *WHOIS privacy* |
+| **Hébergement séparé et gratuit** (Cloudflare Pages + Workers/D1, ou un hébergeur PHP gratuit) avec domaine neutre ou URL en `*.pages.dev` | totalement neutre | ✅ aucune IP, aucun compte ni WHOIS en commun — option la plus sûre |
+
+Les étapes ci-dessous décrivent l'installation sur un **cPanel** (Addon Domain
+neutre ou sous-domaine) ; le dossier `signatures/` fonctionne à l'identique
+derrière n'importe quel hébergement PHP.
+
+## Déploiement sur un hébergement cPanel
+
+1. **Créer le domaine** dans cPanel → *Addon Domains* (domaine neutre dédié,
+   recommandé) ou *Subdomains*, et noter le dossier créé.
 2. **Uploader** le contenu du dossier `signatures/` (et non le dossier lui-même)
-   à la racine du sous-domaine, via *File Manager* (upload d'un ZIP puis
+   à la racine de ce domaine, via *File Manager* (upload d'un ZIP puis
    *Extract* est le plus rapide).
 3. **Modifier `api/config.php`** :
    - `ADMIN_PASSWORD` : mettre un mot de passe fort (obligatoire).
@@ -49,8 +73,8 @@ Points importants :
      `/home/UTILISATEUR_CPANEL/signatures_data/signatures.sqlite`.
 4. Vérifier que PHP est en version **7.4 ou plus** (cPanel → *MultiPHP Manager*)
    et que l'extension `pdo_sqlite` est active (cPanel → *Select PHP Version*).
-5. Ouvrir `https://tawqi3.riadmylaya.com/` : la lettre doit s'afficher et le
-   formulaire fonctionner. L'administration est sur `/admin.html`.
+5. Ouvrir l'adresse du site : la lettre doit s'afficher et le formulaire
+   fonctionner. L'administration est sur `/admin.html`.
 
 Le dossier `api/data/` contient un `.htaccess` qui bloque tout accès web à la
 base de données ; ne pas le supprimer.

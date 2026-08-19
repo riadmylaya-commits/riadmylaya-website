@@ -4,6 +4,13 @@ Options -Indexes
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "no-referrer"
   Header always set X-Robots-Tag "noindex, nofollow"
+  # N'expose aucune information sur le serveur ou le site hôte.
+  Header always unset X-Powered-By
+  Header unset X-Powered-By
+</IfModule>
+
+<IfModule mod_php.c>
+  php_flag expose_php off
 </IfModule>
 
 # Empêche l'accès direct aux fichiers de base de données et de configuration.
