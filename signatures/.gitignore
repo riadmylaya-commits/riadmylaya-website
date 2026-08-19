@@ -1,3 +1,6 @@
 api/data/*.sqlite
 api/data/*.sqlite-wal
 api/data/*.sqlite-shm
+dist/
+.wrangler/
+node_modules/

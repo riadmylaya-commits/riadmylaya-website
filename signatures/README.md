@@ -60,7 +60,41 @@ Les étapes ci-dessous décrivent l'installation sur un **cPanel** (Addon Domain
 neutre ou sous-domaine) ; le dossier `signatures/` fonctionne à l'identique
 derrière n'importe quel hébergement PHP.
 
-## Déploiement sur un hébergement cPanel
+## Déploiement sur Cloudflare Pages (option retenue : hébergement séparé, URL neutre)
+
+Le même dossier fonctionne sur Cloudflare Pages, avec les signatures stockées
+dans **Cloudflare D1** (SQLite managé) au lieu du fichier SQLite local. Aucune
+IP, aucun compte et aucun WHOIS en commun avec le site principal ; l'URL est de
+la forme `https://<projet>.pages.dev`.
+
+| Fichier | Rôle |
+| --- | --- |
+| `functions/api/[[route]].js` | Équivalent de `api/index.php` (Pages Function + D1). Répond à `/api/index.php?action=...`, donc le front-end est identique. |
+| `wrangler.toml` | Nom du projet, binding D1, dossier publié (`dist`) |
+| `tools/build-cloudflare.sh` | Construit `dist/` **sans** le dossier `api/` (sinon Cloudflare servirait `api/config.php` en texte brut) |
+
+```bash
+cd signatures
+npx wrangler login                                  # ou CLOUDFLARE_API_TOKEN
+npx wrangler d1 create signatures                   # copier le database_id dans wrangler.toml
+npx wrangler pages project create tawqi3            # nom = début de l'URL *.pages.dev
+bash tools/build-cloudflare.sh
+npx wrangler pages deploy dist
+npx wrangler pages secret put ADMIN_PASSWORD --project-name tawqi3
+```
+
+Dans le tableau de bord Pages → *Settings* → *Bindings*, ajouter le binding D1
+`DB` → base `signatures` (production **et** preview). La table est créée
+automatiquement au premier appel de l'API.
+
+Test en local avec la même pile que la production :
+
+```bash
+bash tools/build-cloudflare.sh
+npx wrangler pages dev dist --d1 DB --binding ADMIN_PASSWORD=testpass
+```
+
+## Déploiement sur un hébergement cPanel (variante PHP)
 
 1. **Créer le domaine** dans cPanel → *Addon Domains* (domaine neutre dédié,
    recommandé) ou *Subdomains*, et noter le dossier créé.

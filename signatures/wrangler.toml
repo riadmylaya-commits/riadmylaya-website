@@ -1,0 +1,11 @@
+# Configuration Cloudflare Pages (hébergement neutre, indépendant du site principal).
+# Déploiement : bash tools/build-cloudflare.sh && npx wrangler pages deploy dist
+name = "tawqi3"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-05-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "signatures"
+# Remplacer par l'identifiant renvoyé par `npx wrangler d1 create signatures`.
+database_id = "REMPLACER_PAR_L_ID_D1"
