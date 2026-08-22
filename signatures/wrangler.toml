@@ -8,4 +8,4 @@ compatibility_date = "2026-05-01"
 binding = "DB"
 database_name = "signatures"
 # Remplacer par l'identifiant renvoyé par `npx wrangler d1 create signatures`.
-database_id = "REMPLACER_PAR_L_ID_D1"
+database_id = "1553a059-d9df-4cec-b2f3-b96d42c17e9e"
