@@ -123,8 +123,8 @@
     const originalBytes = await loadOriginalBytes();
     const source = await PDFDocument.load(originalBytes);
     const out = await PDFDocument.create();
-    out.setTitle("عريضة الجماعة الساللية لدوار تاوريرت — صفحة التوقيعات");
-    out.setAuthor("الجماعة الساللية لدوار تاوريرت");
+    out.setTitle("عريضة الجماعة السلالية لدوار توريرت — صفحة التوقيعات");
+    out.setAuthor("الجماعة السلالية لدوار توريرت");
     out.setSubject("التوقيعات الإلكترونية على العريضة");
     out.setCreator("منصة التوقيع الإلكتروني");
     out.setProducer("منصة التوقيع الإلكتروني");

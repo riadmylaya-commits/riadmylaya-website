@@ -55,13 +55,68 @@ main {
 .card h2 { margin: 0 0 12px; font-size: 21px; color: var(--accent-dark); }
 
 .doc-pages { display: grid; gap: 12px; }
-.doc-pages a { display: block; }
+
+.doc-page {
+  position: relative;
+  overflow: auto;
+  cursor: zoom-in;
+}
+
+.doc-page.zoomed { cursor: zoom-out; }
+
 .doc-pages img {
   width: 100%;
   height: auto;
   border: 1px solid var(--border);
   border-radius: 6px;
   background: #fff;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.doc-page.zoomed img { width: 200%; max-width: none; }
+
+/* Filigrane : décourage la réutilisation d'une capture d'écran. */
+.doc-page::after {
+  content: "نسخة للقراءة فقط — لا تُنسخ";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(18px, 5vw, 40px);
+  color: rgba(138, 106, 59, .16);
+  transform: rotate(-24deg);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Le texte de la page n'est pas sélectionnable (sauf les champs du formulaire). */
+body.protected {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+body.protected input, body.protected textarea { -webkit-user-select: text; user-select: text; }
+
+/* Masque le contenu quand la page n'est plus au premier plan ou à l'impression. */
+body.screen-guard main, body.screen-guard header, body.screen-guard footer {
+  filter: blur(18px);
+  opacity: .25;
+}
+
+@media print {
+  body.protected * { visibility: hidden !important; }
+  body.protected::before {
+    content: "طبع هذه الوثيقة غير مسموح.";
+    visibility: visible;
+    display: block;
+    text-align: center;
+    padding: 40px;
+    font-size: 22px;
+  }
 }
 
 label {
