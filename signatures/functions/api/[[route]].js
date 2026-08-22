@@ -21,6 +21,9 @@ function json(payload, status = 200) {
   });
 }
 
+/* Le nom et le prénom doivent être écrits en caractères arabes uniquement. */
+const ARABIC_ONLY = /^[\u0621-\u063A\u0641-\u065F\u066E-\u06D3\u06FA-\u06FF\s'\u2019-]+$/u;
+
 function cleanText(value, maxLength) {
   return String(value ?? "")
     .trim()
@@ -99,6 +102,9 @@ async function handle(request, env) {
 
     if (!firstName || !lastName || !cin) {
       return json({ error: "المرجو تعبئة الاسم والنسب ورقم البطاقة الوطنية." }, 422);
+    }
+    if (!ARABIC_ONLY.test(firstName) || !ARABIC_ONLY.test(lastName)) {
+      return json({ error: "المرجو كتابة الاسم والنسب بالحروف العربية فقط." }, 422);
     }
     if (!/^[A-Z0-9]{4,20}$/.test(cin)) {
       return json({ error: "رقم البطاقة الوطنية غير صحيح (مثال: JB123456)." }, 422);

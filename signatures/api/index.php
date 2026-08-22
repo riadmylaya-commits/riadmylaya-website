@@ -63,6 +63,10 @@ try {
         if ($firstName === '' || $lastName === '' || $cin === '') {
             jsonOut(['error' => 'المرجو تعبئة الاسم والنسب ورقم البطاقة الوطنية.'], 422);
         }
+        $arabicOnly = '/^[\x{0621}-\x{063A}\x{0641}-\x{065F}\x{066E}-\x{06D3}\x{06FA}-\x{06FF}\s\'\x{2019}-]+$/u';
+        if (!preg_match($arabicOnly, $firstName) || !preg_match($arabicOnly, $lastName)) {
+            jsonOut(['error' => 'المرجو كتابة الاسم والنسب بالحروف العربية فقط.'], 422);
+        }
         if (!preg_match('/^[A-Z0-9]{4,20}$/', $cin)) {
             jsonOut(['error' => 'رقم البطاقة الوطنية غير صحيح (مثال: JB123456).'], 422);
         }

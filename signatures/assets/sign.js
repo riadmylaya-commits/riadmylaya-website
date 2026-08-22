@@ -2,6 +2,22 @@
 (function () {
   const API = "api/index.php";
 
+  /* Lettres arabes, espace et tiret uniquement (ni latin, ni chiffres). */
+  const ARABIC_ONLY = /^[\u0621-\u063A\u0641-\u065F\u066E-\u06D3\u06FA-\u06FF\s'\u2019-]+$/u;
+  const NON_ARABIC = /[^\u0621-\u063A\u0641-\u065F\u066E-\u06D3\u06FA-\u06FF\s'\u2019-]/gu;
+
+  function restrictToArabic(input) {
+    input.setAttribute("lang", "ar");
+    input.addEventListener("input", () => {
+      const cleaned = input.value.replace(NON_ARABIC, "");
+      if (cleaned !== input.value) {
+        const at = input.selectionStart;
+        input.value = cleaned;
+        if (at !== null) input.setSelectionRange(at - 1, at - 1);
+      }
+    });
+  }
+
   async function refreshCount() {
     try {
       const res = await fetch(API + "?action=count", { cache: "no-store" });
@@ -19,6 +35,9 @@
     const submitBtn = document.getElementById("submit-btn");
 
     document.getElementById("clear-pad").addEventListener("click", () => pad.clear());
+
+    restrictToArabic(document.getElementById("first-name"));
+    restrictToArabic(document.getElementById("last-name"));
 
     function fail(message) {
       errorBox.textContent = message;
@@ -38,7 +57,11 @@
       };
 
       if (!payload.first_name) return fail("المرجو إدخال الاسم.");
+      if (!ARABIC_ONLY.test(payload.first_name))
+        return fail("المرجو كتابة الاسم بالحروف العربية فقط.");
       if (!payload.last_name) return fail("المرجو إدخال النسب.");
+      if (!ARABIC_ONLY.test(payload.last_name))
+        return fail("المرجو كتابة النسب بالحروف العربية فقط.");
       if (!payload.cin) return fail("المرجو إدخال رقم البطاقة الوطنية.");
       if (!document.getElementById("consent").checked)
         return fail("المرجو الموافقة على التصريح قبل الإرسال.");
