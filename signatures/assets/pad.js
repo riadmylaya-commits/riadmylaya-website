@@ -5,6 +5,7 @@
     let drawing = false;
     let dirty = false;
     let last = null;
+    let lastMid = null;
 
     function resize() {
       const ratio = Math.max(window.devicePixelRatio || 1, 1);
@@ -13,7 +14,7 @@
       canvas.width = Math.round(rect.width * ratio);
       canvas.height = Math.round(rect.height * ratio);
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-      ctx.lineWidth = 2.4;
+      ctx.lineWidth = 2.6;
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
       ctx.strokeStyle = "#111111";
@@ -33,28 +34,49 @@
       event.preventDefault();
       drawing = true;
       last = pointOf(event);
+      lastMid = last;
       ctx.beginPath();
-      ctx.moveTo(last.x, last.y);
-      ctx.lineTo(last.x + 0.01, last.y);
-      ctx.stroke();
+      ctx.arc(last.x, last.y, ctx.lineWidth / 2, 0, Math.PI * 2);
+      ctx.fillStyle = ctx.strokeStyle;
+      ctx.fill();
       dirty = true;
+    }
+
+    /* Trace continu : chaque segment relie les milieux successifs
+       avec le point capté comme point de contrôle. */
+    function drawTo(point) {
+      const mid = { x: (last.x + point.x) / 2, y: (last.y + point.y) / 2 };
+      ctx.beginPath();
+      ctx.moveTo(lastMid.x, lastMid.y);
+      ctx.quadraticCurveTo(last.x, last.y, mid.x, mid.y);
+      ctx.stroke();
+      last = point;
+      lastMid = mid;
     }
 
     function move(event) {
       if (!drawing) return;
       event.preventDefault();
-      const point = pointOf(event);
-      const mid = { x: (last.x + point.x) / 2, y: (last.y + point.y) / 2 };
-      ctx.beginPath();
-      ctx.moveTo(last.x, last.y);
-      ctx.quadraticCurveTo(last.x, last.y, mid.x, mid.y);
-      ctx.stroke();
-      last = point;
+      const events =
+        typeof event.getCoalescedEvents === "function" ? event.getCoalescedEvents() : [];
+      if (events.length) {
+        for (const e of events) drawTo(pointOf(e));
+      } else {
+        drawTo(pointOf(event));
+      }
     }
 
-    function end() {
+    function end(event) {
+      if (!drawing) return;
       drawing = false;
+      if (last && lastMid) {
+        ctx.beginPath();
+        ctx.moveTo(lastMid.x, lastMid.y);
+        ctx.lineTo(last.x, last.y);
+        ctx.stroke();
+      }
       last = null;
+      lastMid = null;
     }
 
     canvas.addEventListener("pointerdown", start);
