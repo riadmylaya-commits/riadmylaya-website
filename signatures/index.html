@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>توقيع إلكتروني — عريضة الجماعة السلالية لدوار توريرت</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="protected">
+<header class="topbar">
+  <h1>صفحة التوقيعات الإلكترونية</h1>
+  <p class="sub">عدم اشتراك أراضي «أمردول صاغرو» مع أي جماعة سلالية أخرى، وصون حقوق الجماعة السلالية لدوار توريرت وذوي حقوقها</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1 — اقرأ الوثيقة</h2>
+    <p class="hint">انقر على أي صفحة لتكبيرها. الوثيقة للقراءة فقط، ولا يُسمح بنسخها أو تحميلها أو طبعها.</p>
+    <div id="doc-pages" class="doc-pages">
+      <div class="doc-page">
+        <img src="assets/preview/page-1.png" alt="الصفحة الأولى من الوثيقة" loading="eager" decoding="async">
+      </div>
+      <div class="doc-page">
+        <img src="assets/preview/page-2.png" alt="صفحة التوقيعات" loading="lazy" decoding="async">
+      </div>
+      <div class="doc-page">
+        <img src="assets/preview/page-3.png" alt="الصفحة الأخيرة من الوثيقة" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2 — أدخل معلوماتك ووقّع</h2>
+    <form id="sign-form" novalidate>
+      <label for="first-name">الاسم <span class="req">*</span></label>
+      <input id="first-name" name="first_name" type="text" autocomplete="given-name" required maxlength="80" lang="ar" placeholder="بالحروف العربية فقط">
+
+      <label for="last-name">النسب <span class="req">*</span></label>
+      <input id="last-name" name="last_name" type="text" autocomplete="family-name" required maxlength="80" lang="ar" placeholder="بالحروف العربية فقط">
+
+      <label for="cin">رقم البطاقة الوطنية (CIN) <span class="req">*</span></label>
+      <input id="cin" name="cin" type="text" inputmode="latin" required maxlength="20" placeholder="مثال: JB123456">
+
+      <label for="phone">رقم الهاتف (اختياري)</label>
+      <input id="phone" name="phone" type="tel" inputmode="tel" maxlength="20">
+
+      <label>التوقيع الإلكتروني <span class="req">*</span></label>
+      <p class="hint">وقّع بإصبعك على الهاتف أو بالفأرة على الحاسوب داخل الإطار.</p>
+      <div class="pad-wrap">
+        <canvas id="pad" width="900" height="320" aria-label="مساحة التوقيع"></canvas>
+        <div class="pad-line"></div>
+      </div>
+      <div class="pad-actions">
+        <button type="button" id="clear-pad" class="btn ghost">إعادة التوقيع</button>
+      </div>
+
+      <label class="check">
+        <input id="consent" type="checkbox" required>
+        <span>أُصرّح بأنني من ذوي الحقوق بالجماعة السلالية لدوار توريرت، وأوافق على استعمال توقيعي في إطار الموضوع المشار إليه أعلاه فقط.</span>
+      </label>
+
+      <p id="form-error" class="error" role="alert" hidden></p>
+      <button type="submit" id="submit-btn" class="btn primary">إرسال التوقيع</button>
+    </form>
+
+    <div id="success" class="success" hidden>
+      <h3>تم تسجيل توقيعك بنجاح</h3>
+      <p>شكرًا لك. سيظهر توقيعك في الوثيقة النهائية.</p>
+      <p><a class="link" id="download-mine" href="#" download>تحميل نسخة PDF تحتوي على توقيعك</a></p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>عدد التوقيعات المسجّلة</h2>
+    <p class="count"><span id="count">—</span> توقيع</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <p class="muted">لا تُستعمل هذه التوقيعات إلا في إطار الموضوع المشار إليه أعلاه.</p>
+</footer>
+
+<script src="assets/protect.js"></script>
+<script src="vendor/pdf-lib.min.js"></script>
+<script src="assets/layout.js"></script>
+<script src="assets/pad.js"></script>
+<script src="assets/pdf-build.js"></script>
+<script src="assets/sign.js"></script>
+</body>
+</html>

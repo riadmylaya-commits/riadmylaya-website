@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إدارة التوقيعات — الوثيقة النهائية</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>إدارة التوقيعات</h1>
+  <p class="sub">استعراض كل التوقيعات وإنتاج ملف PDF نهائي واحد</p>
+</header>
+
+<main>
+  <section class="card" id="login-card">
+    <h2>الدخول</h2>
+    <label for="password">كلمة السر</label>
+    <input id="password" type="password" autocomplete="current-password">
+    <p id="login-error" class="error" role="alert" hidden></p>
+    <button id="login-btn" class="btn primary">دخول</button>
+  </section>
+
+  <section class="card" id="data-card" hidden>
+    <h2>التوقيعات المسجّلة (<span id="total">0</span>)</h2>
+    <div class="row-actions">
+      <button id="build-pdf" class="btn primary" style="width:auto;margin:0">تحميل الوثيقة النهائية (PDF)</button>
+      <button id="build-signatures-only" class="btn ghost">صفحات التوقيعات فقط</button>
+      <button id="export-csv" class="btn ghost">تصدير Excel/CSV</button>
+      <button id="reload" class="btn ghost">تحديث</button>
+    </div>
+    <p id="status" class="muted" role="status"></p>
+    <div class="table-scroll">
+      <table class="list">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>الاسم الكامل</th>
+            <th>رقم البطاقة الوطنية</th>
+            <th>التوقيع</th>
+            <th>الهاتف</th>
+            <th>التاريخ</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="vendor/pdf-lib.min.js"></script>
+<script src="assets/layout.js"></script>
+<script src="assets/pdf-build.js"></script>
+<script src="assets/admin.js"></script>
+</body>
+</html>
