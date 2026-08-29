@@ -288,6 +288,34 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <!-- activites-groupe -->
+  <url>
+    <loc>https://riadmylaya.com/activites-groupe</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/activites-groupe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/group-activities"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/actividades-en-grupo"/>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/group-activities</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/activites-groupe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/group-activities"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/actividades-en-grupo"/>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/actividades-en-grupo</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/activites-groupe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/group-activities"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/actividades-en-grupo"/>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <!-- excursions -->
   <url>
     <loc>https://riadmylaya.com/excursions</loc>
