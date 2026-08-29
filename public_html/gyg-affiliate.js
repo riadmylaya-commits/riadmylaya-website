@@ -11,7 +11,7 @@
    ========================================================================== */
 
 (function () {
-  var PARTNER_ID = "";
+  var PARTNER_ID = "PGMWEHF";
   var CMP = "riadmylaya";
   var WIDGET_SCRIPT = "https://widget.getyourguide.com/dist/pa.umd.production.min.js";
 
