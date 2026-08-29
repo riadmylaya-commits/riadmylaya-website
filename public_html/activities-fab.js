@@ -18,7 +18,7 @@
         { title: "Excursions", icon: "\u26f0\ufe0f", href: "/excursions" },
         { title: "Autres plaisirs", icon: "\u2728", href: "/page18" },
         { title: "Photographe & Vid\u00e9o", icon: "\ud83d\udcf8", href: "/photographe" },
-        { title: "Activit\u00e9s en groupe", icon: "\ud83d\udc65", href: "/activites-groupe" }
+        { title: "Activit\u00e9s en priv\u00e9 ou en groupe", icon: "\ud83d\udc65", href: "/activites-groupe" }
       ]
     },
     en: {
@@ -31,7 +31,7 @@
         { title: "Excursions", icon: "\u26f0\ufe0f", href: "/en/page14" },
         { title: "Other activities", icon: "\u2728", href: "/en/page15" },
         { title: "Photographer & Video", icon: "\ud83d\udcf8", href: "/en/photographe" },
-        { title: "Group activities", icon: "\ud83d\udc65", href: "/en/group-activities" }
+        { title: "Private or group activities", icon: "\ud83d\udc65", href: "/en/group-activities" }
       ]
     },
     es: {
@@ -44,7 +44,7 @@
         { title: "Excursiones", icon: "\u26f0\ufe0f", href: "/es/page14" },
         { title: "Otras actividades", icon: "\u2728", href: "/es/page15" },
         { title: "Fotograf\u00eda y V\u00eddeo", icon: "\ud83d\udcf8", href: "/es/photographe" },
-        { title: "Actividades en grupo", icon: "\ud83d\udc65", href: "/es/actividades-en-grupo" }
+        { title: "Actividades en privado o en grupo", icon: "\ud83d\udc65", href: "/es/actividades-en-grupo" }
       ]
     }
   };
