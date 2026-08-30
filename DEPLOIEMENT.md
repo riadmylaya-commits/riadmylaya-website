@@ -49,6 +49,14 @@ l'hébergement, puis recharger `https://riadmylaya.com/activites-groupe` : la
 section « Les activités les plus appréciées à Marrakech » doit afficher de vraies
 activités.
 
+## Fichier `common-ui.js`
+
+`public_html/common-ui.js` est chargé par **toutes** les pages du site, y compris
+celles qui ne sont pas dans ce dépôt. Il injecte la barre de réservation mobile
+et le bouton WhatsApp, et corrige le sélecteur de langue (voir
+`fixLanguageSwitcher`). C'est donc le bon endroit pour tout correctif qui doit
+s'appliquer à l'ensemble du site.
+
 ## Pages localisées
 
 `en/activities.html` et `es/activities.html` n'ont pas de balise `<base href="/">`,
