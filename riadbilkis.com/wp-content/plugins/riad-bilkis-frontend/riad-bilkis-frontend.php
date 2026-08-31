@@ -57,6 +57,7 @@ function riad_bilkis_reservation_texts($lang) {
             'title'   => 'Réserver en direct, au meilleur tarif',
             'items'   => array(
                 'Meilleur tarif garanti : aucune commission d\'intermédiaire sur nos trois chambres (dès 80 € la nuit).',
+                'Code promo Bilkis12 : à indiquer lors de votre réservation directe pour bénéficier de notre remise.',
                 'Petit-déjeuner marocain servi de 8h00 à 10h30, inclus selon la chambre réservée.',
                 'Arrivée à partir de 13h, départ avant 11h — bagages gardés gratuitement en dehors de ces horaires.',
                 'Transfert aéroport et excursions organisés sur demande avant votre arrivée.',
@@ -68,6 +69,8 @@ function riad_bilkis_reservation_texts($lang) {
             'faq'     => array(
                 array('Comment obtenir le meilleur tarif au Riad Bilkis ?',
                       'En réservant en direct sur riadbilkis.com : aucune commission d\'intermédiaire n\'est appliquée. Les chambres démarrent à 80 € la nuit (Babouche), 90 € (Tarbouche) et 120 € (suite Véro).'),
+                array('Existe-t-il un code promo pour le Riad Bilkis ?',
+                      'Oui : indiquez le code Bilkis12 lors de votre réservation directe sur riadbilkis.com pour bénéficier de notre remise. Le code n\'est pas disponible sur les plateformes de réservation.'),
                 array('Le petit-déjeuner est-il inclus ?',
                       'Le petit-déjeuner marocain fait maison est servi de 8h00 à 10h30 et il est inclus selon la chambre réservée. Le détail est indiqué au moment de la réservation.'),
                 array('Quels sont les horaires d\'arrivée et de départ ?',
@@ -82,6 +85,7 @@ function riad_bilkis_reservation_texts($lang) {
             'title'   => 'Book direct, at the best rate',
             'items'   => array(
                 'Best rate guaranteed: no intermediary commission on our three rooms (from €80 per night).',
+                'Promo code Bilkis12: enter it when booking direct to get our discount.',
                 'Moroccan breakfast served from 8:00 to 10:30, included depending on the room booked.',
                 'Check-in from 1 pm, check-out before 11 am — free luggage storage outside these hours.',
                 'Airport transfer and excursions arranged on request before you arrive.',
@@ -93,6 +97,8 @@ function riad_bilkis_reservation_texts($lang) {
             'faq'     => array(
                 array('How do I get the best rate at Riad Bilkis?',
                       'By booking directly on riadbilkis.com: no intermediary commission is charged. Rooms start at €80 per night (Babouche), €90 (Tarbouche) and €120 (Véro suite).'),
+                array('Is there a promo code for Riad Bilkis?',
+                      'Yes: enter the code Bilkis12 when booking directly on riadbilkis.com to get our discount. The code is not available on booking platforms.'),
                 array('Is breakfast included?',
                       'The homemade Moroccan breakfast is served from 8:00 to 10:30 and is included depending on the room booked. Details are shown during booking.'),
                 array('What are the check-in and check-out times?',
@@ -107,6 +113,7 @@ function riad_bilkis_reservation_texts($lang) {
             'title'   => 'Reserve directamente, al mejor precio',
             'items'   => array(
                 'Mejor precio garantizado: sin comisión de intermediarios en nuestras tres habitaciones (desde 80 € por noche).',
+                'Código promocional Bilkis12: indíquelo al reservar directamente para obtener nuestro descuento.',
                 'Desayuno marroquí servido de 8:00 a 10:30, incluido según la habitación reservada.',
                 'Entrada a partir de las 13h, salida antes de las 11h — consigna de equipaje gratuita fuera de ese horario.',
                 'Traslado al aeropuerto y excursiones organizados a petición antes de su llegada.',
@@ -118,6 +125,8 @@ function riad_bilkis_reservation_texts($lang) {
             'faq'     => array(
                 array('¿Cómo conseguir el mejor precio en el Riad Bilkis?',
                       'Reservando directamente en riadbilkis.com: no se aplica ninguna comisión de intermediarios. Las habitaciones cuestan desde 80 € por noche (Babouche), 90 € (Tarbouche) y 120 € (suite Véro).'),
+                array('¿Hay un código promocional para el Riad Bilkis?',
+                      'Sí: indique el código Bilkis12 al reservar directamente en riadbilkis.com para obtener nuestro descuento. El código no está disponible en las plataformas de reserva.'),
                 array('¿El desayuno está incluido?',
                       'El desayuno marroquí casero se sirve de 8:00 a 10:30 y está incluido según la habitación reservada. El detalle se indica al reservar.'),
                 array('¿Cuáles son los horarios de entrada y salida?',
@@ -219,7 +228,7 @@ add_action('init', function () {
 
     class Riad_Bilkis_Static_Sitemap_Provider extends WP_Sitemaps_Provider {
         public function __construct() {
-            $this->name = 'riad-bilkis-static';
+            $this->name = 'riadbilkisactivites';
             $this->object_type = 'page';
         }
         public function get_url_list($page_num, $object_subtype = '') {
@@ -234,5 +243,5 @@ add_action('init', function () {
         }
     }
 
-    wp_register_sitemap_provider('riad-bilkis-static', new Riad_Bilkis_Static_Sitemap_Provider());
+    wp_register_sitemap_provider('riadbilkisactivites', new Riad_Bilkis_Static_Sitemap_Provider());
 });

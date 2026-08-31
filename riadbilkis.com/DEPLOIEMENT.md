@@ -13,7 +13,7 @@ WordPress, le thème Astra et les plugins tiers ne sont pas dans le dépôt.
 | `public_html/gyg-affiliate.js` | `/home/riaductd/riadbilkis.com/gyg-affiliate.js` |
 | `public_html/gyg/` | `/home/riaductd/riadbilkis.com/gyg/` |
 | `public_html/.htaccess` | `/home/riaductd/riadbilkis.com/.htaccess` |
-| `wp-content/plugins/riad-bilkis-frontend/` | `.../wp-content/plugins/riad-bilkis-frontend/` |
+| `wp-content/plugins/riad-bilkis-frontend/riad-bilkis-frontend.php` | `.../wp-content/mu-plugins/riad-bilkis-frontend.php` (chargé sans activation) |
 | `wp-content/plugins/riad-bilkis-seo/` | `.../wp-content/plugins/riad-bilkis-seo/` |
 | `police/` | `/home/riaductd/police.riadbilkis.com/` (voir `police/INSTRUCTIONS.md`) |
 
@@ -44,20 +44,40 @@ s'affichent — aucun lien non rémunéré n'est publié par erreur.
   sur mobile ;
 - gère FR / EN / ES.
 
-Le code promo est désactivé (`PROMO_CODE: ""`) tant qu'aucun code Bilkis n'a été
-confirmé ; le renseigner l'affiche automatiquement dans la barre.
+Le code promo `Bilkis12` (`PROMO_CODE`) est affiché dans la barre et repris dans
+le bloc « Réserver en direct » et la FAQ JSON-LD des trois langues.
 
 ## Mise en ligne
 
 1. cPanel > Gestionnaire de fichiers, ou `scp` vers le document root.
 2. Remplacer `.htaccess` (le bloc WordPress et le bloc Really Simple Security
    sont conservés à l'identique dans la version du dépôt).
-3. Copier les deux plugins dans `wp-content/plugins/` puis les activer dans
-   **Plugins** (`Riad Bilkis Frontend`, `Riad Bilkis SEO` est déjà actif).
+3. Copier `riad-bilkis-seo.php` par-dessus le plugin déjà actif, et
+   `riad-bilkis-frontend.php` dans `wp-content/mu-plugins/` (les mu-plugins sont
+   chargés automatiquement, aucune activation dans l'admin n'est nécessaire).
 4. Purger le cache LiteSpeed (**LiteSpeed Cache > Toolbox > Purge All**).
 5. Vérifier :
    - `https://riadbilkis.com/activites-groupe` (+ `/en/group-activities`, `/es/actividades`)
    - barre mobile visible sur `https://riadbilkis.com/` en largeur < 992 px
    - bloc « Réserver en direct » et FAQ JSON-LD sur `https://riadbilkis.com/reservation/`
    - `https://riadbilkis.com/wp-sitemap.xml` contient le sitemap
-     `wp-sitemap-riad-bilkis-static-1.xml`
+     `wp-sitemap-riadbilkisactivites-1.xml` (le nom du provider ne doit contenir
+     que des lettres : la règle de réécriture des sitemaps WordPress refuse les
+     tirets et renverrait la page d'accueil)
+   - un seul `<link rel="canonical">` par page (le plugin SEO n'en émet plus,
+     WordPress s'en charge)
+
+## Fiche de police (`police.riadbilkis.com`)
+
+Sous-domaine cPanel avec document root `/home/riaductd/police.riadbilkis.com`,
+base MySQL et utilisateur dédiés, `JWT_SECRET` propre à Bilkis. `api/config.php`
+n'est **jamais** versionné avec de vraies valeurs : elles sont renseignées
+uniquement sur le serveur. `install.php` est exécuté une fois puis supprimé.
+
+Le sous-domaine nécessite un enregistrement DNS `police` (type A) vers l'IP du
+serveur dans la zone Namecheap de `riadbilkis.com` : la zone n'est pas gérée par
+cPanel, donc la création du sous-domaine ne suffit pas. L'AutoSSL ne peut émettre
+le certificat qu'après propagation.
+
+L'envoi d'e-mails reste désactivé (`GMAIL_APP_PASSWORD` vide) tant qu'un mot de
+passe d'application Gmail dédié à `riadbilkis@gmail.com` n'a pas été créé.

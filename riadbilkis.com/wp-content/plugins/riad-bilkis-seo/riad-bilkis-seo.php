@@ -269,13 +269,7 @@ add_action('wp_head', 'riad_bilkis_head_meta', 1);
 // Remove WordPress default meta generator tag
 remove_action('wp_head', 'wp_generator');
 
-// Add canonical URL
-function riad_bilkis_canonical() {
-    if (is_admin()) return;
-    $url = home_url($_SERVER['REQUEST_URI']);
-    echo '<link rel="canonical" href="' . esc_url($url) . '" />' . "\n";
-}
-add_action('wp_head', 'riad_bilkis_canonical', 2);
+// Canonical : WordPress emet deja rel_canonical, sans les parametres d'URL.
 
 // Enqueue Google Fonts and custom luxury CSS
 add_action('wp_enqueue_scripts', function() {

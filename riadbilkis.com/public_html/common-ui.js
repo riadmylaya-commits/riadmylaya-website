@@ -18,7 +18,7 @@
   var CONFIG = {
     BOOKING_URL: "https://booking-directly.com/widgets/CpCIZwUUpc4p14KAQFEzgGCPRoKW9a2R5UUDUleuJA3xBbFB9ZW7MOaFdMCwX/properties",
     WHATSAPP_NUMBER: "212625675494",     // sans + ni espaces
-    PROMO_CODE: "",                      // code promo freetobook, "" = aucun
+    PROMO_CODE: "Bilkis12",              // code promo reservation directe, "" = aucun
     STICKY_CTA_ENABLED: true,
     WHATSAPP_ENABLED: true
   };
