@@ -695,13 +695,23 @@ function riad_bilkis_tune_rooms($content) {
         '<a href="' . esc_url(RIAD_BILKIS_OFFICIAL_URL) . '" class="rb-btn-outline" target="_blank" rel="noopener noreferrer">' . esc_html($t['cta']) . '</a>',
         $content
     );
-    // La photo d'origine de la Chambre Babouche renvoie 404 ; la suivante montrait
-    // une villa contemporaine. La vignette reprend la première photo de la page.
-    $content = str_replace(
-        array('photo-1590490360182-c33d955e39f7', 'photo-1600585154340-be6161a56a0c'),
-        'photo-1611892440504-42a792e24d32',
+    // Chaque carte reprend la première photo de la chambre correspondante.
+    $cards = preg_replace_callback(
+        '#<div class="rb-room-card">.*?</div>\s*</div>#s',
+        function ($m) {
+            if (!preg_match('#href="/([a-z-]+)/"#', $m[0], $link)) return $m[0];
+            $slug = $link[1];
+            if (empty(RIAD_BILKIS_ROOM_PHOTOS[$slug][0])) return $m[0];
+            return preg_replace(
+                '#(<div class="rb-room-img" style="background-image:url\(\')[^\']*#',
+                '${1}' . esc_url(RIAD_BILKIS_ROOM_PHOTOS[$slug][0]),
+                $m[0],
+                1
+            );
+        },
         $content
     );
+    if ($cards !== null) $content = $cards;
 
     $choice = str_replace('$', '\\$', riad_bilkis_choice_section());
     $with_choice = preg_replace(
@@ -845,9 +855,21 @@ add_action('wp_enqueue_scripts', function () {
 // dans « Voir les autres chambres »). Tant qu'une liste est vide, la page
 // affiche des emplacements neutres plutôt que des images d'illustration.
 const RIAD_BILKIS_ROOM_PHOTOS = array(
-    'chambre-babouche' => array(),
-    'chambre-tarbouche' => array(),
-    'chambre-vero' => array(),
+    'chambre-babouche' => array(
+        'https://riadbilkis.com/wp-content/uploads/chambres/babouche-01.jpg',
+        'https://riadbilkis.com/wp-content/uploads/chambres/babouche-02.jpg',
+        'https://riadbilkis.com/wp-content/uploads/chambres/babouche-03.jpg',
+    ),
+    'chambre-tarbouche' => array(
+        'https://riadbilkis.com/wp-content/uploads/chambres/tarbouche-01.jpg',
+        'https://riadbilkis.com/wp-content/uploads/chambres/tarbouche-02.jpg',
+        'https://riadbilkis.com/wp-content/uploads/chambres/tarbouche-03.jpg',
+    ),
+    'chambre-vero' => array(
+        'https://riadbilkis.com/wp-content/uploads/chambres/vero-01.jpg',
+        'https://riadbilkis.com/wp-content/uploads/chambres/vero-02.jpg',
+        'https://riadbilkis.com/wp-content/uploads/chambres/vero-03.jpg',
+    ),
 );
 const RIAD_BILKIS_ROOM_PHOTO_SLOTS = 3;
 
