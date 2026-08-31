@@ -892,11 +892,11 @@ function riad_bilkis_rooms() {
         ),
         'chambre-tarbouche' => array(
             'name'    => 'Chambre Tarbouche',
-            'tagline' => 'Jaune safran et blanc, l\'élégance d\'un riad traditionnel',
-            'accent'  => '#D9A02B',
-            'colors'  => 'Jaune safran et blanc',
+            'tagline' => 'Rouge et blanc, l\'élégance d\'un riad traditionnel',
+            'accent'  => '#B2402F',
+            'colors'  => 'Rouge et blanc',
             'intro'   => array(
-                'Inspirée du tarbouche, la coiffe traditionnelle marocaine, cette chambre se pare de jaune safran et de blanc. Les murs en tadelakt d\'un blanc satiné laissent toute leur place aux textiles safran, aux coussins brodés et aux touches de laiton doré.',
+                'Inspirée du tarbouche, la coiffe traditionnelle marocaine, cette chambre se pare de rouge et de blanc. Les murs en tadelakt d\'un blanc satiné mettent en valeur le rouge profond de la tête de lit, les coussins brodés et les portes anciennes en bois sculpté.',
                 'Le soir, les lanternes ciselées projettent des motifs d\'étoiles sur les murs et le plafond en bois peint à la main, témoignage du savoir-faire des artisans marrakchis. Une chambre lumineuse le jour, chaleureuse à la tombée de la nuit.',
             ),
             'equip'   => array(
