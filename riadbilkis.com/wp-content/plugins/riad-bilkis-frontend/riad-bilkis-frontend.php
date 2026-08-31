@@ -417,13 +417,14 @@ function riad_bilkis_official_texts($lang) {
     return isset($texts[$lang]) ? $texts[$lang] : $texts['fr'];
 }
 
-function riad_bilkis_official_block() {
+function riad_bilkis_official_block($variant = '') {
     $t = riad_bilkis_official_texts(riad_bilkis_lang());
     $lines = '';
     foreach ($t['lines'] as $line) {
         $lines .= esc_html($line) . '<br>';
     }
-    return '<section class="rb-official" id="rb-official">'
+    $class = 'rb-official' . ($variant === 'hero' ? ' rb-official--hero' : '');
+    return '<section class="' . $class . '" id="rb-official">'
         . '<div class="rb-official__inner">'
         . '<h2 class="rb-official__title">' . esc_html($t['title']) . '</h2>'
         . '<p class="rb-official__text">' . $lines . '</p>'
@@ -483,8 +484,19 @@ function riad_bilkis_tune_rooms($content) {
 add_filter('the_content', function ($content) {
     if (!riad_bilkis_is_home_page() || !in_the_loop() || !is_main_query()) return $content;
     $content = riad_bilkis_tune_rooms($content);
+
+    // Le bloc s'affiche en surimpression de la photo du hero (fond transparent).
+    if (strpos($content, '<section class="rb-hero">') !== false) {
+        $overlaid = preg_replace(
+            '#(<section class="rb-hero">.*?)(\s*</div>\s*</section>)#s',
+            '${1}' . str_replace('$', '\\$', riad_bilkis_official_block('hero')) . '${2}',
+            $content,
+            1
+        );
+        if ($overlaid !== null) return $overlaid;
+    }
+
     $block = riad_bilkis_official_block();
-    // Le bloc se place juste sous le hero, comme sur riadmylaya.com.
     $pos = strpos($content, '<section class="rb-section');
     if ($pos !== false) {
         return substr($content, 0, $pos) . $block . substr($content, $pos);
@@ -532,7 +544,25 @@ add_action('wp_enqueue_scripts', function () {
  pointer-events:none}
 .rb-promo-toast.is-visible{opacity:.95}
 @keyframes rbPromoPulse{0%,100%{box-shadow:0 3px 10px rgba(0,0,0,.12)}50%{box-shadow:0 3px 22px rgba(201,151,82,.55)}}
+/* Variante surimpression sur la photo du hero : aucun fond opaque. */
+.rb-hero{min-height:100vh;height:auto;padding:110px 0 70px}
+.rb-official--hero{background:transparent;padding:26px 20px 0}
+/* Le CTA du hero ferait doublon avec « Réserver au meilleur prix ». */
+.rb-hero-content .rb-hero-btn{display:none}
+.rb-hero-content .rb-hero-subtitle{margin-bottom:0}
+.rb-official--hero .rb-official__title{color:#fff;font-size:38px;letter-spacing:.5px;
+ text-shadow:0 2px 14px rgba(0,0,0,.55);margin-bottom:14px}
+.rb-official--hero .rb-official__text{color:#fff;font-size:19px;text-shadow:0 1px 10px rgba(0,0,0,.6);
+ margin-bottom:22px}
+.rb-official--hero .rb-promo-box{background:rgba(20,14,10,.42);backdrop-filter:blur(3px);
+ -webkit-backdrop-filter:blur(3px);border-color:#D4A574;box-shadow:0 4px 18px rgba(0,0,0,.28)}
+.rb-official--hero .rb-promo-label{color:#F0D9B5}
+.rb-official--hero .rb-promo-hint{color:#F3E7D6}
 @media(max-width:768px){
+.rb-hero{padding:96px 0 52px}
+.rb-official--hero{padding:24px 16px 0}
+.rb-official--hero .rb-official__title{font-size:26px}
+.rb-official--hero .rb-official__text{font-size:16px;margin-bottom:18px}
 .rb-official{padding:40px 18px 46px}
 .rb-official__title{font-size:31px}
 .rb-official__text{font-size:18px}
