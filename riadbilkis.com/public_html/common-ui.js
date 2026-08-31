@@ -23,10 +23,14 @@
     WHATSAPP_ENABLED: true
   };
 
+  // Boutons WhatsApp flottants deja presents : Click to Chat (WordPress) ou
+  // un bouton flottant du theme. Les liens WhatsApp dans le contenu ne comptent
+  // pas : ils ne remplacent pas un bouton toujours accessible.
   function hasExistingWhatsApp() {
     return !!(document.getElementById("ht-ctc-chat") ||
+              document.querySelector(".ht-ctc-chat") ||
               document.getElementById("whatsapp-float") ||
-              document.querySelector("a[href*='wa.me']"));
+              document.querySelector(".whatsapp-float, .wa-float"));
   }
   // ====================================
 
