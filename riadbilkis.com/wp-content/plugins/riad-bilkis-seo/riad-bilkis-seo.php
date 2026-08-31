@@ -28,8 +28,8 @@ function riad_bilkis_seo_data() {
             'description' => 'Chambre Tarbouche au Riad Bilkis : espace chaleureux aux tons chauds alliant tradition et modernité. Climatisation, WiFi, salle de bain privée. Dès 90€/nuit petit-déjeuner inclus.'
         ),
         'chambre-vero' => array(
-            'title' => 'Suite Véro | Riad Bilkis Marrakech - Suite Signature dès 120€/nuit',
-            'description' => 'Suite Véro au Riad Bilkis Marrakech : notre chambre signature avec vue splendide. Luxe, sérénité et décoration raffinée. À partir de 120€/nuit petit-déjeuner inclus.'
+            'title' => 'Chambre Véro | Riad Bilkis Marrakech - Bleu et blanc, avec petit salon',
+            'description' => 'Chambre Véro au Riad Bilkis Marrakech : chambre double bleu et blanc avec petit salon, au premier étage. Climatisation, WiFi, coffre-fort, produits Les Sens de Marrakech.'
         ),
         'galerie' => array(
             'title' => 'Galerie Photos | Riad Bilkis Marrakech - Visite en Images',
@@ -161,8 +161,8 @@ function riad_bilkis_head_meta() {
             ),
             array(
                 '@type' => 'Offer',
-                'name' => 'Suite Véro',
-                'description' => 'Suite signature avec vue splendide',
+                'name' => 'Chambre Véro',
+                'description' => 'Chambre double bleu et blanc avec petit salon',
                 'price' => '120',
                 'priceCurrency' => 'EUR',
                 'url' => 'https://riadbilkis.com/chambre-vero/'
@@ -215,8 +215,8 @@ function riad_bilkis_head_meta() {
         'chambre-vero' => array(
             '@context' => 'https://schema.org',
             '@type' => 'HotelRoom',
-            'name' => 'Suite Véro',
-            'description' => 'Suite signature avec vue splendide, sanctuaire de luxe et sérénité',
+            'name' => 'Chambre Véro',
+            'description' => 'Chambre double bleu et blanc avec petit salon, au premier étage',
             'url' => 'https://riadbilkis.com/chambre-vero/',
             'occupancy' => array('@type' => 'QuantitativeValue', 'value' => 2),
             'bed' => array('@type' => 'BedDetails', 'typeOfBed' => 'King', 'numberOfBeds' => 1),

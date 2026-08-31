@@ -906,7 +906,7 @@ function riad_bilkis_rooms() {
             'bath'    => 'Salle de bain avec douche et toilettes, murs en tadelakt et sol en carreaux de ciment.',
         ),
         'chambre-vero' => array(
-            'name'    => 'Suite Véro',
+            'name'    => 'Chambre Véro',
             'tagline' => 'Bleu et blanc, un espace apaisant avec son petit salon',
             'accent'  => '#3E6E96',
             'colors'  => 'Bleu et blanc',
@@ -929,6 +929,18 @@ function riad_bilkis_room_slug() {
     $rooms = riad_bilkis_rooms();
     return isset($rooms[$post->post_name]) ? $post->post_name : '';
 }
+
+function riad_bilkis_rename_vero($text) {
+    if (!is_string($text) || strpos($text, 'Véro') === false) return $text;
+    return str_replace(
+        array('Suite Véro', 'Notre suite premium offrant un espace généreux et une décoration raffinée'),
+        array('Chambre Véro', 'Bleu et blanc, un espace apaisant avec son petit salon'),
+        $text
+    );
+}
+add_filter('the_content', 'riad_bilkis_rename_vero', 99);
+add_filter('the_title', 'riad_bilkis_rename_vero', 99);
+add_filter('wp_nav_menu_items', 'riad_bilkis_rename_vero', 99);
 
 function riad_bilkis_promo_box($t) {
     return '<div class="rb-promo-box" role="note" aria-label="' . esc_attr($t['promo'] . ' ' . RIAD_BILKIS_PROMO) . '">'
