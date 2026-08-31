@@ -49,28 +49,248 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('riad-bilkis-common-ui', '/common-ui.js', array(), '1.0', true);
 }, 25);
 
-// ── Entrée « Activités » dans le menu principal ──────────────────────────────
+// ── Menu principal : 7 rubriques sur une ligne, avec sous-menus ──────────────
+function riad_bilkis_menu_tree($lang) {
+    $menus = array(
+        'fr' => array(
+            array('Accueil',   '/'),
+            array('Chambres',  '/chambres/'),
+            array('Galerie',   '/galerie/'),
+            array('Services',  '/nos-services/', array(
+                array('Dîner traditionnel', '/diner-marocain'),
+                array('Cours de cuisine',   '/cours-de-cuisine'),
+                array('Hammam & Massage',   '/hammam-massage'),
+            )),
+            array('Activités', '/excursions-activites/', array(
+                array('Activités privées',   '/excursions-activites/'),
+                array('Activités en groupe', '/activites-groupe'),
+            )),
+            array('Blog',      '/blog', array(
+                array('Découverte de Marrakech', '/decouverte-marrakech'),
+            )),
+            array('Contact',   '/contact/'),
+        ),
+        'en' => array(
+            array('Home',       '/en/'),
+            array('Rooms',      '/chambres/'),
+            array('Gallery',    '/galerie/'),
+            array('Services',   '/nos-services/', array(
+                array('Traditional dinner', '/en/moroccan-dinner'),
+                array('Cooking class',      '/en/cooking-class'),
+                array('Hammam & Massage',   '/en/hammam-massage'),
+            )),
+            array('Activities', '/excursions-activites/', array(
+                array('Private activities', '/excursions-activites/'),
+                array('Group activities',   '/en/group-activities'),
+            )),
+            array('Blog',       '/en/blog', array(
+                array('Discover Marrakech', '/en/discover-marrakech'),
+            )),
+            array('Contact',    '/contact/'),
+        ),
+        'es' => array(
+            array('Inicio',       '/es/'),
+            array('Habitaciones', '/chambres/'),
+            array('Galería',      '/galerie/'),
+            array('Servicios',    '/nos-services/', array(
+                array('Cena tradicional',  '/es/cena-marroqui'),
+                array('Clase de cocina',   '/es/clase-de-cocina'),
+                array('Hammam y masaje',   '/es/hammam-masaje'),
+            )),
+            array('Actividades',  '/excursions-activites/', array(
+                array('Actividades privadas', '/excursions-activites/'),
+                array('Actividades en grupo', '/es/actividades'),
+            )),
+            array('Blog',         '/es/blog', array(
+                array('Descubrir Marrakech', '/es/descubrir-marrakech'),
+            )),
+            array('Contacto',     '/contact/'),
+        ),
+    );
+    return isset($menus[$lang]) ? $menus[$lang] : $menus['fr'];
+}
+
+// Le menu du thème est entièrement remplacé : les rubriques retirées
+// (Excursions, Réservation, Infos pratiques, Dîner marocain) sont désormais
+// regroupées dans Services, Activités et Blog.
+function riad_bilkis_menu_items_html() {
+    $path = isset($_SERVER['REQUEST_URI']) ? rtrim(strtok($_SERVER['REQUEST_URI'], '?'), '/') : '';
+    $out  = '';
+    foreach (riad_bilkis_menu_tree(riad_bilkis_lang()) as $entry) {
+        $children = isset($entry[2]) ? $entry[2] : array();
+        $current  = rtrim($entry[1], '/') === $path;
+        $classes  = 'menu-item rb-menu-item';
+        if ($children) $classes .= ' menu-item-has-children rb-has-children';
+        if ($current)  $classes .= ' current-menu-item';
+        $sub = '';
+        if ($children) {
+            $sub .= '<button type="button" class="rb-submenu-toggle" aria-expanded="false" aria-label="'
+                 . esc_attr($entry[0]) . '"><span aria-hidden="true"></span></button>';
+            $sub .= '<ul class="sub-menu rb-submenu">';
+            foreach ($children as $child) {
+                $sub .= '<li class="menu-item"><a class="menu-link" href="' . esc_url($child[1]) . '">'
+                     . esc_html($child[0]) . '</a></li>';
+            }
+            $sub .= '</ul>';
+        }
+        $out .= '<li class="' . esc_attr($classes) . '"><a class="menu-link" href="' . esc_url($entry[1]) . '">'
+             . esc_html($entry[0]) . '</a>' . $sub . '</li>';
+    }
+    return $out;
+}
+
+// Polylang suffixe les emplacements par langue (primary___en, primary___es).
+function riad_bilkis_is_main_menu($location) {
+    $base = strtok((string) $location, '_');
+    return in_array($base, array('primary', 'mobile'), true);
+}
+
 add_filter('wp_nav_menu_items', function ($items, $args) {
-    if (!isset($args->theme_location) || !in_array($args->theme_location, array('primary', 'mobile_menu'), true)) {
+    if (!isset($args->theme_location) || !riad_bilkis_is_main_menu($args->theme_location)) {
         return $items;
     }
-    $lang = riad_bilkis_lang();
-    $added = '';
-    $extra = array(
-        'activities' => RIAD_BILKIS_ACTIVITIES[$lang],
-        'infos'      => RIAD_BILKIS_INFOS[$lang],
-        'diner'      => RIAD_BILKIS_DINER[$lang],
-    );
-    foreach ($extra as $slug => $item) {
-        $added .= sprintf(
-            '<li class="menu-item menu-item-riad-bilkis-%s"><a href="%s">%s</a></li>',
-            esc_attr($slug),
-            esc_url($item['url']),
-            esc_html($item['label'])
-        );
-    }
-    return $items . $added;
+    return riad_bilkis_menu_items_html();
 }, 20, 2);
+
+// Les traductions Polylang (/en/, /es/) n'ont pas de menu assigné : sans cela
+// le thème n'afficherait aucune navigation sur ces pages.
+function riad_bilkis_menu_fallback($args) {
+    $args  = (array) $args;
+    $id    = isset($args['menu_id']) ? $args['menu_id'] : '';
+    $class = isset($args['menu_class']) ? $args['menu_class'] : 'main-header-menu';
+    $html  = '<ul' . ($id ? ' id="' . esc_attr($id) . '"' : '') . ' class="' . esc_attr($class) . '">'
+           . riad_bilkis_menu_items_html() . '</ul>';
+    if (isset($args['echo']) && $args['echo']) {
+        echo $html;
+        return null;
+    }
+    return $html;
+}
+
+function riad_bilkis_first_filled_menu() {
+    static $id = null;
+    if ($id !== null) return $id;
+    $id = 0;
+    foreach ((array) wp_get_nav_menus() as $menu) {
+        if ((int) $menu->count > 0) {
+            $id = (int) $menu->term_id;
+            break;
+        }
+    }
+    return $id;
+}
+
+// Sans menu assigné pour la langue courante, le thème n'affiche pas de
+// navigation du tout sur /en/ et /es/ : on rattache l'emplacement à un menu
+// existant, ses entrées étant ensuite remplacées par la version traduite.
+add_filter('theme_mod_nav_menu_locations', function ($locations) {
+    if (is_admin() || !is_array($locations)) {
+        return $locations;
+    }
+    $fallback = riad_bilkis_first_filled_menu();
+    if (!$fallback) {
+        return $locations;
+    }
+    foreach (array('primary', 'mobile_menu') as $location) {
+        if (empty($locations[$location])) {
+            $locations[$location] = $fallback;
+        }
+    }
+    return $locations;
+}, 100);
+
+add_filter('wp_nav_menu_args', function ($args) {
+    $location = isset($args['theme_location']) ? $args['theme_location'] : '';
+    if (!riad_bilkis_is_main_menu($location)) {
+        return $args;
+    }
+    $args['fallback_cb'] = 'riad_bilkis_menu_fallback';
+
+    // WordPress abandonne le rendu quand le menu de la langue courante est vide :
+    // on lui fournit alors un menu non vide, dont les entrées sont remplacées
+    // ensuite par riad_bilkis_menu_items_html().
+    $locations = get_nav_menu_locations();
+    $assigned  = isset($locations[$location]) ? wp_get_nav_menu_object($locations[$location]) : false;
+    if ($assigned && !is_wp_error($assigned) && (int) $assigned->count > 0) {
+        return $args;
+    }
+    foreach (wp_get_nav_menus() as $menu) {
+        if ((int) $menu->count > 0) {
+            $args['menu'] = $menu->term_id;
+            break;
+        }
+    }
+    return $args;
+}, 20);
+
+// Style sobre du menu + ouverture des sous-menus (survol desktop, clic mobile).
+add_action('wp_footer', function () {
+    ?>
+<style id="rb-menu-css">
+.main-header-menu>.rb-menu-item>.menu-link,.ast-mobile-popup-drawer .rb-menu-item>.menu-link{
+ font-family:"Raleway","Helvetica Neue",Arial,sans-serif;font-size:13px;letter-spacing:2.2px;
+ text-transform:uppercase;font-weight:500}
+.main-header-menu>.rb-menu-item>.menu-link{padding-left:18px;padding-right:18px;position:relative}
+.main-header-menu>.rb-menu-item>.menu-link:after{content:"";position:absolute;left:18px;right:18px;bottom:14px;
+ height:1px;background:#C99752;transform:scaleX(0);transform-origin:center;transition:transform .35s ease}
+.main-header-menu>.rb-menu-item:hover>.menu-link:after,
+.main-header-menu>.rb-menu-item.current-menu-item>.menu-link:after{transform:scaleX(1)}
+.rb-submenu-toggle{display:none}
+@media(min-width:922px){
+ .main-header-menu{flex-wrap:nowrap!important}
+ .main-header-menu>.rb-menu-item{white-space:nowrap}
+ .main-header-menu>.rb-has-children{position:relative}
+ .main-header-menu>.rb-has-children>.menu-link{padding-right:36px}
+ .main-header-menu>.rb-has-children>.menu-link:before{content:"";position:absolute;right:17px;top:50%;
+  width:6px;height:6px;margin-top:-5px;border-right:1px solid currentColor;
+  border-bottom:1px solid currentColor;transform:rotate(45deg);opacity:.45;
+  transition:transform .3s ease,opacity .3s ease}
+ .main-header-menu>.rb-has-children:hover>.menu-link:before{opacity:.8;
+  transform:rotate(45deg) translate(2px,2px)}
+ .main-header-menu>.rb-has-children>.menu-link:after{right:36px}
+ .main-header-menu>.rb-has-children>.rb-submenu{position:absolute;top:100%;left:50%;transform:translate(-50%,10px);
+  min-width:250px;background:#fff;border:none;border-top:2px solid #C99752;border-radius:0 0 3px 3px;
+  box-shadow:0 14px 34px rgba(0,0,0,.13);padding:10px 0;opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .28s ease,transform .28s ease;display:block;z-index:9999}
+ .main-header-menu>.rb-has-children:hover>.rb-submenu,
+ .main-header-menu>.rb-has-children:focus-within>.rb-submenu{opacity:1;visibility:visible;pointer-events:auto;
+  transform:translate(-50%,0)}
+ .main-header-menu .rb-submenu>li>.menu-link{display:block;padding:11px 26px;font-family:"Raleway",Arial,sans-serif;
+  font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:#3F2935;white-space:nowrap;
+  transition:color .25s,padding-left .25s}
+ .main-header-menu .rb-submenu>li>.menu-link:hover{color:#821F0C;padding-left:31px}
+}
+@media(max-width:921px){
+ .rb-has-children{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;align-items:center}
+ .rb-has-children>.menu-link{flex:1 1 auto;width:auto!important;max-width:none;height:auto!important;
+  min-height:0!important}
+ .main-header-menu>.rb-menu-item>.menu-link{padding-top:11px;padding-bottom:11px}
+ .rb-has-children>.rb-submenu{flex:0 0 100%}
+ .rb-submenu-toggle{display:flex;align-items:center;justify-content:center;flex:0 0 52px;align-self:stretch;
+  background:transparent!important;border:none!important;box-shadow:none!important;padding:0;cursor:pointer;
+  min-height:0;line-height:1}
+ .rb-submenu-toggle span{display:block;width:7px;height:7px;margin:0 auto;border-right:1px solid #3F2935;
+  border-bottom:1px solid #3F2935;transform:rotate(45deg);transition:transform .3s}
+ .rb-submenu-toggle[aria-expanded="true"] span{transform:rotate(-135deg)}
+ .rb-has-children>.rb-submenu{display:none!important;padding:2px 0 8px 18px;opacity:1;visibility:visible;
+  position:static;width:auto;height:auto;box-shadow:none;border:none;background:transparent}
+ .rb-has-children.rb-open>.rb-submenu{display:block!important}
+ .rb-submenu>li>.menu-link{font-size:13px;letter-spacing:1px;text-transform:none;padding:8px 0}
+}
+</style>
+<script id="rb-menu-js">
+(function(){
+  document.addEventListener("click",function(e){
+    var btn=e.target.closest?e.target.closest(".rb-submenu-toggle"):null;
+    if(!btn)return;
+    e.preventDefault();
+    var li=btn.parentNode,open=li.classList.toggle("rb-open");
+    btn.setAttribute("aria-expanded",open?"true":"false");
+  });
+})();
+</script>
+    <?php
+}, 99);
 
 // ── Page réservation : bloc « meilleur tarif garanti » + FAQ ─────────────────
 function riad_bilkis_reservation_texts($lang) {

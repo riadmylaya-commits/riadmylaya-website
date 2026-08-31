@@ -76,6 +76,23 @@ Header unset X-Powered-By
   RewriteRule ^en/moroccan-dinner/?$ /sejour/diner-en.html [L]
   RewriteRule ^es/cena-marroqui/?$ /sejour/diner-es.html [L]
 
+  # Expériences et blog (rubriques du menu principal, FR/EN/ES)
+  RewriteRule ^cours-de-cuisine/?$ /experiences/cuisine-fr.html [L]
+  RewriteRule ^en/cooking-class/?$ /experiences/cuisine-en.html [L]
+  RewriteRule ^es/clase-de-cocina/?$ /experiences/cuisine-es.html [L]
+
+  RewriteRule ^hammam-massage/?$ /experiences/hammam-fr.html [L]
+  RewriteRule ^en/hammam-massage/?$ /experiences/hammam-en.html [L]
+  RewriteRule ^es/hammam-masaje/?$ /experiences/hammam-es.html [L]
+
+  RewriteRule ^decouverte-marrakech/?$ /experiences/marrakech-fr.html [L]
+  RewriteRule ^en/discover-marrakech/?$ /experiences/marrakech-en.html [L]
+  RewriteRule ^es/descubrir-marrakech/?$ /experiences/marrakech-es.html [L]
+
+  RewriteRule ^blog/?$ /experiences/blog-fr.html [L]
+  RewriteRule ^en/blog/?$ /experiences/blog-en.html [L]
+  RewriteRule ^es/blog/?$ /experiences/blog-es.html [L]
+
   # Anciennes URL éventuelles vers les pages activités
   RewriteRule ^activites/?$ /activites-groupe [R=301,L]
   RewriteRule ^en/activities/?$ /en/group-activities [R=301,L]
