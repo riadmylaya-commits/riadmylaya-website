@@ -260,22 +260,43 @@ add_action('wp_footer', function () {
   transition:color .25s,padding-left .25s}
  .main-header-menu .rb-submenu>li>.menu-link:hover{color:#821F0C;padding-left:31px}
 }
+/* Menu mobile : lignes pleine largeur, grandes zones tactiles (>= 56 px). */
 @media(max-width:921px){
- .rb-has-children{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;align-items:center}
- .rb-has-children>.menu-link{flex:1 1 auto;width:auto!important;max-width:none;height:auto!important;
-  min-height:0!important}
- .main-header-menu>.rb-menu-item>.menu-link{padding-top:11px;padding-bottom:11px}
+ .ast-builder-menu-mobile .main-header-menu{background:#fff;padding:6px 0 10px}
+ .main-header-menu>.rb-menu-item{border-bottom:1px solid #EFE7DC}
+ .main-header-menu>.rb-menu-item:last-child{border-bottom:none}
+ .main-header-menu>.rb-menu-item>.menu-link,.ast-mobile-popup-drawer .rb-menu-item>.menu-link{font-size:15px;
+  letter-spacing:1.6px}
+ .main-header-menu>.rb-menu-item>.menu-link{display:flex!important;align-items:center;width:100%;
+  min-height:58px;padding:0 22px!important;color:#2C2318}
+ .main-header-menu>.rb-menu-item>.menu-link:after{display:none}
+ .main-header-menu>.rb-menu-item>.menu-link:active,
+ .main-header-menu>.rb-menu-item>.menu-link:focus{background:#FBF7F2}
+ .main-header-menu>.rb-menu-item.current-menu-item>.menu-link{color:#C75B39;
+  box-shadow:inset 3px 0 0 var(--rb-menu-accent,#C99752)}
+ .rb-has-children{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;align-items:stretch}
+ .rb-has-children>.menu-link{flex:1 1 auto;width:auto!important;max-width:none;height:auto!important}
  .rb-has-children>.rb-submenu{flex:0 0 100%}
- .rb-submenu-toggle{display:flex;align-items:center;justify-content:center;flex:0 0 52px;align-self:stretch;
-  background:transparent!important;border:none!important;box-shadow:none!important;padding:0;cursor:pointer;
-  min-height:0;line-height:1}
- .rb-submenu-toggle span{display:block;width:7px;height:7px;margin:0 auto;border-right:1px solid #3F2935;
-  border-bottom:1px solid #3F2935;transform:rotate(45deg);transition:transform .3s}
- .rb-submenu-toggle[aria-expanded="true"] span{transform:rotate(-135deg)}
- .rb-has-children>.rb-submenu{display:none!important;padding:2px 0 8px 18px;opacity:1;visibility:visible;
-  position:static;width:auto;height:auto;box-shadow:none;border:none;background:transparent}
+ .rb-submenu-toggle{display:flex;align-items:center;justify-content:center;flex:0 0 64px;align-self:stretch;
+  background:transparent!important;border:none!important;border-left:1px solid #EFE7DC!important;
+  box-shadow:none!important;padding:0;cursor:pointer;min-height:58px;line-height:1}
+ .rb-submenu-toggle span{display:block;width:11px;height:11px;margin:0 auto -4px;border-right:2px solid #8B7355;
+  border-bottom:2px solid #8B7355;transform:rotate(45deg);transition:transform .3s}
+ .rb-submenu-toggle[aria-expanded="true"] span{margin:4px auto 0;transform:rotate(-135deg);border-color:#C75B39}
+ .rb-has-children>.rb-submenu{display:none!important;padding:0;opacity:1;visibility:visible;
+  position:static;width:auto;height:auto;box-shadow:none;border:none;background:#FBF7F2}
  .rb-has-children.rb-open>.rb-submenu{display:block!important}
- .rb-submenu>li>.menu-link{font-size:13px;letter-spacing:1px;text-transform:none;padding:8px 0}
+ .rb-submenu>li{border-top:1px solid #EFE7DC}
+ .rb-submenu>li>.menu-link{display:flex!important;align-items:center;min-height:52px;width:100%;
+  padding:0 22px 0 38px!important;font-size:14.5px;letter-spacing:.6px;text-transform:none;color:#4A3D31}
+ .rb-submenu>li>.menu-link:active,.rb-submenu>li>.menu-link:focus{background:#F3EADD}
+ /* Ouverture / fermeture : cibles tactiles confortables. */
+ .ast-mobile-header-wrap .menu-toggle.main-header-menu-toggle{min-width:52px;min-height:52px;
+  display:flex;align-items:center;justify-content:center;border-radius:4px}
+ .ast-mobile-header-wrap .menu-toggle .ast-mobile-svg{width:28px!important;height:28px!important;
+  fill:#C75B39!important}
+ .ast-mobile-header-wrap .menu-toggle.toggled{background:#FBF7F2!important;border:1px solid #E8E0D5}
+ .ast-mobile-header-wrap .menu-toggle.toggled .ast-mobile-svg{width:30px!important;height:30px!important}
 }
 </style>
 <script id="rb-menu-js">
