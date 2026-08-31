@@ -753,7 +753,7 @@ add_action('astra_primary_content_top', function () {
 });
 
 add_action('wp_enqueue_scripts', function () {
-    if (!riad_bilkis_is_home_page() && !riad_bilkis_room_slug()) return;
+    if (!riad_bilkis_is_home_page() && !riad_bilkis_room_slug() && !riad_bilkis_is_rooms_page()) return;
     wp_register_style('riad-bilkis-official', false);
     wp_enqueue_style('riad-bilkis-official');
     wp_add_inline_style('riad-bilkis-official', '
@@ -1016,6 +1016,68 @@ add_filter('the_content', function ($content) {
     return riad_bilkis_room_page_html($slug);
 }, 23);
 
+// -- Page « Chambres » : trois cartes identiques, sans les longues descriptions
+function riad_bilkis_is_rooms_page() {
+    global $post;
+    return (bool) ($post && is_page() && $post->post_name === 'chambres');
+}
+
+function riad_bilkis_rooms_index_texts($lang) {
+    $texts = array(
+        'fr' => array(
+            'label' => 'Riad en exclusivité', 'title' => 'Nos Chambres',
+            'intro' => 'Trois chambres décorées dans le plus pur style marocain, chacune avec ses couleurs et son atmosphère.',
+            'cta'   => 'Découvrir la chambre',
+        ),
+        'en' => array(
+            'label' => 'Exclusive riad', 'title' => 'Our Rooms',
+            'intro' => 'Three rooms decorated in the purest Moroccan style, each with its own colours and atmosphere.',
+            'cta'   => 'Discover the room',
+        ),
+        'es' => array(
+            'label' => 'Riad en exclusiva', 'title' => 'Nuestras Habitaciones',
+            'intro' => 'Tres habitaciones decoradas en el más puro estilo marroquí, cada una con sus colores y su ambiente.',
+            'cta'   => 'Descubrir la habitación',
+        ),
+    );
+    return isset($texts[$lang]) ? $texts[$lang] : $texts['fr'];
+}
+
+function riad_bilkis_rooms_index_html() {
+    $t     = riad_bilkis_rooms_index_texts(riad_bilkis_lang());
+    $cards = '';
+    foreach (riad_bilkis_rooms() as $slug => $room) {
+        $photo = isset(RIAD_BILKIS_ROOM_PHOTOS[$slug][0]) ? RIAD_BILKIS_ROOM_PHOTOS[$slug][0] : '';
+        $url   = esc_url('/' . $slug . '/');
+        $thumb = $photo ? ' style="background-image:url(\'' . esc_url($photo) . '\')"' : '';
+        $cards .= '<article class="rb-rooms-card" style="--rb-room-accent:' . esc_attr($room['accent']) . '">'
+            . '<a class="rb-rooms-card__link" href="' . $url . '" aria-label="' . esc_attr($room['name']) . '">'
+            . '<span class="rb-rooms-card__img"' . $thumb . '></span></a>'
+            . '<div class="rb-rooms-card__body">'
+            . '<span class="rb-rooms-card__colors">' . esc_html($room['colors']) . '</span>'
+            . '<h2 class="rb-rooms-card__name"><a href="' . $url . '">' . esc_html($room['name']) . '</a></h2>'
+            . '<a class="rb-rooms-card__btn" href="' . $url . '">' . esc_html($t['cta']) . '</a>'
+            . '</div></article>';
+    }
+
+    return '<div class="rb-rooms-index">'
+        . '<header class="rb-rooms-index__head">'
+        . '<span class="rb-section-label">' . esc_html($t['label']) . '</span>'
+        . '<h1 class="rb-rooms-index__title">' . esc_html($t['title']) . '</h1>'
+        . '<div class="rb-section-line"></div>'
+        . '<p class="rb-rooms-index__intro">' . esc_html($t['intro']) . '</p>'
+        . '</header>'
+        . '<div class="rb-rooms-index__grid">' . $cards . '</div>'
+        . '</div>'
+        . riad_bilkis_choice_section();
+}
+
+add_filter('the_content', function ($content) {
+    if (!is_singular() || !is_main_query() || !in_the_loop()) return $content;
+    if (!riad_bilkis_is_rooms_page()) return $content;
+    return riad_bilkis_rooms_index_html();
+}, 23);
+
 // Section « demander des informations OU réserver en ligne », sous les chambres.
 function riad_bilkis_choice_texts($lang) {
     $texts = array(
@@ -1080,7 +1142,7 @@ function riad_bilkis_choice_section() {
 }
 
 add_action('wp_enqueue_scripts', function () {
-    if (!riad_bilkis_is_home_page() && !riad_bilkis_room_slug()) return;
+    if (!riad_bilkis_is_home_page() && !riad_bilkis_room_slug() && !riad_bilkis_is_rooms_page()) return;
     wp_enqueue_script('riad-bilkis-forms', '/sejour/forms.js', array(), '1.0', true);
     wp_register_style('riad-bilkis-rooms', false);
     wp_enqueue_style('riad-bilkis-rooms');
@@ -1146,7 +1208,37 @@ add_action('wp_enqueue_scripts', function () {
 .rb-room-other__img{display:block;height:230px;background-size:cover;background-position:center;background-color:#F6F1EA}
 .rb-room-other__name{display:block;padding:20px;text-align:center;font-family:"Cormorant Garamond",Georgia,serif;
  font-size:24px;font-weight:600;color:#2C2318}
+/* Page « Chambres » : trois cartes identiques sur une ligne. */
+.rb-rooms-index{max-width:1140px;margin:0 auto;padding:8px 0 10px}
+.rb-rooms-index__head{text-align:center;margin-bottom:44px}
+.rb-rooms-index__title{font-family:"Cormorant Garamond",Georgia,serif;font-size:46px;font-weight:600;
+ letter-spacing:1.5px;color:#2C2318;margin:0 0 8px}
+.rb-rooms-index__intro{max-width:640px;margin:18px auto 0;font-size:16.5px;line-height:1.8;color:#4A3D31}
+.rb-rooms-index__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.rb-rooms-card{display:flex;flex-direction:column;background:#fff;border:1px solid #E8E0D5;overflow:hidden;
+ transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.rb-rooms-card:hover{transform:translateY(-5px);box-shadow:0 16px 38px rgba(0,0,0,.1);
+ border-color:var(--rb-room-accent)}
+.rb-rooms-card__link{display:block;overflow:hidden}
+.rb-rooms-card__img{display:block;height:280px;background-size:cover;background-position:center;
+ background-color:#F6F1EA;transition:transform .6s ease}
+.rb-rooms-card:hover .rb-rooms-card__img{transform:scale(1.05)}
+.rb-rooms-card__body{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;
+ padding:26px 22px 30px}
+.rb-rooms-card__colors{font-family:"Raleway",Arial,sans-serif;font-size:11.5px;letter-spacing:2.6px;
+ text-transform:uppercase;font-weight:600;color:var(--rb-room-accent)}
+.rb-rooms-card__name{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;font-weight:600;
+ letter-spacing:.5px;margin:10px 0 20px}
+.rb-rooms-card__name a{color:#2C2318;text-decoration:none}
+.rb-rooms-card__btn,.rb-rooms-card__btn:visited{margin-top:auto;display:inline-block;padding:12px 26px;
+ border:1px solid var(--rb-room-accent);color:var(--rb-room-accent);background:transparent;text-decoration:none;
+ font-family:"Raleway",Arial,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:2px;
+ text-transform:uppercase;transition:background .3s ease,color .3s ease}
+.rb-rooms-card__btn:hover,.rb-rooms-card__btn:focus{background:var(--rb-room-accent);color:#fff}
 @media(max-width:768px){
+.rb-rooms-index__title{font-size:31px;letter-spacing:.8px}
+.rb-rooms-index__grid{grid-template-columns:1fr;gap:22px}
+.rb-rooms-card__img{height:240px}
 .rb-choice__grid{grid-template-columns:1fr}
 .rb-choice__or{padding:18px 0}
 .rb-choice__or:before{top:50%;bottom:auto;left:0;right:0;width:auto;height:1px}
