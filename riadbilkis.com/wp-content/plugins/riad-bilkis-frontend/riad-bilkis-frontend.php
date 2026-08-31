@@ -449,8 +449,40 @@ function riad_bilkis_is_home_page() {
     return is_home() && in_array(rtrim($path, '/'), array('/en', '/es'), true);
 }
 
+// ── Section « Nos Chambres » : label, suppression des tarifs, CTA réservation ─
+function riad_bilkis_rooms_texts($lang) {
+    $texts = array(
+        'fr' => array('label' => 'Riad en exclusivité', 'cta' => 'Réserver au meilleur prix'),
+        'en' => array('label' => 'Exclusive riad',      'cta' => 'Book at the best price'),
+        'es' => array('label' => 'Riad en exclusiva',   'cta' => 'Reservar al mejor precio'),
+    );
+    return isset($texts[$lang]) ? $texts[$lang] : $texts['fr'];
+}
+
+function riad_bilkis_tune_rooms($content) {
+    if (strpos($content, 'rb-rooms') === false) return $content;
+    $t = riad_bilkis_rooms_texts(riad_bilkis_lang());
+
+    $content = preg_replace(
+        '#(<section class="rb-section rb-rooms">.*?<span class="rb-section-label">)[^<]*#s',
+        '${1}' . esc_html($t['label']),
+        $content
+    );
+    $content = preg_replace('#\s*<div class="rb-room-price">.*?</div>#s', '', $content);
+    $content = preg_replace(
+        '#<a href="/chambres/" class="rb-btn-outline">[^<]*</a>#',
+        '<a href="' . esc_url(RIAD_BILKIS_OFFICIAL_URL) . '" class="rb-btn-outline" target="_blank" rel="noopener noreferrer">' . esc_html($t['cta']) . '</a>',
+        $content
+    );
+    // La photo d'origine de la Chambre Babouche renvoie 404 chez l'hébergeur d'images.
+    $content = str_replace('photo-1590490360182-c33d955e39f7', 'photo-1600585154340-be6161a56a0c', $content);
+
+    return $content;
+}
+
 add_filter('the_content', function ($content) {
     if (!riad_bilkis_is_home_page() || !in_the_loop() || !is_main_query()) return $content;
+    $content = riad_bilkis_tune_rooms($content);
     $block = riad_bilkis_official_block();
     // Le bloc se place juste sous le hero, comme sur riadmylaya.com.
     $pos = strpos($content, '<section class="rb-section');
