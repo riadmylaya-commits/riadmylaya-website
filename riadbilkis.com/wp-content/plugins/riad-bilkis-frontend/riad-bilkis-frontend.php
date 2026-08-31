@@ -695,10 +695,23 @@ function riad_bilkis_tune_rooms($content) {
         '<a href="' . esc_url(RIAD_BILKIS_OFFICIAL_URL) . '" class="rb-btn-outline" target="_blank" rel="noopener noreferrer">' . esc_html($t['cta']) . '</a>',
         $content
     );
-    // La photo d'origine de la Chambre Babouche renvoie 404 chez l'hébergeur d'images.
-    $content = str_replace('photo-1590490360182-c33d955e39f7', 'photo-1600585154340-be6161a56a0c', $content);
+    // La photo d'origine de la Chambre Babouche renvoie 404 ; la suivante montrait
+    // une villa contemporaine. La vignette reprend la première photo de la page.
+    $content = str_replace(
+        array('photo-1590490360182-c33d955e39f7', 'photo-1600585154340-be6161a56a0c'),
+        'photo-1611892440504-42a792e24d32',
+        $content
+    );
 
-    return $content;
+    $choice = str_replace('$', '\\$', riad_bilkis_choice_section());
+    $with_choice = preg_replace(
+        '#(<section class="rb-section rb-rooms">.*?</section>)#s',
+        '${1}' . $choice,
+        $content,
+        1
+    );
+
+    return $with_choice === null ? $content : $with_choice;
 }
 
 add_filter('the_content', function ($content) {
@@ -730,7 +743,7 @@ add_action('astra_primary_content_top', function () {
 });
 
 add_action('wp_enqueue_scripts', function () {
-    if (!riad_bilkis_is_home_page()) return;
+    if (!riad_bilkis_is_home_page() && !riad_bilkis_room_slug()) return;
     wp_register_style('riad-bilkis-official', false);
     wp_enqueue_style('riad-bilkis-official');
     wp_add_inline_style('riad-bilkis-official', '
@@ -797,10 +810,8 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('riad-bilkis-official');
     wp_add_inline_script('riad-bilkis-official', '
 (function(){
-  var block=document.getElementById("rb-official");
-  if(!block)return;
-  var btn=block.querySelector(".rb-promo-value");
-  if(!btn)return;
+  var buttons=document.querySelectorAll(".rb-promo-value");
+  if(!buttons.length)return;
   function toast(msg){
     var t=document.createElement("div");
     t.className="rb-promo-toast";
@@ -810,21 +821,306 @@ add_action('wp_enqueue_scripts', function () {
     t.classList.add("is-visible");
     setTimeout(function(){t.classList.remove("is-visible");setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},400);},1600);
   }
-  btn.addEventListener("click",function(){
-    var code=btn.textContent.trim(),done=btn.getAttribute("data-copied")||"";
-    if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(code).then(function(){toast(done);});
-      return;
-    }
-    var ta=document.createElement("textarea");
-    ta.value=code;ta.style.position="fixed";ta.style.opacity="0";
-    document.body.appendChild(ta);ta.select();
-    try{document.execCommand("copy");toast(done);}catch(e){}
-    document.body.removeChild(ta);
+  Array.prototype.forEach.call(buttons,function(btn){
+    btn.addEventListener("click",function(){
+      var code=btn.textContent.trim(),done=btn.getAttribute("data-copied")||"";
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(code).then(function(){toast(done);});
+        return;
+      }
+      var ta=document.createElement("textarea");
+      ta.value=code;ta.style.position="fixed";ta.style.opacity="0";
+      document.body.appendChild(ta);ta.select();
+      try{document.execCommand("copy");toast(done);}catch(e){}
+      document.body.removeChild(ta);
+    });
   });
 })();
 ');
 });
+
+// ── Chambres : pages individuelles et section de choix sur l'accueil ─────────
+// Les photos sont volontairement regroupées ici : il suffit de remplacer les
+// URL par celles des vraies photos du riad (3 par chambre, la première sert
+// aussi de vignette dans « Voir les autres chambres »).
+const RIAD_BILKIS_ROOM_PHOTOS = array(
+    'chambre-babouche' => array(
+        'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80',
+        'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&q=80',
+        'https://images.unsplash.com/photo-1539437829697-1b4ed5aebd19?w=1200&q=80',
+    ),
+    'chambre-tarbouche' => array(
+        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
+        'https://images.unsplash.com/photo-1587985064135-0366536eab42?w=1200&q=80',
+        'https://images.unsplash.com/photo-1594563703937-fdc640497dcd?w=1200&q=80',
+    ),
+    'chambre-vero' => array(
+        'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1200&q=80',
+        'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80',
+        'https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=1200&q=80',
+    ),
+);
+
+function riad_bilkis_rooms() {
+    return array(
+        'chambre-babouche' => array(
+            'name'    => 'Chambre Babouche',
+            'tagline' => 'Artisanat marocain et tons chauds, dans une atmosphère intime',
+            'accent'  => '#C0703F',
+            'colors'  => 'Terre cuite et blanc',
+            'intro'   => array(
+                'Inspirée des babouches en cuir travaillées dans les souks de la médina, cette chambre décline les tons terre cuite et le blanc immaculé des murs en tadelakt. Le zellige du sol, posé à la main, dessine un motif géométrique discret qui accompagne la lumière du patio.',
+                'Les lanternes en laiton ciselé et les textiles tissés à Marrakech créent une atmosphère feutrée le soir. La chambre ouvre sur le patio, au calme, à quelques pas de la terrasse panoramique.',
+            ),
+            'equip'   => array(
+                array('Lit double confort (160 x 200 cm)', 'Linge de lit en satin de coton', 'Climatisation réversible', 'Wi-Fi haut débit gratuit', 'Coffre-fort numérique'),
+                array('Bouilloire et thé à la menthe', 'Serviettes de bain XXL', 'Peignoirs et babouches', 'Produits d\'accueil artisanaux', 'Plateau de bienvenue'),
+            ),
+            'bath'    => 'Salle de bain privée en tadelakt, douche à l\'italienne, vasque en cuivre martelé et robinetterie en laiton vieilli.',
+        ),
+        'chambre-tarbouche' => array(
+            'name'    => 'Chambre Tarbouche',
+            'tagline' => 'Jaune safran et blanc, l\'élégance d\'un riad traditionnel',
+            'accent'  => '#D9A02B',
+            'colors'  => 'Jaune safran et blanc',
+            'intro'   => array(
+                'Inspirée du tarbouche, la coiffe traditionnelle marocaine, cette chambre se pare de jaune safran et de blanc. Les murs en tadelakt d\'un blanc satiné laissent toute leur place aux textiles safran, aux coussins brodés et aux touches de laiton doré.',
+                'Le soir, les lanternes ciselées projettent des motifs d\'étoiles sur les murs et le plafond en bois peint à la main, témoignage du savoir-faire des artisans marrakchis. Une chambre lumineuse le jour, chaleureuse à la tombée de la nuit.',
+            ),
+            'equip'   => array(
+                array('Lit double confort (160 x 200 cm)', 'Linge de lit en satin de coton', 'Climatisation réversible', 'Wi-Fi haut débit gratuit', 'Coffre-fort numérique'),
+                array('Bouilloire et thé à la menthe', 'Serviettes de bain XXL', 'Peignoirs et babouches', 'Produits d\'accueil artisanaux', 'Plateau de bienvenue'),
+            ),
+            'bath'    => 'Salle de bain privée avec baignoire encastrée en tadelakt, vasque en cuivre martelé et robinetterie en laiton vieilli, pour un bain aux huiles essentielles.',
+        ),
+        'chambre-vero' => array(
+            'name'    => 'Suite Véro',
+            'tagline' => 'Notre suite signature, espace généreux et décoration raffinée',
+            'accent'  => '#B08D57',
+            'colors'  => 'Sable doré et blanc',
+            'intro'   => array(
+                'La suite Véro est la plus vaste du riad : un salon marocain prolonge la chambre, meublé de banquettes basses et de tapis noués dans le Moyen Atlas. Les tons sable doré et blanc y installent une sérénité immédiate.',
+                'Ses fenêtres donnent sur le patio et la fontaine ; la terrasse panoramique, avec sa vue sur les toits de la médina et l\'Atlas, se trouve un étage au-dessus.',
+            ),
+            'equip'   => array(
+                array('Lit double confort (180 x 200 cm)', 'Salon marocain privatif', 'Climatisation réversible', 'Wi-Fi haut débit gratuit', 'Coffre-fort numérique'),
+                array('Bouilloire et thé à la menthe', 'Serviettes de bain XXL', 'Peignoirs et babouches', 'Produits d\'accueil artisanaux', 'Plateau de bienvenue'),
+            ),
+            'bath'    => 'Grande salle de bain privée en tadelakt, double vasque en cuivre martelé, baignoire et douche séparées.',
+        ),
+    );
+}
+
+function riad_bilkis_room_slug() {
+    global $post;
+    if (!$post || !is_page()) return '';
+    $rooms = riad_bilkis_rooms();
+    return isset($rooms[$post->post_name]) ? $post->post_name : '';
+}
+
+function riad_bilkis_promo_box($t) {
+    return '<div class="rb-promo-box" role="note" aria-label="' . esc_attr($t['promo'] . ' ' . RIAD_BILKIS_PROMO) . '">'
+        . '<span class="rb-promo-label">' . esc_html($t['promo']) . '</span>'
+        . '<button type="button" class="rb-promo-value" data-copied="' . esc_attr($t['copied']) . '">' . esc_html(RIAD_BILKIS_PROMO) . '</button>'
+        . '<span class="rb-promo-hint">' . esc_html($t['hint']) . '</span>'
+        . '</div>';
+}
+
+function riad_bilkis_room_page_html($slug) {
+    $rooms = riad_bilkis_rooms();
+    $room  = $rooms[$slug];
+    $t     = riad_bilkis_official_texts(riad_bilkis_lang());
+
+    $photos = '';
+    foreach (RIAD_BILKIS_ROOM_PHOTOS[$slug] as $i => $url) {
+        $photos .= '<figure class="rb-room-photo"><img src="' . esc_url($url) . '" loading="lazy"'
+            . ' alt="' . esc_attr($room['name'] . ' — photo ' . ($i + 1)) . '"></figure>';
+    }
+
+    $equip = '';
+    foreach ($room['equip'] as $column) {
+        $items = '';
+        foreach ($column as $line) {
+            $items .= '<li>' . esc_html($line) . '</li>';
+        }
+        $equip .= '<ul>' . $items . '</ul>';
+    }
+
+    $others = '';
+    foreach ($rooms as $other_slug => $other) {
+        if ($other_slug === $slug) continue;
+        $others .= '<a class="rb-room-other" href="' . esc_url('/' . $other_slug . '/') . '">'
+            . '<span class="rb-room-other__img" style="background-image:url(\'' . esc_url(RIAD_BILKIS_ROOM_PHOTOS[$other_slug][0]) . '\')"></span>'
+            . '<span class="rb-room-other__name">' . esc_html($other['name']) . '</span>'
+            . '</a>';
+    }
+
+    return '<div class="rb-room-page" style="--rb-room-accent:' . esc_attr($room['accent']) . '">'
+        . '<header class="rb-room-head">'
+        . '<span class="rb-room-eyebrow">' . esc_html($room['colors']) . '</span>'
+        . '<h1 class="rb-room-title">' . esc_html($room['name']) . '</h1>'
+        . '<p class="rb-room-tagline">' . esc_html($room['tagline']) . '</p>'
+        . '<span class="rb-room-rule"></span>'
+        . '</header>'
+        . '<div class="rb-room-body"><h2>Description</h2><p>' . implode('</p><p>', array_map('esc_html', $room['intro'])) . '</p></div>'
+        . '<div class="rb-room-body"><h2>Équipements et caractéristiques</h2>'
+        . '<div class="rb-room-equip">' . $equip . '</div></div>'
+        . '<div class="rb-room-body"><h2>Salle de bain</h2><p>' . esc_html($room['bath']) . '</p></div>'
+        . '<div class="rb-room-gallery">' . $photos . '</div>'
+        . '<div class="rb-room-book">'
+        . '<p class="rb-official__btn-wrap"><a class="rb-official__btn" href="' . esc_url(RIAD_BILKIS_OFFICIAL_URL) . '" target="_blank" rel="noopener noreferrer">' . esc_html($t['cta']) . '</a></p>'
+        . riad_bilkis_promo_box($t)
+        . '</div>'
+        . '<div class="rb-room-others"><h2>Voir les autres chambres</h2>'
+        . '<div class="rb-room-others__grid">' . $others . '</div></div>'
+        . '</div>';
+}
+
+add_filter('the_content', function ($content) {
+    if (!is_singular() || !is_main_query() || !in_the_loop()) return $content;
+    $slug = riad_bilkis_room_slug();
+    if (!$slug) return $content;
+    return riad_bilkis_room_page_html($slug);
+}, 23);
+
+// Section « demander des informations OU réserver en ligne », sous les chambres.
+function riad_bilkis_choice_texts($lang) {
+    $texts = array(
+        'fr' => array(
+            'label' => 'Votre séjour', 'title' => 'Une question ou une réservation ?',
+            'form_title' => 'Demander des informations',
+            'form_text'  => 'Disponibilités, arrivée tardive, transfert : écrivez-nous, nous répondons rapidement.',
+            'name' => 'Nom complet', 'email' => 'E-mail', 'phone' => 'Téléphone',
+            'message' => 'Message', 'send' => 'Envoyer la demande', 'or' => 'ou',
+            'book_title' => 'Réserver directement en ligne',
+            'book_text'  => 'Meilleur prix garanti, sans commission d\'intermédiaire.',
+        ),
+        'en' => array(
+            'label' => 'Your stay', 'title' => 'A question or a booking?',
+            'form_title' => 'Request information',
+            'form_text'  => 'Availability, late arrival, transfer: write to us, we answer quickly.',
+            'name' => 'Full name', 'email' => 'Email', 'phone' => 'Phone',
+            'message' => 'Message', 'send' => 'Send the request', 'or' => 'or',
+            'book_title' => 'Book online right away',
+            'book_text'  => 'Best price guaranteed, with no intermediary commission.',
+        ),
+        'es' => array(
+            'label' => 'Su estancia', 'title' => '¿Una duda o una reserva?',
+            'form_title' => 'Solicitar información',
+            'form_text'  => 'Disponibilidad, llegada tardía, traslado: escríbanos, respondemos rápido.',
+            'name' => 'Nombre completo', 'email' => 'Correo electrónico', 'phone' => 'Teléfono',
+            'message' => 'Mensaje', 'send' => 'Enviar la solicitud', 'or' => 'o',
+            'book_title' => 'Reservar directamente en línea',
+            'book_text'  => 'Mejor precio garantizado, sin comisión de intermediarios.',
+        ),
+    );
+    return isset($texts[$lang]) ? $texts[$lang] : $texts['fr'];
+}
+
+function riad_bilkis_choice_section() {
+    $lang = riad_bilkis_lang();
+    $c    = riad_bilkis_choice_texts($lang);
+    $t    = riad_bilkis_official_texts($lang);
+
+    $form = '<form class="rb-choice__form" data-rb-form="info" data-lang="' . esc_attr($lang) . '">'
+        . '<label>' . esc_html($c['name']) . '<input type="text" name="name" required></label>'
+        . '<label>' . esc_html($c['email']) . '<input type="email" name="email" required></label>'
+        . '<label>' . esc_html($c['phone']) . '<input type="tel" name="phone"></label>'
+        . '<label>' . esc_html($c['message']) . '<textarea name="message" rows="4" required></textarea></label>'
+        . '<button type="submit" class="rb-official__btn">' . esc_html($c['send']) . '</button>'
+        . '<p class="rb-form__status" data-rb-status></p>'
+        . '</form>';
+
+    return '<section class="rb-section rb-choice" id="rb-choice"><div class="rb-container">'
+        . '<span class="rb-section-label">' . esc_html($c['label']) . '</span>'
+        . '<h2 class="rb-section-title">' . esc_html($c['title']) . '</h2>'
+        . '<div class="rb-section-line"></div>'
+        . '<div class="rb-choice__grid">'
+        . '<div class="rb-choice__card"><h3>' . esc_html($c['form_title']) . '</h3>'
+        . '<p>' . esc_html($c['form_text']) . '</p>' . $form . '</div>'
+        . '<div class="rb-choice__or"><span>' . esc_html($c['or']) . '</span></div>'
+        . '<div class="rb-choice__card rb-choice__card--book"><h3>' . esc_html($c['book_title']) . '</h3>'
+        . '<p>' . esc_html($c['book_text']) . '</p>'
+        . '<p class="rb-official__btn-wrap"><a class="rb-official__btn" href="' . esc_url(RIAD_BILKIS_OFFICIAL_URL) . '" target="_blank" rel="noopener noreferrer">' . esc_html($t['cta']) . '</a></p>'
+        . riad_bilkis_promo_box($t)
+        . '</div></div></div></section>';
+}
+
+add_action('wp_enqueue_scripts', function () {
+    if (!riad_bilkis_is_home_page() && !riad_bilkis_room_slug()) return;
+    wp_enqueue_script('riad-bilkis-forms', '/sejour/forms.js', array(), '1.0', true);
+    wp_register_style('riad-bilkis-rooms', false);
+    wp_enqueue_style('riad-bilkis-rooms');
+    wp_add_inline_style('riad-bilkis-rooms', '
+.rb-choice{background:#fff}
+.rb-choice__grid{display:grid;grid-template-columns:1fr 60px 1fr;align-items:stretch;gap:0;margin-top:46px}
+.rb-choice__card{background:#FBF7F2;border:1px solid #E8E0D5;padding:34px 30px;text-align:left}
+.rb-choice__card--book{text-align:center;display:flex;flex-direction:column;justify-content:center}
+.rb-choice__card h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:25px;color:#3D3229;margin:0 0 10px;
+ font-weight:500}
+.rb-choice__card p{font-size:15px;color:#8B7355;line-height:1.7;font-weight:300;margin:0 0 18px}
+.rb-choice__or{display:flex;align-items:center;justify-content:center;position:relative}
+.rb-choice__or span{font-family:"Raleway",Arial,sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+ color:#8B7355;background:#fff;padding:8px 0;z-index:1}
+.rb-choice__or:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#E8E0D5}
+.rb-choice__form label{display:block;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8B7355;
+ margin-bottom:14px}
+.rb-choice__form input,.rb-choice__form textarea{display:block;width:100%;margin-top:6px;padding:11px 13px;
+ border:1px solid #E0D6C8;border-radius:3px;background:#fff;font-size:15px;color:#3D3229;
+ font-family:inherit;text-transform:none;letter-spacing:0}
+.rb-choice__form input:focus,.rb-choice__form textarea:focus{outline:none;border-color:#C99752}
+.rb-choice__form button{margin-top:6px}
+.rb-form__status{min-height:20px;margin:12px 0 0;font-size:14px;color:#8B7355}
+.rb-form__status--ok{color:#2f7a4f}
+.rb-form__status--err{color:#b3392a}
+/* Page d\'une chambre : la couleur d\'accent distingue chaque chambre. */
+.rb-room-page{max-width:1060px;margin:0 auto;padding:8px 0 20px;color:#3D3229}
+.rb-room-head{text-align:center;margin-bottom:40px}
+.rb-room-eyebrow{display:block;font-family:"Raleway",Arial,sans-serif;font-size:12px;letter-spacing:3px;
+ text-transform:uppercase;color:var(--rb-room-accent);margin-bottom:14px}
+.rb-room-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:46px;line-height:1.15;font-weight:400;
+ letter-spacing:2px;text-transform:uppercase;color:#3D3229;margin:0 0 12px}
+.rb-room-tagline{font-size:17px;color:#8B7355;font-weight:300;margin:0}
+.rb-room-rule{display:block;width:60px;height:1px;background:var(--rb-room-accent);margin:26px auto 0}
+.rb-room-body{margin-bottom:34px}
+.rb-room-body h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;font-weight:500;color:#3D3229;
+ margin:0 0 14px;padding-left:14px;border-left:3px solid var(--rb-room-accent)}
+.rb-room-body p{font-size:16px;line-height:1.85;color:#5B4E43;margin:0 0 14px;font-weight:300}
+.rb-room-equip{display:grid;grid-template-columns:repeat(2,1fr);gap:0 30px}
+.rb-room-equip ul{list-style:none;margin:0;padding:0}
+.rb-room-equip li{position:relative;padding:0 0 10px 20px;font-size:15.5px;color:#5B4E43;font-weight:300}
+.rb-room-equip li:before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;
+ background:var(--rb-room-accent)}
+.rb-room-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:10px 0 40px}
+.rb-room-photo{margin:0;overflow:hidden}
+.rb-room-photo img{display:block;width:100%;height:260px;object-fit:cover;transition:transform .5s ease}
+.rb-room-photo:hover img{transform:scale(1.04)}
+.rb-room-book{text-align:center;background:#FBF7F2;border:1px solid #E8E0D5;padding:32px 20px;margin-bottom:46px}
+.rb-room-book .rb-official__btn{background:var(--rb-room-accent);letter-spacing:1.6px;text-transform:uppercase;
+ padding:15px 34px}
+.rb-room-book .rb-official__btn:hover,.rb-room-book .rb-official__btn:focus{background:#3D3229}
+.rb-room-others h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:400;letter-spacing:1px;
+ text-align:center;color:#3D3229;margin:0 0 26px}
+.rb-room-others__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.rb-room-other{display:block;text-decoration:none;background:#fff;border:1px solid #E8E0D5;overflow:hidden;
+ transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.rb-room-other:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.1);
+ border-color:var(--rb-room-accent)}
+.rb-room-other__img{display:block;height:230px;background-size:cover;background-position:center}
+.rb-room-other__name{display:block;padding:20px;text-align:center;font-family:"Cormorant Garamond",Georgia,serif;
+ font-size:23px;color:#3D3229}
+@media(max-width:768px){
+.rb-choice__grid{grid-template-columns:1fr}
+.rb-choice__or{padding:18px 0}
+.rb-choice__or:before{top:50%;bottom:auto;left:0;right:0;width:auto;height:1px}
+.rb-room-title{font-size:29px;letter-spacing:1px}
+.rb-room-equip{grid-template-columns:1fr}
+.rb-room-gallery{grid-template-columns:1fr;gap:12px}
+.rb-room-photo img{height:230px}
+.rb-room-others__grid{grid-template-columns:1fr}
+}
+');
+}, 26);
 
 // ── Pages statiques dans wp-sitemap.xml ──────────────────────────────────────
 add_action('init', function () {

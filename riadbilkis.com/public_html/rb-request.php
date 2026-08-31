@@ -67,7 +67,7 @@ function rb_field($data, $key, $max = 400)
 }
 
 $type = rb_field($data, 'type', 20);
-if (!in_array($type, array('dinner', 'transfer'), true)) {
+if (!in_array($type, array('dinner', 'transfer', 'info'), true)) {
     http_response_code(400);
     echo json_encode(array('ok' => false, 'error' => 'invalid_type'));
     exit;
@@ -97,6 +97,9 @@ $labels = array(
         'departureDate' => 'Date depart', 'departureTime' => 'Heure depart', 'departureFlight' => 'Vol depart',
         'message' => 'Message',
     ),
+    'info' => array(
+        'phone' => 'Telephone', 'message' => 'Message',
+    ),
 );
 
 $rows = array('Nom' => $name, 'E-mail' => $email);
@@ -112,6 +115,7 @@ $rows['Page'] = rb_field($data, 'page', 200);
 $subjects = array(
     'dinner' => 'Demande de diner - ' . $name,
     'transfer' => 'Demande de transfert aeroport - ' . $name,
+    'info' => 'Demande d\'informations - ' . $name,
 );
 
 $guestSubjects = array(
@@ -125,6 +129,11 @@ $guestSubjects = array(
         'en' => 'Riad Bilkis - your transfer request',
         'es' => 'Riad Bilkis - su solicitud de traslado',
     ),
+    'info' => array(
+        'fr' => 'Riad Bilkis - votre demande d\'informations',
+        'en' => 'Riad Bilkis - your information request',
+        'es' => 'Riad Bilkis - su solicitud de informacion',
+    ),
 );
 
 $guestBodies = array(
@@ -137,6 +146,11 @@ $guestBodies = array(
         'fr' => 'Merci pour votre demande de transfert aeroport. Nous organisons le chauffeur et vous confirmons par e-mail avec les details du rendez-vous.',
         'en' => 'Thank you for your airport transfer request. We are arranging the driver and will confirm by email with the meeting details.',
         'es' => 'Gracias por su solicitud de traslado al aeropuerto. Estamos organizando el chofer y le confirmaremos por correo electronico con los detalles del encuentro.',
+    ),
+    'info' => array(
+        'fr' => 'Merci pour votre message. Nous vous repondons rapidement par e-mail. Pour une reponse immediate, ecrivez-nous sur WhatsApp au +212 625 675 494.',
+        'en' => 'Thank you for your message. We will reply by email shortly. For an immediate answer, write to us on WhatsApp at +212 625 675 494.',
+        'es' => 'Gracias por su mensaje. Le responderemos por correo electronico en breve. Para una respuesta inmediata, escribanos por WhatsApp al +212 625 675 494.',
     ),
 );
 
