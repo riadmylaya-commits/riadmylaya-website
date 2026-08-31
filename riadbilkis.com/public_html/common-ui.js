@@ -83,7 +83,7 @@
       "letter-spacing:.5px;font-weight:700;}",
       ".rb-sticky-cta__note{display:block;font-size:11px;color:#6f6257;}",
       ".rb-sticky-cta__code{display:inline-block;background:#C88B6A;color:#fff;padding:2px 8px;",
-      "border-radius:4px;font-size:13px;font-weight:700;letter-spacing:1px;}",
+      "border-radius:4px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}",
       ".rb-sticky-cta__btn{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;",
       "background:#C75B39;color:#fff !important;text-decoration:none !important;font-weight:700;",
       "font-size:13px;text-transform:uppercase;letter-spacing:1px;",
