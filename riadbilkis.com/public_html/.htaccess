@@ -66,6 +66,16 @@ Header unset X-Powered-By
   RewriteRule ^en/group-activities/?$ /gyg/en.html [L]
   RewriteRule ^es/actividades/?$ /gyg/es.html [L]
 
+  # Informations pratiques du livret d'accueil (FR/EN/ES)
+  RewriteRule ^informations-pratiques/?$ /sejour/infos-fr.html [L]
+  RewriteRule ^en/practical-information/?$ /sejour/infos-en.html [L]
+  RewriteRule ^es/informacion-practica/?$ /sejour/infos-es.html [L]
+
+  # Dîner marocain et réservation (FR/EN/ES)
+  RewriteRule ^diner-marocain/?$ /sejour/diner-fr.html [L]
+  RewriteRule ^en/moroccan-dinner/?$ /sejour/diner-en.html [L]
+  RewriteRule ^es/cena-marroqui/?$ /sejour/diner-es.html [L]
+
   # Anciennes URL éventuelles vers les pages activités
   RewriteRule ^activites/?$ /activites-groupe [R=301,L]
   RewriteRule ^en/activities/?$ /en/group-activities [R=301,L]

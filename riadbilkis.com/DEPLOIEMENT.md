@@ -16,6 +16,32 @@ WordPress, le thème Astra et les plugins tiers ne sont pas dans le dépôt.
 | `wp-content/plugins/riad-bilkis-frontend/riad-bilkis-frontend.php` | `.../wp-content/mu-plugins/riad-bilkis-frontend.php` (chargé sans activation) |
 | `wp-content/plugins/riad-bilkis-seo/` | `.../wp-content/plugins/riad-bilkis-seo/` |
 | `police/` | `/home/riaductd/police.riadbilkis.com/` (voir `police/INSTRUCTIONS.md`) |
+| `public_html/sejour/` | `/home/riaductd/riadbilkis.com/sejour/` |
+| `public_html/rb-request.php` | `/home/riaductd/riadbilkis.com/rb-request.php` |
+| `public_html/rb-mail-config.sample.php` | à copier en `/home/riaductd/rb-mail-config.php` (hors racine web, mot de passe SMTP renseigné sur le serveur uniquement) |
+
+PHPMailer est copié dans `/home/riaductd/riadbilkis.com/rb-lib/PHPMailer/`
+(`PHPMailer.php`, `SMTP.php`, `Exception.php`), repris de la fiche de police.
+
+## Livret d'accueil repris sur le site
+
+Contenu du guide `guide.riadbilkis.com` (petit-déjeuner, dîner, services,
+équipements, arrivée/départ, règlement, FAQ) publié en FR/EN/ES :
+
+| URL | Fichier |
+|-----|---------|
+| `/informations-pratiques` | `sejour/infos-fr.html` |
+| `/en/practical-information` | `sejour/infos-en.html` |
+| `/es/informacion-practica` | `sejour/infos-es.html` |
+| `/diner-marocain` | `sejour/diner-fr.html` |
+| `/en/moroccan-dinner` | `sejour/diner-en.html` |
+| `/es/cena-marroqui` | `sejour/diner-es.html` |
+
+Les réservations de chambres restent gérées par Booking Directly. Les demandes
+de dîner et de transfert passent par `rb-request.php` (SMTP Gmail
+`riadbilkis@gmail.com`) : le formulaire n'affiche une confirmation que si
+l'e-mail est réellement parti, sinon l'endpoint répond 502 et invite à
+contacter le riad par WhatsApp.
 
 ## Pages activités GetYourGuide
 

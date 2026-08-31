@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Riad Bilkis Frontend
- * Description: Barre de réservation mobile + WhatsApp (common-ui.js), liens vers les pages activités GetYourGuide, bloc réservation directe et sitemap des pages statiques.
- * Version: 1.0
+ * Description: Barre de réservation mobile + WhatsApp (common-ui.js), liens vers les pages activités GetYourGuide, informations pratiques et dîner marocain du livret d'accueil, bloc réservation directe et sitemap des pages statiques.
+ * Version: 1.1
  * Author: Devin
  */
 
@@ -12,6 +12,19 @@ const RIAD_BILKIS_ACTIVITIES = array(
     'fr' => array('url' => '/activites-groupe',      'label' => 'Activités'),
     'en' => array('url' => '/en/group-activities',   'label' => 'Activities'),
     'es' => array('url' => '/es/actividades',        'label' => 'Actividades'),
+);
+
+// Pages statiques reprenant le livret d'accueil (guide.riadbilkis.com).
+const RIAD_BILKIS_INFOS = array(
+    'fr' => array('url' => '/informations-pratiques',      'label' => 'Infos pratiques'),
+    'en' => array('url' => '/en/practical-information',    'label' => 'Practical info'),
+    'es' => array('url' => '/es/informacion-practica',     'label' => 'Información práctica'),
+);
+
+const RIAD_BILKIS_DINER = array(
+    'fr' => array('url' => '/diner-marocain',   'label' => 'Dîner marocain'),
+    'en' => array('url' => '/en/moroccan-dinner', 'label' => 'Moroccan dinner'),
+    'es' => array('url' => '/es/cena-marroqui',  'label' => 'Cena marroquí'),
 );
 
 function riad_bilkis_lang() {
@@ -42,12 +55,21 @@ add_filter('wp_nav_menu_items', function ($items, $args) {
         return $items;
     }
     $lang = riad_bilkis_lang();
-    $item = RIAD_BILKIS_ACTIVITIES[$lang];
-    return $items . sprintf(
-        '<li class="menu-item menu-item-riad-bilkis-activities"><a href="%s">%s</a></li>',
-        esc_url($item['url']),
-        esc_html($item['label'])
+    $added = '';
+    $extra = array(
+        'activities' => RIAD_BILKIS_ACTIVITIES[$lang],
+        'infos'      => RIAD_BILKIS_INFOS[$lang],
+        'diner'      => RIAD_BILKIS_DINER[$lang],
     );
+    foreach ($extra as $slug => $item) {
+        $added .= sprintf(
+            '<li class="menu-item menu-item-riad-bilkis-%s"><a href="%s">%s</a></li>',
+            esc_attr($slug),
+            esc_url($item['url']),
+            esc_html($item['label'])
+        );
+    }
+    return $items . $added;
 }, 20, 2);
 
 // ── Page réservation : bloc « meilleur tarif garanti » + FAQ ─────────────────
@@ -201,6 +223,143 @@ add_action('wp_enqueue_scripts', function () {
 ');
 }, 26);
 
+// ── Livret d'accueil repris sur la page services ─────────────────────────────
+function riad_bilkis_stay_texts($lang) {
+    $texts = array(
+        'fr' => array(
+            'title'   => 'Votre séjour au Riad Bilkis, dans le détail',
+            'intro'   => 'Les informations de notre livret d\'accueil, reprises ici avant votre arrivée.',
+            'groups'  => array(
+                'Petit-déjeuner' => array(
+                    'Servi de 8h00 à 10h30 sur la terrasse ou dans le patio.',
+                    'Avant 7h30, nous préparons un petit-déjeuner à emporter.',
+                    'Après 10h30, il est proposé au tarif de 6 € par personne.',
+                ),
+                'Dîner marocain de Mme Sinan' => array(
+                    'Menu complet (entrée, plat, dessert) : 25 € par personne.',
+                    'Entrée + plat ou plat + dessert : 20 € par personne.',
+                    'Plat principal seul : 15 € par personne. Version végétarienne sur demande.',
+                ),
+                'Services et confort' => array(
+                    'Eau et thé à la menthe offerts à l\'arrivée, avec pâtisseries marocaines.',
+                    'Terrasse, jacuzzi, patio, climatisation et chauffage, Wi-Fi gratuit.',
+                    'Ménage et petit-déjeuner assurés par Mme Khadija, de 7h30 à 15h.',
+                    'Blanchisserie : 5 € par machine, de 9h à 15h. Parking à proximité : 4 € par 24 h.',
+                ),
+                'Arrivée et départ' => array(
+                    'Arrivée à partir de 13h, départ avant 11h.',
+                    'Transfert privé depuis l\'aéroport Marrakech-Ménara : 15 € l\'aller, 25 € l\'aller-retour.',
+                    'Serviettes et linge de lit changés tous les deux à trois jours selon la durée du séjour.',
+                ),
+            ),
+            'cta_infos' => 'Toutes les informations pratiques',
+            'cta_diner' => 'Réserver un dîner marocain',
+        ),
+        'en' => array(
+            'title'   => 'Your stay at Riad Bilkis, in detail',
+            'intro'   => 'The information from our welcome guide, available here before you arrive.',
+            'groups'  => array(
+                'Breakfast' => array(
+                    'Served from 8:00 am to 10:30 am on the terrace or in the patio.',
+                    'Before 7:30 am we prepare a takeaway breakfast.',
+                    'After 10:30 am, breakfast is available for €6 per person.',
+                ),
+                'Mrs. Sinan\'s Moroccan dinner' => array(
+                    'Full menu (starter, main, dessert): €25 per person.',
+                    'Starter + main or main + dessert: €20 per person.',
+                    'Main course only: €15 per person. Vegetarian version on request.',
+                ),
+                'Services and comfort' => array(
+                    'Complimentary water and mint tea on arrival, with Moroccan pastries.',
+                    'Terrace, jacuzzi, patio, air conditioning and heating, free Wi-Fi.',
+                    'Breakfast and housekeeping by Mrs. Khadija, from 7:30 am to 3 pm.',
+                    'Laundry: €5 per load, from 9 am to 3 pm. Parking nearby: €4 per 24 hours.',
+                ),
+                'Arrival and departure' => array(
+                    'Check-in from 1 pm, check-out before 11 am.',
+                    'Private transfer from Marrakech-Menara airport: €15 one way, €25 return.',
+                    'Towels and bed linen changed every two to three days depending on the stay.',
+                ),
+            ),
+            'cta_infos' => 'All practical information',
+            'cta_diner' => 'Book a Moroccan dinner',
+        ),
+        'es' => array(
+            'title'   => 'Su estancia en el Riad Bilkis, en detalle',
+            'intro'   => 'La información de nuestra guía de bienvenida, disponible aquí antes de su llegada.',
+            'groups'  => array(
+                'Desayuno' => array(
+                    'Se sirve de 8:00 a 10:30 en la terraza o en el patio.',
+                    'Antes de las 7:30 preparamos un desayuno para llevar.',
+                    'Después de las 10:30 se ofrece por 6 € por persona.',
+                ),
+                'La cena marroquí de la Sra. Sinan' => array(
+                    'Menú completo (entrada, plato y postre): 25 € por persona.',
+                    'Entrada + plato o plato + postre: 20 € por persona.',
+                    'Solo plato principal: 15 € por persona. Versión vegetariana a petición.',
+                ),
+                'Servicios y confort' => array(
+                    'Agua y té de menta de cortesía a la llegada, con pasteles marroquíes.',
+                    'Terraza, jacuzzi, patio, aire acondicionado y calefacción, Wi-Fi gratuito.',
+                    'Desayuno y limpieza a cargo de la Sra. Khadija, de 7:30 a 15:00.',
+                    'Lavandería: 5 € por lavado, de 9:00 a 15:00. Aparcamiento cercano: 4 € cada 24 h.',
+                ),
+                'Llegada y salida' => array(
+                    'Llegada a partir de las 13:00, salida antes de las 11:00.',
+                    'Traslado privado desde el aeropuerto Marrakech-Menara: 15 € por trayecto, 25 € ida y vuelta.',
+                    'Toallas y ropa de cama cambiadas cada dos o tres días según la estancia.',
+                ),
+            ),
+            'cta_infos' => 'Toda la información práctica',
+            'cta_diner' => 'Reservar una cena marroquí',
+        ),
+    );
+    return $texts[$lang];
+}
+
+add_filter('the_content', function ($content) {
+    global $post;
+    if (!is_singular() || !is_main_query() || !$post) return $content;
+    if (!in_array($post->post_name, array('nos-services', 'services', 'servicios', 'our-services'), true)) return $content;
+
+    $lang = riad_bilkis_lang();
+    $t = riad_bilkis_stay_texts($lang);
+
+    $groups = '';
+    foreach ($t['groups'] as $heading => $lines) {
+        $items = '';
+        foreach ($lines as $line) {
+            $items .= '<li>' . esc_html($line) . '</li>';
+        }
+        $groups .= '<div class="rb-stay__group"><h3>' . esc_html($heading) . '</h3><ul>' . $items . '</ul></div>';
+    }
+
+    return $content . '<section class="rb-direct rb-stay">'
+        . '<h2>' . esc_html($t['title']) . '</h2>'
+        . '<p>' . esc_html($t['intro']) . '</p>'
+        . '<div class="rb-stay__grid">' . $groups . '</div>'
+        . '<p class="rb-direct__actions">'
+        . '<a class="rb-direct__mail" href="' . esc_url(RIAD_BILKIS_INFOS[$lang]['url']) . '">' . esc_html($t['cta_infos']) . '</a> '
+        . '<a class="rb-direct__mail" href="' . esc_url(RIAD_BILKIS_DINER[$lang]['url']) . '">' . esc_html($t['cta_diner']) . '</a>'
+        . '</p></section>';
+}, 22);
+
+add_action('wp_enqueue_scripts', function () {
+    global $post;
+    if (!$post || !in_array($post->post_name, array('nos-services', 'services', 'servicios', 'our-services'), true)) return;
+    wp_register_style('riad-bilkis-stay', false);
+    wp_enqueue_style('riad-bilkis-stay');
+    wp_add_inline_style('riad-bilkis-stay', '
+.rb-stay{margin:48px 0 8px;padding:32px;background:#FBF7F2;border:1px solid #E6D3C4}
+.rb-stay h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;color:#3D3229;margin:0 0 12px}
+.rb-stay__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin:22px 0}
+.rb-stay__group{background:#fff;border:1px solid #E6D3C4;padding:20px}
+.rb-stay__group h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:23px;color:#8a5a3c;margin:0 0 10px}
+.rb-stay__group ul{margin:0;padding-left:20px;color:#5B4E43;line-height:1.7}
+@media(max-width:768px){.rb-stay__grid{grid-template-columns:1fr}.rb-stay{padding:24px 18px}}
+');
+}, 27);
+
 // ── Lien vers les activités depuis la page excursions ────────────────────────
 add_filter('the_content', function ($content) {
     global $post;
@@ -233,8 +392,11 @@ add_action('init', function () {
         }
         public function get_url_list($page_num, $object_subtype = '') {
             $urls = array();
-            foreach (RIAD_BILKIS_ACTIVITIES as $item) {
-                $urls[] = array('loc' => home_url($item['url']));
+            $sets = array(RIAD_BILKIS_ACTIVITIES, RIAD_BILKIS_INFOS, RIAD_BILKIS_DINER);
+            foreach ($sets as $set) {
+                foreach ($set as $item) {
+                    $urls[] = array('loc' => home_url($item['url']));
+                }
             }
             return $urls;
         }
