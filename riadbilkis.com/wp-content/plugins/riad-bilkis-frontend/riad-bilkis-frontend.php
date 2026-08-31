@@ -381,6 +381,169 @@ add_filter('the_content', function ($content) {
         . '</section>';
 }, 21);
 
+// ── Bloc « Site officiel » (titre + meilleur prix + CTA + code promo) ────────
+// Reprise du bloc de riadmylaya.com, adapté à Bilkis (code Bilkis12).
+
+const RIAD_BILKIS_OFFICIAL_URL = 'https://booking-directly.com/widgets/CpCIZwUUpc4p14KAQFEzgGCPRoKW9a2R5UUDUleuJA3xBbFB9ZW7MOaFdMCwX/properties';
+const RIAD_BILKIS_PROMO = 'BILKIS12';
+
+function riad_bilkis_official_texts($lang) {
+    $texts = array(
+        'fr' => array(
+            'title' => 'Site officiel du Riad Bilkis',
+            'lines' => array('Meilleur prix garanti', 'Réduction sur les réservations directes'),
+            'cta'   => 'Réserver au meilleur prix',
+            'promo' => 'Code promo',
+            'hint'  => 'à saisir lors de votre réservation',
+            'copied' => 'Copié !',
+        ),
+        'en' => array(
+            'title' => 'Official website of Riad Bilkis',
+            'lines' => array('Best price guaranteed', 'Discount on direct bookings'),
+            'cta'   => 'Book at the best price',
+            'promo' => 'Promo code',
+            'hint'  => 'use this code when booking',
+            'copied' => 'Copied!',
+        ),
+        'es' => array(
+            'title' => 'Sitio oficial del Riad Bilkis',
+            'lines' => array('Mejor precio garantizado', 'Descuento en las reservas directas'),
+            'cta'   => 'Reservar al mejor precio',
+            'promo' => 'Código promocional',
+            'hint'  => 'úsalo al reservar',
+            'copied' => '¡Copiado!',
+        ),
+    );
+    return isset($texts[$lang]) ? $texts[$lang] : $texts['fr'];
+}
+
+function riad_bilkis_official_block() {
+    $t = riad_bilkis_official_texts(riad_bilkis_lang());
+    $lines = '';
+    foreach ($t['lines'] as $line) {
+        $lines .= esc_html($line) . '<br>';
+    }
+    return '<section class="rb-official" id="rb-official">'
+        . '<div class="rb-official__inner">'
+        . '<h2 class="rb-official__title">' . esc_html($t['title']) . '</h2>'
+        . '<p class="rb-official__text">' . $lines . '</p>'
+        . '<p class="rb-official__btn-wrap"><a class="rb-official__btn" href="' . esc_url(RIAD_BILKIS_OFFICIAL_URL) . '" target="_blank" rel="noopener noreferrer">' . esc_html($t['cta']) . '</a></p>'
+        . '<div class="rb-promo-box" role="note" aria-label="' . esc_attr($t['promo'] . ' ' . RIAD_BILKIS_PROMO) . '">'
+        . '<span class="rb-promo-label">' . esc_html($t['promo']) . '</span>'
+        . '<button type="button" class="rb-promo-value" data-copied="' . esc_attr($t['copied']) . '">' . esc_html(RIAD_BILKIS_PROMO) . '</button>'
+        . '<span class="rb-promo-hint">' . esc_html($t['hint']) . '</span>'
+        . '</div>'
+        . '</div>'
+        . '</section>';
+}
+
+// Les URL /en/ et /es/ affichent la même page que la racine sans être
+// « front page » au sens WordPress : on compare donc l'ID de la page affichée.
+function riad_bilkis_is_home_page() {
+    if (is_front_page()) return true;
+    $front = (int) get_option('page_on_front');
+    if ($front && is_page() && get_queried_object_id() === $front) return true;
+    // /en/ et /es/ : points d'entrée des versions traduites (aucune page d'accueil
+    // traduite n'existe, Polylang y sert l'index).
+    $path = isset($_SERVER['REQUEST_URI']) ? strtok($_SERVER['REQUEST_URI'], '?') : '';
+    return is_home() && in_array(rtrim($path, '/'), array('/en', '/es'), true);
+}
+
+add_filter('the_content', function ($content) {
+    if (!riad_bilkis_is_home_page() || !in_the_loop() || !is_main_query()) return $content;
+    $block = riad_bilkis_official_block();
+    // Le bloc se place juste sous le hero, comme sur riadmylaya.com.
+    $pos = strpos($content, '<section class="rb-section');
+    if ($pos !== false) {
+        return substr($content, 0, $pos) . $block . substr($content, $pos);
+    }
+    return $block . $content;
+}, 19);
+
+add_action('astra_primary_content_top', function () {
+    if (!riad_bilkis_is_home_page() || !is_home()) return;
+    echo riad_bilkis_official_block();
+});
+
+add_action('wp_enqueue_scripts', function () {
+    if (!riad_bilkis_is_home_page()) return;
+    wp_register_style('riad-bilkis-official', false);
+    wp_enqueue_style('riad-bilkis-official');
+    wp_add_inline_style('riad-bilkis-official', '
+.rb-official{background:#fff;padding:56px 20px 64px;text-align:center;
+ --rb-official-font:"Jost","Helvetica Neue",Arial,sans-serif}
+.rb-official *{font-family:var(--rb-official-font)}
+.rb-official__inner{max-width:900px;margin:0 auto}
+.rb-official__title{font-size:44px;line-height:1.15;font-weight:700;color:#821F0C;margin:0 0 18px;
+ letter-spacing:0}
+.rb-official__title:after,.rb-official__title:before{display:none}
+.rb-official__text{font-size:22px;line-height:1.5;color:#3F2935;margin:0 0 26px}
+.rb-official__btn-wrap{margin:0}
+.rb-official__btn,.rb-official__btn:visited{display:inline-block;background:#FE8A8A;color:#fff;
+ font-size:15px;font-weight:600;letter-spacing:.4px;text-decoration:none;padding:14px 30px;border-radius:4px;
+ box-shadow:0 2px 8px rgba(0,0,0,.12);transition:background .2s,transform .1s}
+.rb-official__btn:hover,.rb-official__btn:focus{background:#F97070;color:#fff}
+.rb-official__btn:active{transform:scale(.98)}
+.rb-promo-box{display:inline-block;margin:22px auto 0;padding:12px 22px;background:#FFF9ED;
+ border:2px dashed #C99752;border-radius:10px;color:#2a2a2a;line-height:1.35;text-align:center;
+ box-shadow:0 3px 10px rgba(0,0,0,.12);max-width:100%;animation:rbPromoPulse 2.6s ease-in-out infinite}
+.rb-promo-label{display:block;font-size:14px;font-weight:500;letter-spacing:.3px;color:#6b4a1b;
+ margin-bottom:6px;text-transform:uppercase}
+.rb-promo-value{display:inline-block;padding:6px 16px;background:#C99752;color:#fff;border:none;outline:none;
+ border-radius:6px;font-size:20px;font-weight:700;letter-spacing:2px;cursor:pointer;user-select:all;
+ text-transform:none;font-variant:normal;transition:background .2s,transform .1s}
+.rb-promo-value:hover{background:#b07f38}
+.rb-promo-value:active{transform:scale(.97)}
+.rb-promo-hint{display:block;font-size:12.5px;color:#555;margin-top:6px;font-style:italic}
+.rb-promo-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#2a2a2a;color:#fff;
+ padding:10px 18px;border-radius:6px;font-size:14px;opacity:0;transition:opacity .25s;z-index:9999;
+ pointer-events:none}
+.rb-promo-toast.is-visible{opacity:.95}
+@keyframes rbPromoPulse{0%,100%{box-shadow:0 3px 10px rgba(0,0,0,.12)}50%{box-shadow:0 3px 22px rgba(201,151,82,.55)}}
+@media(max-width:768px){
+.rb-official{padding:40px 18px 46px}
+.rb-official__title{font-size:31px}
+.rb-official__text{font-size:18px}
+.rb-official__btn{padding:13px 24px;font-size:14px}
+.rb-promo-box{padding:10px 14px;margin-top:16px}
+.rb-promo-value{font-size:17px;letter-spacing:1.5px;padding:5px 12px}
+.rb-promo-label{font-size:12px}
+.rb-promo-hint{font-size:11.5px}
+}
+');
+    wp_register_script('riad-bilkis-official', '', array(), null, true);
+    wp_enqueue_script('riad-bilkis-official');
+    wp_add_inline_script('riad-bilkis-official', '
+(function(){
+  var block=document.getElementById("rb-official");
+  if(!block)return;
+  var btn=block.querySelector(".rb-promo-value");
+  if(!btn)return;
+  function toast(msg){
+    var t=document.createElement("div");
+    t.className="rb-promo-toast";
+    t.textContent=msg;
+    document.body.appendChild(t);
+    void t.offsetWidth;
+    t.classList.add("is-visible");
+    setTimeout(function(){t.classList.remove("is-visible");setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},400);},1600);
+  }
+  btn.addEventListener("click",function(){
+    var code=btn.textContent.trim(),done=btn.getAttribute("data-copied")||"";
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(code).then(function(){toast(done);});
+      return;
+    }
+    var ta=document.createElement("textarea");
+    ta.value=code;ta.style.position="fixed";ta.style.opacity="0";
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand("copy");toast(done);}catch(e){}
+    document.body.removeChild(ta);
+  });
+})();
+');
+});
+
 // ── Pages statiques dans wp-sitemap.xml ──────────────────────────────────────
 add_action('init', function () {
     if (!class_exists('WP_Sitemaps_Provider')) return;
