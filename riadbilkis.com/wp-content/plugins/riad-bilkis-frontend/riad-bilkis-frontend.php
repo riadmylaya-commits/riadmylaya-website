@@ -907,18 +907,18 @@ function riad_bilkis_rooms() {
         ),
         'chambre-vero' => array(
             'name'    => 'Suite Véro',
-            'tagline' => 'Bleu et blanc, notre suite signature à l\'espace généreux',
+            'tagline' => 'Bleu et blanc, un espace apaisant avec son petit salon',
             'accent'  => '#3E6E96',
             'colors'  => 'Bleu et blanc',
             'intro'   => array(
-                'La suite Véro est la plus vaste du riad : un salon marocain prolonge la chambre, meublé de banquettes basses et de tapis noués dans le Moyen Atlas. Le bleu profond de la tête de lit, associé au blanc et aux textiles écrus tissés à la main, y installe une sérénité immédiate.',
-                'Ses fenêtres donnent sur le patio et la fontaine ; la terrasse panoramique, avec sa vue sur les toits de la médina et l\'Atlas, se trouve un étage au-dessus.',
+                'Cette chambre double, équipée de deux lits individuels ou d\'un grand lit (160 x 200 cm), en face d\'un petit salon, est située au premier étage.',
+                'Le bleu et le blanc font de cette chambre un endroit particulièrement apaisant.',
             ),
             'equip'   => array(
-                array('Lit double confort (180 x 200 cm)', 'Salon marocain privatif', 'Climatisation réversible', 'Wi-Fi haut débit gratuit', 'Coffre-fort numérique'),
-                array('Bouilloire et thé à la menthe', 'Serviettes de bain XXL', 'Peignoirs et babouches', 'Produits d\'accueil artisanaux', 'Plateau de bienvenue'),
+                array('Deux lits individuels ou un grand lit (160 x 200 cm)', 'Petit salon en face de la chambre', 'Wi-Fi haut débit', 'Climatisation réversible', 'Coffre-fort'),
+                array('Bouteille d\'eau', 'Produits de toilette Les Sens de Marrakech', 'Serviettes et linge de maison'),
             ),
-            'bath'    => 'Grande salle de bain privée en tadelakt, double vasque en cuivre martelé, baignoire et douche séparées.',
+            'bath'    => 'Salle de bain avec toilettes privées à l\'extérieur de la chambre, à 2 m à pied : douche, murs en tadelakt et sol en carreaux de ciment.',
         ),
     );
 }
