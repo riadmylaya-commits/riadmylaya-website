@@ -896,14 +896,14 @@ function riad_bilkis_rooms() {
             'accent'  => '#B2402F',
             'colors'  => 'Rouge et blanc',
             'intro'   => array(
-                'Inspirée du tarbouche, la coiffe traditionnelle marocaine, cette chambre se pare de rouge et de blanc. Les murs en tadelakt d\'un blanc satiné mettent en valeur le rouge profond de la tête de lit, les coussins brodés et les portes anciennes en bois sculpté.',
-                'Le soir, les lanternes ciselées projettent des motifs d\'étoiles sur les murs et le plafond en bois peint à la main, témoignage du savoir-faire des artisans marrakchis. Une chambre lumineuse le jour, chaleureuse à la tombée de la nuit.',
+                'Cette chambre double, équipée de deux lits individuels ou d\'un grand lit (160 x 200 cm), est située au premier étage.',
+                'Retrouvez dans cette chambre les couleurs de Marrakech, la ville rouge.',
             ),
             'equip'   => array(
-                array('Lit double confort (160 x 200 cm)', 'Linge de lit en satin de coton', 'Climatisation réversible', 'Wi-Fi haut débit gratuit', 'Coffre-fort numérique'),
-                array('Bouilloire et thé à la menthe', 'Serviettes de bain XXL', 'Peignoirs et babouches', 'Produits d\'accueil artisanaux', 'Plateau de bienvenue'),
+                array('Deux lits individuels ou un grand lit (160 x 200 cm)', 'Wi-Fi haut débit', 'Climatisation réversible', 'Coffre-fort'),
+                array('Bouteille d\'eau', 'Produits de toilette Les Sens de Marrakech', 'Serviettes et linge de maison'),
             ),
-            'bath'    => 'Salle de bain privée avec baignoire encastrée en tadelakt, vasque en cuivre martelé et robinetterie en laiton vieilli, pour un bain aux huiles essentielles.',
+            'bath'    => 'Salle de bain avec douche et toilettes, murs en tadelakt et sol en carreaux de ciment.',
         ),
         'chambre-vero' => array(
             'name'    => 'Suite Véro',
