@@ -1107,21 +1107,21 @@ add_action('wp_enqueue_scripts', function () {
 .rb-form__status--ok{color:#2f7a4f}
 .rb-form__status--err{color:#b3392a}
 /* Page d\'une chambre : la couleur d\'accent distingue chaque chambre. */
-.rb-room-page{max-width:1060px;margin:0 auto;padding:8px 0 20px;color:#3D3229}
+.rb-room-page{max-width:1060px;margin:0 auto;padding:8px 0 20px;color:#33291F}
 .rb-room-head{text-align:center;margin-bottom:40px}
 .rb-room-eyebrow{display:block;font-family:"Raleway",Arial,sans-serif;font-size:12px;letter-spacing:3px;
- text-transform:uppercase;color:var(--rb-room-accent);margin-bottom:14px}
-.rb-room-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:46px;line-height:1.15;font-weight:400;
- letter-spacing:2px;text-transform:uppercase;color:#3D3229;margin:0 0 12px}
-.rb-room-tagline{font-size:17px;color:#8B7355;font-weight:300;margin:0}
+ text-transform:uppercase;font-weight:600;color:var(--rb-room-accent);margin-bottom:14px}
+.rb-room-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:50px;line-height:1.12;font-weight:600;
+ letter-spacing:1.5px;text-transform:uppercase;color:#2C2318;margin:0 0 12px}
+.rb-room-tagline{font-size:17.5px;color:#7A6650;font-weight:400;margin:0}
 .rb-room-rule{display:block;width:60px;height:1px;background:var(--rb-room-accent);margin:26px auto 0}
 .rb-room-body{margin-bottom:34px}
-.rb-room-body h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;font-weight:500;color:#3D3229;
- margin:0 0 14px;padding-left:14px;border-left:3px solid var(--rb-room-accent)}
-.rb-room-body p{font-size:16px;line-height:1.85;color:#5B4E43;margin:0 0 14px;font-weight:300}
+.rb-room-body h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:600;color:#2C2318;
+ letter-spacing:.3px;margin:0 0 16px;padding-left:16px;border-left:4px solid var(--rb-room-accent)}
+.rb-room-body p{font-size:16.5px;line-height:1.8;color:#4A3D31;margin:0 0 14px;font-weight:400}
 .rb-room-equip{display:grid;grid-template-columns:repeat(2,1fr);gap:0 30px}
 .rb-room-equip ul{list-style:none;margin:0;padding:0}
-.rb-room-equip li{position:relative;padding:0 0 10px 20px;font-size:15.5px;color:#5B4E43;font-weight:300}
+.rb-room-equip li{position:relative;padding:0 0 10px 20px;font-size:16px;color:#4A3D31;font-weight:400}
 .rb-room-equip li:before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;
  background:var(--rb-room-accent)}
 .rb-room-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:10px 0 40px}
@@ -1136,8 +1136,8 @@ add_action('wp_enqueue_scripts', function () {
 .rb-room-book .rb-official__btn{background:var(--rb-room-accent);letter-spacing:1.6px;text-transform:uppercase;
  padding:15px 34px}
 .rb-room-book .rb-official__btn:hover,.rb-room-book .rb-official__btn:focus{background:#3D3229}
-.rb-room-others h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:400;letter-spacing:1px;
- text-align:center;color:#3D3229;margin:0 0 26px}
+.rb-room-others h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:32px;font-weight:600;letter-spacing:.5px;
+ text-align:center;color:#2C2318;margin:0 0 26px}
 .rb-room-others__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
 .rb-room-other{display:block;text-decoration:none;background:#fff;border:1px solid #E8E0D5;overflow:hidden;
  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
@@ -1145,12 +1145,13 @@ add_action('wp_enqueue_scripts', function () {
  border-color:var(--rb-room-accent)}
 .rb-room-other__img{display:block;height:230px;background-size:cover;background-position:center;background-color:#F6F1EA}
 .rb-room-other__name{display:block;padding:20px;text-align:center;font-family:"Cormorant Garamond",Georgia,serif;
- font-size:23px;color:#3D3229}
+ font-size:24px;font-weight:600;color:#2C2318}
 @media(max-width:768px){
 .rb-choice__grid{grid-template-columns:1fr}
 .rb-choice__or{padding:18px 0}
 .rb-choice__or:before{top:50%;bottom:auto;left:0;right:0;width:auto;height:1px}
-.rb-room-title{font-size:29px;letter-spacing:1px}
+.rb-room-title{font-size:31px;letter-spacing:.8px}
+.rb-room-body h2{font-size:26px}
 .rb-room-equip{grid-template-columns:1fr}
 .rb-room-gallery{grid-template-columns:1fr;gap:12px}
 .rb-room-photo img{height:230px}
