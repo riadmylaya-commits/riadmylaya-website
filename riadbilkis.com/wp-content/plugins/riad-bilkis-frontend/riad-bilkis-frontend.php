@@ -840,26 +840,16 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 // ── Chambres : pages individuelles et section de choix sur l'accueil ─────────
-// Les photos sont volontairement regroupées ici : il suffit de remplacer les
-// URL par celles des vraies photos du riad (3 par chambre, la première sert
-// aussi de vignette dans « Voir les autres chambres »).
+// Les photos sont volontairement regroupées ici : il suffit d'ajouter les URL
+// des vraies photos du riad (3 par chambre, la première sert aussi de vignette
+// dans « Voir les autres chambres »). Tant qu'une liste est vide, la page
+// affiche des emplacements neutres plutôt que des images d'illustration.
 const RIAD_BILKIS_ROOM_PHOTOS = array(
-    'chambre-babouche' => array(
-        'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80',
-        'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&q=80',
-        'https://images.unsplash.com/photo-1539437829697-1b4ed5aebd19?w=1200&q=80',
-    ),
-    'chambre-tarbouche' => array(
-        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
-        'https://images.unsplash.com/photo-1587985064135-0366536eab42?w=1200&q=80',
-        'https://images.unsplash.com/photo-1594563703937-fdc640497dcd?w=1200&q=80',
-    ),
-    'chambre-vero' => array(
-        'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1200&q=80',
-        'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80',
-        'https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=1200&q=80',
-    ),
+    'chambre-babouche' => array(),
+    'chambre-tarbouche' => array(),
+    'chambre-vero' => array(),
 );
+const RIAD_BILKIS_ROOM_PHOTO_SLOTS = 3;
 
 function riad_bilkis_rooms() {
     return array(
@@ -932,9 +922,15 @@ function riad_bilkis_room_page_html($slug) {
     $t     = riad_bilkis_official_texts(riad_bilkis_lang());
 
     $photos = '';
-    foreach (RIAD_BILKIS_ROOM_PHOTOS[$slug] as $i => $url) {
-        $photos .= '<figure class="rb-room-photo"><img src="' . esc_url($url) . '" loading="lazy"'
-            . ' alt="' . esc_attr($room['name'] . ' — photo ' . ($i + 1)) . '"></figure>';
+    $urls   = RIAD_BILKIS_ROOM_PHOTOS[$slug];
+    $slots  = max(count($urls), RIAD_BILKIS_ROOM_PHOTO_SLOTS);
+    for ($i = 0; $i < $slots; $i++) {
+        if (isset($urls[$i])) {
+            $photos .= '<figure class="rb-room-photo"><img src="' . esc_url($urls[$i]) . '" loading="lazy"'
+                . ' alt="' . esc_attr($room['name'] . ' — photo ' . ($i + 1)) . '"></figure>';
+        } else {
+            $photos .= '<figure class="rb-room-photo rb-room-photo--empty"><span>Photo à venir</span></figure>';
+        }
     }
 
     $equip = '';
@@ -949,8 +945,11 @@ function riad_bilkis_room_page_html($slug) {
     $others = '';
     foreach ($rooms as $other_slug => $other) {
         if ($other_slug === $slug) continue;
+        $thumb = isset(RIAD_BILKIS_ROOM_PHOTOS[$other_slug][0])
+            ? ' style="background-image:url(\'' . esc_url(RIAD_BILKIS_ROOM_PHOTOS[$other_slug][0]) . '\')"'
+            : '';
         $others .= '<a class="rb-room-other" href="' . esc_url('/' . $other_slug . '/') . '">'
-            . '<span class="rb-room-other__img" style="background-image:url(\'' . esc_url(RIAD_BILKIS_ROOM_PHOTOS[$other_slug][0]) . '\')"></span>'
+            . '<span class="rb-room-other__img"' . $thumb . '></span>'
             . '<span class="rb-room-other__name">' . esc_html($other['name']) . '</span>'
             . '</a>';
     }
@@ -1095,6 +1094,10 @@ add_action('wp_enqueue_scripts', function () {
 .rb-room-photo{margin:0;overflow:hidden}
 .rb-room-photo img{display:block;width:100%;height:260px;object-fit:cover;transition:transform .5s ease}
 .rb-room-photo:hover img{transform:scale(1.04)}
+.rb-room-photo--empty{display:flex;align-items:center;justify-content:center;height:260px;background:#F6F1EA;
+ border:1px dashed #DDD2C4}
+.rb-room-photo--empty span{font-family:"Cormorant Garamond",Georgia,serif;font-size:16px;letter-spacing:1px;
+ color:#A79684}
 .rb-room-book{text-align:center;background:#FBF7F2;border:1px solid #E8E0D5;padding:32px 20px;margin-bottom:46px}
 .rb-room-book .rb-official__btn{background:var(--rb-room-accent);letter-spacing:1.6px;text-transform:uppercase;
  padding:15px 34px}
@@ -1106,7 +1109,7 @@ add_action('wp_enqueue_scripts', function () {
  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
 .rb-room-other:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.1);
  border-color:var(--rb-room-accent)}
-.rb-room-other__img{display:block;height:230px;background-size:cover;background-position:center}
+.rb-room-other__img{display:block;height:230px;background-size:cover;background-position:center;background-color:#F6F1EA}
 .rb-room-other__name{display:block;padding:20px;text-align:center;font-family:"Cormorant Garamond",Georgia,serif;
  font-size:23px;color:#3D3229}
 @media(max-width:768px){
