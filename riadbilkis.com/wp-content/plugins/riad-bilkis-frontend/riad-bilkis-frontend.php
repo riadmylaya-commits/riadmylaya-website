@@ -881,14 +881,14 @@ function riad_bilkis_rooms() {
             'accent'  => '#D9A02B',
             'colors'  => 'Jaune safran et blanc',
             'intro'   => array(
-                'Inspirée des babouches en cuir travaillées dans les souks de la médina, cette chambre décline le jaune safran et le blanc immaculé des murs en tadelakt. Une niche éclairée, taillée dans le mur, souligne la tête de lit et diffuse une lumière chaude à la tombée du jour.',
-                'Les appliques en fer forgé et les textiles tissés à Marrakech créent une atmosphère feutrée le soir. La chambre ouvre sur le patio, au calme, à quelques pas de la terrasse panoramique.',
+                'Cette chambre double avec un grand lit est située au rez-de-chaussée.',
+                'Dans cette chambre, le jaune safran et le blanc vous feront dormir dans la quiétude.',
             ),
             'equip'   => array(
-                array('Lit double confort (160 x 200 cm)', 'Linge de lit en satin de coton', 'Climatisation réversible', 'Wi-Fi haut débit gratuit', 'Coffre-fort numérique'),
-                array('Bouilloire et thé à la menthe', 'Serviettes de bain XXL', 'Peignoirs et babouches', 'Produits d\'accueil artisanaux', 'Plateau de bienvenue'),
+                array('Grand lit double', 'Wi-Fi haut débit', 'Climatisation réversible', 'Coffre-fort'),
+                array('Bouteille d\'eau', 'Produits de toilette Les Sens de Marrakech', 'Serviettes et linge de maison'),
             ),
-            'bath'    => 'Salle de bain privée en tadelakt, douche à l\'italienne, vasque en cuivre martelé et robinetterie en laiton vieilli.',
+            'bath'    => 'Salle de bain avec douche et toilettes, murs en tadelakt et sol en carreaux de ciment.',
         ),
         'chambre-tarbouche' => array(
             'name'    => 'Chambre Tarbouche',
