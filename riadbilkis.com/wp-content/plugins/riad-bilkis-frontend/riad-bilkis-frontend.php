@@ -877,12 +877,12 @@ function riad_bilkis_rooms() {
     return array(
         'chambre-babouche' => array(
             'name'    => 'Chambre Babouche',
-            'tagline' => 'Artisanat marocain et tons chauds, dans une atmosphère intime',
-            'accent'  => '#C0703F',
-            'colors'  => 'Terre cuite et blanc',
+            'tagline' => 'Jaune safran et blanc, artisanat marocain et lumière douce',
+            'accent'  => '#D9A02B',
+            'colors'  => 'Jaune safran et blanc',
             'intro'   => array(
-                'Inspirée des babouches en cuir travaillées dans les souks de la médina, cette chambre décline les tons terre cuite et le blanc immaculé des murs en tadelakt. Le zellige du sol, posé à la main, dessine un motif géométrique discret qui accompagne la lumière du patio.',
-                'Les lanternes en laiton ciselé et les textiles tissés à Marrakech créent une atmosphère feutrée le soir. La chambre ouvre sur le patio, au calme, à quelques pas de la terrasse panoramique.',
+                'Inspirée des babouches en cuir travaillées dans les souks de la médina, cette chambre décline le jaune safran et le blanc immaculé des murs en tadelakt. Une niche éclairée, taillée dans le mur, souligne la tête de lit et diffuse une lumière chaude à la tombée du jour.',
+                'Les appliques en fer forgé et les textiles tissés à Marrakech créent une atmosphère feutrée le soir. La chambre ouvre sur le patio, au calme, à quelques pas de la terrasse panoramique.',
             ),
             'equip'   => array(
                 array('Lit double confort (160 x 200 cm)', 'Linge de lit en satin de coton', 'Climatisation réversible', 'Wi-Fi haut débit gratuit', 'Coffre-fort numérique'),
@@ -907,11 +907,11 @@ function riad_bilkis_rooms() {
         ),
         'chambre-vero' => array(
             'name'    => 'Suite Véro',
-            'tagline' => 'Notre suite signature, espace généreux et décoration raffinée',
-            'accent'  => '#B08D57',
-            'colors'  => 'Sable doré et blanc',
+            'tagline' => 'Bleu et blanc, notre suite signature à l\'espace généreux',
+            'accent'  => '#3E6E96',
+            'colors'  => 'Bleu et blanc',
             'intro'   => array(
-                'La suite Véro est la plus vaste du riad : un salon marocain prolonge la chambre, meublé de banquettes basses et de tapis noués dans le Moyen Atlas. Les tons sable doré et blanc y installent une sérénité immédiate.',
+                'La suite Véro est la plus vaste du riad : un salon marocain prolonge la chambre, meublé de banquettes basses et de tapis noués dans le Moyen Atlas. Le bleu profond de la tête de lit, associé au blanc et aux textiles écrus tissés à la main, y installe une sérénité immédiate.',
                 'Ses fenêtres donnent sur le patio et la fontaine ; la terrasse panoramique, avec sa vue sur les toits de la médina et l\'Atlas, se trouve un étage au-dessus.',
             ),
             'equip'   => array(
