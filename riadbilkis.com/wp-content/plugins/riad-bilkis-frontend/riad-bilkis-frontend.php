@@ -62,9 +62,8 @@ function riad_bilkis_menu_tree($lang) {
                 array('Hammam & Massage',   '/hammam-massage'),
                 array('Infos pratiques',    '/informations-pratiques'),
             )),
-            array('Activités', '/excursions-activites/', array(
-                array('Activités privées',   '/excursions-activites/'),
-                array('Activités en groupe', '/activites-groupe'),
+            array('Activités', '/activites-groupe', array(
+                array('Activités en groupe et en privé', '/activites-groupe'),
             )),
             array('Blog',      '/blog', array(
                 array('Découverte de Marrakech', '/decouverte-marrakech'),
@@ -81,9 +80,8 @@ function riad_bilkis_menu_tree($lang) {
                 array('Hammam & Massage',   '/en/hammam-massage'),
                 array('Practical info',     '/en/practical-information'),
             )),
-            array('Activities', '/excursions-activites/', array(
-                array('Private activities', '/excursions-activites/'),
-                array('Group activities',   '/en/group-activities'),
+            array('Activities', '/en/group-activities', array(
+                array('Group and private activities', '/en/group-activities'),
             )),
             array('Blog',       '/en/blog', array(
                 array('Discover Marrakech', '/en/discover-marrakech'),
@@ -100,9 +98,8 @@ function riad_bilkis_menu_tree($lang) {
                 array('Hammam y masaje',   '/es/hammam-masaje'),
                 array('Información práctica', '/es/informacion-practica'),
             )),
-            array('Actividades',  '/excursions-activites/', array(
-                array('Actividades privadas', '/excursions-activites/'),
-                array('Actividades en grupo', '/es/actividades'),
+            array('Actividades',  '/es/actividades', array(
+                array('Actividades en grupo y privadas', '/es/actividades'),
             )),
             array('Blog',         '/es/blog', array(
                 array('Descubrir Marrakech', '/es/descubrir-marrakech'),
