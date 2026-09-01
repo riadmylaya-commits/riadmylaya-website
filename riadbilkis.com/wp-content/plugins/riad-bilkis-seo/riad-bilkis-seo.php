@@ -55,6 +55,8 @@ function riad_bilkis_seo_data() {
 }
 
 function riad_bilkis_get_current_slug() {
+    // Les pages excursions fournissent elles-mêmes leur titre et leurs métadonnées.
+    if (function_exists('riad_bilkis_exc_route') && riad_bilkis_exc_route()) return '__excursions__';
     if (is_front_page() || is_home()) return '';
     global $post;
     return $post ? $post->post_name : '';

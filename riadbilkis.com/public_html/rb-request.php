@@ -1,7 +1,7 @@
 <?php
 /**
  * Riad Bilkis - reception des demandes envoyees par les pages sejour
- * (diner marocain et transfert aeroport).
+ * (diner marocain, transfert aeroport, informations et excursions).
  *
  * Recoit un POST JSON, envoie un e-mail au riad et un accuse de reception
  * au visiteur. La configuration SMTP se trouve hors racine web dans
@@ -67,7 +67,7 @@ function rb_field($data, $key, $max = 400)
 }
 
 $type = rb_field($data, 'type', 20);
-if (!in_array($type, array('dinner', 'transfer', 'info'), true)) {
+if (!in_array($type, array('dinner', 'transfer', 'info', 'excursion'), true)) {
     http_response_code(400);
     echo json_encode(array('ok' => false, 'error' => 'invalid_type'));
     exit;
@@ -100,7 +100,78 @@ $labels = array(
     'info' => array(
         'phone' => 'Telephone', 'message' => 'Message',
     ),
+    'excursion' => array(
+        'phone' => 'Telephone', 'excursion' => 'Excursion', 'slug' => 'Reference',
+        'people' => 'Personnes', 'date' => 'Date souhaitee', 'message' => 'Message',
+    ),
 );
+
+/**
+ * Recalcule le prix depuis la base commune des excursions : le total envoye par
+ * le navigateur n'est jamais utilise tel quel.
+ */
+function rb_excursions_load()
+{
+    $paths = array(
+        dirname(__DIR__) . '/riadbilkis.com/data/excursions.json',
+        __DIR__ . '/data/excursions.json',
+    );
+    foreach ($paths as $path) {
+        if (!is_readable($path)) {
+            continue;
+        }
+        $decoded = json_decode(file_get_contents($path), true);
+        if (is_array($decoded) && !empty($decoded['excursions'])) {
+            return $decoded['excursions'];
+        }
+    }
+    return array();
+}
+
+function rb_excursion_exists($slug)
+{
+    foreach (rb_excursions_load() as $excursion) {
+        if ($excursion['slug'] === $slug) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function rb_excursion_total($slug, $people)
+{
+    foreach (rb_excursions_load() as $excursion) {
+        if ($excursion['slug'] !== $slug) {
+            continue;
+        }
+        $pricing = $excursion['pricing'];
+        if (isset($excursion['pricing_par_riad']['bilkis']) && is_array($excursion['pricing_par_riad']['bilkis'])) {
+            $pricing = $excursion['pricing_par_riad']['bilkis'] + $pricing;
+        }
+        $min = isset($pricing['min_people']) ? (int) $pricing['min_people'] : 1;
+        if ($people < $min) {
+            return null;
+        }
+        if (isset($pricing['type']) && $pricing['type'] === 'flat_then_per_person') {
+            $upTo = (int) $pricing['flat_up_to'];
+            if ($people <= $upTo) {
+                return (int) $pricing['flat_price'];
+            }
+            if ($people === $upTo + 1) {
+                return (int) $pricing['price_4'];
+            }
+            return (int) $pricing['price_4'] + ($people - $upTo - 1) * (int) $pricing['extra_per_person'];
+        }
+        $tiers = isset($pricing['tiers']) ? $pricing['tiers'] : array();
+        for ($i = min($people, 4); $i >= 1; $i--) {
+            if (isset($tiers[(string) $i])) {
+                return (int) $tiers[(string) $i] * $people;
+            }
+        }
+        return null;
+    }
+    return null;
+}
 
 $rows = array('Nom' => $name, 'E-mail' => $email);
 foreach ($labels[$type] as $key => $label) {
@@ -109,6 +180,22 @@ foreach ($labels[$type] as $key => $label) {
         $rows[$label] = $value;
     }
 }
+if ($type === 'excursion') {
+    $people = (int) rb_field($data, 'people', 4);
+    if ($people < 1 || $people > 30) {
+        http_response_code(422);
+        echo json_encode(array('ok' => false, 'error' => 'invalid_people'));
+        exit;
+    }
+    $slug = rb_field($data, 'slug', 60);
+    if (!rb_excursion_exists($slug)) {
+        http_response_code(422);
+        echo json_encode(array('ok' => false, 'error' => 'invalid_excursion'));
+        exit;
+    }
+    $total = rb_excursion_total($slug, $people);
+    $rows['Prix total'] = $total === null ? 'a confirmer' : $total . ' EUR';
+}
 $rows['Langue'] = strtoupper($lang);
 $rows['Page'] = rb_field($data, 'page', 200);
 
@@ -116,6 +203,7 @@ $subjects = array(
     'dinner' => 'Demande de diner - ' . $name,
     'transfer' => 'Demande de transfert aeroport - ' . $name,
     'info' => 'Demande d\'informations - ' . $name,
+    'excursion' => 'Demande d\'excursion - ' . rb_field($data, 'excursion', 120) . ' - ' . $name,
 );
 
 $guestSubjects = array(
@@ -134,6 +222,11 @@ $guestSubjects = array(
         'en' => 'Riad Bilkis - your information request',
         'es' => 'Riad Bilkis - su solicitud de informacion',
     ),
+    'excursion' => array(
+        'fr' => 'Riad Bilkis - votre demande d\'excursion',
+        'en' => 'Riad Bilkis - your excursion request',
+        'es' => 'Riad Bilkis - su solicitud de excursion',
+    ),
 );
 
 $guestBodies = array(
@@ -151,6 +244,11 @@ $guestBodies = array(
         'fr' => 'Merci pour votre message. Nous vous repondons rapidement par e-mail. Pour une reponse immediate, ecrivez-nous sur WhatsApp au +212 625 675 494.',
         'en' => 'Thank you for your message. We will reply by email shortly. For an immediate answer, write to us on WhatsApp at +212 625 675 494.',
         'es' => 'Gracias por su mensaje. Le responderemos por correo electronico en breve. Para una respuesta inmediata, escribanos por WhatsApp al +212 625 675 494.',
+    ),
+    'excursion' => array(
+        'fr' => 'Merci pour votre demande d\'excursion. Nous verifions la disponibilite du chauffeur et du guide, puis nous vous confirmons par e-mail le programme et le tarif. Pour toute precision, ecrivez-nous sur WhatsApp au +212 625 675 494.',
+        'en' => 'Thank you for your excursion request. We are checking the availability of the driver and the guide, then we will confirm the programme and the price by email. For any detail, write to us on WhatsApp at +212 625 675 494.',
+        'es' => 'Gracias por su solicitud de excursion. Estamos comprobando la disponibilidad del chofer y del guia, y le confirmaremos el programa y la tarifa por correo electronico. Para cualquier detalle, escribanos por WhatsApp al +212 625 675 494.',
     ),
 );
 

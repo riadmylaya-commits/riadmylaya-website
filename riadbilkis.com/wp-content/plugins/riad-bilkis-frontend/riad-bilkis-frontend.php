@@ -8,6 +8,8 @@
 
 if (!defined('ABSPATH')) exit;
 
+require_once __DIR__ . '/riad-bilkis-excursions.php';
+
 const RIAD_BILKIS_ACTIVITIES = array(
     'fr' => array('url' => '/activites-groupe',      'label' => 'Activités'),
     'en' => array('url' => '/en/group-activities',   'label' => 'Activities'),
@@ -64,6 +66,7 @@ function riad_bilkis_menu_tree($lang) {
             )),
             array('Activités', '/activites-groupe', array(
                 array('Activités en groupe et en privé', '/activites-groupe'),
+                array('Excursions privées',              '/excursions/'),
             )),
             array('Blog',      '/blog', array(
                 array('Découverte de Marrakech', '/decouverte-marrakech'),
@@ -82,6 +85,7 @@ function riad_bilkis_menu_tree($lang) {
             )),
             array('Activities', '/en/group-activities', array(
                 array('Group and private activities', '/en/group-activities'),
+                array('Private excursions',          '/en/excursions/'),
             )),
             array('Blog',       '/en/blog', array(
                 array('Discover Marrakech', '/en/discover-marrakech'),
@@ -100,6 +104,7 @@ function riad_bilkis_menu_tree($lang) {
             )),
             array('Actividades',  '/es/actividades', array(
                 array('Actividades en grupo y privadas', '/es/actividades'),
+                array('Excursiones privadas',           '/es/excursiones/'),
             )),
             array('Blog',         '/es/blog', array(
                 array('Descubrir Marrakech', '/es/descubrir-marrakech'),
@@ -702,6 +707,12 @@ function riad_bilkis_is_home_page() {
     return is_home() && in_array(rtrim($path, '/'), array('/en', '/es'), true);
 }
 
+// Pages portant le bloc de réservation et le formulaire de contact.
+function riad_bilkis_needs_booking_styles() {
+    if (riad_bilkis_is_home_page() || riad_bilkis_room_slug() || riad_bilkis_is_rooms_page()) return true;
+    return function_exists('riad_bilkis_exc_route') && riad_bilkis_exc_route() !== null;
+}
+
 // ── Section « Nos Chambres » : label, suppression des tarifs, CTA réservation ─
 function riad_bilkis_rooms_texts($lang) {
     $texts = array(
@@ -785,7 +796,7 @@ add_action('astra_primary_content_top', function () {
 });
 
 add_action('wp_enqueue_scripts', function () {
-    if (!riad_bilkis_is_home_page() && !riad_bilkis_room_slug() && !riad_bilkis_is_rooms_page()) return;
+    if (!riad_bilkis_needs_booking_styles()) return;
     wp_register_style('riad-bilkis-official', false);
     wp_enqueue_style('riad-bilkis-official');
     wp_add_inline_style('riad-bilkis-official', '
@@ -1174,7 +1185,7 @@ function riad_bilkis_choice_section() {
 }
 
 add_action('wp_enqueue_scripts', function () {
-    if (!riad_bilkis_is_home_page() && !riad_bilkis_room_slug() && !riad_bilkis_is_rooms_page()) return;
+    if (!riad_bilkis_needs_booking_styles()) return;
     wp_enqueue_script('riad-bilkis-forms', '/sejour/forms.js', array(), '1.0', true);
     wp_enqueue_style(
         'riad-bilkis-fonts',
