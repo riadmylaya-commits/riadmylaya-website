@@ -60,6 +60,7 @@ function riad_bilkis_menu_tree($lang) {
                 array('Dîner traditionnel', '/diner-marocain'),
                 array('Cours de cuisine',   '/cours-de-cuisine'),
                 array('Hammam & Massage',   '/hammam-massage'),
+                array('Infos pratiques',    '/informations-pratiques'),
             )),
             array('Activités', '/excursions-activites/', array(
                 array('Activités privées',   '/excursions-activites/'),
@@ -78,6 +79,7 @@ function riad_bilkis_menu_tree($lang) {
                 array('Traditional dinner', '/en/moroccan-dinner'),
                 array('Cooking class',      '/en/cooking-class'),
                 array('Hammam & Massage',   '/en/hammam-massage'),
+                array('Practical info',     '/en/practical-information'),
             )),
             array('Activities', '/excursions-activites/', array(
                 array('Private activities', '/excursions-activites/'),
@@ -96,6 +98,7 @@ function riad_bilkis_menu_tree($lang) {
                 array('Cena tradicional',  '/es/cena-marroqui'),
                 array('Clase de cocina',   '/es/clase-de-cocina'),
                 array('Hammam y masaje',   '/es/hammam-masaje'),
+                array('Información práctica', '/es/informacion-practica'),
             )),
             array('Actividades',  '/excursions-activites/', array(
                 array('Actividades privadas', '/excursions-activites/'),
@@ -121,6 +124,8 @@ function riad_bilkis_menu_items_html() {
         $current  = rtrim($entry[1], '/') === $path;
         $classes  = 'menu-item rb-menu-item';
         if ($children) $classes .= ' menu-item-has-children rb-has-children';
+        // Services sert uniquement de parent de navigation : il ouvre son sous-menu.
+        if ($children && rtrim($entry[1], '/') === '/nos-services') $classes .= ' rb-nolink';
         if ($current)  $classes .= ' current-menu-item';
         $sub = '';
         if ($children) {
@@ -301,12 +306,21 @@ add_action('wp_footer', function () {
 </style>
 <script id="rb-menu-js">
 (function(){
+  function isMobile(){return window.matchMedia("(max-width:921px)").matches}
+  function toggle(li){
+    var open=li.classList.toggle("rb-open"),btn=li.querySelector(".rb-submenu-toggle");
+    if(btn)btn.setAttribute("aria-expanded",open?"true":"false");
+  }
   document.addEventListener("click",function(e){
-    var btn=e.target.closest?e.target.closest(".rb-submenu-toggle"):null;
-    if(!btn)return;
+    if(!e.target.closest)return;
+    var btn=e.target.closest(".rb-submenu-toggle");
+    if(btn){e.preventDefault();toggle(btn.parentNode);return;}
+    // Sur mobile, une rubrique à sous-menu ouvre son sous-menu au lieu de naviguer.
+    var link=e.target.closest(".rb-has-children>.menu-link");
+    if(!link)return;
+    if(!isMobile()&&!link.parentNode.classList.contains("rb-nolink"))return;
     e.preventDefault();
-    var li=btn.parentNode,open=li.classList.toggle("rb-open");
-    btn.setAttribute("aria-expanded",open?"true":"false");
+    toggle(link.parentNode);
   });
 })();
 </script>
