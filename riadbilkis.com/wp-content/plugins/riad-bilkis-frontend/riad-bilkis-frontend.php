@@ -1351,3 +1351,21 @@ add_action('init', function () {
 
     wp_register_sitemap_provider('riadbilkisactivites', new Riad_Bilkis_Static_Sitemap_Provider());
 });
+
+// ── Frise décorative Riad Bilkis (arches, lanternes, patio) ───────────────────
+add_action('astra_footer_before', function () {
+    if (is_admin() || is_404()) return;
+    echo '<div class="rb-frise" role="presentation">'
+       . '<img src="/img/frise-bilkis.svg" width="1600" height="340" alt="" loading="lazy" decoding="async">'
+       . '</div>';
+}, 5);
+
+add_action('wp_enqueue_scripts', function () {
+    wp_register_style('riad-bilkis-frise', false);
+    wp_enqueue_style('riad-bilkis-frise');
+    wp_add_inline_style('riad-bilkis-frise', '
+.rb-frise{background:#FBF7F2;padding:26px 20px 30px;text-align:center;line-height:0;overflow:hidden}
+.rb-frise img{width:100%;max-width:1180px;height:auto;opacity:.95}
+@media(max-width:921px){.rb-frise{padding:18px 12px 20px}.rb-frise img{max-width:none;width:150%;margin-left:-25%}}
+');
+}, 30);
