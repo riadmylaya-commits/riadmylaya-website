@@ -672,6 +672,7 @@ function riad_bilkis_exc_assets() {
   }
   people.addEventListener("input",update);
   people.addEventListener("change",update);
+  form.addEventListener("reset",function(){setTimeout(update,0)});
   update();
 })();
 ');
