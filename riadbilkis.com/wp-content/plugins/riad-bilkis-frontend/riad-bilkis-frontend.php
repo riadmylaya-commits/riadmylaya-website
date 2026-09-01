@@ -1165,27 +1165,61 @@ function riad_bilkis_choice_section() {
 add_action('wp_enqueue_scripts', function () {
     if (!riad_bilkis_is_home_page() && !riad_bilkis_room_slug() && !riad_bilkis_is_rooms_page()) return;
     wp_enqueue_script('riad-bilkis-forms', '/sejour/forms.js', array(), '1.0', true);
+    wp_enqueue_style(
+        'riad-bilkis-fonts',
+        'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap',
+        array(),
+        null
+    );
     wp_register_style('riad-bilkis-rooms', false);
     wp_enqueue_style('riad-bilkis-rooms');
     wp_add_inline_style('riad-bilkis-rooms', '
-.rb-choice{background:#fff}
+/* Section « question ou réservation » : serif pour les titres, sans-serif moderne pour le reste. */
+.rb-choice{background:#fff;--rb-choice-serif:"Cormorant Garamond",Georgia,serif;
+ --rb-choice-sans:"Montserrat","Helvetica Neue",Arial,sans-serif;--rb-choice-accent:#A8341C}
+.rb-choice .rb-section-label{font-family:var(--rb-choice-sans);font-size:12.5px;font-weight:600;
+ letter-spacing:3.4px;text-transform:uppercase;color:#B08A57}
+.rb-choice .rb-section-title{font-family:var(--rb-choice-serif);font-size:47px;line-height:1.12;font-weight:700;
+ letter-spacing:.5px;color:#2C2318}
 .rb-choice__grid{display:grid;grid-template-columns:1fr 60px 1fr;align-items:stretch;gap:0;margin-top:46px}
-.rb-choice__card{background:#FBF7F2;border:1px solid #E8E0D5;padding:34px 30px;text-align:left}
-.rb-choice__card--book{text-align:center;display:flex;flex-direction:column;justify-content:center}
-.rb-choice__card h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:25px;color:#3D3229;margin:0 0 10px;
- font-weight:500}
-.rb-choice__card p{font-size:15px;color:#8B7355;line-height:1.7;font-weight:300;margin:0 0 18px}
+.rb-choice__card{background:#FBF7F2;border:1px solid #E8E0D5;padding:34px 30px;text-align:left;
+ font-family:var(--rb-choice-sans)}
+.rb-choice__card--book{text-align:center;display:flex;flex-direction:column;justify-content:center;
+ background:#FFFBF4;border-color:#E3CFA9}
+.rb-choice__card h3{font-family:var(--rb-choice-serif);font-size:31px;line-height:1.2;color:#2C2318;
+ margin:0 0 12px;font-weight:600;letter-spacing:.3px}
+.rb-choice__card--book h3{font-size:37px;font-weight:700;color:var(--rb-choice-accent);margin-bottom:8px}
+.rb-choice__card--book h3:after{content:"";display:block;width:64px;height:2px;background:#C99752;
+ margin:16px auto 0}
+.rb-choice__card p{font-family:var(--rb-choice-sans);font-size:15.5px;color:#6E5B45;line-height:1.7;
+ font-weight:400;margin:0 0 18px}
+.rb-choice__card--book p{font-size:16.5px;color:#5A4A38;margin:18px 0 24px}
 .rb-choice__or{display:flex;align-items:center;justify-content:center;position:relative}
-.rb-choice__or span{font-family:"Raleway",Arial,sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;
- color:#8B7355;background:#fff;padding:8px 0;z-index:1}
+.rb-choice__or span{font-family:var(--rb-choice-sans);font-size:12px;font-weight:600;letter-spacing:2px;
+ text-transform:uppercase;color:#8B7355;background:#fff;padding:8px 0;z-index:1}
 .rb-choice__or:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#E8E0D5}
-.rb-choice__form label{display:block;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8B7355;
- margin-bottom:14px}
-.rb-choice__form input,.rb-choice__form textarea{display:block;width:100%;margin-top:6px;padding:11px 13px;
- border:1px solid #E0D6C8;border-radius:3px;background:#fff;font-size:15px;color:#3D3229;
- font-family:inherit;text-transform:none;letter-spacing:0}
+.rb-choice__form label{display:block;font-family:var(--rb-choice-sans);font-size:12px;font-weight:600;
+ letter-spacing:1.6px;text-transform:uppercase;color:#7A6650;margin-bottom:16px}
+.rb-choice__form input,.rb-choice__form textarea{display:block;width:100%;margin-top:7px;padding:13px 14px;
+ border:1px solid #E0D6C8;border-radius:3px;background:#fff;font-size:16px;color:#2C2318;font-weight:400;
+ font-family:var(--rb-choice-sans);text-transform:none;letter-spacing:0}
 .rb-choice__form input:focus,.rb-choice__form textarea:focus{outline:none;border-color:#C99752}
 .rb-choice__form button{margin-top:6px}
+.rb-choice .rb-official__btn,.rb-choice .rb-official__btn:visited{font-family:var(--rb-choice-sans);
+ font-size:16.5px;font-weight:600;letter-spacing:.9px;padding:17px 38px}
+.rb-choice__card--book .rb-official__btn,.rb-choice__card--book .rb-official__btn:visited{background:#C0452A;
+ box-shadow:0 4px 16px rgba(168,52,28,.28)}
+.rb-choice__card--book .rb-official__btn:hover,.rb-choice__card--book .rb-official__btn:focus{background:#A8341C}
+.rb-choice .rb-choice__form .rb-official__btn{background:transparent;color:#8A6A3B;border:1px solid #C99752;
+ box-shadow:none;font-size:15px;letter-spacing:1.4px;text-transform:uppercase;padding:15px 30px}
+.rb-choice .rb-choice__form .rb-official__btn:hover,
+.rb-choice .rb-choice__form .rb-official__btn:focus{background:#C99752;color:#fff}
+.rb-choice .rb-promo-box{margin-top:26px;padding:16px 26px;border-width:2px}
+.rb-choice .rb-promo-label{font-family:var(--rb-choice-sans);font-size:12.5px;font-weight:600;letter-spacing:2px;
+ color:#6b4a1b}
+.rb-choice .rb-promo-value{font-family:var(--rb-choice-sans);font-size:25px;font-weight:700;letter-spacing:3px;
+ padding:9px 22px}
+.rb-choice .rb-promo-hint{font-family:var(--rb-choice-sans);font-size:13px;color:#6E5B45;font-style:normal}
 .rb-form__status{min-height:20px;margin:12px 0 0;font-size:14px;color:#8B7355}
 .rb-form__status--ok{color:#2f7a4f}
 .rb-form__status--err{color:#b3392a}
@@ -1260,6 +1294,13 @@ add_action('wp_enqueue_scripts', function () {
 .rb-rooms-index__title{font-size:31px;letter-spacing:.8px}
 .rb-rooms-index__grid{grid-template-columns:1fr;gap:22px}
 .rb-rooms-card__img{height:240px}
+.rb-choice .rb-section-title{font-size:32px}
+.rb-choice__card{padding:26px 20px}
+.rb-choice__card h3{font-size:26px}
+.rb-choice__card--book h3{font-size:30px}
+.rb-choice__card--book p{font-size:15.5px}
+.rb-choice .rb-official__btn{font-size:15.5px;padding:16px 26px}
+.rb-choice .rb-promo-value{font-size:22px;letter-spacing:2px}
 .rb-choice__grid{grid-template-columns:1fr}
 .rb-choice__or{padding:18px 0}
 .rb-choice__or:before{top:50%;bottom:auto;left:0;right:0;width:auto;height:1px}
