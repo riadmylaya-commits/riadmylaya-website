@@ -70,9 +70,9 @@
       ".rm-fab-btn:hover{transform:scale(1.08);box-shadow:0 6px 22px rgba(201,151,82,.6);}",
       ".rm-fab-btn.open{transform:rotate(45deg);background:linear-gradient(135deg,#6b4a1b 0%,#4a3518 100%);}",
       ".rm-fab-label{position:absolute;left:66px;top:50%;transform:translateY(-50%);",
-      "background:#fff;color:#6b4a1b;font-size:13px;font-weight:700;padding:6px 14px;",
+      "background:#fff;color:#6b4a1b;border:none;font-family:inherit;font-size:13px;font-weight:700;padding:6px 14px;",
       "border-radius:20px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.12);",
-      "pointer-events:none;opacity:1;transition:opacity .3s;}",
+      "cursor:pointer;user-select:none;opacity:1;transition:opacity .3s;}",
       ".rm-fab-wrap.open .rm-fab-label{opacity:0;pointer-events:none;}",
       ".rm-fab-menu{position:absolute;bottom:66px;left:0;display:flex;flex-direction:column;gap:10px;",
       "opacity:0;transform:translateY(10px) scale(0.95);pointer-events:none;",
@@ -134,7 +134,8 @@
     wrap.appendChild(btn);
 
     // Label
-    var label = document.createElement("span");
+    var label = document.createElement("button");
+    label.type = "button";
     label.className = "rm-fab-label";
     label.textContent = t.label;
     wrap.appendChild(label);
@@ -159,6 +160,10 @@
     }
 
     btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      toggle();
+    });
+    label.addEventListener("click", function (e) {
       e.stopPropagation();
       toggle();
     });
