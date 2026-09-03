@@ -126,8 +126,10 @@ function riad_bilkis_menu_items_html() {
         $current  = rtrim($entry[1], '/') === $path;
         $classes  = 'menu-item rb-menu-item';
         if ($children) $classes .= ' menu-item-has-children rb-has-children';
-        // Services sert uniquement de parent de navigation : il ouvre son sous-menu.
-        if ($children && rtrim($entry[1], '/') === '/nos-services') $classes .= ' rb-nolink';
+        // Services et Activités servent uniquement de parents de navigation :
+        // ils ouvrent leur sous-menu au lieu d'ouvrir une page.
+        $nolink = array('/nos-services', '/activites-groupe', '/en/group-activities', '/es/actividades');
+        if ($children && in_array(rtrim($entry[1], '/'), $nolink, true)) $classes .= ' rb-nolink';
         if ($current)  $classes .= ' current-menu-item';
         $sub = '';
         if ($children) {
