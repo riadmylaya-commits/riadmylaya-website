@@ -62,15 +62,27 @@ function riad_bilkis_get_current_slug() {
     return $post ? $post->post_name : '';
 }
 
+// Métadonnées de la page affichée, dans la langue lue (voir riad-bilkis-i18n).
+function riad_bilkis_seo_current() {
+    $slug = riad_bilkis_get_current_slug();
+    if ($slug === '__excursions__') return null;
+    if (function_exists('riad_bilkis_lang') && function_exists('riad_bilkis_i18n_seo')) {
+        $lang = riad_bilkis_lang();
+        if ($lang !== 'fr') {
+            $key = riad_bilkis_i18n_current_key();
+            $translated = $key ? riad_bilkis_i18n_seo($key, $lang) : null;
+            if ($translated) return $translated;
+        }
+    }
+    $seo_data = riad_bilkis_seo_data();
+    return isset($seo_data[$slug]) ? $seo_data[$slug] : null;
+}
+
 // Custom title
 function riad_bilkis_custom_title($title) {
     if (is_admin()) return $title;
-    $seo_data = riad_bilkis_seo_data();
-    $slug = riad_bilkis_get_current_slug();
-    if (isset($seo_data[$slug])) {
-        return $seo_data[$slug]['title'];
-    }
-    return $title;
+    $seo = riad_bilkis_seo_current();
+    return $seo ? $seo['title'] : $title;
 }
 add_filter('pre_get_document_title', 'riad_bilkis_custom_title', 999);
 add_filter('wp_title', 'riad_bilkis_custom_title', 999);
@@ -78,25 +90,26 @@ add_filter('wp_title', 'riad_bilkis_custom_title', 999);
 // Meta description + Schema.org
 function riad_bilkis_head_meta() {
     if (is_admin()) return;
-    $seo_data = riad_bilkis_seo_data();
-    $slug = riad_bilkis_get_current_slug();
+    $seo = riad_bilkis_seo_current();
+    $lang = function_exists('riad_bilkis_lang') ? riad_bilkis_lang() : 'fr';
+    $locales = array('fr' => 'fr_FR', 'en' => 'en_GB', 'es' => 'es_ES');
     
     // Meta description
-    if (isset($seo_data[$slug]) && !empty($seo_data[$slug]['description'])) {
-        echo '<meta name="description" content="' . esc_attr($seo_data[$slug]['description']) . '" />' . "\n";
+    if ($seo && !empty($seo['description'])) {
+        echo '<meta name="description" content="' . esc_attr($seo['description']) . '" />' . "\n";
     }
     
     // Open Graph tags
-    if (isset($seo_data[$slug])) {
-        $title = $seo_data[$slug]['title'];
-        $desc = $seo_data[$slug]['description'];
+    if ($seo) {
+        $title = $seo['title'];
+        $desc = $seo['description'];
         $url = home_url($_SERVER['REQUEST_URI']);
         echo '<meta property="og:type" content="website" />' . "\n";
         echo '<meta property="og:title" content="' . esc_attr($title) . '" />' . "\n";
         echo '<meta property="og:description" content="' . esc_attr($desc) . '" />' . "\n";
         echo '<meta property="og:url" content="' . esc_url($url) . '" />' . "\n";
         echo '<meta property="og:site_name" content="Riad Bilkis Marrakech" />' . "\n";
-        echo '<meta property="og:locale" content="fr_FR" />' . "\n";
+        echo '<meta property="og:locale" content="' . esc_attr(isset($locales[$lang]) ? $locales[$lang] : 'fr_FR') . '" />' . "\n";
         echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
         echo '<meta name="twitter:title" content="' . esc_attr($title) . '" />' . "\n";
         echo '<meta name="twitter:description" content="' . esc_attr($desc) . '" />' . "\n";

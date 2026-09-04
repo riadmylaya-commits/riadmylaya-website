@@ -8,6 +8,7 @@
 
 if (!defined('ABSPATH')) exit;
 
+require_once __DIR__ . '/riad-bilkis-i18n.php';
 require_once __DIR__ . '/riad-bilkis-excursions.php';
 
 const RIAD_BILKIS_ACTIVITIES = array(
@@ -29,13 +30,15 @@ const RIAD_BILKIS_DINER = array(
     'es' => array('url' => '/es/cena-marroqui',  'label' => 'Cena marroquí'),
 );
 
+// La langue vient de l'URL : les pages /en/… et /es/… sont servies par la page
+// WordPress française, que Polylang annonce toujours comme française.
 function riad_bilkis_lang() {
+    $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+    if (preg_match('#^/(en|es)(/|\?|$)#', $uri, $m)) return $m[1];
     if (function_exists('pll_current_language')) {
         $lang = pll_current_language('slug');
         if (isset(RIAD_BILKIS_ACTIVITIES[$lang])) return $lang;
     }
-    $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
-    if (preg_match('#^/(en|es)(/|$)#', $uri, $m)) return $m[1];
     return 'fr';
 }
 
@@ -52,67 +55,60 @@ add_action('wp_enqueue_scripts', function () {
 }, 25);
 
 // ── Menu principal : 7 rubriques sur une ligne, avec sous-menus ──────────────
-function riad_bilkis_menu_tree($lang) {
-    $menus = array(
+function riad_bilkis_menu_labels($lang) {
+    $labels = array(
         'fr' => array(
-            array('Accueil',   '/'),
-            array('Chambres',  '/chambres/'),
-            array('Galerie',   '/galerie/'),
-            array('Services',  '/nos-services/', array(
-                array('Dîner traditionnel', '/diner-marocain'),
-                array('Cours de cuisine',   '/cours-de-cuisine'),
-                array('Hammam & Massage',   '/hammam-massage'),
-                array('Infos pratiques',    '/informations-pratiques'),
-            )),
-            array('Activités', '/activites-groupe', array(
-                array('Activités en groupe et en privé', '/activites-groupe'),
-                array('Excursions privées',              '/excursions/'),
-            )),
-            array('Blog',      '/blog', array(
-                array('Découverte de Marrakech', '/decouverte-marrakech'),
-            )),
-            array('Contact',   '/contact/'),
+            'home' => 'Accueil', 'rooms' => 'Chambres', 'gallery' => 'Galerie',
+            'services' => 'Services', 'dinner' => 'Dîner traditionnel', 'cooking' => 'Cours de cuisine',
+            'hammam' => 'Hammam & Massage', 'infos' => 'Infos pratiques',
+            'activities' => 'Activités', 'activities_child' => 'Activités en groupe et en privé',
+            'excursions' => 'Excursions privées', 'blog' => 'Blog',
+            'marrakech' => 'Découverte de Marrakech', 'contact' => 'Contact',
         ),
         'en' => array(
-            array('Home',       '/en/'),
-            array('Rooms',      '/chambres/'),
-            array('Gallery',    '/galerie/'),
-            array('Services',   '/nos-services/', array(
-                array('Traditional dinner', '/en/moroccan-dinner'),
-                array('Cooking class',      '/en/cooking-class'),
-                array('Hammam & Massage',   '/en/hammam-massage'),
-                array('Practical info',     '/en/practical-information'),
-            )),
-            array('Activities', '/en/group-activities', array(
-                array('Group and private activities', '/en/group-activities'),
-                array('Private excursions',          '/en/excursions/'),
-            )),
-            array('Blog',       '/en/blog', array(
-                array('Discover Marrakech', '/en/discover-marrakech'),
-            )),
-            array('Contact',    '/contact/'),
+            'home' => 'Home', 'rooms' => 'Rooms', 'gallery' => 'Gallery',
+            'services' => 'Services', 'dinner' => 'Traditional dinner', 'cooking' => 'Cooking class',
+            'hammam' => 'Hammam & Massage', 'infos' => 'Practical info',
+            'activities' => 'Activities', 'activities_child' => 'Group and private activities',
+            'excursions' => 'Private excursions', 'blog' => 'Blog',
+            'marrakech' => 'Discover Marrakech', 'contact' => 'Contact',
         ),
         'es' => array(
-            array('Inicio',       '/es/'),
-            array('Habitaciones', '/chambres/'),
-            array('Galería',      '/galerie/'),
-            array('Servicios',    '/nos-services/', array(
-                array('Cena tradicional',  '/es/cena-marroqui'),
-                array('Clase de cocina',   '/es/clase-de-cocina'),
-                array('Hammam y masaje',   '/es/hammam-masaje'),
-                array('Información práctica', '/es/informacion-practica'),
-            )),
-            array('Actividades',  '/es/actividades', array(
-                array('Actividades en grupo y privadas', '/es/actividades'),
-                array('Excursiones privadas',           '/es/excursiones/'),
-            )),
-            array('Blog',         '/es/blog', array(
-                array('Descubrir Marrakech', '/es/descubrir-marrakech'),
-            )),
-            array('Contacto',     '/contact/'),
+            'home' => 'Inicio', 'rooms' => 'Habitaciones', 'gallery' => 'Galería',
+            'services' => 'Servicios', 'dinner' => 'Cena tradicional', 'cooking' => 'Clase de cocina',
+            'hammam' => 'Hammam y masaje', 'infos' => 'Información práctica',
+            'activities' => 'Actividades', 'activities_child' => 'Actividades en grupo y privadas',
+            'excursions' => 'Excursiones privadas', 'blog' => 'Blog',
+            'marrakech' => 'Descubrir Marrakech', 'contact' => 'Contacto',
         ),
     );
-    return isset($menus[$lang]) ? $menus[$lang] : $menus['fr'];
+    return isset($labels[$lang]) ? $labels[$lang] : $labels['fr'];
+}
+
+// Un seul menu : mêmes rubriques, même ordre et mêmes sous-menus dans les trois
+// langues, chaque lien pointant vers la version traduite de la page.
+function riad_bilkis_menu_tree($lang) {
+    $l = riad_bilkis_menu_labels($lang);
+    $u = function ($key) use ($lang) { return riad_bilkis_i18n_url($key, $lang); };
+    return array(
+        array($l['home'],     $u('home')),
+        array($l['rooms'],    $u('rooms')),
+        array($l['gallery'],  $u('gallery')),
+        array($l['services'], $u('services'), array(
+            array($l['dinner'],  $u('dinner')),
+            array($l['cooking'], $u('cooking')),
+            array($l['hammam'],  $u('hammam')),
+            array($l['infos'],   $u('infos')),
+        )),
+        array($l['activities'], $u('activities'), array(
+            array($l['activities_child'], $u('activities')),
+            array($l['excursions'],       $u('excursions')),
+        )),
+        array($l['blog'], $u('blog'), array(
+            array($l['marrakech'], $u('marrakech')),
+        )),
+        array($l['contact'], $u('contact')),
+    );
 }
 
 // Le menu du thème est entièrement remplacé : les rubriques retirées
@@ -120,15 +116,20 @@ function riad_bilkis_menu_tree($lang) {
 // regroupées dans Services, Activités et Blog.
 function riad_bilkis_menu_items_html() {
     $path = isset($_SERVER['REQUEST_URI']) ? rtrim(strtok($_SERVER['REQUEST_URI'], '?'), '/') : '';
-    $out  = '';
-    foreach (riad_bilkis_menu_tree(riad_bilkis_lang()) as $entry) {
+    $lang = riad_bilkis_lang();
+    // Services et Activités ouvrent leur sous-menu au lieu d'ouvrir une page.
+    $nolink = array();
+    foreach (array('services', 'activities') as $key) {
+        foreach (array('fr', 'en', 'es') as $code) {
+            $nolink[] = rtrim(riad_bilkis_i18n_url($key, $code), '/');
+        }
+    }
+    $out = '';
+    foreach (riad_bilkis_menu_tree($lang) as $entry) {
         $children = isset($entry[2]) ? $entry[2] : array();
         $current  = rtrim($entry[1], '/') === $path;
         $classes  = 'menu-item rb-menu-item';
         if ($children) $classes .= ' menu-item-has-children rb-has-children';
-        // Services et Activités servent uniquement de parents de navigation :
-        // ils ouvrent leur sous-menu au lieu d'ouvrir une page.
-        $nolink = array('/nos-services', '/activites-groupe', '/en/group-activities', '/es/actividades');
         if ($children && in_array(rtrim($entry[1], '/'), $nolink, true)) $classes .= ' rb-nolink';
         if ($current)  $classes .= ' current-menu-item';
         $sub = '';
@@ -145,6 +146,8 @@ function riad_bilkis_menu_items_html() {
         $out .= '<li class="' . esc_attr($classes) . '"><a class="menu-link" href="' . esc_url($entry[1]) . '">'
              . esc_html($entry[0]) . '</a>' . $sub . '</li>';
     }
+    // Sélecteur FR | EN | ES, dernière entrée de la barre.
+    $out .= '<li class="menu-item rb-menu-item rb-menu-lang">' . riad_bilkis_i18n_switcher_html('rb-lang') . '</li>';
     return $out;
 }
 
@@ -245,6 +248,22 @@ add_action('wp_footer', function () {
 .main-header-menu>.rb-menu-item:hover>.menu-link:after,
 .main-header-menu>.rb-menu-item.current-menu-item>.menu-link:after{transform:scaleX(1)}
 .rb-submenu-toggle{display:none}
+/* Sélecteur de langue : même présentation que la barre des pages statiques. */
+.rb-menu-lang .rb-lang{display:flex;gap:8px;align-items:center}
+.rb-menu-lang .rb-lang a{padding:5px 8px;border:1px solid #EFE7DC;border-radius:3px;
+ font-family:"Raleway","Helvetica Neue",Arial,sans-serif;font-size:12px;letter-spacing:1px;
+ color:#6B5B4A;text-decoration:none;line-height:1}
+.rb-menu-lang .rb-lang a:hover{border-color:#C99752;color:#2C2318}
+.rb-menu-lang .rb-lang a[aria-current="page"]{background:#FBF7F2;border-color:#C99752;color:#2C2318}
+@media(min-width:922px){
+ .main-header-menu>.rb-menu-lang{display:flex;align-items:center;padding-left:16px}
+}
+@media(max-width:921px){
+ .main-header-menu>.rb-menu-lang{display:flex!important;align-items:center;justify-content:center;
+  min-height:58px;padding:0 22px}
+ .rb-menu-lang .rb-lang{gap:12px}
+ .rb-menu-lang .rb-lang a{padding:10px 16px;font-size:14px}
+}
 @media(min-width:922px){
  .main-header-menu{flex-wrap:nowrap!important}
  .main-header-menu>.rb-menu-item{white-space:nowrap}
@@ -1353,6 +1372,13 @@ add_action('init', function () {
             foreach ($sets as $set) {
                 foreach ($set as $item) {
                     $urls[] = array('loc' => home_url($item['url']));
+                }
+            }
+            // Versions anglaise et espagnole des pages WordPress.
+            foreach (riad_bilkis_i18n_pages() as $page) {
+                if (empty($page['wp'])) continue;
+                foreach (array('en', 'es') as $lang) {
+                    $urls[] = array('loc' => home_url($page[$lang]));
                 }
             }
             return $urls;
