@@ -102,6 +102,25 @@ add_action('parse_request', function ($wp) {
     add_filter('redirect_canonical', '__return_false', 99);
 }, 1);
 
+// Le logo renvoie vers l'accueil de la langue affichée.
+add_filter('astra_logo', function ($html) {
+    $lang = riad_bilkis_lang();
+    if ($lang === 'fr') return $html;
+    return str_replace(
+        array('href="' . home_url('/') . '"', "href='" . home_url('/') . "'", 'href="' . home_url() . '"'),
+        'href="' . esc_url(riad_bilkis_i18n_url('home', $lang)) . '"',
+        $html
+    );
+}, 20);
+
+// L'attribut lang de <html> suit la langue affichée.
+add_filter('language_attributes', function ($output) {
+    $lang = riad_bilkis_lang();
+    if ($lang === 'fr') return $output;
+    $codes = array('en' => 'en-GB', 'es' => 'es-ES');
+    return preg_replace('/lang="[^"]*"/', 'lang="' . $codes[$lang] . '"', $output, 1);
+}, 20);
+
 // ── Traduction du rendu ──────────────────────────────────────────────────────
 // Les apostrophes et les « & » arrivent sous plusieurs formes dans le HTML
 // rendu par WordPress : chaque chaîne est donc déclinée en variantes.
