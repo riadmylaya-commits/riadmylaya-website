@@ -1,0 +1,129 @@
+/* Barre de navigation principale commune aux pages statiques.
+   Reprend l'apparence du menu WordPress (accueil) : marque à gauche,
+   rubriques en majuscules à droite, sous-menus au survol, menu plein écran
+   au clic sur mobile. */
+.rb-mainbar {
+  position: sticky; top: 0; z-index: 9998;
+  background: #fff; border-bottom: 1px solid #EFE7DC;
+  font-family: "Raleway", "Helvetica Neue", Arial, sans-serif;
+}
+.rb-mainbar__inner {
+  display: flex; align-items: center; gap: 20px;
+  max-width: 1240px; margin: 0 auto; padding: 14px 20px;
+}
+.rb-mainbar__brand {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px; font-weight: 600; letter-spacing: .6px;
+  color: #2C2318; text-decoration: none; margin-right: auto; white-space: nowrap;
+}
+.rb-mainbar__brand:hover { color: #C75B39; }
+.rb-mainbar__menu { display: flex; align-items: center; list-style: none; margin: 0; padding: 0; }
+.rb-mainbar__menu > li { position: relative; }
+.rb-mainbar__menu > li > a {
+  display: block; padding: 12px 18px; position: relative;
+  font-size: 13px; letter-spacing: 2.2px; text-transform: uppercase; font-weight: 500;
+  color: #2C2318; text-decoration: none; white-space: nowrap;
+}
+.rb-mainbar__menu > li > a:after {
+  content: ""; position: absolute; left: 18px; right: 18px; bottom: 6px; height: 1px;
+  background: #C99752; transform: scaleX(0); transform-origin: center; transition: transform .35s ease;
+}
+.rb-mainbar__menu > li:hover > a:after,
+.rb-mainbar__menu > li[aria-current="page"] > a:after { transform: scaleX(1); }
+.rb-mainbar__menu > li[aria-current="page"] > a { color: #C75B39; }
+.rb-mainbar__lang { display: flex; gap: 8px; }
+.rb-mainbar__lang a {
+  padding: 5px 8px; border: 1px solid #EFE7DC; border-radius: 3px;
+  font-size: 12px; letter-spacing: 1px; color: #6B5B4A; text-decoration: none;
+}
+.rb-mainbar__lang a[aria-current="page"] { background: #FBF7F2; border-color: #C99752; color: #2C2318; }
+.rb-mainbar__toggle { display: none; }
+.rb-mainbar__burger { display: none; }
+
+/* ---------- Ordinateur : sous-menus au survol ---------- */
+@media (min-width: 922px) {
+  .rb-mainbar__menu > .rb-has-children > a { padding-right: 36px; }
+  .rb-mainbar__menu > .rb-has-children > a:before {
+    content: ""; position: absolute; right: 17px; top: 50%;
+    width: 6px; height: 6px; margin-top: -5px;
+    border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
+    transform: rotate(45deg); opacity: .45; transition: transform .3s ease, opacity .3s ease;
+  }
+  .rb-mainbar__menu > .rb-has-children:hover > a:before { opacity: .8; transform: rotate(45deg) translate(2px, 2px); }
+  .rb-mainbar__menu > .rb-has-children > a:after { right: 36px; }
+  .rb-mainbar__menu .rb-submenu {
+    position: absolute; top: 100%; left: 50%; transform: translate(-50%, 10px);
+    min-width: 250px; margin: 0; padding: 10px 0; list-style: none;
+    background: #fff; border-top: 2px solid #C99752; border-radius: 0 0 3px 3px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .13);
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .28s ease, transform .28s ease;
+  }
+  .rb-mainbar__menu > .rb-has-children:hover > .rb-submenu,
+  .rb-mainbar__menu > .rb-has-children:focus-within > .rb-submenu,
+  .rb-mainbar__menu > .rb-has-children.rb-open > .rb-submenu {
+    opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0);
+  }
+  .rb-mainbar__menu .rb-submenu > li > a {
+    display: block; padding: 11px 26px; font-size: 12.5px; letter-spacing: 1.4px;
+    text-transform: uppercase; color: #3F2935; text-decoration: none; white-space: nowrap;
+    transition: color .25s, padding-left .25s;
+  }
+  .rb-mainbar__menu .rb-submenu > li > a:hover { color: #821F0C; padding-left: 31px; }
+}
+
+/* ---------- Mobile : lignes pleine largeur, grandes zones tactiles ---------- */
+@media (max-width: 921px) {
+  .rb-mainbar__inner { padding: 10px 18px; }
+  .rb-mainbar__brand { font-size: 21px; }
+  .rb-mainbar__burger {
+    display: flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px; padding: 0; border: 1px solid transparent; border-radius: 4px;
+    background: transparent; color: #C75B39; cursor: pointer;
+  }
+  .rb-mainbar__burger svg { width: 28px; height: 28px; fill: currentColor; }
+  .rb-mainbar__burger .rb-icon-close { display: none; }
+  .rb-mainbar.rb-nav-open .rb-mainbar__burger { background: #FBF7F2; border-color: #E8E0D5; }
+  .rb-mainbar.rb-nav-open .rb-mainbar__burger .rb-icon-open { display: none; }
+  .rb-mainbar.rb-nav-open .rb-mainbar__burger .rb-icon-close { display: block; }
+  .rb-mainbar__nav {
+    display: none; position: absolute; left: 0; right: 0; top: 100%;
+    background: #fff; border-top: 1px solid #EFE7DC; box-shadow: 0 18px 34px rgba(0, 0, 0, .12);
+    max-height: calc(100vh - 72px); overflow-y: auto;
+  }
+  .rb-mainbar.rb-nav-open .rb-mainbar__nav { display: block; }
+  .rb-mainbar__menu { display: block; padding: 6px 0 10px; }
+  .rb-mainbar__menu > li { border-bottom: 1px solid #EFE7DC; display: flex; flex-wrap: wrap; align-items: stretch; }
+  .rb-mainbar__menu > li:last-child { border-bottom: none; }
+  .rb-mainbar__menu > li > a {
+    display: flex; align-items: center; flex: 1 1 auto; min-height: 58px;
+    padding: 0 22px; font-size: 15px; letter-spacing: 1.6px;
+  }
+  .rb-mainbar__menu > li > a:after { display: none; }
+  .rb-mainbar__menu > li > a:active, .rb-mainbar__menu > li > a:focus { background: #FBF7F2; }
+  .rb-mainbar__menu > li[aria-current="page"] > a { box-shadow: inset 3px 0 0 #C99752; }
+  .rb-mainbar__toggle {
+    display: flex; align-items: center; justify-content: center;
+    flex: 0 0 64px; align-self: stretch; min-height: 58px;
+    background: transparent; border: none; border-left: 1px solid #EFE7DC;
+    padding: 0; cursor: pointer;
+  }
+  .rb-mainbar__toggle span {
+    display: block; width: 11px; height: 11px; margin: 0 auto -4px;
+    border-right: 2px solid #8B7355; border-bottom: 2px solid #8B7355;
+    transform: rotate(45deg); transition: transform .3s;
+  }
+  .rb-mainbar__toggle[aria-expanded="true"] span { margin: 4px auto 0; transform: rotate(-135deg); border-color: #C75B39; }
+  .rb-mainbar__menu .rb-submenu {
+    display: none; flex: 0 0 100%; margin: 0; padding: 0; list-style: none; background: #FBF7F2;
+  }
+  .rb-mainbar__menu > .rb-open > .rb-submenu { display: block; }
+  .rb-mainbar__menu .rb-submenu > li { border-top: 1px solid #EFE7DC; }
+  .rb-mainbar__menu .rb-submenu > li > a {
+    display: flex; align-items: center; min-height: 52px; padding: 0 22px 0 38px;
+    font-size: 14.5px; letter-spacing: .6px; color: #4A3D31; text-decoration: none;
+  }
+  .rb-mainbar__menu .rb-submenu > li > a:active,
+  .rb-mainbar__menu .rb-submenu > li > a:focus { background: #F3EADD; }
+  .rb-mainbar__lang { margin-left: auto; }
+}
