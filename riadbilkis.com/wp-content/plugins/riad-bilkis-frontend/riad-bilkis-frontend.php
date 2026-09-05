@@ -9,6 +9,8 @@
 if (!defined('ABSPATH')) exit;
 
 require_once __DIR__ . '/riad-bilkis-i18n.php';
+require_once __DIR__ . '/riad-bilkis-blog.php';
+require_once __DIR__ . '/riad-bilkis-cookies.php';
 require_once __DIR__ . '/riad-bilkis-excursions.php';
 
 const RIAD_BILKIS_ACTIVITIES = array(

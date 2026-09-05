@@ -12,6 +12,15 @@ if (!defined('ABSPATH')) exit;
 
 // clé => URL par langue + slug de la page WordPress qui fournit le contenu.
 function riad_bilkis_i18n_pages() {
+    $pages = riad_bilkis_i18n_page_map();
+    // Articles du blog : leurs URL traduites viennent de riad-bilkis-blog.php.
+    if (function_exists('riad_bilkis_blog_i18n_pages')) {
+        $pages = array_merge($pages, riad_bilkis_blog_i18n_pages());
+    }
+    return $pages;
+}
+
+function riad_bilkis_i18n_page_map() {
     return array(
         'home'      => array('fr' => '/',                    'en' => '/en/',                     'es' => '/es/',                        'wp' => 'accueil'),
         'rooms'     => array('fr' => '/chambres/',           'en' => '/en/rooms/',               'es' => '/es/habitaciones/',           'wp' => 'chambres'),
