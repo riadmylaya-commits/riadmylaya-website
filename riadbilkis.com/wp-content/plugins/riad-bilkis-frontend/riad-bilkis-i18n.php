@@ -353,6 +353,7 @@ function riad_bilkis_i18n_strings() {
 
         // — Nos services
         array('Nos Services', 'Our Services', 'Nuestros Servicios'),
+        array('<h3>Excursions</h3>', '<h3>Excursions</h3>', '<h3>Excursiones</h3>'),
         array('Au Riad Bilkis, nous nous engageons à rendre votre séjour inoubliable. Découvrez nos services personnalisés.', 'At Riad Bilkis we are committed to making your stay unforgettable. Discover our personalised services.', 'En el Riad Bilkis nos comprometemos a hacer que su estancia sea inolvidable. Descubra nuestros servicios personalizados.'),
         array('Petit-déjeuner Marocain', 'Moroccan Breakfast', 'Desayuno marroquí'),
         array('Chaque matin, savourez un authentique petit-déjeuner marocain préparé avec amour :', 'Every morning, enjoy an authentic Moroccan breakfast prepared with care:', 'Cada mañana, disfrute de un auténtico desayuno marroquí preparado con esmero:'),
