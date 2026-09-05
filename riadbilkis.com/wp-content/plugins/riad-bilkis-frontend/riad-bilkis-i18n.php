@@ -426,6 +426,8 @@ function riad_bilkis_i18n_strings() {
         array('Sujet', 'Subject', 'Asunto'),
         array('Objet de votre message', 'Subject of your message', 'Asunto de su mensaje'),
         array('Dates de séjour souhaitées', 'Preferred dates of stay', 'Fechas de estancia deseadas'),
+        array('votre@email.com', 'your@email.com', 'su@email.com'),
+        array('Ex: du 15 au 20 janvier 2027', 'E.g. 15 to 20 January 2027', 'Ej.: del 15 al 20 de enero de 2027'),
         array('Votre message', 'Your message', 'Su mensaje'),
         array('Décrivez votre demande...', 'Describe your request...', 'Describa su solicitud...'),
         array('Envoyer le message', 'Send the message', 'Enviar el mensaje'),
