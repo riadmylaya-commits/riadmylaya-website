@@ -4,34 +4,17 @@
    Drives the [data-rm-tq] booking form: live price breakdown, prefilled
    WhatsApp message and email fallback (FormSubmit).
 
-   Rates (per trip, per vehicle):
-     airport  1-4 : 20 €   5-6 : 25 €   7 : 30 €   8 : 35 €
-     station  1-2 : 12 €   3-4 : 17 €   5-6 : 20 €   7+ : quote on request
-   Surcharges:
-     airport  +5 € per trip between 22:00 and 07:00 (arrival and departure)
-     station  +5 € on the departure trip between 03:00 and 07:45 only
-   Discount:
-     airport round trip: -5 € on each trip (-10 € in total). Never on station.
+   Every rate, surcharge window and discount comes from rm-services-data.js,
+   which must be loaded first. Nothing is duplicated here.
    ========================================================================== */
 
 (function () {
   var WHATSAPP_NUMBER = "212661351989";
 
-  var RATES = {
-    airport: [
-      { max: 4, price: 20 },
-      { max: 6, price: 25 },
-      { max: 7, price: 30 },
-      { max: 8, price: 35 }
-    ],
-    station: [
-      { max: 2, price: 12 },
-      { max: 4, price: 17 },
-      { max: 6, price: 20 }
-    ]
-  };
-  var NIGHT_SURCHARGE = 5;
-  var RETURN_DISCOUNT = 5;
+  function rates(kind) {
+    var data = window.RM_SERVICES && window.RM_SERVICES.transfer;
+    return (data && data[kind]) || null;
+  }
 
   var I18N = {
     fr: {
@@ -115,20 +98,37 @@
   }
 
   function baseRate(kind, people) {
-    var grid = RATES[kind];
+    var conf = rates(kind);
+    var grid = (conf && conf.tiers) || [];
     for (var i = 0; i < grid.length; i++) {
       if (people <= grid[i].max) return grid[i].price;
     }
     return null;
   }
 
-  /* Airport: 22:00 -> 07:00 on both legs. Station: 03:00 -> 07:45, departure leg only. */
+  /* A window whose end is before its start spans midnight (22:00 -> 07:00). */
+  function inWindow(t, win) {
+    var from = minutes(win.from);
+    var to = minutes(win.to);
+    if (from === null || to === null) return false;
+    return to < from ? (t >= from || t < to) : (t >= from && t <= to);
+  }
+
   function surcharge(kind, time, isDeparture) {
     var t = minutes(time);
-    if (t === null) return 0;
-    if (kind === "airport") return (t >= 22 * 60 || t < 7 * 60) ? NIGHT_SURCHARGE : 0;
-    if (isDeparture) return (t >= 3 * 60 && t <= 7 * 60 + 45) ? NIGHT_SURCHARGE : 0;
-    return 0;
+    var conf = rates(kind);
+    var rule = conf && conf.surcharge;
+    if (t === null || !rule) return 0;
+    var win = rule[isDeparture ? "departure" : "arrival"];
+    return win && inWindow(t, win) ? rule.amount : 0;
+  }
+
+  /* Round trip: the discount applies to a single leg (the departure). */
+  function roundTripDiscount(kind, trips) {
+    var conf = rates(kind);
+    var rule = conf && conf.round_trip_discount;
+    if (!rule || trips !== "both") return { amount: 0, leg: null };
+    return { amount: rule.amount, leg: rule.leg || "departure" };
   }
 
   function init(root) {
@@ -187,25 +187,27 @@
         return { quoteOnly: true, lines: [], total: 0, kind: kind, people: people, trips: trips };
       }
 
-      var discount = (kind === "airport" && trips === "both") ? RETURN_DISCOUNT : 0;
+      var discount = roundTripDiscount(kind, trips);
 
       if (wantsArrival) {
         var aTime = val("arr_time");
         if (!val("arr_date") || !aTime) complete = false;
         var aSur = surcharge(kind, aTime, false);
+        var aDisc = discount.leg === "arrival" ? discount.amount : 0;
         lines.push({ label: t.arrival + (dateTime(val("arr_date"), aTime) ? " (" + dateTime(val("arr_date"), aTime) + ")" : ""), amount: rate });
         if (aSur) lines.push({ label: t.night, amount: aSur, sub: true });
-        if (discount) lines.push({ label: t.discount, amount: -discount, sub: true });
-        total += rate + aSur - discount;
+        if (aDisc) lines.push({ label: t.discount, amount: -aDisc, sub: true });
+        total += rate + aSur - aDisc;
       }
       if (wantsDeparture) {
         var dTime = val("dep_time");
         if (!val("dep_date") || !dTime) complete = false;
         var dSur = surcharge(kind, dTime, true);
+        var dDisc = discount.leg === "departure" ? discount.amount : 0;
         lines.push({ label: t.departure + (dateTime(val("dep_date"), dTime) ? " (" + dateTime(val("dep_date"), dTime) + ")" : ""), amount: rate });
         if (dSur) lines.push({ label: kind === "airport" ? t.night : t.early, amount: dSur, sub: true });
-        if (discount) lines.push({ label: t.discount, amount: -discount, sub: true });
-        total += rate + dSur - discount;
+        if (dDisc) lines.push({ label: t.discount, amount: -dDisc, sub: true });
+        total += rate + dSur - dDisc;
       }
 
       return { quoteOnly: false, lines: lines, total: total, complete: complete, kind: kind, people: people, trips: trips };
@@ -275,6 +277,10 @@
   }
 
   function boot() {
+    if (!rates("airport")) {
+      console.error("transfer-quote.js: rm-services-data.js must be loaded first.");
+      return;
+    }
     Array.prototype.forEach.call(document.querySelectorAll("[data-rm-tq]"), init);
   }
 

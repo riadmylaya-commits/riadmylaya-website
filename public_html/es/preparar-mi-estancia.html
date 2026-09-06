@@ -210,6 +210,15 @@
 .rm-tq__actions button{width:100%;border:none;background:var(--terra);color:#fff;font-family:'Yanone Kaffeesatz',sans-serif;text-transform:uppercase;letter-spacing:1.6px;font-size:18px;padding:15px 20px;border-radius:6px;cursor:pointer}
 .rm-tq__actions button:hover{background:var(--terra-d)}
 .rm-tq__legal{font-size:13px;color:#9a9a9a;margin:14px 0 0}
+/* ---------- Moteurs de réservation génériques ---------- */
+.rm-bk-persons{display:flex;flex-direction:column;gap:12px;margin:4px 0 0}
+.rm-bk-person{background:var(--cream2);border:1px solid #f1e3d0;border-radius:10px;padding:14px 14px 4px}
+.rm-bk-person h5{font-family:'Yanone Kaffeesatz',sans-serif;font-size:19px;color:var(--terra-d);margin:0 0 10px;letter-spacing:.5px}
+.rm-bk-person__extras{font-size:13.5px;color:#7a7a7a;margin:0 0 6px;font-weight:600}
+.rm-bk-extras{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 14px;margin-bottom:12px}
+@media(max-width:600px){.rm-bk-extras{grid-template-columns:1fr}}
+.rm-bk-extra{display:flex !important;align-items:center;gap:8px;font-size:14px !important;font-weight:400 !important;margin-bottom:0 !important;color:#555}
+.rm-bk-extra input{width:auto !important;margin:0 !important;padding:0 !important}
 /* ---------- Widget GetYourGuide dans un bloc ---------- */
 .rm-cs-gyg{margin:16px 0 0;min-height:60px}
 </style>
@@ -332,9 +341,9 @@
       <ul>
         <li>Un conductor le espera con un cartel con su nombre; la espera está incluida aunque su vuelo se retrase.</li>
         <li>Vehículo privado con aire acondicionado, precio fijo por vehículo sea cual sea el equipaje.</li>
-        <li>Aeropuerto: 20 € (1 a 4 pers.), 25 € (5-6), 30 € (7), 35 € (8) · Estación: 12 € (1-2), 17 € (3-4), 20 € (5-6).</li>
+        <li>Aeropuerto: 20 € (1 a 4 pers.), 25 € (5-6), 30 € (7), 35 € (8) · Estación: 12 € (1 a 2 pers.), 17 € (3-4), 20 € (5-6).</li>
         <li>Suplemento de 5 € entre las 22h00 y las 7h00 para el aeropuerto, y para las salidas de la estación entre las 3h00 y las 7h45.</li>
-        <li>Ida y vuelta al aeropuerto: 10 € de descuento aplicados automáticamente.</li>
+        <li>Ida y vuelta al aeropuerto: 5 € de descuento en el traslado de salida, aplicados automáticamente.</li>
       </ul>
       <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Aeropuerto desde 20 € · Estación desde 12 €</span> <span class="rm-ps-acc__pay">💵 A pagar en el riad en efectivo</span></p>
       <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Calcular y reservar mi traslado</h4>
@@ -450,9 +459,50 @@
         <li>Servidos a la luz de las velas en el patio, en el salón o en la terraza.</li>
         <li>Se pide el día anterior o antes de las 16h del mismo día.</li>
         <li>Opciones vegetarianas y alergias, previa petición.</li>
+        <li>Cuatro menús: Menú completo (entrante + plato + postre) (25 € por persona), Entrante + plato (20 € por persona), Plato + postre (20 € por persona), Plato principal (15 € por persona).</li>
+        <li>Servicio de 18:00 a 22:30, en el patio, en el salón o en la terraza.</li>
       </ul>
       <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Desde 15 € por persona</span> <span class="rm-ps-acc__pay">💵 A pagar en el riad en efectivo</span></p>
-      <a class="rm-lp-btn rm-lp-btn--wa" href="https://wa.me/212661351989?text=Hola%2C%20tengo%20una%20reserva%20en%20el%20Riad%20Mylaya%20y%20quiero%20reservar%20la%20cena%20marroqu%C3%AD.%0ANombre%20completo%20de%20la%20reserva%3A%0AN.%C2%BA%20de%20reserva%3A%0AFecha%20de%20la%20cena%3A%0AN%C3%BAmero%20de%20personas%3A%0APlato%20deseado%20%28tajine%2C%20cusc%C3%BAs%2C%20pastela%29%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="diner"><span aria-hidden="true">💬</span> Reservar la cena por WhatsApp</a>
+      <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Componer y reservar mi cena</h4>
+      <p>Elija su menú, la fecha y la hora: el total aparece inmediatamente.</p>
+      <div class="rm-tq rm-bk" data-rm-bk="dinner" data-lang="es">
+        <form action="https://formsubmit.co/contact@riadmylaya.com" method="POST">
+          <input type="hidden" name="_subject" value="Solicitud de cena · Riad Mylaya">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="Resumen de la solicitud" data-bk-recap>
+          <input type="hidden" name="Total estimado" data-bk-total-field>
+          <fieldset>
+            <legend>Su solicitud</legend>
+            <div data-bk-fields></div>
+          </fieldset>
+          <fieldset>
+            <legend>Sus datos</legend>
+            <div class="rm-tq__grid">
+              <label>Nombre completo de la reserva *
+                <input type="text" name="Nombre completo de la reserva" data-bk-contact="name" required autocomplete="name">
+              </label>
+              <label>N.º de reserva
+                <input type="text" name="N.º de reserva" data-bk-contact="ref">
+              </label>
+              <label>Teléfono / WhatsApp *
+                <input type="tel" name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+              </label>
+              <label>Correo electrónico
+                <input type="email" name="Correo electrónico" data-bk-contact="mail" autocomplete="email">
+              </label>
+            </div>
+          </fieldset>
+          <div class="rm-tq__summary" data-bk-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-bk-wa href="https://wa.me/212661351989?text=Hola%2C%20tengo%20una%20reserva%20en%20el%20Riad%20Mylaya%20y%20quiero%20reservar%20la%20cena%20marroqu%C3%AD.%0ANombre%20completo%20de%20la%20reserva%3A%0AN.%C2%BA%20de%20reserva%3A%0AFecha%20de%20la%20cena%3A%0AN%C3%BAmero%20de%20personas%3A%0APlato%20deseado%20%28tajine%2C%20cusc%C3%BAs%2C%20pastela%29%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="diner-space"><span aria-hidden="true">💬</span> Enviar mi solicitud por WhatsApp</a>
+            <button type="submit" data-bk-submit data-track="form" data-track-label="diner-space">Enviar mi solicitud por correo</button>
+          </div>
+          <p class="rm-tq__legal">Su solicitud se envía al riad, que le confirma la disponibilidad y el precio. Todo se paga en el riad en efectivo.</p>
+        </form>
+      </div>
       </div>
     </details>
     <details class="rm-ps-acc" id="cuisine">
@@ -471,9 +521,49 @@
         <li>Unas 4 horas, por la mañana o por la tarde, y después disfruta de su comida.</li>
         <li>Traslado de ida y vuelta desde el riad incluido.</li>
         <li>Se reserva con 24 horas de antelación como mínimo.</li>
+        <li>45 € por persona, hasta 6 personas por clase.</li>
       </ul>
       <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">45 € por persona</span> <span class="rm-ps-acc__pay">💵 A pagar en el riad en efectivo</span></p>
-      <a class="rm-lp-btn rm-lp-btn--wa" href="https://wa.me/212661351989?text=Hola%2C%20tengo%20una%20reserva%20en%20el%20Riad%20Mylaya%20y%20quiero%20reservar%20la%20clase%20de%20cocina.%0ANombre%20completo%20de%20la%20reserva%3A%0AN.%C2%BA%20de%20reserva%3A%0AFecha%20deseada%3A%0AMa%C3%B1ana%20o%20tarde%3A%0AN%C3%BAmero%20de%20personas%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="cuisine"><span aria-hidden="true">💬</span> Reservar la clase por WhatsApp</a>
+      <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Reservar mi clase de cocina</h4>
+      <p>Elija la fecha, la hora y el número de participantes: el total aparece inmediatamente.</p>
+      <div class="rm-tq rm-bk" data-rm-bk="cooking" data-lang="es">
+        <form action="https://formsubmit.co/contact@riadmylaya.com" method="POST">
+          <input type="hidden" name="_subject" value="Solicitud de clase de cocina · Riad Mylaya">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="Resumen de la solicitud" data-bk-recap>
+          <input type="hidden" name="Total estimado" data-bk-total-field>
+          <fieldset>
+            <legend>Su solicitud</legend>
+            <div data-bk-fields></div>
+          </fieldset>
+          <fieldset>
+            <legend>Sus datos</legend>
+            <div class="rm-tq__grid">
+              <label>Nombre completo de la reserva *
+                <input type="text" name="Nombre completo de la reserva" data-bk-contact="name" required autocomplete="name">
+              </label>
+              <label>N.º de reserva
+                <input type="text" name="N.º de reserva" data-bk-contact="ref">
+              </label>
+              <label>Teléfono / WhatsApp *
+                <input type="tel" name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+              </label>
+              <label>Correo electrónico
+                <input type="email" name="Correo electrónico" data-bk-contact="mail" autocomplete="email">
+              </label>
+            </div>
+          </fieldset>
+          <div class="rm-tq__summary" data-bk-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-bk-wa href="https://wa.me/212661351989?text=Hola%2C%20tengo%20una%20reserva%20en%20el%20Riad%20Mylaya%20y%20quiero%20reservar%20la%20clase%20de%20cocina.%0ANombre%20completo%20de%20la%20reserva%3A%0AN.%C2%BA%20de%20reserva%3A%0AFecha%20deseada%3A%0AMa%C3%B1ana%20o%20tarde%3A%0AN%C3%BAmero%20de%20personas%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="cuisine-space"><span aria-hidden="true">💬</span> Enviar mi solicitud por WhatsApp</a>
+            <button type="submit" data-bk-submit data-track="form" data-track-label="cuisine-space">Enviar mi solicitud por correo</button>
+          </div>
+          <p class="rm-tq__legal">Su solicitud se envía al riad, que le confirma la disponibilidad y el precio. Todo se paga en el riad en efectivo.</p>
+        </form>
+      </div>
       </div>
     </details>
     <details class="rm-ps-acc" id="excursions">
@@ -481,7 +571,7 @@
         <span class="rm-ps-acc__thumb"><img src="/assets/images/pexels-moussa-idrissi-3581916.jpeg" alt="Excursión privada desde Marrakech" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
           <h3>Excursiones privadas</h3>
-          <p>Presupuesto según el destino</p>
+          <p>Desde 45 € por persona según el destino</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
@@ -492,9 +582,49 @@
         <li>Vehículo privado con conductor, saliendo del riad a la hora que elija.</li>
         <li>Día completo o medio día, itinerario adaptado a su ritmo.</li>
         <li>Presupuesto enviado en unas horas según el destino y el número de personas.</li>
+        <li>El precio por persona baja según el número de participantes: el total aparece en cuanto elige el destino y el número de personas.</li>
       </ul>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Presupuesto según el destino</span> <span class="rm-ps-acc__pay">💵 A pagar en el riad en efectivo</span></p>
-      <a class="rm-lp-btn rm-lp-btn--wa" href="https://wa.me/212661351989?text=Hola%2C%20tengo%20una%20reserva%20en%20el%20Riad%20Mylaya%20y%20quiero%20un%20presupuesto%20para%20una%20excursi%C3%B3n%20privada.%0ANombre%20completo%20de%20la%20reserva%3A%0AN.%C2%BA%20de%20reserva%3A%0ADestino%20deseado%3A%0AFecha%3A%0AN%C3%BAmero%20de%20personas%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="excursions"><span aria-hidden="true">💬</span> Pedir un presupuesto por WhatsApp</a>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Desde 45 € por persona según el destino</span> <span class="rm-ps-acc__pay">💵 A pagar en el riad en efectivo</span></p>
+      <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Calcular y reservar mi excursión</h4>
+      <p>Elija el destino, la fecha y el número de personas: la tarifa se calcula automáticamente.</p>
+      <div class="rm-tq rm-bk" data-rm-bk="excursions" data-lang="es">
+        <form action="https://formsubmit.co/contact@riadmylaya.com" method="POST">
+          <input type="hidden" name="_subject" value="Solicitud de excursión privada · Riad Mylaya">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="Resumen de la solicitud" data-bk-recap>
+          <input type="hidden" name="Total estimado" data-bk-total-field>
+          <fieldset>
+            <legend>Su solicitud</legend>
+            <div data-bk-fields></div>
+          </fieldset>
+          <fieldset>
+            <legend>Sus datos</legend>
+            <div class="rm-tq__grid">
+              <label>Nombre completo de la reserva *
+                <input type="text" name="Nombre completo de la reserva" data-bk-contact="name" required autocomplete="name">
+              </label>
+              <label>N.º de reserva
+                <input type="text" name="N.º de reserva" data-bk-contact="ref">
+              </label>
+              <label>Teléfono / WhatsApp *
+                <input type="tel" name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+              </label>
+              <label>Correo electrónico
+                <input type="email" name="Correo electrónico" data-bk-contact="mail" autocomplete="email">
+              </label>
+            </div>
+          </fieldset>
+          <div class="rm-tq__summary" data-bk-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-bk-wa href="https://wa.me/212661351989?text=Hola%2C%20tengo%20una%20reserva%20en%20el%20Riad%20Mylaya%20y%20quiero%20un%20presupuesto%20para%20una%20excursi%C3%B3n%20privada.%0ANombre%20completo%20de%20la%20reserva%3A%0AN.%C2%BA%20de%20reserva%3A%0ADestino%20deseado%3A%0AFecha%3A%0AN%C3%BAmero%20de%20personas%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="excursions-space"><span aria-hidden="true">💬</span> Enviar mi solicitud por WhatsApp</a>
+            <button type="submit" data-bk-submit data-track="form" data-track-label="excursions-space">Enviar mi solicitud por correo</button>
+          </div>
+          <p class="rm-tq__legal">Su solicitud se envía al riad, que le confirma la disponibilidad y el precio. Todo se paga en el riad en efectivo.</p>
+        </form>
+      </div>
       </div>
     </details>
     <details class="rm-ps-acc" id="groupe">
@@ -529,7 +659,7 @@
         <span class="rm-ps-acc__thumb"><img src="/assets/images/spa/hammam-interior.jpg" alt="Hammam tradicional en Marrakech" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
           <h3>Hammam y masaje</h3>
-          <p>Según el tratamiento elegido</p>
+          <p>Desde 450 MAD (unos 42 €) por persona</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
@@ -540,9 +670,50 @@
         <li>Masaje con aceite de argán, de 30 o 60 minutos.</li>
         <li>Spa seleccionado a pocos minutos a pie del riad.</li>
         <li>Se recomienda reservar el día anterior para elegir la hora.</li>
+        <li>24 tratamientos y extras a elegir, con precios en dirhams y el equivalente en euros a título indicativo.</li>
+        <li>Horario del spa: 10:30 - 18:30.</li>
       </ul>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Según el tratamiento elegido</span> <span class="rm-ps-acc__pay">💵 A pagar en el riad en efectivo</span></p>
-      <a class="rm-lp-btn rm-lp-btn--wa" href="https://wa.me/212661351989?text=Hola%2C%20tengo%20una%20reserva%20en%20el%20Riad%20Mylaya%20y%20quiero%20reservar%20un%20hammam%20o%20un%20masaje.%0ANombre%20completo%20de%20la%20reserva%3A%0AN.%C2%BA%20de%20reserva%3A%0AFecha%20y%20hora%20deseadas%3A%0AN%C3%BAmero%20de%20personas%3A%0ATratamiento%20deseado%20%28hammam%2C%20exfoliaci%C3%B3n%2C%20masaje%29%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="hammam"><span aria-hidden="true">💬</span> Reservar un tratamiento por WhatsApp</a>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Desde 450 MAD (unos 42 €) por persona</span> <span class="rm-ps-acc__pay">💵 A pagar en el riad en efectivo</span></p>
+      <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Elegir mis tratamientos y reservar</h4>
+      <p>Elija el tratamiento de cada persona, la fecha y la hora: el total aparece inmediatamente.</p>
+      <div class="rm-tq rm-bk" data-rm-bk="spa" data-lang="es">
+        <form action="https://formsubmit.co/contact@riadmylaya.com" method="POST">
+          <input type="hidden" name="_subject" value="Solicitud de hammam / masaje · Riad Mylaya">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="Resumen de la solicitud" data-bk-recap>
+          <input type="hidden" name="Total estimado" data-bk-total-field>
+          <fieldset>
+            <legend>Su solicitud</legend>
+            <div data-bk-fields></div>
+          </fieldset>
+          <fieldset>
+            <legend>Sus datos</legend>
+            <div class="rm-tq__grid">
+              <label>Nombre completo de la reserva *
+                <input type="text" name="Nombre completo de la reserva" data-bk-contact="name" required autocomplete="name">
+              </label>
+              <label>N.º de reserva
+                <input type="text" name="N.º de reserva" data-bk-contact="ref">
+              </label>
+              <label>Teléfono / WhatsApp *
+                <input type="tel" name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+              </label>
+              <label>Correo electrónico
+                <input type="email" name="Correo electrónico" data-bk-contact="mail" autocomplete="email">
+              </label>
+            </div>
+          </fieldset>
+          <div class="rm-tq__summary" data-bk-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-bk-wa href="https://wa.me/212661351989?text=Hola%2C%20tengo%20una%20reserva%20en%20el%20Riad%20Mylaya%20y%20quiero%20reservar%20un%20hammam%20o%20un%20masaje.%0ANombre%20completo%20de%20la%20reserva%3A%0AN.%C2%BA%20de%20reserva%3A%0AFecha%20y%20hora%20deseadas%3A%0AN%C3%BAmero%20de%20personas%3A%0ATratamiento%20deseado%20%28hammam%2C%20exfoliaci%C3%B3n%2C%20masaje%29%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="hammam-space"><span aria-hidden="true">💬</span> Enviar mi solicitud por WhatsApp</a>
+            <button type="submit" data-bk-submit data-track="form" data-track-label="hammam-space">Enviar mi solicitud por correo</button>
+          </div>
+          <p class="rm-tq__legal">Su solicitud se envía al riad, que le confirma la disponibilidad y el precio. Todo se paga en el riad en efectivo.</p>
+        </form>
+      </div>
       </div>
     </details>
     </div>
@@ -601,7 +772,9 @@
   <p><a href="https://maps.app.goo.gl/f6u2Dhybbw8uzf637" target="_blank" rel="noopener noreferrer" data-track="directions" data-track-label="space-footer">Ver el itinerario</a></p>
 </footer>
 <script src="/ads-tracking.js" defer></script>
+<script src="/rm-services-data.js" defer></script>
 <script src="/transfer-quote.js" defer></script>
+<script src="/rm-booking-engine.js" defer></script>
 <script>
 (function () {
   /* Load the GetYourGuide affiliate script only when the group block is opened. */

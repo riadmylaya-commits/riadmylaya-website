@@ -210,6 +210,15 @@
 .rm-tq__actions button{width:100%;border:none;background:var(--terra);color:#fff;font-family:'Yanone Kaffeesatz',sans-serif;text-transform:uppercase;letter-spacing:1.6px;font-size:18px;padding:15px 20px;border-radius:6px;cursor:pointer}
 .rm-tq__actions button:hover{background:var(--terra-d)}
 .rm-tq__legal{font-size:13px;color:#9a9a9a;margin:14px 0 0}
+/* ---------- Moteurs de réservation génériques ---------- */
+.rm-bk-persons{display:flex;flex-direction:column;gap:12px;margin:4px 0 0}
+.rm-bk-person{background:var(--cream2);border:1px solid #f1e3d0;border-radius:10px;padding:14px 14px 4px}
+.rm-bk-person h5{font-family:'Yanone Kaffeesatz',sans-serif;font-size:19px;color:var(--terra-d);margin:0 0 10px;letter-spacing:.5px}
+.rm-bk-person__extras{font-size:13.5px;color:#7a7a7a;margin:0 0 6px;font-weight:600}
+.rm-bk-extras{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 14px;margin-bottom:12px}
+@media(max-width:600px){.rm-bk-extras{grid-template-columns:1fr}}
+.rm-bk-extra{display:flex !important;align-items:center;gap:8px;font-size:14px !important;font-weight:400 !important;margin-bottom:0 !important;color:#555}
+.rm-bk-extra input{width:auto !important;margin:0 !important;padding:0 !important}
 /* ---------- Widget GetYourGuide dans un bloc ---------- */
 .rm-cs-gyg{margin:16px 0 0;min-height:60px}
 </style>
@@ -323,7 +332,7 @@
         <span class="rm-ps-acc__thumb"><img src="/assets/images/transfert-marrakech.jpg" alt="Private vehicle for Riad Mylaya transfers in Marrakech" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
           <h3>Airport / station transfer</h3>
-          <p>Airport from €20 · Station from €12</p>
+          <p>Airport from 20 € · Train station from 12 €</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
@@ -332,11 +341,11 @@
       <ul>
         <li>A driver waits for you with a sign bearing your name; waiting time is included even if your flight is delayed.</li>
         <li>Private air-conditioned vehicle, fixed price per vehicle whatever the amount of luggage.</li>
-        <li>Airport: €20 (1-4 people), €25 (5-6), €30 (7), €35 (8) · Train station: €12 (1-2), €17 (3-4), €20 (5-6).</li>
-        <li>€5 surcharge between 10 pm and 7 am for the airport, and for station departures between 3 am and 7:45 am.</li>
-        <li>Return airport transfer: €10 off, applied automatically.</li>
+        <li>Airport: 20 € (1 to 4 people), 25 € (5-6), 30 € (7), 35 € (8) · Train station: 12 € (1 to 2 people), 17 € (3-4), 20 € (5-6).</li>
+        <li>5 € surcharge between 10 pm and 7 am for the airport, and for station departures between 3 am and 7:45 am.</li>
+        <li>Airport return trip: 5 € off the departure transfer, applied automatically.</li>
       </ul>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Airport from €20 · Station from €12</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Airport from 20 € · Train station from 12 €</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
       <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Calculate and book my transfer</h4>
       <p>Choose your trip: the price appears immediately, surcharges and return discount included.</p>
       <div class="rm-tq" data-rm-tq data-lang="en">
@@ -439,7 +448,7 @@
         <span class="rm-ps-acc__thumb"><img src="/assets/images/riad-mylaya-dinner.jpg" alt="Moroccan dinner served at Riad Mylaya" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
           <h3>Moroccan dinner</h3>
-          <p>From €15 per person</p>
+          <p>From 15 € per person</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
@@ -450,9 +459,50 @@
         <li>Served by candlelight in the patio, in the lounge or on the rooftop terrace.</li>
         <li>To be ordered the day before, or before 4 pm on the day.</li>
         <li>Vegetarian options and allergies catered for on request.</li>
+        <li>Four menus: Full menu (starter + main + dessert) (25 € per person), Starter + main (20 € per person), Main + dessert (20 € per person), Main course (15 € per person).</li>
+        <li>Served from 18:00 to 22:30, in the patio, in the lounge or on the terrace.</li>
       </ul>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">From €15 per person</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
-      <a class="rm-lp-btn rm-lp-btn--wa" href="https://wa.me/212661351989?text=Hello%2C%20I%20have%20a%20booking%20at%20Riad%20Mylaya%20and%20I%20would%20like%20to%20book%20the%20Moroccan%20dinner.%0AFull%20name%20on%20the%20booking%3A%0ABooking%20number%3A%0ADate%20of%20the%20dinner%3A%0ANumber%20of%20people%3A%0ADish%20you%20would%20like%20%28tagine%2C%20couscous%2C%20pastilla%29%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="diner"><span aria-hidden="true">💬</span> Book dinner on WhatsApp</a>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">From 15 € per person</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
+      <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Build and book my dinner</h4>
+      <p>Choose your menu, the date and the time: the total appears immediately.</p>
+      <div class="rm-tq rm-bk" data-rm-bk="dinner" data-lang="en">
+        <form action="https://formsubmit.co/contact@riadmylaya.com" method="POST">
+          <input type="hidden" name="_subject" value="Dinner request · Riad Mylaya">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="Request summary" data-bk-recap>
+          <input type="hidden" name="Estimated total" data-bk-total-field>
+          <fieldset>
+            <legend>Your request</legend>
+            <div data-bk-fields></div>
+          </fieldset>
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="rm-tq__grid">
+              <label>Full name on the booking *
+                <input type="text" name="Full name on the booking" data-bk-contact="name" required autocomplete="name">
+              </label>
+              <label>Booking number
+                <input type="text" name="Booking number" data-bk-contact="ref">
+              </label>
+              <label>Phone / WhatsApp *
+                <input type="tel" name="Phone / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+              </label>
+              <label>Email
+                <input type="email" name="Email" data-bk-contact="mail" autocomplete="email">
+              </label>
+            </div>
+          </fieldset>
+          <div class="rm-tq__summary" data-bk-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-bk-wa href="https://wa.me/212661351989?text=Hello%2C%20I%20have%20a%20booking%20at%20Riad%20Mylaya%20and%20I%20would%20like%20to%20book%20the%20Moroccan%20dinner.%0AFull%20name%20on%20the%20booking%3A%0ABooking%20number%3A%0ADate%20of%20the%20dinner%3A%0ANumber%20of%20people%3A%0ADish%20you%20would%20like%20%28tagine%2C%20couscous%2C%20pastilla%29%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="diner-space"><span aria-hidden="true">💬</span> Send my request on WhatsApp</a>
+            <button type="submit" data-bk-submit data-track="form" data-track-label="diner-space">Send my request by email</button>
+          </div>
+          <p class="rm-tq__legal">Your request is sent to the riad, which confirms availability and price. Everything is paid on site in cash.</p>
+        </form>
+      </div>
       </div>
     </details>
     <details class="rm-ps-acc" id="cuisine">
@@ -460,7 +510,7 @@
         <span class="rm-ps-acc__thumb"><img src="/assets/images/cooking-hero.jpg" alt="Moroccan cooking class in Marrakech" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
           <h3>Cooking class</h3>
-          <p>€45 per person</p>
+          <p>45 € per person</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
@@ -471,9 +521,49 @@
         <li>About 4 hours, morning or afternoon, then you enjoy your own meal.</li>
         <li>Return transfer from the riad included.</li>
         <li>To be booked at least 24 hours in advance.</li>
+        <li>45 € per person, up to 6 people per class.</li>
       </ul>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">€45 per person</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
-      <a class="rm-lp-btn rm-lp-btn--wa" href="https://wa.me/212661351989?text=Hello%2C%20I%20have%20a%20booking%20at%20Riad%20Mylaya%20and%20I%20would%20like%20to%20book%20the%20cooking%20class.%0AFull%20name%20on%20the%20booking%3A%0ABooking%20number%3A%0APreferred%20date%3A%0AMorning%20or%20afternoon%3A%0ANumber%20of%20people%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="cuisine"><span aria-hidden="true">💬</span> Book the class on WhatsApp</a>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">45 € per person</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
+      <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Book my cooking class</h4>
+      <p>Choose the date, the time and the number of participants: the total appears immediately.</p>
+      <div class="rm-tq rm-bk" data-rm-bk="cooking" data-lang="en">
+        <form action="https://formsubmit.co/contact@riadmylaya.com" method="POST">
+          <input type="hidden" name="_subject" value="Cooking class request · Riad Mylaya">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="Request summary" data-bk-recap>
+          <input type="hidden" name="Estimated total" data-bk-total-field>
+          <fieldset>
+            <legend>Your request</legend>
+            <div data-bk-fields></div>
+          </fieldset>
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="rm-tq__grid">
+              <label>Full name on the booking *
+                <input type="text" name="Full name on the booking" data-bk-contact="name" required autocomplete="name">
+              </label>
+              <label>Booking number
+                <input type="text" name="Booking number" data-bk-contact="ref">
+              </label>
+              <label>Phone / WhatsApp *
+                <input type="tel" name="Phone / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+              </label>
+              <label>Email
+                <input type="email" name="Email" data-bk-contact="mail" autocomplete="email">
+              </label>
+            </div>
+          </fieldset>
+          <div class="rm-tq__summary" data-bk-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-bk-wa href="https://wa.me/212661351989?text=Hello%2C%20I%20have%20a%20booking%20at%20Riad%20Mylaya%20and%20I%20would%20like%20to%20book%20the%20cooking%20class.%0AFull%20name%20on%20the%20booking%3A%0ABooking%20number%3A%0APreferred%20date%3A%0AMorning%20or%20afternoon%3A%0ANumber%20of%20people%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="cuisine-space"><span aria-hidden="true">💬</span> Send my request on WhatsApp</a>
+            <button type="submit" data-bk-submit data-track="form" data-track-label="cuisine-space">Send my request by email</button>
+          </div>
+          <p class="rm-tq__legal">Your request is sent to the riad, which confirms availability and price. Everything is paid on site in cash.</p>
+        </form>
+      </div>
       </div>
     </details>
     <details class="rm-ps-acc" id="excursions">
@@ -481,7 +571,7 @@
         <span class="rm-ps-acc__thumb"><img src="/assets/images/pexels-moussa-idrissi-3581916.jpeg" alt="Private excursion from Marrakech" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
           <h3>Private excursions</h3>
-          <p>Quote on request, depending on the destination</p>
+          <p>From 45 € per person depending on the destination</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
@@ -492,9 +582,49 @@
         <li>Private car with driver, leaving from the riad at the time you choose.</li>
         <li>Full or half day, itinerary adapted to your own pace.</li>
         <li>Quote sent within a few hours depending on the destination and the number of people.</li>
+        <li>The price per person goes down as the group grows: the total appears as soon as you pick the destination and the number of people.</li>
       </ul>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Quote on request, depending on the destination</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
-      <a class="rm-lp-btn rm-lp-btn--wa" href="https://wa.me/212661351989?text=Hello%2C%20I%20have%20a%20booking%20at%20Riad%20Mylaya%20and%20I%20would%20like%20a%20quote%20for%20a%20private%20excursion.%0AFull%20name%20on%20the%20booking%3A%0ABooking%20number%3A%0ADestination%3A%0ADate%3A%0ANumber%20of%20people%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="excursions"><span aria-hidden="true">💬</span> Ask for a quote on WhatsApp</a>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">From 45 € per person depending on the destination</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
+      <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Calculate and book my excursion</h4>
+      <p>Choose the destination, the date and the number of people: the price is worked out automatically.</p>
+      <div class="rm-tq rm-bk" data-rm-bk="excursions" data-lang="en">
+        <form action="https://formsubmit.co/contact@riadmylaya.com" method="POST">
+          <input type="hidden" name="_subject" value="Private excursion request · Riad Mylaya">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="Request summary" data-bk-recap>
+          <input type="hidden" name="Estimated total" data-bk-total-field>
+          <fieldset>
+            <legend>Your request</legend>
+            <div data-bk-fields></div>
+          </fieldset>
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="rm-tq__grid">
+              <label>Full name on the booking *
+                <input type="text" name="Full name on the booking" data-bk-contact="name" required autocomplete="name">
+              </label>
+              <label>Booking number
+                <input type="text" name="Booking number" data-bk-contact="ref">
+              </label>
+              <label>Phone / WhatsApp *
+                <input type="tel" name="Phone / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+              </label>
+              <label>Email
+                <input type="email" name="Email" data-bk-contact="mail" autocomplete="email">
+              </label>
+            </div>
+          </fieldset>
+          <div class="rm-tq__summary" data-bk-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-bk-wa href="https://wa.me/212661351989?text=Hello%2C%20I%20have%20a%20booking%20at%20Riad%20Mylaya%20and%20I%20would%20like%20a%20quote%20for%20a%20private%20excursion.%0AFull%20name%20on%20the%20booking%3A%0ABooking%20number%3A%0ADestination%3A%0ADate%3A%0ANumber%20of%20people%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="excursions-space"><span aria-hidden="true">💬</span> Send my request on WhatsApp</a>
+            <button type="submit" data-bk-submit data-track="form" data-track-label="excursions-space">Send my request by email</button>
+          </div>
+          <p class="rm-tq__legal">Your request is sent to the riad, which confirms availability and price. Everything is paid on site in cash.</p>
+        </form>
+      </div>
       </div>
     </details>
     <details class="rm-ps-acc" id="groupe">
@@ -529,7 +659,7 @@
         <span class="rm-ps-acc__thumb"><img src="/assets/images/spa/hammam-interior.jpg" alt="Traditional hammam in Marrakech" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
           <h3>Hammam &amp; massage</h3>
-          <p>On request, depending on the treatment</p>
+          <p>From 450 MAD (about 42 €) per person</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
@@ -540,9 +670,50 @@
         <li>Argan oil massage, 30 or 60 minutes.</li>
         <li>Selected spa a few minutes' walk from the riad.</li>
         <li>Booking the day before is recommended to get the time you want.</li>
+        <li>24 treatments and extras to choose from, priced in dirhams with an indicative euro equivalent.</li>
+        <li>Spa opening hours: 10:30 - 18:30.</li>
       </ul>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">On request, depending on the treatment</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
-      <a class="rm-lp-btn rm-lp-btn--wa" href="https://wa.me/212661351989?text=Hello%2C%20I%20have%20a%20booking%20at%20Riad%20Mylaya%20and%20I%20would%20like%20to%20book%20a%20hammam%20or%20a%20massage.%0AFull%20name%20on%20the%20booking%3A%0ABooking%20number%3A%0APreferred%20date%20and%20time%3A%0ANumber%20of%20people%3A%0ATreatment%20%28hammam%2C%20scrub%2C%20massage%29%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="hammam"><span aria-hidden="true">💬</span> Book a treatment on WhatsApp</a>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">From 450 MAD (about 42 €) per person</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
+      <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Choose my treatments and book</h4>
+      <p>Choose each person's treatment, the date and the time: the total appears immediately.</p>
+      <div class="rm-tq rm-bk" data-rm-bk="spa" data-lang="en">
+        <form action="https://formsubmit.co/contact@riadmylaya.com" method="POST">
+          <input type="hidden" name="_subject" value="Hammam / massage request · Riad Mylaya">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="Request summary" data-bk-recap>
+          <input type="hidden" name="Estimated total" data-bk-total-field>
+          <fieldset>
+            <legend>Your request</legend>
+            <div data-bk-fields></div>
+          </fieldset>
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="rm-tq__grid">
+              <label>Full name on the booking *
+                <input type="text" name="Full name on the booking" data-bk-contact="name" required autocomplete="name">
+              </label>
+              <label>Booking number
+                <input type="text" name="Booking number" data-bk-contact="ref">
+              </label>
+              <label>Phone / WhatsApp *
+                <input type="tel" name="Phone / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+              </label>
+              <label>Email
+                <input type="email" name="Email" data-bk-contact="mail" autocomplete="email">
+              </label>
+            </div>
+          </fieldset>
+          <div class="rm-tq__summary" data-bk-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-bk-wa href="https://wa.me/212661351989?text=Hello%2C%20I%20have%20a%20booking%20at%20Riad%20Mylaya%20and%20I%20would%20like%20to%20book%20a%20hammam%20or%20a%20massage.%0AFull%20name%20on%20the%20booking%3A%0ABooking%20number%3A%0APreferred%20date%20and%20time%3A%0ANumber%20of%20people%3A%0ATreatment%20%28hammam%2C%20scrub%2C%20massage%29%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="hammam-space"><span aria-hidden="true">💬</span> Send my request on WhatsApp</a>
+            <button type="submit" data-bk-submit data-track="form" data-track-label="hammam-space">Send my request by email</button>
+          </div>
+          <p class="rm-tq__legal">Your request is sent to the riad, which confirms availability and price. Everything is paid on site in cash.</p>
+        </form>
+      </div>
       </div>
     </details>
     </div>
@@ -601,7 +772,9 @@
   <p><a href="https://maps.app.goo.gl/f6u2Dhybbw8uzf637" target="_blank" rel="noopener noreferrer" data-track="directions" data-track-label="space-footer">Get directions</a></p>
 </footer>
 <script src="/ads-tracking.js" defer></script>
+<script src="/rm-services-data.js" defer></script>
 <script src="/transfer-quote.js" defer></script>
+<script src="/rm-booking-engine.js" defer></script>
 <script>
 (function () {
   /* Load the GetYourGuide affiliate script only when the group block is opened. */
