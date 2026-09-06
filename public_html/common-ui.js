@@ -103,6 +103,7 @@
 
   function injectStickyCta(lang) {
     if (!CONFIG.STICKY_CTA_ENABLED) return;
+    if (document.body.getAttribute("data-rm-space") === "client") return;
     if (document.getElementById("rm-sticky-cta")) return;
     var t = I18N[lang] || I18N.fr;
     var bar = document.createElement("div");
