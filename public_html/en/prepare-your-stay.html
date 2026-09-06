@@ -249,15 +249,15 @@
 <nav class="rm-ps-toc" aria-label="Prepare your stay">
   <div class="container">
     <ul class="rm-ps-toc__list">
-        <li><a href="#arrivee">Arrival &amp; luggage</a></li>
-        <li><a href="#infos">Practical information</a></li>
-        <li><a href="#transfert">Transfer</a></li>
-        <li><a href="#diner">Moroccan dinner</a></li>
-        <li><a href="#cuisine">Cooking class</a></li>
-        <li><a href="#excursions">Private excursions</a></li>
-        <li><a href="#groupe">Group excursions</a></li>
-        <li><a href="#hammam">Hammam &amp; massage</a></li>
-        <li><a href="#contact">Contact us</a></li>
+        <li><a href="/en/prepare-your-stay#arrivee">Arrival &amp; luggage</a></li>
+        <li><a href="/en/prepare-your-stay#infos">Practical information</a></li>
+        <li><a href="/en/prepare-your-stay#transfert">Transfer</a></li>
+        <li><a href="/en/prepare-your-stay#diner">Moroccan dinner</a></li>
+        <li><a href="/en/prepare-your-stay#cuisine">Cooking class</a></li>
+        <li><a href="/en/prepare-your-stay#excursions">Private excursions</a></li>
+        <li><a href="/en/prepare-your-stay#groupe">Group excursions</a></li>
+        <li><a href="/en/prepare-your-stay#hammam">Hammam &amp; massage</a></li>
+        <li><a href="/en/prepare-your-stay#contact">Contact us</a></li>
     </ul>
   </div>
 </nav>
@@ -426,7 +426,7 @@
           </fieldset>
           <div class="rm-tq__summary" data-tq-summary aria-live="polite"></div>
           <div class="rm-tq__actions">
-            <a class="rm-lp-btn rm-lp-btn--wa" data-tq-wa href="#" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="transfer-space"><span aria-hidden="true">💬</span> Send my request on WhatsApp</a>
+            <a class="rm-lp-btn rm-lp-btn--wa" data-tq-wa href="https://wa.me/212661351989?text=Hello%2C%20I%20would%20like%20to%20book%20a%20transfer%20with%20Riad%20Mylaya.%0AFull%20name%20on%20the%20booking%3A%0AArrival%20%E2%80%94%20airport%20or%20train%20station%2C%20date%2C%20time%20and%20flight%20%2F%20train%20number%3A%0AReturn%20%E2%80%94%20date%2C%20time%20and%20flight%20%2F%20train%20number%3A%0ANumber%20of%20people%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="transfer-space"><span aria-hidden="true">💬</span> Send my request on WhatsApp</a>
             <button type="submit" data-tq-submit data-track="form" data-track-label="transfer-space">Send my request by email</button>
           </div>
           <p class="rm-tq__legal">Your request is sent to the riad, which confirms the driver and the price. The transfer is paid on site in cash.</p>
@@ -603,18 +603,43 @@
 <script src="/ads-tracking.js" defer></script>
 <script src="/transfer-quote.js" defer></script>
 <script>
-/* Load the GetYourGuide affiliate script only when the group block is opened. */
 (function () {
-  var block = document.getElementById("groupe");
-  if (!block) return;
-  var loaded = false;
-  block.addEventListener("toggle", function () {
-    if (!block.open || loaded) return;
-    loaded = true;
-    var s = document.createElement("script");
-    s.src = "/gyg-affiliate.js";
-    document.body.appendChild(s);
+  /* Load the GetYourGuide affiliate script only when the group block is opened. */
+  var group = document.getElementById("groupe");
+  if (group) {
+    var loaded = false;
+    group.addEventListener("toggle", function () {
+      if (!group.open || loaded) return;
+      loaded = true;
+      var s = document.createElement("script");
+      s.src = "/gyg-affiliate.js";
+      document.body.appendChild(s);
+    });
+  }
+
+  /* Summary links: open the targeted block and scroll to it without leaving the page. */
+  function reveal(id, smooth) {
+    var target = document.getElementById(id);
+    if (!target) return false;
+    if (target.tagName === "DETAILS") target.open = true;
+    target.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+    return true;
+  }
+  document.addEventListener("click", function (ev) {
+    var link = ev.target.closest ? ev.target.closest('a[href*="#"]') : null;
+    if (!link) return;
+    var href = link.getAttribute("href") || "";
+    var hash = href.slice(href.indexOf("#") + 1);
+    if (!hash || href.indexOf("#") < 0) return;
+    if (href.indexOf("#") > 0 && href.split("#")[0] !== location.pathname) return;
+    if (reveal(hash, true)) {
+      ev.preventDefault();
+      history.replaceState(null, "", location.pathname + "#" + hash);
+    }
   });
+  if (location.hash.length > 1) {
+    reveal(decodeURIComponent(location.hash.slice(1)), false);
+  }
 })();
 </script>
 </body>
