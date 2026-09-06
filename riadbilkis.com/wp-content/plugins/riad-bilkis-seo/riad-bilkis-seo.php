@@ -335,6 +335,7 @@ h1, h2, h3, h4, h5, h6 { font-family: "Cormorant Garamond", Georgia, serif; }
 /* Features / Why */
 .rb-why { background: #fff; }
 .rb-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 50px; }
+@media (max-width: 1000px) { .rb-features { grid-template-columns: repeat(2, 1fr); gap: 30px 34px; } }
 .rb-feature { text-align: center; padding: 30px 20px; }
 .rb-feature-icon { font-size: 36px; margin-bottom: 20px; }
 .rb-feature h3 { font-family: "Cormorant Garamond", serif; font-size: 24px; color: #2C2318; margin-bottom: 12px; font-weight: 600; }
