@@ -642,6 +642,9 @@
       history.replaceState(null, "", location.pathname + "#" + hash);
     }
   });
+  window.addEventListener("hashchange", function () {
+    if (location.hash.length > 1) reveal(decodeURIComponent(location.hash.slice(1)), false);
+  });
   if (location.hash.length > 1) {
     var hash = decodeURIComponent(location.hash.slice(1));
     reveal(hash, false);
