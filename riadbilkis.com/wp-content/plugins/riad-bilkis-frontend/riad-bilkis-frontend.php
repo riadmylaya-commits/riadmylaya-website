@@ -279,7 +279,7 @@ add_action('wp_footer', function () {
   transform:rotate(45deg) translate(2px,2px)}
  .main-header-menu>.rb-has-children>.menu-link:after{right:36px}
  .main-header-menu>.rb-has-children>.rb-submenu{position:absolute;top:100%;left:50%;transform:translate(-50%,10px);
-  min-width:250px;background:#fff;border:none;border-top:2px solid #C99752;border-radius:0 0 3px 3px;
+  min-width:250px;width:max-content;max-width:360px;background:#fff;border:none;border-top:2px solid #C99752;border-radius:0 0 3px 3px;
   box-shadow:0 14px 34px rgba(0,0,0,.13);padding:10px 0;opacity:0;visibility:hidden;pointer-events:none;
   transition:opacity .28s ease,transform .28s ease;display:block;z-index:9999}
  .main-header-menu>.rb-has-children:hover>.rb-submenu,

@@ -297,8 +297,9 @@ function riad_bilkis_luxury_css() {
 /* ===== RIAD BILKIS LUXURY DESIGN ===== */
 
 /* Typography */
-body { font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif; font-size: 16.5px; line-height: 1.8; color: #33291F; }
-body p, body li { font-weight: 400; }
+html body { font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif !important; font-size: 16.5px; line-height: 1.8; color: #33291F !important; }
+html body p, html body li, html body td, html body dd, html body blockquote, html body label, html body input, html body textarea, html body select, html body button { font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif !important; }
+html body p, html body li { font-weight: 400; color: #33291F; }
 h1, h2, h3, h4, h5, h6 { font-family: "Cormorant Garamond", Georgia, serif; }
 
 /* Header - Transparent & Elegant */
