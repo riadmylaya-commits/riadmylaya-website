@@ -622,7 +622,11 @@
     var target = document.getElementById(id);
     if (!target) return false;
     if (target.tagName === "DETAILS") target.open = true;
-    target.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+    /* Explicit offset: scroll-margin-top is ignored on the <details> blocks. */
+    var header = document.querySelector(".rm-cs-head");
+    var offset = (header ? header.getBoundingClientRect().height : 0) + 14;
+    var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top < 0 ? 0 : top, behavior: smooth ? "smooth" : "auto" });
     return true;
   }
   document.addEventListener("click", function (ev) {
@@ -631,14 +635,20 @@
     var href = link.getAttribute("href") || "";
     var hash = href.slice(href.indexOf("#") + 1);
     if (!hash || href.indexOf("#") < 0) return;
-    if (href.indexOf("#") > 0 && href.split("#")[0] !== location.pathname) return;
+    var path = href.split("#")[0];
+    if (path && path !== location.pathname && path + ".html" !== location.pathname) return;
     if (reveal(hash, true)) {
       ev.preventDefault();
       history.replaceState(null, "", location.pathname + "#" + hash);
     }
   });
   if (location.hash.length > 1) {
-    reveal(decodeURIComponent(location.hash.slice(1)), false);
+    var hash = decodeURIComponent(location.hash.slice(1));
+    reveal(hash, false);
+    /* Re-scroll once the opened block and lazy images have settled. */
+    window.addEventListener("load", function () {
+      setTimeout(function () { reveal(hash, false); }, 60);
+    });
   }
 })();
 </script>
