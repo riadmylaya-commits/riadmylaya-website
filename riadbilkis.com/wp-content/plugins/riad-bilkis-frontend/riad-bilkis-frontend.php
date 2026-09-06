@@ -242,7 +242,7 @@ add_action('wp_footer', function () {
     ?>
 <style id="rb-menu-css">
 .main-header-menu>.rb-menu-item>.menu-link,.ast-mobile-popup-drawer .rb-menu-item>.menu-link{
- font-family:"Raleway","Helvetica Neue",Arial,sans-serif;font-size:13px;letter-spacing:2.2px;
+ font-family:"Montserrat","Helvetica Neue",Arial,sans-serif;font-size:13.5px;letter-spacing:2px;
  text-transform:uppercase;font-weight:500}
 .main-header-menu>.rb-menu-item>.menu-link{padding-left:18px;padding-right:18px;position:relative}
 .main-header-menu>.rb-menu-item>.menu-link:after{content:"";position:absolute;left:18px;right:18px;bottom:14px;
@@ -253,7 +253,7 @@ add_action('wp_footer', function () {
 /* Sélecteur de langue : même présentation que la barre des pages statiques. */
 .rb-menu-lang .rb-lang{display:flex;gap:8px;align-items:center}
 .rb-menu-lang .rb-lang a{padding:5px 8px;border:1px solid #EFE7DC;border-radius:3px;
- font-family:"Raleway","Helvetica Neue",Arial,sans-serif;font-size:12px;letter-spacing:1px;
+ font-family:"Montserrat","Helvetica Neue",Arial,sans-serif;font-size:12px;letter-spacing:1px;
  color:#6B5B4A;text-decoration:none;line-height:1}
 .rb-menu-lang .rb-lang a:hover{border-color:#C99752;color:#2C2318}
 .rb-menu-lang .rb-lang a[aria-current="page"]{background:#FBF7F2;border-color:#C99752;color:#2C2318}
@@ -285,8 +285,8 @@ add_action('wp_footer', function () {
  .main-header-menu>.rb-has-children:hover>.rb-submenu,
  .main-header-menu>.rb-has-children:focus-within>.rb-submenu{opacity:1;visibility:visible;pointer-events:auto;
   transform:translate(-50%,0)}
- .main-header-menu .rb-submenu>li>.menu-link{display:block;padding:11px 26px;font-family:"Raleway",Arial,sans-serif;
-  font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:#3F2935;white-space:nowrap;
+ .main-header-menu .rb-submenu>li>.menu-link{display:block;padding:11px 26px;font-family:"Montserrat",Arial,sans-serif;
+  font-size:13px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#3F2935;white-space:nowrap;
   transition:color .25s,padding-left .25s}
  .main-header-menu .rb-submenu>li>.menu-link:hover{color:#821F0C;padding-left:31px}
 }
@@ -493,9 +493,9 @@ add_action('wp_enqueue_scripts', function () {
     wp_add_inline_style('riad-bilkis-direct', '
 .rb-direct{margin:48px 0 8px;padding:32px;background:#FBF7F2;border:1px solid #E6D3C4}
 .rb-direct h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;color:#3D3229;margin:0 0 18px}
-.rb-direct__list{margin:0 0 20px;padding-left:20px;color:#5B4E43;line-height:1.75}
+.rb-direct__list{margin:0 0 20px;padding-left:20px;color:#4A3B2C;font-size:16.5px;line-height:1.8}
 .rb-direct__list li{margin-bottom:8px}
-.rb-direct__help{color:#6B5B4E;margin-bottom:14px}
+.rb-direct__help{color:#4A3B2C;font-size:16.5px;line-height:1.75;margin-bottom:14px}
 .rb-direct__actions a{display:inline-block;margin:0 10px 10px 0;padding:12px 22px;text-decoration:none;font-size:14px;letter-spacing:1px;text-transform:uppercase}
 .rb-direct__wa{background:#25D366;color:#fff!important}
 .rb-direct__mail{border:1px solid #C75B39;color:#C75B39!important}
@@ -635,7 +635,7 @@ add_action('wp_enqueue_scripts', function () {
 .rb-stay__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin:22px 0}
 .rb-stay__group{background:#fff;border:1px solid #E6D3C4;padding:20px}
 .rb-stay__group h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:23px;color:#8a5a3c;margin:0 0 10px}
-.rb-stay__group ul{margin:0;padding-left:20px;color:#5B4E43;line-height:1.7}
+.rb-stay__group ul{margin:0;padding-left:20px;color:#4A3B2C;font-size:16.5px;line-height:1.8}
 @media(max-width:768px){.rb-stay__grid{grid-template-columns:1fr}.rb-stay{padding:24px 18px}}
 ');
 }, 27);
@@ -1236,7 +1236,7 @@ add_action('wp_enqueue_scripts', function () {
 .rb-choice__card--book h3{font-size:37px;font-weight:700;color:var(--rb-choice-accent);margin-bottom:8px}
 .rb-choice__card--book h3:after{content:"";display:block;width:64px;height:2px;background:#C99752;
  margin:16px auto 0}
-.rb-choice__card p{font-family:var(--rb-choice-sans);font-size:15.5px;color:#6E5B45;line-height:1.7;
+.rb-choice__card p{font-family:var(--rb-choice-sans);font-size:16.5px;color:#4A3B2C;line-height:1.78;
  font-weight:400;margin:0 0 18px}
 .rb-choice__card--book p{font-size:16.5px;color:#5A4A38;margin:18px 0 24px}
 .rb-choice__or{display:flex;align-items:center;justify-content:center;position:relative}
@@ -1264,18 +1264,18 @@ add_action('wp_enqueue_scripts', function () {
  color:#6b4a1b}
 .rb-choice .rb-promo-value{font-family:var(--rb-choice-sans);font-size:25px;font-weight:700;letter-spacing:3px;
  padding:9px 22px}
-.rb-choice .rb-promo-hint{font-family:var(--rb-choice-sans);font-size:13px;color:#6E5B45;font-style:normal}
+.rb-choice .rb-promo-hint{font-family:var(--rb-choice-sans);font-size:13.5px;color:#5A4A38;font-style:normal}
 .rb-form__status{min-height:20px;margin:12px 0 0;font-size:14px;color:#8B7355}
 .rb-form__status--ok{color:#2f7a4f}
 .rb-form__status--err{color:#b3392a}
 /* Page d\'une chambre : la couleur d\'accent distingue chaque chambre. */
 .rb-room-page{max-width:1060px;margin:0 auto;padding:8px 0 20px;color:#33291F}
 .rb-room-head{text-align:center;margin-bottom:40px}
-.rb-room-eyebrow{display:block;font-family:"Raleway",Arial,sans-serif;font-size:12px;letter-spacing:3px;
+.rb-room-eyebrow{display:block;font-family:"Montserrat",Arial,sans-serif;font-size:12px;letter-spacing:3px;
  text-transform:uppercase;font-weight:600;color:var(--rb-room-accent);margin-bottom:14px}
 .rb-room-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:50px;line-height:1.12;font-weight:600;
  letter-spacing:1.5px;text-transform:uppercase;color:#2C2318;margin:0 0 12px}
-.rb-room-tagline{font-size:17.5px;color:#7A6650;font-weight:400;margin:0}
+.rb-room-tagline{font-size:17.5px;color:#5A4A38;font-weight:400;line-height:1.6;margin:0}
 .rb-room-rule{display:block;width:60px;height:1px;background:var(--rb-room-accent);margin:26px auto 0}
 .rb-room-body{margin-bottom:34px}
 .rb-room-body h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:600;color:#2C2318;
@@ -1325,14 +1325,14 @@ add_action('wp_enqueue_scripts', function () {
 .rb-rooms-card:hover .rb-rooms-card__img{transform:scale(1.05)}
 .rb-rooms-card__body{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;
  padding:26px 22px 30px}
-.rb-rooms-card__colors{font-family:"Raleway",Arial,sans-serif;font-size:11.5px;letter-spacing:2.6px;
+.rb-rooms-card__colors{font-family:"Montserrat",Arial,sans-serif;font-size:11.5px;letter-spacing:2.6px;
  text-transform:uppercase;font-weight:600;color:var(--rb-room-accent)}
 .rb-rooms-card__name{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;font-weight:600;
  letter-spacing:.5px;margin:10px 0 20px}
 .rb-rooms-card__name a{color:#2C2318;text-decoration:none}
 .rb-rooms-card__btn,.rb-rooms-card__btn:visited{margin-top:auto;display:inline-block;padding:12px 26px;
  border:1px solid var(--rb-room-accent);color:var(--rb-room-accent);background:transparent;text-decoration:none;
- font-family:"Raleway",Arial,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:2px;
+ font-family:"Montserrat",Arial,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:2px;
  text-transform:uppercase;transition:background .3s ease,color .3s ease}
 .rb-rooms-card__btn:hover,.rb-rooms-card__btn:focus{background:var(--rb-room-accent);color:#fff}
 @media(max-width:768px){

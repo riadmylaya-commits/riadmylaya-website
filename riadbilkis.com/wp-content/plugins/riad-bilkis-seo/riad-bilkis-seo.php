@@ -288,7 +288,7 @@ remove_action('wp_head', 'wp_generator');
 
 // Enqueue Google Fonts and custom luxury CSS
 add_action('wp_enqueue_scripts', function() {
-    wp_enqueue_style('rb-google-fonts', 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap', array(), null);
+    wp_enqueue_style('rb-google-fonts', 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap', array(), null);
     wp_add_inline_style('astra-theme-css', riad_bilkis_luxury_css());
 }, 20);
 
@@ -297,35 +297,36 @@ function riad_bilkis_luxury_css() {
 /* ===== RIAD BILKIS LUXURY DESIGN ===== */
 
 /* Typography */
-body { font-family: "Raleway", sans-serif; color: #3D3229; }
+body { font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif; font-size: 16.5px; line-height: 1.8; color: #33291F; }
+body p, body li { font-weight: 400; }
 h1, h2, h3, h4, h5, h6 { font-family: "Cormorant Garamond", Georgia, serif; }
 
 /* Header - Transparent & Elegant */
 .ast-primary-header-bar { background: rgba(255,255,255,0.95) !important; backdrop-filter: blur(10px); box-shadow: 0 1px 20px rgba(0,0,0,0.08); border-bottom: 1px solid rgba(199,91,57,0.1); }
-.ast-builder-menu-1 .main-header-menu > .menu-item > .menu-link { font-family: "Raleway", sans-serif !important; font-weight: 500; font-size: 14px !important; letter-spacing: 1.5px; text-transform: uppercase; color: #3D3229 !important; padding: 10px 18px !important; transition: color 0.3s ease; }
+.ast-builder-menu-1 .main-header-menu > .menu-item > .menu-link { font-family: "Montserrat", sans-serif !important; font-weight: 500; font-size: 14px !important; letter-spacing: 1.5px; text-transform: uppercase; color: #3D3229 !important; padding: 10px 18px !important; transition: color 0.3s ease; }
 .ast-builder-menu-1 .main-header-menu > .menu-item > .menu-link:hover,
 .ast-builder-menu-1 .main-header-menu > .menu-item.current-menu-item > .menu-link { color: #C75B39 !important; }
 .site-title a, .site-title { font-family: "Cormorant Garamond", serif !important; font-weight: 600; font-size: 28px !important; color: #C75B39 !important; letter-spacing: 2px; }
-.site-description { font-family: "Raleway", sans-serif !important; font-size: 11px !important; letter-spacing: 3px; text-transform: uppercase; color: #8B7355 !important; }
+.site-description { font-family: "Montserrat", sans-serif !important; font-size: 11px !important; letter-spacing: 3px; text-transform: uppercase; color: #6B5843 !important; }
 
 /* Hero Section */
 .rb-hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: url("https://images.unsplash.com/photo-1539437829697-1b4ed5aebd19?w=1600&q=85") center center / cover no-repeat; margin-top: -80px; }
 .rb-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%); }
 .rb-hero-content { position: relative; z-index: 2; text-align: center; color: #fff; padding: 20px; }
-.rb-hero-subtitle-top { font-family: "Raleway", sans-serif; font-size: 16px; letter-spacing: 6px; text-transform: uppercase; opacity: 0.9; display: block; margin-bottom: 15px; font-weight: 300; }
-.rb-hero-title { font-family: "Cormorant Garamond", serif; font-size: 80px; font-weight: 300; letter-spacing: 8px; margin: 0 0 20px; line-height: 1.1; color: #fff !important; }
+.rb-hero-subtitle-top { font-family: "Montserrat", sans-serif; font-size: 15px; letter-spacing: 5px; text-transform: uppercase; opacity: 1; display: block; margin-bottom: 15px; font-weight: 500; }
+.rb-hero-title { font-family: "Cormorant Garamond", serif; font-size: 80px; font-weight: 500; letter-spacing: 8px; margin: 0 0 20px; line-height: 1.1; color: #fff !important; }
 .rb-hero-line { width: 80px; height: 1px; background: #D4A574; margin: 25px auto; }
-.rb-hero-subtitle { font-family: "Raleway", sans-serif; font-size: 20px; font-weight: 300; letter-spacing: 3px; margin-bottom: 40px; opacity: 0.9; color: #fff; }
-.rb-hero-btn { display: inline-block; padding: 16px 45px; border: 1px solid #D4A574; color: #fff; text-decoration: none; font-family: "Raleway", sans-serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; transition: all 0.4s ease; background: rgba(212,165,116,0.2); }
+.rb-hero-subtitle { font-family: "Montserrat", sans-serif; font-size: 19px; font-weight: 400; line-height: 1.6; letter-spacing: 2px; margin-bottom: 40px; opacity: 1; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.35); }
+.rb-hero-btn { display: inline-block; padding: 16px 45px; border: 1px solid #D4A574; color: #fff; text-decoration: none; font-family: "Montserrat", sans-serif; font-size: 13.5px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; transition: all 0.4s ease; background: rgba(212,165,116,0.2); }
 .rb-hero-btn:hover { background: #D4A574; color: #fff; }
 
 /* Sections */
 .rb-section { padding: 100px 20px; }
 .rb-container { max-width: 1100px; margin: 0 auto; }
-.rb-section-label { display: block; text-align: center; font-family: "Raleway", sans-serif; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; color: #C75B39; margin-bottom: 15px; font-weight: 500; }
-.rb-section-title { text-align: center; font-family: "Cormorant Garamond", serif; font-size: 42px; font-weight: 400; color: #3D3229; margin: 0 0 20px; letter-spacing: 2px; }
+.rb-section-label { display: block; text-align: center; font-family: "Montserrat", sans-serif; font-size: 12.5px; letter-spacing: 4px; text-transform: uppercase; color: #B14A28; margin-bottom: 15px; font-weight: 600; }
+.rb-section-title { text-align: center; font-family: "Cormorant Garamond", serif; font-size: 43px; font-weight: 600; color: #2C2318; margin: 0 0 20px; letter-spacing: 2px; }
 .rb-section-line { width: 60px; height: 1px; background: #C75B39; margin: 0 auto 40px; }
-.rb-section-text { text-align: center; font-size: 17px; line-height: 1.9; color: #6B5B4E; max-width: 750px; margin: 0 auto; font-weight: 300; }
+.rb-section-text { text-align: center; font-family: "Montserrat", sans-serif; font-size: 17px; line-height: 1.85; color: #4A3B2C; max-width: 750px; margin: 0 auto; font-weight: 400; }
 
 /* Intro */
 .rb-intro { background: #FAF8F5; }
@@ -335,8 +336,8 @@ h1, h2, h3, h4, h5, h6 { font-family: "Cormorant Garamond", Georgia, serif; }
 .rb-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 50px; }
 .rb-feature { text-align: center; padding: 30px 20px; }
 .rb-feature-icon { font-size: 36px; margin-bottom: 20px; }
-.rb-feature h3 { font-family: "Cormorant Garamond", serif; font-size: 22px; color: #3D3229; margin-bottom: 12px; font-weight: 500; }
-.rb-feature p { font-size: 15px; color: #8B7355; line-height: 1.7; font-weight: 300; }
+.rb-feature h3 { font-family: "Cormorant Garamond", serif; font-size: 24px; color: #2C2318; margin-bottom: 12px; font-weight: 600; }
+.rb-feature p { font-family: "Montserrat", sans-serif; font-size: 16.5px; color: #4A3B2C; line-height: 1.75; font-weight: 400; }
 
 /* Rooms */
 .rb-rooms { background: #F5F0E8; }
@@ -345,11 +346,11 @@ h1, h2, h3, h4, h5, h6 { font-family: "Cormorant Garamond", Georgia, serif; }
 .rb-room-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
 .rb-room-img { height: 280px; background-size: cover; background-position: center; }
 .rb-room-info { padding: 30px; }
-.rb-room-info h3 { font-family: "Cormorant Garamond", serif; font-size: 26px; color: #3D3229; margin-bottom: 10px; font-weight: 500; }
-.rb-room-info p { font-size: 15px; color: #8B7355; line-height: 1.7; margin-bottom: 15px; font-weight: 300; }
+.rb-room-info h3 { font-family: "Cormorant Garamond", serif; font-size: 27px; color: #2C2318; margin-bottom: 10px; font-weight: 600; }
+.rb-room-info p { font-family: "Montserrat", sans-serif; font-size: 16px; color: #4A3B2C; line-height: 1.75; margin-bottom: 15px; font-weight: 400; }
 .rb-room-price { font-size: 15px; color: #C75B39; margin-bottom: 15px; }
 .rb-room-price strong { font-size: 22px; font-weight: 600; }
-.rb-room-link { color: #C75B39; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; transition: color 0.3s; }
+.rb-room-link { font-family: "Montserrat", sans-serif; color: #B14A28; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; transition: color 0.3s; }
 .rb-room-link:hover { color: #3D3229; }
 
 /* Services */
@@ -357,15 +358,15 @@ h1, h2, h3, h4, h5, h6 { font-family: "Cormorant Garamond", Georgia, serif; }
 .rb-services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 50px; }
 .rb-service-item { padding: 40px; border: 1px solid #E8E0D5; transition: border-color 0.3s, box-shadow 0.3s; }
 .rb-service-item:hover { border-color: #C75B39; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-.rb-service-item h3 { font-family: "Cormorant Garamond", serif; font-size: 24px; color: #3D3229; margin-bottom: 10px; font-weight: 500; }
-.rb-service-item p { font-size: 15px; color: #8B7355; line-height: 1.7; font-weight: 300; margin: 0; }
+.rb-service-item h3 { font-family: "Cormorant Garamond", serif; font-size: 25px; color: #2C2318; margin-bottom: 10px; font-weight: 600; }
+.rb-service-item p { font-family: "Montserrat", sans-serif; font-size: 16.5px; color: #4A3B2C; line-height: 1.75; font-weight: 400; margin: 0; }
 
 /* CTA */
 .rb-cta { background: linear-gradient(135deg, #3D3229, #6B4E3D); padding: 100px 20px; text-align: center; }
-.rb-cta-title { font-family: "Cormorant Garamond", serif; font-size: 40px; color: #fff; margin-bottom: 15px; font-weight: 400; letter-spacing: 2px; }
-.rb-cta-text { font-size: 17px; color: rgba(255,255,255,0.8); margin-bottom: 40px; font-weight: 300; }
+.rb-cta-title { font-family: "Cormorant Garamond", serif; font-size: 41px; color: #fff; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px; }
+.rb-cta-text { font-family: "Montserrat", sans-serif; font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.94); margin-bottom: 40px; font-weight: 400; }
 .rb-cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-.rb-btn-outline { display: inline-block; padding: 14px 40px; border: 1px solid #C75B39; color: #C75B39; text-decoration: none; font-family: "Raleway", sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease; font-weight: 500; }
+.rb-btn-outline { display: inline-block; padding: 14px 40px; border: 1px solid #C75B39; color: #B14A28; text-decoration: none; font-family: "Montserrat", sans-serif; font-size: 13.5px; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease; font-weight: 500; }
 .rb-btn-outline:hover { background: #C75B39; color: #fff; }
 .rb-btn-white { border-color: rgba(255,255,255,0.6); color: #fff; }
 .rb-btn-white:hover { background: rgba(255,255,255,0.15); border-color: #fff; color: #fff; }
@@ -376,7 +377,8 @@ h1, h2, h3, h4, h5, h6 { font-family: "Cormorant Garamond", Georgia, serif; }
 .site-footer a { color: #D4A574 !important; }
 
 /* Global touches */
-.entry-content { font-size: 16px; line-height: 1.8; }
+.entry-content { font-size: 16.5px; line-height: 1.8; }
+.entry-content p, .entry-content li { font-family: "Montserrat", sans-serif; color: #33291F; font-weight: 400; }
 .ast-page-builder-template .entry-content { padding: 0; }
 
 /* Remove default page title on homepage */
@@ -405,6 +407,7 @@ html { scroll-behavior: smooth; }
   .rb-services-grid { grid-template-columns: 1fr; }
   .rb-section { padding: 70px 20px; }
   .rb-section-title { font-size: 32px; }
+  .rb-section-text, .rb-feature p, .rb-service-item p, .rb-room-info p { font-size: 16px; line-height: 1.75; }
   .rb-cta-title { font-size: 30px; }
 }
 @media (max-width: 480px) {

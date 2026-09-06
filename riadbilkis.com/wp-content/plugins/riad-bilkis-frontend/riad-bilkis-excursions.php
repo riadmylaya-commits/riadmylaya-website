@@ -562,7 +562,7 @@ function riad_bilkis_exc_assets() {
 .rb-exc-card__title{font-family:var(--rb-serif);font-size:26px;font-weight:600;line-height:1.25;margin:0 0 8px}
 .rb-exc-card__title a{color:var(--rb-brown);text-decoration:none}
 .rb-exc-card__distance{font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:#B08A57;font-weight:600;margin:0 0 12px}
-.rb-exc-card__desc{font-size:15.5px;line-height:1.7;margin:0 0 20px}
+.rb-exc-card__desc{font-size:16.5px;line-height:1.75;margin:0 0 20px}
 .rb-exc-card__btn,.rb-exc-card__btn:visited{margin-top:auto;align-self:flex-start;display:inline-block;padding:12px 26px;
  border:1px solid var(--rb-safran);color:#8A6A3B;text-decoration:none;font-size:12.5px;font-weight:600;letter-spacing:2px;
  text-transform:uppercase;transition:background .3s ease,color .3s ease}
@@ -581,7 +581,7 @@ function riad_bilkis_exc_assets() {
 .rb-exc-detail__body li{font-size:16px;line-height:1.8;margin-bottom:6px}
 .rb-exc-detail h2{font-family:var(--rb-serif);font-size:32px;font-weight:600;letter-spacing:.3px;color:var(--rb-brown);margin:0 0 14px}
 .rb-exc-book{background:#FBF7F2;border:1px solid #E8E0D5;padding:30px;margin:36px 0}
-.rb-exc-book__text{font-size:15.5px;line-height:1.7;margin:0 0 20px}
+.rb-exc-book__text{font-size:16.5px;line-height:1.75;margin:0 0 20px}
 .rb-exc-price{background:#fff;border:1px solid #E8E0D5;padding:18px 20px;margin-bottom:24px}
 .rb-exc-price h3{font-family:var(--rb-serif);font-size:23px;font-weight:600;color:var(--rb-brown);margin:0 0 10px}
 .rb-exc-price__row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid #F0E8DC;font-size:15px}
@@ -597,8 +597,8 @@ function riad_bilkis_exc_assets() {
 .rb-exc-form__total{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #E3CFA9;
  padding:14px 18px;margin:2px 0 18px;font-size:14px;letter-spacing:1.4px;text-transform:uppercase;font-weight:600;color:#7A6650}
 .rb-exc-form__total strong{font-family:var(--rb-serif);font-size:30px;letter-spacing:0;text-transform:none;color:var(--rb-terra)}
-.rb-exc-form__min{font-size:13.5px;color:#8B7355;margin:-8px 0 18px}
-.rb-exc-form__note{font-size:13px;color:#8B7355;margin:12px 0 0}
+.rb-exc-form__min{font-size:14px;color:#5A4A38;margin:-8px 0 18px}
+.rb-exc-form__note{font-size:13.5px;color:#5A4A38;margin:12px 0 0}
 .rb-exc-form .rb-official__btn{margin-top:4px}
 .rb-exc-inc__grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:12px}
 .rb-exc-inc__col{background:#fff;border:1px solid #E8E0D5;padding:22px 24px}

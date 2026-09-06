@@ -5,7 +5,7 @@
 .rb-mainbar {
   position: sticky; top: 0; z-index: 9998;
   background: #fff; border-bottom: 1px solid #EFE7DC;
-  font-family: "Raleway", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
 }
 .rb-mainbar__inner {
   display: flex; align-items: center; gap: 20px;
@@ -21,7 +21,7 @@
 .rb-mainbar__menu > li { position: relative; }
 .rb-mainbar__menu > li > a {
   display: block; padding: 12px 18px; position: relative;
-  font-size: 13px; letter-spacing: 2.2px; text-transform: uppercase; font-weight: 500;
+  font-size: 13.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
   color: #2C2318; text-decoration: none; white-space: nowrap;
 }
 .rb-mainbar__menu > li > a:after {

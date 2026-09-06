@@ -4,7 +4,8 @@
 :root {
   --rb-terra: #C75B39;
   --rb-clay: #C88B6A;
-  --rb-ink: #3D3229;
+  --rb-ink: #33291F;
+  --rb-ink-soft: #4A3B2C;
   --rb-cream: #FBF7F2;
   --rb-cream2: #F5EDE4;
   --rb-border: #E6D3C4;
@@ -16,9 +17,10 @@ body {
   margin: 0;
   background: #fff;
   color: var(--rb-ink);
-  font-family: 'Raleway', system-ui, -apple-system, sans-serif;
-  font-size: 16px;
-  line-height: 1.65;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  font-size: 16.5px;
+  font-weight: 400;
+  line-height: 1.78;
 }
 
 h1, h2, h3 {
@@ -71,7 +73,7 @@ a { color: var(--rb-terra); }
   color: #F3DFC8; background: rgba(0, 0, 0, .25); padding: 6px 16px; border-radius: 30px; margin-bottom: 18px;
 }
 .rb-hero h1 { font-size: clamp(34px, 6vw, 62px); color: #fff; margin: 0 0 14px; line-height: 1.05; }
-.rb-hero p { font-size: clamp(15px, 2vw, 19px); max-width: 760px; margin: 0 auto 26px; color: #F5EAE0; }
+.rb-hero p { font-size: clamp(16px, 2vw, 19px); line-height: 1.65; max-width: 760px; margin: 0 auto 26px; color: #F5EAE0; }
 .rb-hero__meta { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 26px; }
 .rb-hero__badge { background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .28); padding: 7px 15px; border-radius: 24px; font-size: 13.5px; }
 
@@ -93,14 +95,14 @@ a { color: var(--rb-terra); }
 .rb-compare { padding: 70px 0 50px; background: var(--rb-cream); }
 .rb-section-head { text-align: center; max-width: 820px; margin: 0 auto 38px; }
 .rb-section-head h2 { font-size: clamp(28px, 3.6vw, 40px); }
-.rb-section-head p { color: #6f6257; margin: 0; }
+.rb-section-head p { color: var(--rb-ink-soft); font-size: 17px; line-height: 1.8; margin: 0; }
 .rb-compare__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
 @media (max-width: 768px) { .rb-compare__grid { grid-template-columns: 1fr; } }
 .rb-option { background: #fff; border: 1px solid var(--rb-border); border-radius: 10px; padding: 30px 26px; }
 .rb-option--group { background: var(--rb-cream2); border-color: var(--rb-clay); }
 .rb-option h3 { font-size: 26px; color: #8a5a3c; }
 .rb-option ul { list-style: none; margin: 0 0 22px; padding: 0; }
-.rb-option li { position: relative; padding: 0 0 10px 22px; font-size: 15px; }
+.rb-option li { position: relative; padding: 0 0 10px 22px; font-size: 16.5px; line-height: 1.7; }
 .rb-option li:before { content: "•"; position: absolute; left: 4px; color: var(--rb-terra); font-weight: 700; }
 
 /* ---------- Widget GetYourGuide ---------- */
@@ -129,7 +131,7 @@ a { color: var(--rb-terra); }
 .rb-theme:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0, 0, 0, .1); color: inherit; }
 .rb-theme__icon { font-size: 30px; margin-bottom: 10px; }
 .rb-theme h3 { font-size: 22px; color: #8a5a3c; margin-bottom: 8px; }
-.rb-theme p { font-size: 14.5px; color: #6f6257; margin: 0 0 14px; flex: 1 1 auto; }
+.rb-theme p { font-size: 16px; line-height: 1.7; color: var(--rb-ink-soft); margin: 0 0 14px; flex: 1 1 auto; }
 .rb-theme__cta { font-weight: 700; font-size: 13px; color: var(--rb-terra); border-bottom: 2px solid var(--rb-terra); padding-bottom: 2px; align-self: flex-start; }
 
 /* ---------- Aide + mention affiliation ---------- */
@@ -142,10 +144,10 @@ a { color: var(--rb-terra); }
 .rb-help__inner h2 { color: #fff; font-size: clamp(26px, 3.4vw, 36px); }
 .rb-help__inner p { color: #F0E4D8; max-width: 680px; margin: 0 auto 26px; }
 .rb-help__actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
-.rb-disclosure { max-width: 960px; margin: 26px auto 0; font-size: 13.5px; color: #7a6f66; text-align: center; }
+.rb-disclosure { max-width: 960px; margin: 26px auto 0; font-size: 14px; color: #5A4A38; text-align: center; }
 
 /* ---------- Pied de page ---------- */
 .rb-footer { background: var(--rb-ink); color: #F0E4D8; padding: 46px 0; text-align: center; }
 .rb-footer a { color: #F3DFC8; }
 .rb-footer__brand { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; letter-spacing: 1px; margin-bottom: 10px; }
-.rb-footer p { margin: 6px 0; font-size: 14.5px; }
+.rb-footer p { margin: 6px 0; font-size: 15.5px; }
