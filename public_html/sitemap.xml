@@ -375,4 +375,35 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Transferts / Transfers / Traslados -->
+  <url>
+    <loc>https://riadmylaya.com/transferts</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/transferts"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/transfers"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/traslados"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/transferts"/>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/transfers</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/transferts"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/transfers"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/traslados"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/transferts"/>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/traslados</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/transferts"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/transfers"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/traslados"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/transferts"/>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
