@@ -80,6 +80,17 @@
 .rm-ps-toc__list{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:0;padding:0;list-style:none}
 .rm-ps-toc__list a{display:block;font-family:'Quicksand',sans-serif;font-size:14.5px;color:#fff !important;background:rgba(255,255,255,.1);border:1px solid rgba(245,217,138,.45);border-radius:22px;padding:8px 15px;text-decoration:none}
 .rm-ps-toc__list a:hover{background:var(--terra);text-decoration:none}
+/* Guest area: the service menu follows the scroll, docked under the sticky header. */
+.rm-cs .rm-ps-toc{position:sticky;top:var(--rm-head-h,68px);z-index:900;padding:10px 0;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.rm-cs .rm-ps-toc__list a[aria-current="true"]{background:var(--terra);border-color:var(--terra)}
+@media(max-width:720px){
+.rm-cs .rm-ps-toc{padding:8px 0}
+.rm-cs .rm-ps-toc .container{padding-left:10px;padding-right:10px}
+.rm-cs .rm-ps-toc__list{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;gap:7px;padding-bottom:2px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.rm-cs .rm-ps-toc__list::-webkit-scrollbar{display:none}
+.rm-cs .rm-ps-toc__list li{flex:0 0 auto}
+.rm-cs .rm-ps-toc__list a{font-size:13.5px;padding:7px 12px;white-space:nowrap}
+}
 /* ---------- Sections ---------- */
 .rm-ps-sec{padding:60px 0;scroll-margin-top:160px}
 .rm-ps-card{scroll-margin-top:160px}

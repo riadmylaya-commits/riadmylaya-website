@@ -81,6 +81,17 @@
 .rm-ps-toc__list{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:0;padding:0;list-style:none}
 .rm-ps-toc__list a{display:block;font-family:'Quicksand',sans-serif;font-size:14.5px;color:#fff !important;background:rgba(255,255,255,.1);border:1px solid rgba(245,217,138,.45);border-radius:22px;padding:8px 15px;text-decoration:none}
 .rm-ps-toc__list a:hover{background:var(--terra);text-decoration:none}
+/* Guest area: the service menu follows the scroll, docked under the sticky header. */
+.rm-cs .rm-ps-toc{position:sticky;top:var(--rm-head-h,68px);z-index:900;padding:10px 0;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.rm-cs .rm-ps-toc__list a[aria-current="true"]{background:var(--terra);border-color:var(--terra)}
+@media(max-width:720px){
+.rm-cs .rm-ps-toc{padding:8px 0}
+.rm-cs .rm-ps-toc .container{padding-left:10px;padding-right:10px}
+.rm-cs .rm-ps-toc__list{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;gap:7px;padding-bottom:2px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.rm-cs .rm-ps-toc__list::-webkit-scrollbar{display:none}
+.rm-cs .rm-ps-toc__list li{flex:0 0 auto}
+.rm-cs .rm-ps-toc__list a{font-size:13.5px;padding:7px 12px;white-space:nowrap}
+}
 /* ---------- Sections ---------- */
 .rm-ps-sec{padding:60px 0;scroll-margin-top:160px}
 .rm-ps-card{scroll-margin-top:160px}
@@ -800,14 +811,25 @@
     });
   }
 
+  /* The summary is sticky under the sticky header, whose height varies with the viewport. */
+  var header = document.querySelector(".rm-cs-head");
+  var toc = document.querySelector(".rm-ps-toc");
+  function dockHeight() {
+    var h = header ? header.getBoundingClientRect().height : 0;
+    document.documentElement.style.setProperty("--rm-head-h", h + "px");
+    return h + (toc ? toc.getBoundingClientRect().height : 0);
+  }
+  dockHeight();
+  window.addEventListener("resize", dockHeight);
+  window.addEventListener("load", dockHeight);
+
   /* Summary links: open the targeted block and scroll to it without leaving the page. */
   function reveal(id, smooth) {
     var target = document.getElementById(id);
     if (!target) return false;
     if (target.tagName === "DETAILS") target.open = true;
     /* Explicit offset: scroll-margin-top is ignored on the <details> blocks. */
-    var header = document.querySelector(".rm-cs-head");
-    var offset = (header ? header.getBoundingClientRect().height : 0) + 14;
+    var offset = dockHeight() + 14;
     var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
     window.scrollTo({ top: top < 0 ? 0 : top, behavior: smooth ? "smooth" : "auto" });
     return true;
@@ -828,6 +850,32 @@
   window.addEventListener("hashchange", function () {
     if (location.hash.length > 1) reveal(decodeURIComponent(location.hash.slice(1)), false);
   });
+  /* Highlight the service the guest is currently reading. */
+  var links = [].slice.call(document.querySelectorAll(".rm-ps-toc__list a"));
+  if (links.length) {
+    var pending = false;
+    var spy = function () {
+      pending = false;
+      var limit = dockHeight() + 24;
+      var current = null;
+      links.forEach(function (link) {
+        var href = link.getAttribute("href") || "";
+        var el = document.getElementById(href.slice(href.indexOf("#") + 1));
+        if (el && el.getBoundingClientRect().top <= limit) current = link;
+      });
+      links.forEach(function (link) {
+        if (link === current) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
+    };
+    window.addEventListener("scroll", function () {
+      if (pending) return;
+      pending = true;
+      window.requestAnimationFrame(spy);
+    }, { passive: true });
+    spy();
+  }
+
   if (location.hash.length > 1) {
     var hash = decodeURIComponent(location.hash.slice(1));
     reveal(hash, false);
