@@ -209,6 +209,8 @@
 .rm-tq__actions button{width:100%;border:none;background:var(--terra);color:#fff;font-family:'Yanone Kaffeesatz',sans-serif;text-transform:uppercase;letter-spacing:1.6px;font-size:18px;padding:15px 20px;border-radius:6px;cursor:pointer}
 .rm-tq__actions button:hover{background:var(--terra-d)}
 .rm-tq__legal{font-size:13px;color:#9a9a9a;margin:14px 0 0}
+.rm-tq__more{background:#fff;color:var(--terra) !important;border:2px solid var(--terra);box-shadow:none}
+.rm-tq__more:hover{background:#fdf3e6;color:var(--terra-d) !important;text-decoration:none}
 /* ---------- Moteurs de réservation génériques ---------- */
 .rm-bk-persons{display:flex;flex-direction:column;gap:12px;margin:4px 0 0}
 .rm-bk-person{background:var(--cream2);border:1px solid #f1e3d0;border-radius:10px;padding:14px 14px 4px}
@@ -220,6 +222,11 @@
 .rm-bk-extra input{width:auto !important;margin:0 !important;padding:0 !important}
 /* ---------- Widget GetYourGuide dans un bloc ---------- */
 .rm-cs-gyg{margin:16px 0 0;min-height:60px}
+/* The widget iframe ends with a GetYourGuide affiliate line; the frame is
+   cross-origin, so the only way to keep it out of the guest area is to crop
+   the bottom of the frame. */
+.rm-cs-gyg-clip{overflow:hidden}
+.rm-cs-gyg-clip .rm-cs-gyg{margin-bottom:-34px}
 </style>
 </head>
 <body>

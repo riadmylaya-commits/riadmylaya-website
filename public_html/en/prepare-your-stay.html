@@ -210,6 +210,8 @@
 .rm-tq__actions button{width:100%;border:none;background:var(--terra);color:#fff;font-family:'Yanone Kaffeesatz',sans-serif;text-transform:uppercase;letter-spacing:1.6px;font-size:18px;padding:15px 20px;border-radius:6px;cursor:pointer}
 .rm-tq__actions button:hover{background:var(--terra-d)}
 .rm-tq__legal{font-size:13px;color:#9a9a9a;margin:14px 0 0}
+.rm-tq__more{background:#fff;color:var(--terra) !important;border:2px solid var(--terra);box-shadow:none}
+.rm-tq__more:hover{background:#fdf3e6;color:var(--terra-d) !important;text-decoration:none}
 /* ---------- Moteurs de réservation génériques ---------- */
 .rm-bk-persons{display:flex;flex-direction:column;gap:12px;margin:4px 0 0}
 .rm-bk-person{background:var(--cream2);border:1px solid #f1e3d0;border-radius:10px;padding:14px 14px 4px}
@@ -221,6 +223,11 @@
 .rm-bk-extra input{width:auto !important;margin:0 !important;padding:0 !important}
 /* ---------- Widget GetYourGuide dans un bloc ---------- */
 .rm-cs-gyg{margin:16px 0 0;min-height:60px}
+/* The widget iframe ends with a GetYourGuide affiliate line; the frame is
+   cross-origin, so the only way to keep it out of the guest area is to crop
+   the bottom of the frame. */
+.rm-cs-gyg-clip{overflow:hidden}
+.rm-cs-gyg-clip .rm-cs-gyg{margin-bottom:-34px}
 </style>
 </head>
 <body data-rm-space="client">
@@ -353,7 +360,7 @@
           <input type="hidden" name="_subject" value="Transfer request · Riad Mylaya">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="true">
-          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/en/thank-you-stay">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <input type="hidden" name="Request summary" data-tq-recap>
           <input type="hidden" name="Estimated total" data-tq-total-field>
@@ -470,7 +477,7 @@
           <input type="hidden" name="_subject" value="Dinner request · Riad Mylaya">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="true">
-          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/en/thank-you-stay">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <input type="hidden" name="Request summary" data-bk-recap>
           <input type="hidden" name="Estimated total" data-bk-total-field>
@@ -531,7 +538,7 @@
           <input type="hidden" name="_subject" value="Cooking class request · Riad Mylaya">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="true">
-          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/en/thank-you-stay">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <input type="hidden" name="Request summary" data-bk-recap>
           <input type="hidden" name="Estimated total" data-bk-total-field>
@@ -592,7 +599,7 @@
           <input type="hidden" name="_subject" value="Private excursion request · Riad Mylaya">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="true">
-          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/en/thank-you-stay">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <input type="hidden" name="Request summary" data-bk-recap>
           <input type="hidden" name="Estimated total" data-bk-total-field>
@@ -621,6 +628,7 @@
           <div class="rm-tq__actions">
             <a class="rm-lp-btn rm-lp-btn--wa" data-bk-wa href="https://wa.me/212661351989?text=Hello%2C%20I%20have%20a%20booking%20at%20Riad%20Mylaya%20and%20I%20would%20like%20a%20quote%20for%20a%20private%20excursion.%0AFull%20name%20on%20the%20booking%3A%0ABooking%20number%3A%0ADestination%3A%0ADate%3A%0ANumber%20of%20people%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="excursions-space"><span aria-hidden="true">💬</span> Send my request on WhatsApp</a>
             <button type="submit" data-bk-submit data-track="form" data-track-label="excursions-space">Send my request by email</button>
+            <a class="rm-lp-btn rm-tq__more" href="/en/page14" data-track="service" data-track-label="excursions-more"><span aria-hidden="true">🧭</span> More about our excursions</a>
           </div>
           <p class="rm-tq__legal">Your request is sent to the riad, which confirms availability and price. Everything is paid on site in cash.</p>
         </form>
@@ -644,12 +652,14 @@
         <li>Booked and paid online, free cancellation up to 24 hours before.</li>
       </ul>
       <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Prices shown online</span> <span class="rm-ps-acc__pay">🔒 Booked and paid online</span></p>
+      <div class="rm-cs-gyg-clip">
       <div class="rm-cs-gyg"
            data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
            data-gyg-locale-code="en-US"
            data-gyg-widget="activities"
            data-gyg-number-of-items="6"
            data-gyg-q="Marrakech, Morocco"></div>
+      </div>
       <p>Excursions, Agafay desert, hot-air balloon, quad biking, waterfalls, guided tours and much more, bookable online with free cancellation.</p>
       <a class="rm-lp-btn rm-lp-btn--primary" href="https://gyg.me/pieHSnog" target="_blank" rel="nofollow sponsored noopener" data-track="gyg" data-track-label="space-group">See all activities</a>
       </div>
@@ -681,7 +691,7 @@
           <input type="hidden" name="_subject" value="Hammam / massage request · Riad Mylaya">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="true">
-          <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+          <input type="hidden" name="_next" value="https://riadmylaya.com/en/thank-you-stay">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <input type="hidden" name="Request summary" data-bk-recap>
           <input type="hidden" name="Estimated total" data-bk-total-field>
@@ -733,7 +743,7 @@
         <input type="hidden" name="_subject" value="Guest question · Prepare your stay · Riad Mylaya">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="true">
-        <input type="hidden" name="_next" value="https://riadmylaya.com/merci">
+        <input type="hidden" name="_next" value="https://riadmylaya.com/en/thank-you-stay">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <h3>Write to us by email</h3>
         <p class="rm-ps-form__hint">We reply within 24 hours.</p>
