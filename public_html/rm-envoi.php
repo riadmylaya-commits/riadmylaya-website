@@ -55,8 +55,18 @@ $T = array(
         'booked' => 'Service demandé',
         'title_q' => 'Nouvelle question d’un client',
         'message' => 'Message du client',
-        'ack_subject' => 'Nous avons bien reçu votre demande — Riad Mylaya',
-        'ack_body' => "Bonjour,\n\nNous avons bien reçu votre demande et nous vous répondrons rapidement pour la confirmer.\n\nÀ très bientôt,\nL'équipe du Riad Mylaya\nTél. / WhatsApp : +212 661 351 989\ncontact@riadmylaya.com · riadmylaya.com",
+        'ack_subject' => 'Votre demande a bien été reçue – Riad Mylaya',
+        'ack_title' => 'Votre demande a bien été reçue',
+        'ack_hello' => 'Bonjour',
+        'ack_intro' => 'Merci. Nous avons bien reçu votre demande concernant %s.',
+        'ack_intro_q' => 'Merci. Nous avons bien reçu votre message.',
+        'ack_recap' => 'Voici le récapitulatif de votre demande :',
+        'ack_notice' => 'Votre demande a bien été reçue. Notre équipe va vérifier la disponibilité et vous confirmer la réservation. Cet e-mail confirme la réception de votre demande, mais pas encore la disponibilité définitive du service.',
+        'ack_notice_q' => 'Notre équipe vous répondra rapidement.',
+        'ack_back' => 'Retour à Préparer mon séjour',
+        'ack_url' => 'https://riadmylaya.com/preparer-mon-sejour',
+        'ack_sign' => "À très bientôt,\nL'équipe du Riad Mylaya",
+        'ack_contact' => 'Tél. / WhatsApp : +212 661 351 989 · contact@riadmylaya.com',
     ),
     'en' => array(
         'title' => 'New booking request',
@@ -77,8 +87,18 @@ $T = array(
         'booked' => 'Requested service',
         'title_q' => 'New guest question',
         'message' => 'Guest message',
-        'ack_subject' => 'We have received your request — Riad Mylaya',
-        'ack_body' => "Hello,\n\nWe have received your request and will get back to you shortly to confirm it.\n\nSee you soon,\nThe Riad Mylaya team\nPhone / WhatsApp: +212 661 351 989\ncontact@riadmylaya.com · riadmylaya.com",
+        'ack_subject' => 'We have received your request – Riad Mylaya',
+        'ack_title' => 'We have received your request',
+        'ack_hello' => 'Hello',
+        'ack_intro' => 'Thank you. We have received your request regarding %s.',
+        'ack_intro_q' => 'Thank you. We have received your message.',
+        'ack_recap' => 'Here is a summary of your request:',
+        'ack_notice' => 'Your request has been received. Our team will check availability and confirm the booking. This email confirms that we received your request, but not yet the final availability of the service.',
+        'ack_notice_q' => 'Our team will get back to you shortly.',
+        'ack_back' => 'Back to Prepare your stay',
+        'ack_url' => 'https://riadmylaya.com/en/prepare-your-stay',
+        'ack_sign' => "See you soon,\nThe Riad Mylaya team",
+        'ack_contact' => 'Phone / WhatsApp: +212 661 351 989 · contact@riadmylaya.com',
     ),
     'es' => array(
         'title' => 'Nueva solicitud de reserva',
@@ -99,8 +119,18 @@ $T = array(
         'booked' => 'Servicio solicitado',
         'title_q' => 'Nueva consulta de un cliente',
         'message' => 'Mensaje del cliente',
-        'ack_subject' => 'Hemos recibido su solicitud — Riad Mylaya',
-        'ack_body' => "Hola,\n\nHemos recibido su solicitud y le responderemos en breve para confirmarla.\n\nHasta pronto,\nEl equipo del Riad Mylaya\nTeléfono / WhatsApp: +212 661 351 989\ncontact@riadmylaya.com · riadmylaya.com",
+        'ack_subject' => 'Su solicitud ha sido recibida – Riad Mylaya',
+        'ack_title' => 'Su solicitud ha sido recibida',
+        'ack_hello' => 'Hola',
+        'ack_intro' => 'Gracias. Hemos recibido su solicitud relativa a %s.',
+        'ack_intro_q' => 'Gracias. Hemos recibido su mensaje.',
+        'ack_recap' => 'Este es el resumen de su solicitud:',
+        'ack_notice' => 'Su solicitud ha sido recibida. Nuestro equipo comprobará la disponibilidad y le confirmará la reserva. Este correo confirma la recepción de su solicitud, pero todavía no la disponibilidad definitiva del servicio.',
+        'ack_notice_q' => 'Nuestro equipo le responderá en breve.',
+        'ack_back' => 'Volver a Preparar mi estancia',
+        'ack_url' => 'https://riadmylaya.com/es/preparar-mi-estancia',
+        'ack_sign' => "Hasta pronto,\nEl equipo del Riad Mylaya",
+        'ack_contact' => 'Teléfono / WhatsApp: +212 661 351 989 · contact@riadmylaya.com',
     ),
 );
 
@@ -431,7 +461,7 @@ $html = '<!DOCTYPE html><html lang="' . $lang . '"><head><meta charset="utf-8">'
     . '<div style="display:none;max-height:0;overflow:hidden;opacity:0;">' . rm_h($service . ($total !== '' ? ' — ' . $total : '') . ($name !== '' ? ' — ' . $name : '')) . '</div>'
     . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f2ede4;">'
     . '<tr><td align="center" style="padding:18px 10px;">'
-    . '<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid ' . $line . ';">'
+    . '<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid ' . $line . ';">'
 
     /* en-tête */
     . '<tr><td style="background:' . $terraD . ';padding:20px 24px;">'
@@ -504,6 +534,122 @@ if ($rows || $notes) {
     }
 }
 $text = implode("\n", $textLines);
+
+/* ------------------------------------- confirmation envoyée au client */
+
+$ackRows = array();
+if ($name !== '') {
+    $ackRows[] = array($t['name'], $name);
+}
+if ($ref !== '') {
+    $ackRows[] = array($lang === 'en' ? 'Booking number' : ($lang === 'es' ? 'N.º de reserva' : 'N° de réservation'), $ref);
+}
+$ackRows[] = array($t['booked'], $service);
+foreach ($rows as $r) {
+    $ackRows[] = $r;
+}
+
+$ackRowsHtml = '';
+foreach ($ackRows as $r) {
+    $ackRowsHtml .= '<tr>'
+        . '<td style="padding:9px 0;border-bottom:1px solid ' . $line . ';font:400 13px/1.45 Arial,Helvetica,sans-serif;color:' . $muted . ';width:46%;vertical-align:top;">' . rm_h($r[0]) . '</td>'
+        . '<td style="padding:9px 0;border-bottom:1px solid ' . $line . ';font:700 14px/1.45 Arial,Helvetica,sans-serif;color:' . $ink . ';vertical-align:top;">' . nl2br(rm_h($r[1])) . '</td>'
+        . '</tr>';
+}
+
+/* les anciens formulaires envoient un sujet du type « Nouvelle demande … » :
+   il ne se lit pas dans une phrase adressée au client. */
+$ackService = preg_replace(
+    array('/^demande\s+d[eu]\s+/iu', '/^demande\s+d[\'’]/iu', '/^solicitud\s+de\s+/iu', '/\s+request$/i'),
+    '',
+    $service
+);
+$ackService = function_exists('mb_strtoupper')
+    ? mb_strtoupper(mb_substr($ackService, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($ackService, 1, null, 'UTF-8')
+    : ucfirst($ackService);
+$ackService = $lang === 'fr' ? '« ' . $ackService . ' »' : '“' . $ackService . '”';
+$ackIntro = ($questionMode || preg_match('/^(nouvelle|nueva|new)\b/iu', $service))
+    ? $t['ack_intro_q']
+    : sprintf($t['ack_intro'], $ackService);
+$ackNotice = $questionMode ? $t['ack_notice_q'] : $t['ack_notice'];
+$ackGreeting = $t['ack_hello'] . ($name !== '' ? ' ' . $name : '');
+
+$ackHtml = '<!DOCTYPE html><html lang="' . $lang . '"><head><meta charset="utf-8">'
+    . '<meta name="viewport" content="width=device-width,initial-scale=1">'
+    . '<title>' . rm_h($t['ack_title']) . '</title></head>'
+    . '<body style="margin:0;padding:0;background:#f2ede4;">'
+    . '<div style="display:none;max-height:0;overflow:hidden;opacity:0;">' . rm_h($ackNotice) . '</div>'
+    . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f2ede4;">'
+    . '<tr><td align="center" style="padding:18px 10px;">'
+    . '<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid ' . $line . ';">'
+
+    . '<tr><td style="background:' . $terraD . ';padding:20px 24px;">'
+    . '<p style="margin:0;font:700 18px/1.3 Georgia,\'Times New Roman\',serif;color:#ffffff;">' . rm_h($t['ack_title']) . '</p>'
+    . '<p style="margin:4px 0 0;font:400 13px/1.4 Arial,Helvetica,sans-serif;color:#f3e6d6;">Riad Mylaya · Marrakech</p>'
+    . '</td></tr>'
+
+    . '<tr><td style="padding:22px 24px 0;">'
+    . '<p style="margin:0;font:400 15px/1.6 Arial,Helvetica,sans-serif;color:' . $ink . ';">' . rm_h($ackGreeting) . ',</p>'
+    . '<p style="margin:12px 0 0;font:400 15px/1.6 Arial,Helvetica,sans-serif;color:' . $ink . ';">' . rm_h($ackIntro) . '</p>'
+    . ($questionMode ? '' : '<p style="margin:12px 0 0;font:400 15px/1.6 Arial,Helvetica,sans-serif;color:' . $ink . ';">' . rm_h($t['ack_recap']) . '</p>')
+    . '</td></tr>'
+
+    . ($questionMode ? '' : rm_section($t['details'], $ackRowsHtml, $ink, $line))
+    . ($notesHtml !== '' ? '<tr><td style="padding:0 24px;">' . $notesHtml . '</td></tr>' : '')
+
+    . ($total !== ''
+        ? '<tr><td style="padding:22px 24px 0;">'
+          . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:' . $cream . ';border-radius:10px;">'
+          . '<tr><td style="padding:14px 18px;">'
+          . '<p style="margin:0;font:700 12px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.10em;text-transform:uppercase;color:' . $terraD . ';">' . rm_h($t['payment']) . '</p>'
+          . '<p style="margin:6px 0 0;font:700 22px/1.25 Georgia,\'Times New Roman\',serif;color:' . $ink . ';">' . rm_h($t['total']) . rm_h($colon) . rm_h($total) . '</p>'
+          . '<p style="margin:4px 0 0;font:400 14px/1.5 Arial,Helvetica,sans-serif;color:' . $muted . ';">' . rm_h($t['cash']) . '</p>'
+          . '</td></tr></table></td></tr>'
+        : '')
+
+    /* réception ≠ disponibilité confirmée */
+    . '<tr><td style="padding:22px 24px 0;">'
+    . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#fdf0e6;border-left:4px solid ' . $terra . ';border-radius:10px;">'
+    . '<tr><td style="padding:14px 18px;font:400 14px/1.6 Arial,Helvetica,sans-serif;color:#7a3c16;">' . rm_h($ackNotice) . '</td></tr>'
+    . '</table></td></tr>'
+
+    . '<tr><td style="padding:20px 24px 0;">'
+    . '<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>'
+    . rm_btn($t['ack_url'], $t['ack_back'], $terraD, '#ffffff', $terraD)
+    . '</tr></table></td></tr>'
+
+    . '<tr><td style="padding:20px 24px 24px;">'
+    . '<p style="margin:0;font:400 14px/1.6 Arial,Helvetica,sans-serif;color:' . $ink . ';">' . nl2br(rm_h($t['ack_sign'])) . '</p>'
+    . '<p style="margin:10px 0 0;border-top:1px solid ' . $line . ';padding-top:14px;font:400 12px/1.5 Arial,Helvetica,sans-serif;color:' . $muted . ';">'
+    . rm_h($t['ack_contact']) . '<br>Riad Mylaya — 163 Derb Bounba, Arset Ihiri, Médina, Marrakech</p>'
+    . '</td></tr>'
+
+    . '</table></td></tr></table></body></html>';
+
+$ackLines = array($ackGreeting . ',', '', $ackIntro);
+if (!$questionMode) {
+    $ackLines[] = '';
+    $ackLines[] = $t['ack_recap'];
+    foreach ($ackRows as $r) {
+        $ackLines[] = $r[0] . $colon . $r[1];
+    }
+}
+foreach ($notes as $n) {
+    $ackLines[] = $n;
+}
+if ($total !== '') {
+    $ackLines[] = '';
+    $ackLines[] = $t['total'] . $colon . $total;
+    $ackLines[] = $t['cash'];
+}
+$ackLines[] = '';
+$ackLines[] = $ackNotice;
+$ackLines[] = '';
+$ackLines[] = $t['ack_back'] . $colon . $t['ack_url'];
+$ackLines[] = '';
+$ackLines[] = $t['ack_sign'];
+$ackLines[] = $t['ack_contact'];
+$ackText = implode("\n", $ackLines);
 
 /* ------------------------------------------------------------------ SMTP */
 
@@ -632,8 +778,9 @@ if ($CONFIG['smtp_pass'] !== '') {
     $sent = rm_smtp_send($CONFIG, $recipients, $headers, $body, $err);
 }
 
-/* accusé de réception au client (texte fixe : le formulaire ne dicte pas le contenu) */
-if ($sent && isset($_POST['_autoresponse']) && $email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+/* confirmation de réception au client (contenu généré ici, pas par le formulaire) */
+if ($sent && $email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $ackBoundary = 'rmack' . bin2hex(random_bytes(12));
     $ackHeaders = 'From: ' . rm_mime_header('Riad Mylaya') . ' <' . $CONFIG['from_email'] . ">\r\n"
         . 'To: ' . ($name !== '' ? rm_mime_header($name) . ' ' : '') . '<' . $email . ">\r\n"
         . 'Subject: ' . rm_mime_header($t['ack_subject']) . "\r\n"
@@ -642,9 +789,18 @@ if ($sent && isset($_POST['_autoresponse']) && $email !== '' && filter_var($emai
         . 'Reply-To: ' . rm_mime_header($CONFIG['to_name']) . ' <' . $CONFIG['to_email'] . ">\r\n"
         . 'Auto-Submitted: auto-replied' . "\r\n"
         . 'MIME-Version: 1.0' . "\r\n"
-        . "Content-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n";
+        . 'Content-Type: multipart/alternative; boundary="' . $ackBoundary . '"' . "\r\n";
+    $ackBody = '--' . $ackBoundary . "\r\n"
+        . "Content-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n"
+        . chunk_split(base64_encode($ackText)) . "\r\n"
+        . '--' . $ackBoundary . "\r\n"
+        . "Content-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n"
+        . chunk_split(base64_encode($ackHtml)) . "\r\n"
+        . '--' . $ackBoundary . "--\r\n";
     $ackErr = '';
-    rm_smtp_send($CONFIG, array($email), $ackHeaders, chunk_split(base64_encode($t['ack_body'])), $ackErr);
+    if (!rm_smtp_send($CONFIG, array($email), $ackHeaders, $ackBody, $ackErr)) {
+        @error_log('[rm-envoi] client ack failed: ' . $ackErr);
+    }
 }
 
 if (!$sent) {
