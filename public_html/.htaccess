@@ -103,3 +103,14 @@ AddType image/webp .webp
 order allow,deny
 allow from all
 </Files>
+
+# Configuration SMTP (mot de passe) : jamais accessible en HTTP
+<FilesMatch "^rm-mail-config(\.sample)?\.php$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
