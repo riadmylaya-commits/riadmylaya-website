@@ -537,6 +537,17 @@ $text = implode("\n", $textLines);
 
 /* ------------------------------------- confirmation envoyée au client */
 
+/* les sujets des formulaires (« Demande de transfert », « Dinner request ») ne se
+   lisent pas dans un e-mail adressé au client : on garde le nom du service seul. */
+$ackService = preg_replace(
+    array('/^demande\s+d[eu]\s+/iu', '/^demande\s+d[\'’]/iu', '/^solicitud\s+de\s+/iu', '/\s+request$/i'),
+    '',
+    $service
+);
+$ackService = function_exists('mb_strtoupper')
+    ? mb_strtoupper(mb_substr($ackService, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($ackService, 1, null, 'UTF-8')
+    : ucfirst($ackService);
+
 $ackRows = array();
 if ($name !== '') {
     $ackRows[] = array($t['name'], $name);
@@ -544,7 +555,7 @@ if ($name !== '') {
 if ($ref !== '') {
     $ackRows[] = array($lang === 'en' ? 'Booking number' : ($lang === 'es' ? 'N.º de reserva' : 'N° de réservation'), $ref);
 }
-$ackRows[] = array($t['booked'], $service);
+$ackRows[] = array($t['booked'], $ackService);
 foreach ($rows as $r) {
     $ackRows[] = $r;
 }
@@ -557,20 +568,9 @@ foreach ($ackRows as $r) {
         . '</tr>';
 }
 
-/* les anciens formulaires envoient un sujet du type « Nouvelle demande … » :
-   il ne se lit pas dans une phrase adressée au client. */
-$ackService = preg_replace(
-    array('/^demande\s+d[eu]\s+/iu', '/^demande\s+d[\'’]/iu', '/^solicitud\s+de\s+/iu', '/\s+request$/i'),
-    '',
-    $service
-);
-$ackService = function_exists('mb_strtoupper')
-    ? mb_strtoupper(mb_substr($ackService, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($ackService, 1, null, 'UTF-8')
-    : ucfirst($ackService);
-$ackService = $lang === 'fr' ? '« ' . $ackService . ' »' : '“' . $ackService . '”';
 $ackIntro = ($questionMode || preg_match('/^(nouvelle|nueva|new)\b/iu', $service))
     ? $t['ack_intro_q']
-    : sprintf($t['ack_intro'], $ackService);
+    : sprintf($t['ack_intro'], $lang === 'fr' ? '« ' . $ackService . ' »' : '“' . $ackService . '”');
 $ackNotice = $questionMode ? $t['ack_notice_q'] : $t['ack_notice'];
 $ackGreeting = $t['ack_hello'] . ($name !== '' ? ' ' . $name : '');
 
