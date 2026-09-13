@@ -17,18 +17,27 @@
   var MESSAGES = {
     fr: {
       wait: "Vérification de sécurité en cours…",
+      check:
+        "Merci de cocher la case de vérification ci-dessus : votre demande" +
+        " partira automatiquement ensuite.",
       fail:
         "La vérification de sécurité n'a pas abouti. Merci de réessayer, ou" +
         " écrivez-nous sur WhatsApp au +212 661 351 989."
     },
     en: {
       wait: "Security check in progress…",
+      check:
+        "Please tick the verification box above: your request will then be sent" +
+        " automatically.",
       fail:
         "The security check did not complete. Please try again, or message us" +
         " on WhatsApp at +212 661 351 989."
     },
     es: {
       wait: "Verificación de seguridad en curso…",
+      check:
+        "Marque la casilla de verificación de arriba: su solicitud se enviará" +
+        " automáticamente después.",
       fail:
         "La verificación de seguridad no se ha completado. Inténtelo de nuevo o" +
         " escríbanos por WhatsApp al +212 661 351 989."
@@ -127,17 +136,18 @@
     });
   };
 
-  /* Jeton expiré ou Turnstile en échec : une nouvelle tentative silencieuse,
-     puis un message expliquant comment nous joindre. Envoyer sans jeton serait
-     refusé par le serveur, le client ne saurait pas pourquoi. */
+  /* Turnstile en échec : une nouvelle tentative, puis un message expliquant
+     comment nous joindre. Envoyer sans jeton serait refusé par le serveur, le
+     client ne saurait pas pourquoi. */
   window.rmTurnstileFailed = function () {
     widgets.forEach(function (entry) {
-      if (!entry.pending) return;
       entry.tries++;
       if (entry.tries < 2 && window.turnstile) {
         window.turnstile.reset(entry.box);
+        if (entry.pending) say(entry, texts.wait, "#5a5245");
         return;
       }
+      if (!entry.pending) return;
       entry.pending = false;
       say(entry, texts.fail, "#8a2f2f");
     });
@@ -151,11 +161,24 @@
       if (!entry) return;
       entry.pending = true;
       say(entry, texts.wait, "#5a5245");
+      /* Le jeton peut arriver bien après : on n'annule jamais l'attente, on
+         guide seulement le client, et l'envoi part dès que le jeton existe. */
       window.setTimeout(function () {
-        if (entry.pending && !token(form)) window.rmTurnstileFailed();
-      }, 15000);
+        if (entry.pending && !token(form)) say(entry, texts.check, "#5a5245");
+      }, 8000);
     });
   });
+
+  /* Filet de sécurité si le callback de Turnstile ne se déclenche pas. */
+  window.setInterval(function () {
+    widgets.forEach(function (entry) {
+      if (entry.pending && token(entry.form)) {
+        entry.pending = false;
+        say(entry, "", "");
+        entry.form.submit();
+      }
+    });
+  }, 1500);
 
   var api = document.createElement("script");
   api.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";

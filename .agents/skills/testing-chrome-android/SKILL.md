@@ -72,19 +72,34 @@ adb shell am force-stop com.android.chrome        # simulates OS-killed Chrome /
 
 ## 4. Known production facts worth re-checking, not re-discovering
 
-* The guest-area HTML (`/preparer-mon-sejour`, `/en/prepare-your-stay`, `/es/preparar-mi-estancia`)
-  is served by LiteSpeed with **`Cache-Control: no-cache, no-store, must-revalidate`** and **no ETag**.
-  Consequence measured over CDP: `Page.backForwardCacheNotUsed -> MainResourceHasCacheControlNoStore`,
-  i.e. these pages can **never** be restored from the back/forward cache or from disk. Every back
-  navigation and every tab restore is a full network round-trip, so a discarded tab shows a **blank
-  white viewport with the correct URL** until the HTML arrives — this is the most likely explanation
-  for "intermittent blank page" reports on loaded phones, and the recommended fix is to drop
-  `no-store` in favour of something revalidatable (`no-cache` + `ETag`, or a short `max-age`).
-* The static assets (`/rm-services-data.js`, `/transfer-quote.js`, `/rm-booking-engine.js`,
-  `/rm-custom.css`) are `public, max-age=2592000` with **no ETag**; the JS files are referenced
-  **without** a `?v=` query while the CSS files have one. A phone can therefore run 30-day-old JS
-  against fresh HTML. It cannot blank the page (they are `defer`red and only drive the booking
-  engines) but it can silently break a pricing engine — add a version query if the JS changes.
+* **Blank-page history (read this first).** The guest-area HTML used to be served with
+  `Cache-Control: no-cache, no-store, must-revalidate` and **no ETag**; CDP then reported
+  `Page.backForwardCacheNotUsed -> MainResourceHasCacheControlNoStore`, so the pages could never be
+  restored from bfcache or disk and a discarded/restored tab showed a **blank white viewport with the
+  correct URL** until the HTML re-downloaded. If an "intermittent blank page on Android" report comes
+  back, re-measure the HTML headers first — a regression to `no-store` (or a lost `FileETag`) is the
+  prime suspect.
+* **Current expected headers (measured after the cache fix).** Guest HTML: `200`,
+  `cache-control: no-cache, must-revalidate`, `etag: "...-...;br"`, `content-encoding: br`, HTTP/2,
+  no `pragma`/`expires`; `If-None-Match` -> `304`. With those headers the blank page no longer
+  reproduces: back navigation is restored with **no** `backForwardCacheNotUsed` event, a tab restored
+  after `am force-stop` repaints within a few seconds, and a tab restored **with Wi-Fi + data
+  disabled** still paints the full page from cache under Chrome's "No internet connection" banner
+  (that offline case was fully blank before the fix — it is the sharpest regression probe).
+* Local scripts are now versioned (`?v=<epoch>` on `ads-tracking.js`, `rm-antibot.js`,
+  `rm-services-data.js`, `transfer-quote.js`, `rm-booking-engine.js`) and carry ETags; they stay
+  `public, max-age=2592000` and are served `fromDiskCache` on repeat loads. The CSS files
+  (`assets/theme/css/style.css`, `mbr-additional.css`, `rm-custom.css`) still have **no ETag**.
+  When checking a deploy, assert every `?v=` script is `200` (a stale `?v=` would 404).
+* `/home/ubuntu/hdrprobe.py` — `TAB=<id> python3 hdrprobe.py <url>`: navigates the Android target and
+  prints status + `cache-control`/`etag`/`content-encoding`/`fromDiskCache` for the main document and
+  every versioned asset, plus console errors and bfcache refusals. Fastest way to verify cache and
+  script-version assertions on a phone in one shot.
+* Anti-bot fields to expect in the DOM of every `form[action*="rm-envoi.php"]` (6 per guest page):
+  hidden `_ts` (page-open `Date.now()`, same value for all forms) and a trap `_url` with
+  `value === ""`, `tabIndex === -1`, `getBoundingClientRect().right` around `-9960`, inside an
+  `aria-hidden="true"` wrapper. Turnstile `SITEKEY` is empty, so `.cf-turnstile` and any
+  `challenges.cloudflare.com` script/iframe count must be `0`.
 * Healthy portrait baseline (Pixel 5, 393x722): `scrollHeight` ~7.2k, `--rm-head-h: 52px`
   (68px in landscape), `body{visibility:visible;opacity:1}`, no full-viewport `position:fixed`
   element. Hash deep links (`#transfert`, `#diner`, `#hammam`, `#contact`, unknown anchors) keep

@@ -384,9 +384,7 @@ function rm_turnstile_verdict($CONFIG, $ip)
     if (empty($json['success'])) {
         $codes = isset($json['error-codes']) ? (array) $json['error-codes'] : array();
         @error_log('[rm-envoi] turnstile refuse : ' . implode(',', $codes));
-        /* Clé secrète erronée : c'est notre configuration qui est en cause, pas
-           le client. On laisse passer sa demande plutôt que de fermer le site. */
-        return in_array('invalid-input-secret', $codes, true);
+        return false;
     }
     @error_log('[rm-envoi] turnstile ok hostname=' . (isset($json['hostname']) ? $json['hostname'] : '?'));
     /* Un jeton obtenu sur un autre domaine ne doit pas ouvrir nos formulaires. */
