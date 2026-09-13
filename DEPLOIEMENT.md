@@ -63,3 +63,46 @@ s'appliquer à l'ensemble du site.
 contrairement à la version française. Toute image ou ressource ajoutée à ces
 pages doit donc utiliser un chemin absolu (`/assets/...`), sinon elle est
 recherchée dans `/en/` ou `/es/` et renvoie 404.
+
+## Protection anti-robots des formulaires
+
+Trois barrières, toutes appliquées dans `public_html/rm-envoi.php` avant le
+moindre envoi d'e-mail :
+
+1. **Champs pièges** `_honey` (dans le HTML) et `_url` (ajouté par
+   `public_html/rm-antibot.js`). Remplis = demande ignorée silencieusement.
+2. **Horodatage `_ts`** : un formulaire renvoyé en moins de
+   `min_fill_seconds` secondes après l'ouverture de la page vient d'un robot.
+3. **Limite par adresse IP** : `rate_per_hour` (6) et `rate_per_day` (15). Les
+   compteurs sont de simples fichiers dans le dossier `rm-rate`, créé
+   automatiquement **au-dessus** de `public_html` (donc inaccessible en HTTP) ;
+   `rate_dir` permet d'en imposer un autre.
+
+### Cloudflare Turnstile
+
+- Clé **publique** : constante `SITEKEY` en haut de `public_html/rm-antibot.js`.
+  Ce n'est pas un secret, elle peut être versionnée.
+- Clé **secrète** : `turnstile_secret` dans `rm-mail-config.php`
+  (jamais versionné). Tant qu'elle est vide, la vérification est inactive et
+  seules les barrières 1 à 3 s'appliquent.
+- Le widget est rendu en mode `interaction-only` : invisible pour un vrai
+  client, il ne demande un geste que si Cloudflare juge la session suspecte.
+- La CSP de `.htaccess` autorise `https://challenges.cloudflare.com` dans
+  `script-src`, `connect-src` et `frame-src` : sans cela le widget est bloqué.
+- Créer les clés : Cloudflare → *Turnstile* → *Add widget*, domaine
+  `riadmylaya.com`, type *Managed*.
+
+Un visiteur bloqué reçoit une page expliquée dans sa langue (403 ou 429) avec
+les liens WhatsApp et e-mail : personne ne reste sans solution de contact.
+
+## En-têtes de cache des pages HTML
+
+Les pages étaient servies en `no-store`, ce qui interdit à Chrome Android de
+garder la page en mémoire : après éviction d'un onglet, le retour affichait un
+écran blanc le temps de tout re-télécharger. `.htaccess` utilise maintenant
+`no-cache, must-revalidate` + `FileETag MTime Size` : la page est toujours
+revalidée (aucun tarif obsolète) mais peut être réaffichée instantanément.
+
+Les scripts sont mis en cache un mois ; leurs URL portent donc un
+`?v=<horodatage>` qu'il faut incrémenter à chaque modification d'un `.js`,
+sinon un téléphone peut garder l'ancienne version jusqu'à 30 jours.

@@ -26,6 +26,14 @@ $CONFIG = array(
     'fallback_url' => 'https://formsubmit.co/contact@riadmylaya.com',
     /* seules adresses qu'un formulaire peut mettre en copie via _cc */
     'cc_allow' => array('info@mythicoriental-spa.com'),
+    /* anti-robots : clé secrète Cloudflare Turnstile (vide = vérification désactivée) */
+    'turnstile_secret' => '',
+    /* limite d'envois par adresse IP */
+    'rate_per_hour' => 6,
+    'rate_per_day' => 15,
+    'rate_dir' => '',
+    /* un formulaire rempli en moins de N secondes vient d'un robot */
+    'min_fill_seconds' => 3,
 );
 $local = __DIR__ . '/rm-mail-config.php';
 if (is_readable($local)) {
@@ -67,6 +75,9 @@ $T = array(
         'ack_url' => 'https://riadmylaya.com/preparer-mon-sejour',
         'ack_sign' => "À très bientôt,\nL'équipe du Riad Mylaya",
         'ack_contact' => 'Tél. / WhatsApp : +212 661 351 989 · contact@riadmylaya.com',
+        'lang' => 'fr',
+        'stop_title' => 'Nous n’avons pas pu envoyer votre demande',
+        'stop_text' => 'Par sécurité, notre site limite le nombre d’envois successifs. Réessayez dans quelques minutes ou écrivez-nous directement — nous vous répondrons avec plaisir.',
     ),
     'en' => array(
         'title' => 'New booking request',
@@ -99,6 +110,9 @@ $T = array(
         'ack_url' => 'https://riadmylaya.com/en/prepare-your-stay',
         'ack_sign' => "See you soon,\nThe Riad Mylaya team",
         'ack_contact' => 'Phone / WhatsApp: +212 661 351 989 · contact@riadmylaya.com',
+        'lang' => 'en',
+        'stop_title' => 'We could not send your request',
+        'stop_text' => 'For security reasons our website limits the number of successive submissions. Please try again in a few minutes, or contact us directly — we will be glad to help.',
     ),
     'es' => array(
         'title' => 'Nueva solicitud de reserva',
@@ -131,6 +145,9 @@ $T = array(
         'ack_url' => 'https://riadmylaya.com/es/preparar-mi-estancia',
         'ack_sign' => "Hasta pronto,\nEl equipo del Riad Mylaya",
         'ack_contact' => 'Teléfono / WhatsApp: +212 661 351 989 · contact@riadmylaya.com',
+        'lang' => 'es',
+        'stop_title' => 'No hemos podido enviar su solicitud',
+        'stop_text' => 'Por seguridad, nuestra web limita el número de envíos seguidos. Vuelva a intentarlo en unos minutos o escríbanos directamente — le atenderemos con mucho gusto.',
     ),
 );
 
@@ -224,6 +241,153 @@ function rm_phone_digits($phone, $country)
     return $d;
 }
 
+/* ------------------------------------------------------------- anti-robots */
+
+function rm_client_ip()
+{
+    /* REMOTE_ADDR uniquement : les en-têtes X-Forwarded-For sont falsifiables. */
+    return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '0.0.0.0';
+}
+
+/** Signaux qu'aucun visiteur humain ne produit : champ piège rempli, formulaire
+ *  envoyé en une fraction de seconde, horodatage absent alors que le script
+ *  anti-robots l'ajoute sur toutes les pages. */
+function rm_is_bot($CONFIG)
+{
+    foreach (array('_honey', '_url') as $trapField) {
+        if (isset($_POST[$trapField]) && rm_clean($_POST[$trapField]) !== '') {
+            return true;
+        }
+    }
+    if (!isset($_POST['_ts'])) {
+        return false;
+    }
+    $ts = rm_clean($_POST['_ts']);
+    if ($ts === '' || !ctype_digit($ts)) {
+        return true;
+    }
+    $elapsed = time() - (int) ($ts / 1000);
+    return $elapsed < (int) $CONFIG['min_fill_seconds'] || $elapsed < 0;
+}
+
+function rm_rate_dir($CONFIG)
+{
+    $dir = $CONFIG['rate_dir'] !== '' ? $CONFIG['rate_dir'] : dirname(__DIR__) . '/rm-rate';
+    if (!is_dir($dir) && !@mkdir($dir, 0700, true) && !is_dir($dir)) {
+        $dir = sys_get_temp_dir() . '/rm-rate';
+        if (!is_dir($dir)) {
+            @mkdir($dir, 0700, true);
+        }
+    }
+    return is_dir($dir) && is_writable($dir) ? $dir : '';
+}
+
+/** Compte les envois de cette IP et enregistre celui-ci. */
+function rm_rate_ok($CONFIG, $ip)
+{
+    $dir = rm_rate_dir($CONFIG);
+    if ($dir === '') {
+        return true;
+    }
+    $file = $dir . '/' . sha1($ip) . '.txt';
+    $now = time();
+    $stamps = array();
+    if (is_readable($file)) {
+        foreach (explode("\n", (string) @file_get_contents($file)) as $one) {
+            $one = trim($one);
+            if (ctype_digit($one) && $now - (int) $one < 86400) {
+                $stamps[] = (int) $one;
+            }
+        }
+    }
+    $hour = 0;
+    foreach ($stamps as $one) {
+        if ($now - $one < 3600) {
+            $hour++;
+        }
+    }
+    if ($hour >= (int) $CONFIG['rate_per_hour'] || count($stamps) >= (int) $CONFIG['rate_per_day']) {
+        return false;
+    }
+    $stamps[] = $now;
+    @file_put_contents($file, implode("\n", $stamps), LOCK_EX);
+    /* nettoyage occasionnel des compteurs abandonnés */
+    if (mt_rand(1, 50) === 1) {
+        foreach ((array) @glob($dir . '/*.txt') as $old) {
+            if (@filemtime($old) < $now - 172800) {
+                @unlink($old);
+            }
+        }
+    }
+    return true;
+}
+
+/** Vérifie le jeton Turnstile auprès de Cloudflare. Sans clé secrète
+ *  configurée, la vérification est simplement inactive. */
+function rm_turnstile_ok($CONFIG, $ip)
+{
+    if (trim((string) $CONFIG['turnstile_secret']) === '') {
+        return true;
+    }
+    $token = isset($_POST['cf-turnstile-response']) ? rm_clean($_POST['cf-turnstile-response']) : '';
+    if ($token === '') {
+        return false;
+    }
+    $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+    $post = http_build_query(array(
+        'secret' => $CONFIG['turnstile_secret'],
+        'response' => $token,
+        'remoteip' => $ip,
+    ));
+    if (function_exists('curl_init')) {
+        $ch = curl_init($url);
+        curl_setopt_array($ch, array(
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $post,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 10,
+        ));
+        $body = curl_exec($ch);
+        curl_close($ch);
+    } else {
+        $body = @file_get_contents($url, false, stream_context_create(array(
+            'http' => array(
+                'method' => 'POST',
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+                'content' => $post,
+                'timeout' => 10,
+            ),
+        )));
+    }
+    if ($body === false) {
+        /* Cloudflare injoignable : on ne punit pas le client. */
+        @error_log('[rm-envoi] turnstile unreachable');
+        return true;
+    }
+    $json = json_decode((string) $body, true);
+    return is_array($json) && !empty($json['success']);
+}
+
+/** Page d'explication : un visiteur bloqué doit pouvoir nous joindre autrement. */
+function rm_stop_page($t, $code)
+{
+    header('Content-Type: text/html; charset=UTF-8', true, $code);
+    header('Cache-Control: no-store');
+    echo '<!DOCTYPE html><html lang="' . rm_h($t['lang']) . '"><head><meta charset="utf-8">'
+        . '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        . '<meta name="robots" content="noindex,nofollow">'
+        . '<title>' . rm_h($t['stop_title']) . '</title></head>'
+        . '<body style="margin:0;background:#f2ede4;font:400 16px/1.6 Arial,Helvetica,sans-serif;color:#232323;">'
+        . '<div style="max-width:520px;margin:8vh auto;padding:28px 24px;background:#fff;border:1px solid #e7ddcd;border-radius:14px;">'
+        . '<h1 style="margin:0 0 12px;font:700 22px/1.3 Georgia,\'Times New Roman\',serif;">' . rm_h($t['stop_title']) . '</h1>'
+        . '<p style="margin:0 0 18px;">' . rm_h($t['stop_text']) . '</p>'
+        . '<p style="margin:0 0 8px;"><a href="https://wa.me/212661351989" style="display:inline-block;padding:11px 18px;border-radius:8px;background:#25d366;color:#fff;text-decoration:none;font-weight:700;">WhatsApp</a>'
+        . ' <a href="mailto:contact@riadmylaya.com" style="display:inline-block;padding:11px 18px;border-radius:8px;background:#8a6a3b;color:#fff;text-decoration:none;font-weight:700;">contact@riadmylaya.com</a></p>'
+        . '<p style="margin:18px 0 0;"><a href="' . rm_h($t['ack_url']) . '" style="color:#8a6a3b;">' . rm_h($t['ack_back']) . '</a></p>'
+        . '</div></body></html>';
+    exit;
+}
+
 /* ------------------------------------------------------- lecture du formulaire */
 
 if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
@@ -236,8 +400,8 @@ if (!preg_match('#^(https://riadmylaya\.com|https://www\.riadmylaya\.com|/)#', $
     $next = '/merci';
 }
 
-/* piège à robots : on fait comme si tout allait bien, sans rien envoyer */
-if (isset($_POST['_honey']) && rm_clean($_POST['_honey']) !== '') {
+/* pièges à robots : on fait comme si tout allait bien, sans rien envoyer */
+if (rm_is_bot($CONFIG)) {
     header('Location: ' . $next, true, 303);
     exit;
 }
@@ -253,6 +417,15 @@ if (!isset($T[$lang])) {
     }
 }
 $t = $T[$lang];
+
+/* Turnstile et limite par IP : rien n'est envoyé si la vérification échoue. */
+$clientIp = rm_client_ip();
+if (!rm_turnstile_ok($CONFIG, $clientIp)) {
+    rm_stop_page($t, 403);
+}
+if (!rm_rate_ok($CONFIG, $clientIp)) {
+    rm_stop_page($t, 429);
+}
 
 $subject = isset($_POST['_subject']) ? rm_clean($_POST['_subject']) : '';
 $service = isset($_POST['_service']) ? rm_clean($_POST['_service']) : '';

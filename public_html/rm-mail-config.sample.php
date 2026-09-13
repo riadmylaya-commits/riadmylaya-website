@@ -17,4 +17,12 @@ return array(
     'fallback_url' => 'https://formsubmit.co/contact@riadmylaya.com',
     // Seules ces adresses peuvent recevoir une copie via le champ _cc d'un formulaire.
     'cc_allow' => array('info@mythicoriental-spa.com'),
+    // Anti-robots : clé secrète Cloudflare Turnstile (la clé publique vit dans rm-antibot.js).
+    'turnstile_secret' => 'CLE_SECRETE_TURNSTILE',
+    // Limite d'envois par adresse IP (un client réel reste largement sous ces seuils).
+    'rate_per_hour' => 6,
+    'rate_per_day' => 15,
+    // Dossier des compteurs ; vide = dossier rm-rate au-dessus de public_html.
+    'rate_dir' => '',
+    'min_fill_seconds' => 3,
 );

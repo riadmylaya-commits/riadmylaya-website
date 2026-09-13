@@ -32,7 +32,7 @@ RewriteRule ^(.+?)/?$ $1.html [L]
   Header set Referrer-Policy "strict-origin-when-cross-origin"
 
 # Content Security Policy
-Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.jscache.com https://maps.googleapis.com https://widget.getyourguide.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://widget.getyourguide.com https://api.getyourguide.com; frame-src 'self' https://www.youtube.com https://portal.freetobook.com https://maps.google.com https://widget.getyourguide.com;"
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.jscache.com https://maps.googleapis.com https://widget.getyourguide.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://widget.getyourguide.com https://api.getyourguide.com https://challenges.cloudflare.com; frame-src 'self' https://www.youtube.com https://portal.freetobook.com https://maps.google.com https://widget.getyourguide.com https://challenges.cloudflare.com;"
 
 # Permissions Policy
 Header set Permissions-Policy "geolocation=(self), microphone=(), camera=(), payment=(), usb=()"
@@ -92,12 +92,17 @@ Header set Permissions-Policy "geolocation=(self), microphone=(), camera=(), pay
 </IfModule>
 AddType image/webp .webp
 
-# Force fresh HTML content (prevent stale cache)
+# HTML : toujours revalidé, mais gardé en cache — « no-store » interdisait le
+# back/forward cache, et un onglet Chrome Android vidé réaffichait une page blanche
+# le temps du re-téléchargement complet.
 <FilesMatch "\.html$">
-  Header set Cache-Control "no-cache, no-store, must-revalidate"
-  Header set Pragma "no-cache"
-  Header set Expires "0"
+  Header set Cache-Control "no-cache, must-revalidate"
+  Header unset Pragma
+  Header unset Expires
 </FilesMatch>
+
+# Un ETag permet de répondre 304 au lieu de renvoyer toute la page.
+FileETag MTime Size
 
 <Files 403.shtml>
 order allow,deny

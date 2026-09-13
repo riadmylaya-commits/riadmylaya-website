@@ -544,6 +544,47 @@ representation traps seen while doing this: the stripped-DOM dump can show a fil
 as empty (trust a visible screenshot or `.value` instead), and the spa page dump shows several
 `src="undefined"` images (a lazy-loading artefact, not a confirmed defect).
 
+### Since PR #17 the forms post to our own `/rm-envoi.php`, not to FormSubmit
+
+Newer deployments replace the FormSubmit action with `action="/rm-envoi.php"` plus a hidden
+`_lang` (`fr`/`en`/`es`); business fields, the JS pricing engines and `_next` are unchanged. The
+endpoint sends a branded HTML e-mail over authenticated SMTP and then 303s to `_next`.
+
+Consequences for testing:
+
+- **The endpoint only exists on production.** The local proxy cannot exercise it (it 404s / falls
+  back), so a real submission test must target `https://riadmylaya.com` with `ctrl+shift+r`.
+- `GET /rm-envoi.php` answers `303 → /` (handy deployment probe) and `GET /rm-mail-config.php`
+  must answer `403` (the SMTP secret lives there; a `200` would be a leak worth reporting).
+- **A successful redirect does NOT prove the e-mail was sent.** When SMTP fails, `rm-envoi.php`
+  silently re-posts the request to `https://formsubmit.co/contact@riadmylaya.com` and redirects to
+  `_next` anyway. Only the mailbox tells the two apart: a branded riad HTML e-mail = new SMTP path,
+  a FormSubmit `Name / Value` table = fallback. Say this explicitly in the report.
+  The same-origin `redirectEnd - redirectStart` from the landing page is a weak signal only
+  (~2–5 s observed on the SMTP path; a ~15 s+ value would suggest the SMTP timeout + curl fallback).
+- If `_next` does not match `^(https://riadmylaya\.com|https://www\.riadmylaya\.com|/)`, the endpoint
+  dumps the visitor on the **French** `/merci`. So "landed on the *localized* thank-you page" is a
+  real discriminator that also exercises the `_lang`/`_next` pairing.
+- Pre-click live-DOM snippet (works for both engine forms and the legacy Mobirise ones):
+
+```js
+const f = document.querySelector('#diner form');            // or form.mbr-form
+JSON.stringify({action: f.action, lang: f.querySelector('[name="_lang"]').value,
+                next: f.querySelector('[name="_next"]').value,
+                captchaTrue: document.querySelectorAll('input[name="_captcha"][value="true"]').length,
+                fsForms: [...document.querySelectorAll('form')].filter(x=>(x.getAttribute('action')||'').includes('formsubmit.co')).length,
+                recap: (f.querySelector('[data-tq-recap],[data-bk-recap]')||{}).value,
+                total: (f.querySelector('[data-tq-total-field],[data-bk-total-field]')||{}).value,
+                invalid: [...f.querySelectorAll(':invalid')].map(e=>e.name)})
+```
+
+- The legacy ES contact form declares `_next=https://riadmylaya.com/es/gracias.html` and lands on
+  `/es/gracias` (host-level 301) — expected, not a failure. It also carries `_autoresponse`, so an
+  ack mail is attempted towards whatever address you type: with an `.invalid` sentinel it just bounces.
+- Reference values for the engines: airport / 2 pers. / arrival + departure = `20 € + 20 € − 5 €` =
+  **35 €**; `Menú completo × 2` = **50 €**. A ~400–520 character recap is normal; an empty recap
+  means the client would receive a detail-free e-mail and is a FAIL.
+
 ### `<base href="/">` + fragment-only links = TOC navigates to the home page (check this FIRST)
 
 The single highest-value check on any of these generated pages is: **click a TOC chip and look at
