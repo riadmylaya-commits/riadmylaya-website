@@ -13,7 +13,7 @@
  * vide, seuls les pièges et la limite par IP protègent les formulaires.
  */
 (function () {
-  var SITEKEY = "";
+  var SITEKEY = "0x4AAAAAAEydHUtiaotTS4bC";
   var forms = [].slice.call(
     document.querySelectorAll('form[action*="rm-envoi.php"]')
   );
@@ -64,6 +64,8 @@
     box.setAttribute("data-appearance", "interaction-only");
     box.setAttribute("data-language", (document.documentElement.lang || "fr").slice(0, 2));
     box.setAttribute("data-callback", "rmTurnstileDone");
+    box.setAttribute("data-error-callback", "rmTurnstileFailed");
+    box.setAttribute("data-expired-callback", "rmTurnstileFailed");
     form.appendChild(box);
     widgets.push({ form: form, box: box, pending: false });
   });
@@ -91,12 +93,31 @@
     });
   };
 
+  /* Turnstile injoignable ou jeton expiré : on laisse partir la demande plutôt
+     que de bloquer le bouton, le serveur tranche et propose WhatsApp au besoin. */
+  window.rmTurnstileFailed = function () {
+    widgets.forEach(function (entry) {
+      if (entry.pending) {
+        entry.pending = false;
+        entry.form.submit();
+      }
+    });
+  };
+
   forms.forEach(function (form) {
     form.addEventListener("submit", function (ev) {
       if (token(form)) return;
       ev.preventDefault();
       var entry = entryOf(form);
-      if (entry) entry.pending = true;
+      if (!entry) return;
+      entry.pending = true;
+      /* Filet de sécurité : jamais de bouton mort si Turnstile ne répond pas. */
+      window.setTimeout(function () {
+        if (entry.pending) {
+          entry.pending = false;
+          form.submit();
+        }
+      }, 8000);
     });
   });
 
