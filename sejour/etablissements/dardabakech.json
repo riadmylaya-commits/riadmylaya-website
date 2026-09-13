@@ -15,12 +15,12 @@
     "excursions_more": null
   },
   "contact": {
-    "whatsapp": "212661351989",
-    "phone_display": "+212 661 351 989",
-    "email": "contact@riadmylaya.com",
-    "address": "192 bis Derb Jdid, Dabachi — Médina, Marrakech",
-    "address_footer": "192 bis Derb Jdid, Dabachi, Médina, Marrakech",
-    "map_url": "https://www.google.com/maps/search/?api=1&query=Dar+Le+Fennec+192+bis+Derb+Jdid+Dabachi+Marrakech"
+    "whatsapp": "212704825972",
+    "phone_display": "+212 704 825 972",
+    "email": "alivoski@gmail.com",
+    "address": "193 bis Derb Dabachi, Rue Derb Jdid — Médina, Marrakech",
+    "address_footer": "193 bis Derb Dabachi, Rue Derb Jdid, Médina, Marrakech",
+    "map_url": "https://www.google.com/maps/search/?api=1&query=DarDabakech+193+bis+Derb+Dabachi+Marrakech"
   },
   "images": {
     "favicon": "{hub}/assets/common/favicon.png",
@@ -35,24 +35,41 @@
     "spa": "{hub}/assets/common/hammam-interior.jpg"
   },
   "theme": { "accent": "#2f6f73", "accent_dark": "#1f4a4d" },
-  "analytics": { "ga_id": null },
+  "analytics": {
+    "ga_id": null
+  },
   "stay": {
-    "checkin": { "fr": "14h", "en": "2 pm", "es": "las 14h" },
-    "luggage_from": { "fr": "9h", "en": "9 am", "es": "las 9h" },
-    "checkout": { "fr": "11h", "en": "11 am", "es": "las 11h" },
-    "breakfast_price": 7,
+    "pending": true,
+    "checkin": null,
+    "luggage_from": null,
+    "checkout": null,
+    "breakfast_price": null,
     "tax": { "fr": "2,50", "en": "2.50", "es": "2,50" }
   },
   "services": {
-    "transfer": { "enabled": true },
-    "dinner": { "enabled": true },
-    "cooking": { "enabled": true },
-    "excursions": { "enabled": true },
-    "group": { "enabled": true, "gyg_url": "https://gyg.me/pieHSnog", "gyg_query": "Marrakech, Morocco" },
-    "spa": { "enabled": true }
+    "transfer": {
+      "enabled": false
+    },
+    "dinner": {
+      "enabled": false
+    },
+    "cooking": {
+      "enabled": false
+    },
+    "excursions": {
+      "enabled": true
+    },
+    "group": {
+      "enabled": true,
+      "gyg_url": "https://gyg.me/pieHSnog",
+      "gyg_query": "Marrakech, Morocco"
+    },
+    "spa": {
+      "enabled": false
+    }
   },
   "mail": {
-    "to_email": "contact@riadmylaya.com",
+    "to_email": "alivoski@gmail.com",
     "to_name": "Dardabakech",
     "from_name": "Dardabakech — Espace client"
   }

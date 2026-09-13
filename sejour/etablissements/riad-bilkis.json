@@ -18,15 +18,15 @@
     "whatsapp": "212625675494",
     "phone_display": "+212 625 675 494",
     "email": "riadbilkis@gmail.com",
-    "address": "117 Derb Jdid, Bab Doukkala — Médina, Marrakech",
+    "address": "117 Derb Jdid, Bab Doukkala — Médina, Marrakech 40030",
     "address_footer": "117 Derb Jdid, Bab Doukkala, Médina, Marrakech",
-    "map_url": "https://www.google.com/maps/search/?api=1&query=Riad+Bilkis+117+Derb+Jdid+Bab+Doukkala+Marrakech"
+    "map_url": "https://www.google.com/maps/search/?api=1&query=Riad+Bilkis+117+Derb+Jdid+Marrakech"
   },
   "images": {
     "favicon": "https://riadbilkis.com/favicon.ico",
     "logo": null,
     "logo_footer": null,
-    "hero": "https://riadbilkis.com/wp-content/uploads/chambres/babouche-01.jpg",
+    "hero": "{hub}/assets/riad-bilkis/hero.jpg",
     "transfer": "{hub}/assets/common/transfert-marrakech.jpg",
     "dinner": "{hub}/assets/common/diner-marocain.jpg",
     "cooking": "{hub}/assets/common/cooking-hero.jpg",
@@ -35,7 +35,9 @@
     "spa": "{hub}/assets/common/hammam-interior.jpg"
   },
   "theme": { "accent": "#b07a3c", "accent_dark": "#7d5527" },
-  "analytics": { "ga_id": null },
+  "analytics": {
+    "ga_id": null
+  },
   "stay": {
     "checkin": { "fr": "13h", "en": "1 pm", "es": "las 13h" },
     "luggage_from": { "fr": "9h", "en": "9 am", "es": "las 9h" },
@@ -48,18 +50,34 @@
       "enabled": true,
       "override": {
         "airport": {
-          "tiers": [ { "max": 4, "price": 15 }, { "max": 6, "price": 20 }, { "max": 8, "price": 25 } ],
+          "tiers": [
+            { "max": 4, "price": 15 },
+            { "max": 6, "price": 20 },
+            { "max": 8, "price": 25 }
+          ],
           "surcharge": null,
           "round_trip_discount": { "amount": 5, "leg": "departure" }
         },
         "station": null
       }
     },
-    "dinner": { "enabled": true },
-    "cooking": { "enabled": true },
-    "excursions": { "enabled": true },
-    "group": { "enabled": true, "gyg_url": "https://gyg.me/pieHSnog", "gyg_query": "Marrakech, Morocco" },
-    "spa": { "enabled": true }
+    "dinner": {
+      "enabled": true
+    },
+    "cooking": {
+      "enabled": true
+    },
+    "excursions": {
+      "enabled": true
+    },
+    "group": {
+      "enabled": true,
+      "gyg_url": "https://gyg.me/pieHSnog",
+      "gyg_query": "Marrakech, Morocco"
+    },
+    "spa": {
+      "enabled": true
+    }
   },
   "mail": {
     "to_email": "riadbilkis@gmail.com",

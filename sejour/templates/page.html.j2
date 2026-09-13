@@ -163,10 +163,15 @@
   <div class="container">
     <h2 class="rm-ps-sec__title">{{ t.arrival.title }}</h2>
     <div class="rm-ps-arrival">
+{% if e.stay.get("pending") %}
+      <p>{{ t.arrival.pending }}</p>
+      <a class="rm-lp-btn rm-lp-btn--wa" href="{{ wa(t.arrival.wa_pending) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="arrival"><span aria-hidden="true">🛎️</span> {{ t.arrival.pending_btn }}</a>
+{% else %}
       <p>{{ t.arrival.room }}</p>
       <p>{{ t.arrival.luggage }}</p>
       <p>{{ t.arrival.breakfast }}</p>
       <a class="rm-lp-btn rm-lp-btn--wa" href="{{ wa(t.arrival.wa_breakfast) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="breakfast"><span aria-hidden="true">🥐</span> {{ t.arrival.breakfast_btn }}</a>
+{% endif %}
     </div>
   </div>
 </section>
@@ -195,7 +200,7 @@
       <div class="rm-ps-info__item">
         <span class="rm-ps-icon" aria-hidden="true">🕚</span>
         <h3>{{ t.infos.checkout_h }}</h3>
-        <p>{{ t.infos.checkout_p }}</p>
+        <p>{{ t.infos.checkout_pending if e.stay.get("pending") else t.infos.checkout_p }}</p>
       </div>
       <div class="rm-ps-info__item">
         <span class="rm-ps-icon" aria-hidden="true">🌙</span>

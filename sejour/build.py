@@ -134,11 +134,12 @@ def build_context(etab, lang, i18n_raw, services_all):
     lib = "" if is_hub else hub  # moteurs JS servis par le hub (relatif sur le hub)
 
     stay = etab["stay"]
+    per_lang = lambda v: v[lang] if isinstance(v, dict) else "—"  # noqa: E731  (valeurs à confirmer -> stay.pending)
     vars_ = dict(
         name=etab["name"], city=etab["city"], **g,
         address=etab["contact"]["address"],
-        checkin=stay["checkin"][lang], luggage=stay["luggage_from"][lang], checkout=stay["checkout"][lang],
-        breakfast=stay["breakfast_price"], tax=stay["tax"][lang],
+        checkin=per_lang(stay.get("checkin")), luggage=per_lang(stay.get("luggage_from")), checkout=per_lang(stay.get("checkout")),
+        breakfast=stay.get("breakfast_price") if stay.get("breakfast_price") is not None else "—", tax=per_lang(stay.get("tax")),
     )
     t = deep_fmt(i18n_raw, vars_)
 

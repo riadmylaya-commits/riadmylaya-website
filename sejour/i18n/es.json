@@ -28,7 +28,10 @@
     "luggage": "Si llega antes, puede venir al riad <strong>a partir de {luggage}</strong> para dejar su equipaje.",
     "breakfast": "Si llega temprano por la mañana, también podemos ofrecerle un <strong>desayuno por {breakfast} € por persona</strong>.",
     "breakfast_btn": "Quiero desayunar a mi llegada — {breakfast} €/persona",
-    "wa_breakfast": "Hola, tengo una reserva {at} y llegaré temprano.\nQuiero reservar el desayuno a mi llegada por {breakfast} € por persona.\nNombre completo de la reserva:\nN.º de reserva:\nFecha de llegada:\nNúmero de personas:\nHora aproximada de llegada:"
+    "wa_breakfast": "Hola, tengo una reserva {at} y llegaré temprano.\nQuiero reservar el desayuno a mi llegada por {breakfast} € por persona.\nNombre completo de la reserva:\nN.º de reserva:\nFecha de llegada:\nNúmero de personas:\nHora aproximada de llegada:",
+    "pending": "Los horarios de llegada y de depósito de equipaje se indican en su confirmación de reserva. Para cualquier pregunta sobre su llegada, escríbanos por WhatsApp: respondemos rápidamente.",
+    "pending_btn": "Una pregunta sobre mi llegada",
+    "wa_pending": "Hola, tengo una reserva {at} y una pregunta sobre mi llegada.\nNombre completo de la reserva:\nN.º de reserva:\nFecha de llegada:\nHora aproximada de llegada:"
   },
   "infos": {
     "title": "Información práctica",
@@ -45,7 +48,8 @@
     "late_h": "Llegada tarde o vuelo retrasado",
     "late_p": "Avísenos por WhatsApp: alguien le esperará, sea la hora que sea.",
     "late_btn": "Avisar de mi llegada",
-    "wa_late": "Hola, tengo una reserva {at} y llegaré tarde o mi vuelo se ha retrasado.\nNombre completo de la reserva:\nN.º de reserva:\nHora aproximada de llegada:"
+    "wa_late": "Hola, tengo una reserva {at} y llegaré tarde o mi vuelo se ha retrasado.\nNombre completo de la reserva:\nN.º de reserva:\nHora aproximada de llegada:",
+    "checkout_pending": "La hora de salida se indica en su confirmación de reserva. Guardamos su equipaje gratis si su vuelo o tren sale más tarde."
   },
   "services": {
     "title": "Reserve sus servicios",

@@ -28,7 +28,10 @@
     "luggage": "If you arrive earlier, you are welcome at the riad <strong>from {luggage}</strong> to drop off your luggage.",
     "breakfast": "If you arrive early in the morning, we can also serve you <strong>breakfast at €{breakfast} per person</strong>.",
     "breakfast_btn": "I would like breakfast on arrival — €{breakfast}/person",
-    "wa_breakfast": "Hello, I have a booking {at} and I will arrive early.\nI would like to book breakfast on arrival at €{breakfast} per person.\nFull name on the booking:\nBooking number:\nArrival date:\nNumber of people:\nApproximate arrival time:"
+    "wa_breakfast": "Hello, I have a booking {at} and I will arrive early.\nI would like to book breakfast on arrival at €{breakfast} per person.\nFull name on the booking:\nBooking number:\nArrival date:\nNumber of people:\nApproximate arrival time:",
+    "pending": "Check-in and luggage drop-off times are stated in your booking confirmation. For any question about your arrival, message us on WhatsApp — we reply quickly.",
+    "pending_btn": "A question about my arrival",
+    "wa_pending": "Hello, I have a booking {at} and a question about my arrival.\nFull name on the booking:\nBooking number:\nArrival date:\nApproximate arrival time:"
   },
   "infos": {
     "title": "Practical information",
@@ -45,7 +48,8 @@
     "late_h": "Late arrival or delayed flight",
     "late_p": "Let us know on WhatsApp: someone will be waiting for you, whatever the time.",
     "late_btn": "Tell us about my arrival",
-    "wa_late": "Hello, I have a booking {at} and I will arrive late or my flight is delayed.\nFull name on the booking:\nBooking number:\nApproximate arrival time:"
+    "wa_late": "Hello, I have a booking {at} and I will arrive late or my flight is delayed.\nFull name on the booking:\nBooking number:\nApproximate arrival time:",
+    "checkout_pending": "Check-out time is stated in your booking confirmation. We keep your luggage free of charge if your flight or train is later."
   },
   "services": {
     "title": "Book your services",

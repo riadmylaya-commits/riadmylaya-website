@@ -5,10 +5,10 @@ return array(
         'brand' => array(
             'name' => "Dar Le Fennec",
             'city' => "Marrakech",
-            'address' => "191 Derb Jdid, Dabachi, M\u00e9dina, Marrakech",
+            'address' => "191 Derb Dabachi, Rue Derb Jdid, M\u00e9dina, Marrakech",
             'domain' => "sejour.riadmylaya.com",
-            'phone' => "+212 661 351 989",
-            'email' => "contact@riadmylaya.com",
+            'phone' => "+212 664 631 990",
+            'email' => "darlefennec@gmail.com",
             'of_fr' => "de Dar Le Fennec",
             'of_es' => "de Dar Le Fennec",
             'ack_url' => array(
@@ -20,20 +20,20 @@ return array(
             'default_next' => "https://sejour.riadmylaya.com/dar-le-fennec/merci-sejour",
         ),
         'mail' => array(
-            'to_email' => "contact@riadmylaya.com",
+            'to_email' => "darlefennec@gmail.com",
             'to_name' => "Dar Le Fennec",
             'from_name' => "Dar Le Fennec \u2014 Espace client",
-            'fallback_url' => "https://formsubmit.co/contact@riadmylaya.com",
+            'fallback_url' => "https://formsubmit.co/darlefennec@gmail.com",
         ),
     ),
     'dardabakech' => array(
         'brand' => array(
             'name' => "Dardabakech",
             'city' => "Marrakech",
-            'address' => "192 bis Derb Jdid, Dabachi, M\u00e9dina, Marrakech",
+            'address' => "193 bis Derb Dabachi, Rue Derb Jdid, M\u00e9dina, Marrakech",
             'domain' => "sejour.riadmylaya.com",
-            'phone' => "+212 661 351 989",
-            'email' => "contact@riadmylaya.com",
+            'phone' => "+212 704 825 972",
+            'email' => "alivoski@gmail.com",
             'of_fr' => "de Dardabakech",
             'of_es' => "de Dardabakech",
             'ack_url' => array(
@@ -45,10 +45,10 @@ return array(
             'default_next' => "https://sejour.riadmylaya.com/dardabakech/merci-sejour",
         ),
         'mail' => array(
-            'to_email' => "contact@riadmylaya.com",
+            'to_email' => "alivoski@gmail.com",
             'to_name' => "Dardabakech",
             'from_name' => "Dardabakech \u2014 Espace client",
-            'fallback_url' => "https://formsubmit.co/contact@riadmylaya.com",
+            'fallback_url' => "https://formsubmit.co/alivoski@gmail.com",
         ),
     ),
     'riad-bilkis' => array(

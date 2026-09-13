@@ -28,7 +28,10 @@
     "luggage": "Si vous arrivez plus tôt, vous pouvez venir au riad <strong>à partir de {luggage}</strong> pour déposer vos bagages.",
     "breakfast": "Si votre arrivée est tôt le matin, nous pouvons également vous proposer un <strong>petit-déjeuner à {breakfast} € par personne</strong>.",
     "breakfast_btn": "Je souhaite un petit-déjeuner à mon arrivée — {breakfast} €/personne",
-    "wa_breakfast": "Bonjour, j'ai une réservation {at} et j'arriverai tôt.\nJe souhaite réserver le petit-déjeuner à mon arrivée à {breakfast} € par personne.\nNom complet de la réservation :\nN° de réservation :\nDate d'arrivée :\nNombre de personnes :\nHeure approximative d'arrivée :"
+    "wa_breakfast": "Bonjour, j'ai une réservation {at} et j'arriverai tôt.\nJe souhaite réserver le petit-déjeuner à mon arrivée à {breakfast} € par personne.\nNom complet de la réservation :\nN° de réservation :\nDate d'arrivée :\nNombre de personnes :\nHeure approximative d'arrivée :",
+    "pending": "Les horaires d'arrivée et de dépôt des bagages vous sont communiqués dans votre confirmation de réservation. Pour toute question sur votre arrivée, écrivez-nous sur WhatsApp : nous vous répondons rapidement.",
+    "pending_btn": "Une question sur mon arrivée",
+    "wa_pending": "Bonjour, j'ai une réservation {at} et j'ai une question concernant mon arrivée.\nNom complet de la réservation :\nN° de réservation :\nDate d'arrivée :\nHeure approximative d'arrivée :"
   },
   "infos": {
     "title": "Informations pratiques",
@@ -45,7 +48,8 @@
     "late_h": "Arrivée tardive ou vol retardé",
     "late_p": "Prévenez-nous par WhatsApp : quelqu'un vous attendra, quelle que soit l'heure.",
     "late_btn": "Prévenir de mon arrivée",
-    "wa_late": "Bonjour, j'ai une réservation {at} et mon arrivée sera tardive ou mon vol est retardé.\nNom complet de la réservation :\nN° de réservation :\nHeure approximative d'arrivée :"
+    "wa_late": "Bonjour, j'ai une réservation {at} et mon arrivée sera tardive ou mon vol est retardé.\nNom complet de la réservation :\nN° de réservation :\nHeure approximative d'arrivée :",
+    "checkout_pending": "L'heure de départ est indiquée dans votre confirmation de réservation. Nous gardons vos bagages gratuitement si votre vol ou votre train est plus tard."
   },
   "services": {
     "title": "Réservez vos services",

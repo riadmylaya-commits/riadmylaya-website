@@ -59,6 +59,9 @@ et `site.output_dir` dans son JSON, relancer le build — rien d'autre.
 1. Copier `etablissements/dardabakech.json`, changer `id`, `name`, `grammar`, `contact`,
    `images`, `theme`, `stay`, `services` (chaque service a `enabled: true/false` et ses
    tarifs qui écrasent ceux de `public_html/rm-services-data.js`).
+   Tant que les horaires (arrivée, bagages, départ, petit-déjeuner) ne sont pas connus :
+   `"stay": { "pending": true, ... }` affiche « communiqués dans votre confirmation » à la
+   place des heures ; les services sans tarif confirmé restent `enabled: false`.
 2. Déposer la photo d'accueil dans `assets/<id>/hero.jpg`.
 3. `python3 sejour/build.py`, puis déposer le dossier généré.
 
