@@ -28,6 +28,9 @@ $CONFIG = array(
     'cc_allow' => array('info@mythicoriental-spa.com'),
     /* anti-robots : clé secrète Cloudflare Turnstile (vide = vérification désactivée) */
     'turnstile_secret' => '',
+    'turnstile_hosts' => 'riadmylaya.com,www.riadmylaya.com',
+    /* 'strict' = refus si le jeton manque ou est invalide ; sinon simple journalisation */
+    'turnstile_mode' => 'strict',
     /* limite d'envois par adresse IP */
     'rate_per_hour' => 6,
     'rate_per_day' => 15,
@@ -323,14 +326,23 @@ function rm_rate_ok($CONFIG, $ip)
 }
 
 /** Vérifie le jeton Turnstile auprès de Cloudflare. Sans clé secrète
- *  configurée, la vérification est simplement inactive. */
+ *  configurée, la vérification est simplement inactive ; en mode « observation »
+ *  le résultat est seulement journalisé, ce qui permet de valider la paire de
+ *  clés en production sans risquer de refuser une vraie demande. */
 function rm_turnstile_ok($CONFIG, $ip)
 {
     if (trim((string) $CONFIG['turnstile_secret']) === '') {
         return true;
     }
+    $verdict = rm_turnstile_verdict($CONFIG, $ip);
+    return $CONFIG['turnstile_mode'] === 'strict' ? $verdict : true;
+}
+
+function rm_turnstile_verdict($CONFIG, $ip)
+{
     $token = isset($_POST['cf-turnstile-response']) ? rm_clean($_POST['cf-turnstile-response']) : '';
     if ($token === '') {
+        @error_log('[rm-envoi] turnstile jeton absent');
         return false;
     }
     $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
@@ -365,7 +377,26 @@ function rm_turnstile_ok($CONFIG, $ip)
         return true;
     }
     $json = json_decode((string) $body, true);
-    return is_array($json) && !empty($json['success']);
+    if (!is_array($json)) {
+        @error_log('[rm-envoi] turnstile reponse illisible');
+        return true;
+    }
+    if (empty($json['success'])) {
+        $codes = isset($json['error-codes']) ? (array) $json['error-codes'] : array();
+        @error_log('[rm-envoi] turnstile refuse : ' . implode(',', $codes));
+        /* Clé secrète erronée : c'est notre configuration qui est en cause, pas
+           le client. On laisse passer sa demande plutôt que de fermer le site. */
+        return in_array('invalid-input-secret', $codes, true);
+    }
+    @error_log('[rm-envoi] turnstile ok hostname=' . (isset($json['hostname']) ? $json['hostname'] : '?'));
+    /* Un jeton obtenu sur un autre domaine ne doit pas ouvrir nos formulaires. */
+    $hosts = array_filter(array_map('trim', explode(',', (string) $CONFIG['turnstile_hosts'])));
+    $hostname = isset($json['hostname']) ? strtolower((string) $json['hostname']) : '';
+    if ($hosts && !in_array($hostname, array_map('strtolower', $hosts), true)) {
+        @error_log('[rm-envoi] turnstile hostname inattendu : ' . $hostname);
+        return false;
+    }
+    return true;
 }
 
 /** Page d'explication : un visiteur bloqué doit pouvoir nous joindre autrement. */

@@ -13,7 +13,27 @@
  * vide, seuls les pièges et la limite par IP protègent les formulaires.
  */
 (function () {
-  var SITEKEY = "";
+  var SITEKEY = "0x4AAAAAAEydHUtiaotTS4bC";
+  var MESSAGES = {
+    fr: {
+      wait: "Vérification de sécurité en cours…",
+      fail:
+        "La vérification de sécurité n'a pas abouti. Merci de réessayer, ou" +
+        " écrivez-nous sur WhatsApp au +212 661 351 989."
+    },
+    en: {
+      wait: "Security check in progress…",
+      fail:
+        "The security check did not complete. Please try again, or message us" +
+        " on WhatsApp at +212 661 351 989."
+    },
+    es: {
+      wait: "Verificación de seguridad en curso…",
+      fail:
+        "La verificación de seguridad no se ha completado. Inténtelo de nuevo o" +
+        " escríbanos por WhatsApp al +212 661 351 989."
+    }
+  };
   var forms = [].slice.call(
     document.querySelectorAll('form[action*="rm-envoi.php"]')
   );
@@ -54,9 +74,16 @@
 
   /* ------------------------------------------------ Cloudflare Turnstile */
 
+  var lang = (document.documentElement.lang || "fr").slice(0, 2).toLowerCase();
+  var texts = MESSAGES[lang] || MESSAGES.fr;
   var widgets = [];
 
   forms.forEach(function (form) {
+    var note = document.createElement("p");
+    note.setAttribute("role", "status");
+    note.style.cssText = "margin:10px 0;display:none;font-size:15px;color:#8a2f2f;";
+    form.appendChild(note);
+
     var box = document.createElement("div");
     box.className = "cf-turnstile";
     box.style.cssText = "margin:10px 0;";
@@ -67,8 +94,14 @@
     box.setAttribute("data-error-callback", "rmTurnstileFailed");
     box.setAttribute("data-expired-callback", "rmTurnstileFailed");
     form.appendChild(box);
-    widgets.push({ form: form, box: box, pending: false });
+    widgets.push({ form: form, box: box, note: note, pending: false, tries: 0 });
   });
+
+  function say(entry, text, color) {
+    entry.note.textContent = text;
+    entry.note.style.color = color;
+    entry.note.style.display = text ? "block" : "none";
+  }
 
   function entryOf(el) {
     for (var i = 0; i < widgets.length; i++) {
@@ -88,19 +121,25 @@
     widgets.forEach(function (entry) {
       if (entry.pending && token(entry.form)) {
         entry.pending = false;
+        say(entry, "", "");
         entry.form.submit();
       }
     });
   };
 
-  /* Turnstile injoignable ou jeton expiré : on laisse partir la demande plutôt
-     que de bloquer le bouton, le serveur tranche et propose WhatsApp au besoin. */
+  /* Jeton expiré ou Turnstile en échec : une nouvelle tentative silencieuse,
+     puis un message expliquant comment nous joindre. Envoyer sans jeton serait
+     refusé par le serveur, le client ne saurait pas pourquoi. */
   window.rmTurnstileFailed = function () {
     widgets.forEach(function (entry) {
-      if (entry.pending) {
-        entry.pending = false;
-        entry.form.submit();
+      if (!entry.pending) return;
+      entry.tries++;
+      if (entry.tries < 2 && window.turnstile) {
+        window.turnstile.reset(entry.box);
+        return;
       }
+      entry.pending = false;
+      say(entry, texts.fail, "#8a2f2f");
     });
   };
 
@@ -111,13 +150,10 @@
       var entry = entryOf(form);
       if (!entry) return;
       entry.pending = true;
-      /* Filet de sécurité : jamais de bouton mort si Turnstile ne répond pas. */
+      say(entry, texts.wait, "#5a5245");
       window.setTimeout(function () {
-        if (entry.pending) {
-          entry.pending = false;
-          form.submit();
-        }
-      }, 8000);
+        if (entry.pending && !token(form)) window.rmTurnstileFailed();
+      }, 15000);
     });
   });
 
