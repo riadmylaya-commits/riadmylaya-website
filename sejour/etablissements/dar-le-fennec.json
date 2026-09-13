@@ -1,0 +1,59 @@
+{
+  "id": "dar-le-fennec",
+  "name": "Dar Le Fennec",
+  "city": "Marrakech",
+  "grammar": {
+    "fr": { "with": "avec Dar Le Fennec", "at": "à Dar Le Fennec", "of": "de Dar Le Fennec" },
+    "en": { "with": "with Dar Le Fennec", "at": "at Dar Le Fennec", "of": "Dar Le Fennec" },
+    "es": { "with": "con Dar Le Fennec", "at": "en Dar Le Fennec", "of": "de Dar Le Fennec" }
+  },
+  "site": {
+    "base_url": "https://sejour.riadmylaya.com/dar-le-fennec",
+    "output_dir": "sejour.riadmylaya.com/dar-le-fennec",
+    "paths": { "fr": "/preparer-mon-sejour", "en": "/en/prepare-your-stay", "es": "/es/prepara-tu-estancia" },
+    "thanks": { "fr": "/merci-sejour", "en": "/en/thank-you-stay", "es": "/es/gracias-estancia" },
+    "excursions_more": null
+  },
+  "contact": {
+    "whatsapp": "212661351989",
+    "phone_display": "+212 661 351 989",
+    "email": "contact@riadmylaya.com",
+    "address": "191 Derb Jdid, Dabachi — Médina, Marrakech",
+    "address_footer": "191 Derb Jdid, Dabachi, Médina, Marrakech",
+    "map_url": "https://www.google.com/maps/search/?api=1&query=Dar+Le+Fennec+191+Derb+Jdid+Dabachi+Marrakech"
+  },
+  "images": {
+    "favicon": "{hub}/assets/common/favicon.png",
+    "logo": null,
+    "logo_footer": null,
+    "hero": "{hub}/assets/dar-le-fennec/hero.jpg",
+    "transfer": "{hub}/assets/common/transfert-marrakech.jpg",
+    "dinner": "{hub}/assets/common/diner-marocain.jpg",
+    "cooking": "{hub}/assets/common/cooking-hero.jpg",
+    "excursions": "{hub}/assets/common/excursion-marrakech.jpeg",
+    "group": "{hub}/assets/common/activites-prive-groupe.jpg",
+    "spa": "{hub}/assets/common/hammam-interior.jpg"
+  },
+  "theme": { "accent": "#a8552f", "accent_dark": "#6e3a1d" },
+  "analytics": { "ga_id": null },
+  "stay": {
+    "checkin": { "fr": "14h", "en": "2 pm", "es": "las 14h" },
+    "luggage_from": { "fr": "9h", "en": "9 am", "es": "las 9h" },
+    "checkout": { "fr": "11h", "en": "11 am", "es": "las 11h" },
+    "breakfast_price": 7,
+    "tax": { "fr": "2,50", "en": "2.50", "es": "2,50" }
+  },
+  "services": {
+    "transfer": { "enabled": true },
+    "dinner": { "enabled": true },
+    "cooking": { "enabled": true },
+    "excursions": { "enabled": true },
+    "group": { "enabled": true, "gyg_url": "https://gyg.me/pieHSnog", "gyg_query": "Marrakech, Morocco" },
+    "spa": { "enabled": true }
+  },
+  "mail": {
+    "to_email": "contact@riadmylaya.com",
+    "to_name": "Dar Le Fennec",
+    "from_name": "Dar Le Fennec — Espace client"
+  }
+}

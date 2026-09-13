@@ -1,0 +1,31 @@
+<?php
+/* Généré par sejour/build.py depuis sejour/etablissements/*.json — ne pas modifier à la main. */
+return array(
+{% for e in etabs %}
+    '{{ e.id }}' => array(
+        'brand' => array(
+            'name' => {{ e.name|tojson }},
+            'city' => {{ e.city|tojson }},
+            'address' => {{ e.contact.address_footer|tojson }},
+            'domain' => {{ e.site.base_url.split('/')[2]|tojson }},
+            'phone' => {{ e.contact.phone_display|tojson }},
+            'email' => {{ e.contact.email|tojson }},
+            'of_fr' => {{ e.grammar.fr.of|tojson }},
+            'of_es' => {{ e.grammar.es.of|tojson }},
+            'ack_url' => array(
+{% for l in langs %}
+                '{{ l }}' => {{ (e.site.base_url ~ e.site.paths[l])|tojson }},
+{% endfor %}
+            ),
+            'next_origins' => array({{ ('https://' ~ e.site.base_url.split('/')[2])|tojson }}, {{ ('https://www.' ~ e.site.base_url.split('/')[2])|tojson }}, {{ hub|tojson }}),
+            'default_next' => {{ (e.site.base_url ~ e.site.thanks.fr)|tojson }},
+        ),
+        'mail' => array(
+            'to_email' => {{ e.mail.to_email|tojson }},
+            'to_name' => {{ e.mail.to_name|tojson }},
+            'from_name' => {{ e.mail.from_name|tojson }},
+            'fallback_url' => {{ ('https://formsubmit.co/' ~ e.mail.to_email)|tojson }},
+        ),
+    ),
+{% endfor %}
+);

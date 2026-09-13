@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>{{ t.thanks.title }}</title>
+  <meta name="description" content="{{ t.thanks.description }}">
+{% if images.favicon %}
+  <link rel="icon" href="{{ images.favicon }}">
+{% endif %}
+  <link rel="stylesheet" href="{{ lib }}/lib/sejour.css?v={{ version }}">
+  <style>
+    .rm-thankyou { min-height:80vh; display:flex; align-items:center; justify-content:center; padding:60px 20px; background:#f6f1ea; }
+    .rm-thankyou__card { max-width:640px; width:100%; background:#fff; border-radius:12px; padding:40px 32px; box-shadow:0 8px 32px rgba(0,0,0,0.08); text-align:center; }
+    .rm-thankyou__icon { font-size:64px; line-height:1; margin-bottom:16px; }
+    .rm-thankyou__title { font-family:'Yanone Kaffeesatz', sans-serif; font-size:38px; font-weight:600; color:#1f3a2e; margin-bottom:12px; letter-spacing:1px; }
+    .rm-thankyou__lead { font-size:18px; color:#333; margin-bottom:24px; line-height:1.5; }
+    .rm-thankyou__sub { font-size:15px; color:#666; margin-bottom:28px; }
+    .rm-thankyou__actions { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+    .rm-thankyou__btn { display:inline-block; padding:12px 24px; border-radius:6px; text-decoration:none; font-weight:600; font-size:15px; transition:background .2s; }
+    .rm-thankyou__btn--primary { background:{{ e.theme.accent_dark }}; color:#fff; }
+    .rm-thankyou__btn--primary:hover { background:{{ e.theme.accent }}; color:#fff; }
+    .rm-thankyou__btn--ghost { background:transparent; color:#1f3a2e; border:1px solid #1f3a2e; }
+    .rm-thankyou__btn--ghost:hover { background:#1f3a2e; color:#fff; }
+  </style>
+</head>
+<body>
+<div class="rm-thankyou">
+  <div class="rm-thankyou__card">
+    <div class="rm-thankyou__icon">&#9993;&#65039;</div>
+    <h1 class="rm-thankyou__title">{{ t.thanks.h1 }}</h1>
+    <p class="rm-thankyou__lead">{{ t.thanks.lead }}</p>
+    <p class="rm-thankyou__sub">{{ t.thanks.sub }}</p>
+    <div class="rm-thankyou__actions">
+      <a href="{{ page_url }}" class="rm-thankyou__btn rm-thankyou__btn--primary">{{ t.thanks.back }}</a>
+      <a href="{{ wa(t.wa_question) }}" target="_blank" rel="noopener noreferrer" class="rm-thankyou__btn rm-thankyou__btn--ghost">{{ t.thanks.wa }}</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
