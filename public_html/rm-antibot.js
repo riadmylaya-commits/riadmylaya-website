@@ -13,7 +13,7 @@
  * vide, seuls les pièges et la limite par IP protègent les formulaires.
  */
 (function () {
-  var SITEKEY = "0x4AAAAAAEydHUtiaotTS4bC";
+  var SITEKEY = "";
   var forms = [].slice.call(
     document.querySelectorAll('form[action*="rm-envoi.php"]')
   );
