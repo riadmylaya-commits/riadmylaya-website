@@ -98,8 +98,27 @@ adb shell am force-stop com.android.chrome        # simulates OS-killed Chrome /
 * Anti-bot fields to expect in the DOM of every `form[action*="rm-envoi.php"]` (6 per guest page):
   hidden `_ts` (page-open `Date.now()`, same value for all forms) and a trap `_url` with
   `value === ""`, `tabIndex === -1`, `getBoundingClientRect().right` around `-9960`, inside an
-  `aria-hidden="true"` wrapper. Turnstile `SITEKEY` is empty, so `.cf-turnstile` and any
-  `challenges.cloudflare.com` script/iframe count must be `0`.
+  `aria-hidden="true"` wrapper. Turnstile has been switched on/off several times: check the
+  deployed `SITEKEY` in `https://riadmylaya.com/rm-antibot.js` first. If it is empty, `.cf-turnstile`
+  and any `challenges.cloudflare.com` script/iframe count must be `0`; if it is set, expect 6
+  `.cf-turnstile` boxes per guest page.
+* **Measuring Turnstile on Android.** The challenge iframe lives in a **closed shadow root**, so
+  counting `iframe` elements always returns 0 and is *not* a "did not render" signal. Measure
+  `.cf-turnstile` `offsetHeight` (0 = not rendered, ~71 = a visible checkbox) and the length of
+  `[name="cf-turnstile-response"]`. A widget only renders after it is scrolled reasonably near the
+  viewport, and `scrollIntoView()` via CDP is often ignored on Chrome Android — scroll with
+  `adb shell input swipe` or a `#anchor` intent instead, and tap the checkbox by clicking the
+  emulator window with the mouse (simplest reliable way to hit it).
+* **A mobile client can obtain a Turnstile token** (verified on the emulator with sitekey
+  `0x4AAAAAAEydHUtiaotTS4bC`): tapping the checkbox shows "Succès !" and fills
+  `cf-turnstile-response` with ~752 chars. Earlier runs where Android showed height 0 / no token were
+  measured on a **stale CDP tab id** — every `am start ... -d <url>` intent creates a *new* target,
+  so re-run `curl -s http://localhost:9222/json/list` and re-read `TAB` after each navigation, or
+  you will silently instrument an old tab.
+* The repeated `Failed to execute 'postMessage' on 'DOMWindow': target origin
+  'https://challenges.cloudflare.com'` console errors from `api.js` are **noise on Android** — they
+  appear even when the widget renders and issues a valid token. Do not treat them as the cause of a
+  Turnstile failure.
 * Healthy portrait baseline (Pixel 5, 393x722): `scrollHeight` ~7.2k, `--rm-head-h: 52px`
   (68px in landscape), `body{visibility:visible;opacity:1}`, no full-viewport `position:fixed`
   element. Hash deep links (`#transfert`, `#diner`, `#hammam`, `#contact`, unknown anchors) keep
