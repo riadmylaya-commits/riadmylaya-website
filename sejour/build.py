@@ -196,7 +196,7 @@ def build_context(etab, lang, i18n_raw, services_all):
     spa = dict(mad=spa_min, eur=round(spa_min / rate), count=n_treat,
                open_from=opening[0], open_to=opening[-1])
 
-    brand_js = json.dumps({"whatsapp": etab["contact"]["whatsapp"], "name": etab["name"],
+    brand_js = json.dumps({"whatsapp": etab["contact"]["whatsapp"], "name": etab["name"], "phone": etab["contact"]["phone_display"],
                            "names": etab["grammar"]}, ensure_ascii=False)
 
     images = {k: (v.replace("{hub}", hub if not is_hub else "") if isinstance(v, str) else v)

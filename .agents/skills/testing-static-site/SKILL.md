@@ -758,6 +758,33 @@ Time inputs render as 12-hour UI but keep 24h DOM values, so type `04:00AM` / `1
 Verify the recap hidden field via `[data-tq-recap].value` (non-empty, contains the typed name and
 `TOTAL : 30 €`) and **never** click the e-mail submit button.
 
+## Generated multi-property stay pages (`sejour/`)
+
+Unlike the hand-maintained `public_html/` pages, `sejour/` has a Python/Jinja2 build:
+run `SEJOUR_HUB_URL=http://localhost:8081 python3 sejour/build.py` from the repo root.
+Serve `sejour/dist/sejour.riadmylaya.com` on 8081 and `sejour/dist/riadbilkis.com`
+on 8082 with PHP and an extensionless `.html` router. Use local assets from dist,
+not the production fallback proxy, to avoid accidentally testing deployed pages.
+No npm is needed. A source edit to shared `public_html/*.js` needs another build
+before generated `/lib/` copies change; hard-reload afterwards.
+
+Language and `_next` links use absolute production property URLs even with a local
+hub override. Inspect those destinations, but visit equivalent localhost routes
+to verify generated content before deployment. A local POST can correctly return
+303 yet land on an undeployed production thank-you page: report the redirect
+and local confirmation separately, never infer email receipt.
+
+The hub forms use `/envoi.php` (Bilkis posts across ports to the hub), so verify
+antibot `_ts` and `.cf-turnstile` injection on these forms, not only legacy
+`rm-envoi.php` forms. Property routing fields are `_etab` and `_next`; inspect
+them on each brand and language. Partner-spa WhatsApp messages intentionally
+need not name the establishment.
+
+For an authorized local submission test, a temporary hub `rm-mail-config.php`
+can use deliberately failing loopback SMTP and no Turnstile secret. The handler
+may still call its external fallback; clearly label the request as a test, do not
+claim inbox delivery, and delete the temporary configuration afterwards.
+
 ## Devin Secrets Needed
 
 None — the site is public and no login is required.

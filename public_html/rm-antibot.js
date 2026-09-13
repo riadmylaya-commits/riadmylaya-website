@@ -1,7 +1,7 @@
 /**
  * Riad Mylaya — protection anti-robots des formulaires.
  *
- * Sur chaque formulaire envoyé à /rm-envoi.php :
+ * Sur chaque formulaire envoyé à /rm-envoi.php (ou envoi.php de l'espace commun) :
  *   - un second champ piège invisible (_url) ;
  *   - l'horodatage d'ouverture de la page (_ts), pour repérer les envois
  *     instantanés des robots ;
@@ -14,6 +14,7 @@
  */
 (function () {
   var SITEKEY = "0x4AAAAAAEydHUtiaotTS4bC";
+  var PHONE = (window.RM_BRAND && window.RM_BRAND.phone) || "+212 661 351 989";
   var MESSAGES = {
     fr: {
       wait: "Vérification de sécurité en cours…",
@@ -22,7 +23,7 @@
         " partira automatiquement ensuite.",
       fail:
         "La vérification de sécurité n'a pas abouti. Merci de réessayer, ou" +
-        " écrivez-nous sur WhatsApp au +212 661 351 989."
+        " écrivez-nous sur WhatsApp au " + PHONE + "."
     },
     en: {
       wait: "Security check in progress…",
@@ -31,7 +32,7 @@
         " automatically.",
       fail:
         "The security check did not complete. Please try again, or message us" +
-        " on WhatsApp at +212 661 351 989."
+        " on WhatsApp at " + PHONE + "."
     },
     es: {
       wait: "Verificación de seguridad en curso…",
@@ -40,11 +41,11 @@
         " automáticamente después.",
       fail:
         "La verificación de seguridad no se ha completado. Inténtelo de nuevo o" +
-        " escríbanos por WhatsApp al +212 661 351 989."
+        " escríbanos por WhatsApp al " + PHONE + "."
     }
   };
   var forms = [].slice.call(
-    document.querySelectorAll('form[action*="rm-envoi.php"]')
+    document.querySelectorAll('form[action*="envoi.php"]')
   );
   if (!forms.length) return;
 

@@ -16,7 +16,7 @@ return array(
                 'en' => "https://sejour.riadmylaya.com/dar-le-fennec/en/prepare-your-stay",
                 'es' => "https://sejour.riadmylaya.com/dar-le-fennec/es/prepara-tu-estancia",
             ),
-            'next_origins' => array("https://sejour.riadmylaya.com", "https://www.sejour.riadmylaya.com", "http://localhost:8081"),
+            'next_origins' => array("https://sejour.riadmylaya.com", "https://www.sejour.riadmylaya.com", "https://sejour.riadmylaya.com"),
             'default_next' => "https://sejour.riadmylaya.com/dar-le-fennec/merci-sejour",
         ),
         'mail' => array(
@@ -41,7 +41,7 @@ return array(
                 'en' => "https://sejour.riadmylaya.com/dardabakech/en/prepare-your-stay",
                 'es' => "https://sejour.riadmylaya.com/dardabakech/es/prepara-tu-estancia",
             ),
-            'next_origins' => array("https://sejour.riadmylaya.com", "https://www.sejour.riadmylaya.com", "http://localhost:8081"),
+            'next_origins' => array("https://sejour.riadmylaya.com", "https://www.sejour.riadmylaya.com", "https://sejour.riadmylaya.com"),
             'default_next' => "https://sejour.riadmylaya.com/dardabakech/merci-sejour",
         ),
         'mail' => array(
@@ -66,7 +66,7 @@ return array(
                 'en' => "https://riadbilkis.com/en/prepare-your-stay",
                 'es' => "https://riadbilkis.com/es/prepara-tu-estancia",
             ),
-            'next_origins' => array("https://riadbilkis.com", "https://www.riadbilkis.com", "http://localhost:8081"),
+            'next_origins' => array("https://riadbilkis.com", "https://www.riadbilkis.com", "https://sejour.riadmylaya.com"),
             'default_next' => "https://riadbilkis.com/merci-sejour",
         ),
         'mail' => array(
@@ -91,7 +91,7 @@ return array(
                 'en' => "https://riadmylaya.com/en/prepare-your-stay",
                 'es' => "https://riadmylaya.com/es/preparar-mi-estancia",
             ),
-            'next_origins' => array("https://riadmylaya.com", "https://www.riadmylaya.com", "http://localhost:8081"),
+            'next_origins' => array("https://riadmylaya.com", "https://www.riadmylaya.com", "https://sejour.riadmylaya.com"),
             'default_next' => "https://riadmylaya.com/merci-sejour",
         ),
         'mail' => array(
