@@ -30,7 +30,7 @@ return array(
         'brand' => array(
             'name' => "Dardabakech",
             'city' => "Marrakech",
-            'address' => "193 bis Derb Dabachi, Rue Derb Jdid, M\u00e9dina, Marrakech",
+            'address' => "192 bis Derb Dabachi, Rue Derb Jdid, M\u00e9dina, Marrakech",
             'domain' => "sejour.riadmylaya.com",
             'phone' => "+212 704 825 972",
             'email' => "alivoski@gmail.com",
