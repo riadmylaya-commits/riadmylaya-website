@@ -13,7 +13,8 @@
  * vide, seuls les pièges et la limite par IP protègent les formulaires.
  */
 (function () {
-  var SITEKEY = "0x4AAAAAAEydHUtiaotTS4bC";
+  var BRAND = window.RM_BRAND || {};
+  var SITEKEY = "turnstile_sitekey" in BRAND ? (BRAND.turnstile_sitekey || "") : "0x4AAAAAAEydHUtiaotTS4bC";
   var PHONE = (window.RM_BRAND && window.RM_BRAND.phone) || "+212 661 351 989";
   var MESSAGES = {
     fr: {

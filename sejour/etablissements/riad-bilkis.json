@@ -8,6 +8,7 @@
     "es": { "with": "con el Riad Bilkis", "at": "en el Riad Bilkis", "of": "del Riad Bilkis" }
   },
   "site": {
+    "turnstile_sitekey": null,
     "base_url": "https://riadbilkis.com",
     "output_dir": "riadbilkis.com",
     "paths": { "fr": "/preparer-mon-sejour", "en": "/en/prepare-your-stay", "es": "/es/prepara-tu-estancia" },

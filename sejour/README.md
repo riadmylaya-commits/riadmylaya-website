@@ -41,7 +41,13 @@ point d'entrée unique des formulaires `envoi.php` (les pages Bilkis y postent a
 
 Après dépôt : copier `rm-mail-config.sample.php` en `rm-mail-config.php` et y mettre le
 mot de passe SMTP (fichier jamais versionné). Ajouter `sejour.riadmylaya.com` et
-`riadbilkis.com` aux domaines autorisés du widget Cloudflare Turnstile.
+`riadbilkis.com` aux domaines autorisés du widget Cloudflare Turnstile, puis retirer
+`"turnstile_sitekey": null` du `site` de l'établissement (tant qu'il est là, le widget
+n'est pas chargé et seuls pièges, `_ts` et limite par IP protègent les formulaires).
+
+Sur riadbilkis.com (WordPress), les pages générées vivent dans `/sejour/` et les URL
+propres sont servies par des `RewriteRule` dans le bloc « Riad Bilkis » du `.htaccess`
+(ex. `^preparer-mon-sejour/?$ /sejour/preparer-mon-sejour.html [L]`).
 
 ## Liens
 

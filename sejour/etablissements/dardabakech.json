@@ -8,6 +8,7 @@
     "es": { "with": "con Dardabakech", "at": "en Dardabakech", "of": "de Dardabakech" }
   },
   "site": {
+    "turnstile_sitekey": null,
     "base_url": "https://sejour.riadmylaya.com/dardabakech",
     "output_dir": "sejour.riadmylaya.com/dardabakech",
     "paths": { "fr": "/preparer-mon-sejour", "en": "/en/prepare-your-stay", "es": "/es/prepara-tu-estancia" },

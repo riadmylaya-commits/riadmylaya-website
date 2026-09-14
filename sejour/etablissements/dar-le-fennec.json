@@ -8,6 +8,7 @@
     "es": { "with": "con Dar Le Fennec", "at": "en Dar Le Fennec", "of": "de Dar Le Fennec" }
   },
   "site": {
+    "turnstile_sitekey": null,
     "base_url": "https://sejour.riadmylaya.com/dar-le-fennec",
     "output_dir": "sejour.riadmylaya.com/dar-le-fennec",
     "paths": { "fr": "/preparer-mon-sejour", "en": "/en/prepare-your-stay", "es": "/es/prepara-tu-estancia" },
