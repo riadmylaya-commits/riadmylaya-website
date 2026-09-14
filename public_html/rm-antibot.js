@@ -5,8 +5,8 @@
  *   - un second champ piège invisible (_url) ;
  *   - l'horodatage d'ouverture de la page (_ts), pour repérer les envois
  *     instantanés des robots ;
- *   - le widget Cloudflare Turnstile, invisible tant que Cloudflare ne juge pas
- *     l'internaute suspect (appearance « interaction-only »).
+ *   - le widget Cloudflare Turnstile, affiché de la même façon dans les trois
+ *     langues (appearance « always ») : il se résout seul la plupart du temps.
  *
  * La clé publique ci-dessous n'est pas un secret : la validation réelle du jeton
  * se fait côté serveur dans rm-envoi.php avec la clé secrète. Tant qu'elle est
@@ -97,7 +97,7 @@
     box.className = "cf-turnstile";
     box.style.cssText = "margin:10px 0;";
     box.setAttribute("data-sitekey", SITEKEY);
-    box.setAttribute("data-appearance", "interaction-only");
+    box.setAttribute("data-appearance", "always");
     box.setAttribute("data-language", (document.documentElement.lang || "fr").slice(0, 2));
     box.setAttribute("data-callback", "rmTurnstileDone");
     box.setAttribute("data-error-callback", "rmTurnstileFailed");
