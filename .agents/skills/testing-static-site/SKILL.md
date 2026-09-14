@@ -775,8 +775,10 @@ to verify generated content before deployment. A local POST can correctly return
 and local confirmation separately, never infer email receipt.
 
 The hub forms use `/envoi.php` (Bilkis posts across ports to the hub), so verify
-antibot `_ts` and `.cf-turnstile` injection on these forms, not only legacy
-`rm-envoi.php` forms. Property routing fields are `_etab` and `_next`; inspect
+antibot `_ts` injection on these forms, not only legacy `rm-envoi.php` forms.
+Check the property's `site.turnstile_sitekey` before requiring `.cf-turnstile`:
+when null, no widget or Cloudflare script is expected on production.
+Property routing fields are `_etab` and `_next`; inspect
 them on each brand and language. Partner-spa WhatsApp messages intentionally
 need not name the establishment.
 
@@ -784,6 +786,19 @@ For an authorized local submission test, a temporary hub `rm-mail-config.php`
 can use deliberately failing loopback SMTP and no Turnstile secret. The handler
 may still call its external fallback; clearly label the request as a test, do not
 claim inbox delivery, and delete the temporary configuration afterwards.
+
+For production checks, use the supplied public routes directly: no build or local
+server is required. Live forms email real owners; submit only the exact count and
+property explicitly authorized, never retry merely to collect better evidence.
+Verify the actual final URL and branded confirmation, without inferring delivery.
+Also check the Bilkis WordPress root independently of its generated stay routes;
+remove Chrome's selected inline autocomplete suffix before navigating to `/`.
+
+Properties with `stay.pending` should show booking-confirmation arrival/checkout
+wording in each locale, without guessed times or breakfast rates. Check enabled
+service flags before judging rates: shared excursions and city tax can remain
+priced even when transfer, dinner, cooking and spa sections are absent. Read
+current property JSON for phones rather than reusing provisional test numbers.
 
 ## Devin Secrets Needed
 
