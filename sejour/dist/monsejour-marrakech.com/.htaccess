@@ -1,0 +1,34 @@
+# monsejour-marrakech.com — espace client commun (généré par sejour/build.py)
+# Alias cPanel de riadmylaya.com : public_html/.htaccess réécrit ce domaine vers /sejour-hub/.
+Options -Indexes
+RewriteEngine On
+
+# Hôte canonique en HTTPS (www, ancien sejour.riadmylaya.com, riadmylaya.com/sejour-hub/…)
+RewriteCond %{HTTP_HOST} !^monsejour-marrakech\.com$ [OR]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://monsejour-marrakech.com/$1 [R=301,L]
+
+# Formulaires postés depuis les autres domaines (riadbilkis.com…)
+<FilesMatch "^envoi\.php$">
+  Header always set Access-Control-Allow-Origin "*"
+</FilesMatch>
+<FilesMatch "^(rm-envoi|etablissements|rm-mail-config.*)\.php$">
+  Require all denied
+</FilesMatch>
+
+# Bibliothèque partagée servie aux autres domaines
+<FilesMatch "\.(js|css|jpe?g|png|webp|svg)$">
+  Header set Access-Control-Allow-Origin "*"
+  Header set Cache-Control "public, max-age=86400"
+</FilesMatch>
+
+# /dar-le-fennec/preparer-mon-sejour  ->  /dar-le-fennec/preparer-mon-sejour.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# /dar-le-fennec  ->  page FR
+RewriteRule ^([a-z0-9-]+)/?$ /$1/preparer-mon-sejour [R=302,L]
+
+ErrorDocument 404 /index.html

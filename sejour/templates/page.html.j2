@@ -1,0 +1,459 @@
+{#- Page « Préparer mon séjour » — commune à tous les établissements.
+    Variables : e (config établissement), t (textes traduits), lang, images, wa(), urls, … (voir build.py) -#}
+{% macro contact_fields(attr) -%}
+          <fieldset>
+            <legend>{{ t.services.your_details }}</legend>
+            <div class="rm-tq__grid">
+              <label>{{ t.fields.name }} *
+                <input type="text" name="{{ t.fields.name }}" {{ attr }}="name" required autocomplete="name">
+              </label>
+              <label>{{ t.fields.ref }}
+                <input type="text" name="{{ t.fields.ref }}" {{ attr }}="ref">
+              </label>
+              <label>{{ t.fields.phone_wa }} *
+                <input type="tel" name="{{ t.fields.phone_wa }}" {{ attr }}="phone" required autocomplete="tel">
+              </label>
+              <label>{{ t.fields.email }}
+                <input type="email" name="{{ t.fields.email }}" {{ attr }}="mail" autocomplete="email">
+              </label>
+            </div>
+          </fieldset>
+{%- endmacro %}
+{% macro hidden(subject) -%}
+          <input type="hidden" name="_subject" value="{{ subject }}">
+          <input type="hidden" name="_lang" value="{{ lang }}">
+          <input type="hidden" name="_etab" value="{{ e.id }}">
+          <input type="hidden" name="_next" value="{{ thanks_url }}">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+{%- endmacro %}
+{% macro booking(key, id, track, img, s, extra_btn='') -%}
+    <details class="rm-ps-acc" id="{{ id }}"{% if key == 'transfer' %} open{% endif %}>
+      <summary>
+        <span class="rm-ps-acc__thumb"><img src="{{ img }}" alt="{{ s.alt }}" width="148" height="120" loading="lazy"></span>
+        <span class="rm-ps-acc__txt">
+          <h3>{{ s.h }}</h3>
+          <p>{{ caller('price') }}</p>
+        </span>
+        <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
+      </summary>
+      <div class="rm-ps-acc__body">
+      <p>{{ s.intro }}</p>
+      <ul>
+{{ caller('list') }}
+      </ul>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">{{ caller('price') }}</span> <span class="rm-ps-acc__pay">{{ t.services.cash }}</span></p>
+      <h4 class="rm-ps-acc__h4">{{ s.h4 }}</h4>
+      <p>{{ s.help }}</p>
+      <div class="rm-tq rm-bk" data-rm-bk="{{ key }}" data-lang="{{ lang }}">
+        <form action="{{ envoi }}" method="POST">
+{{ hidden(s.subject) }}
+          <input type="hidden" name="{{ t.fields.recap }}" data-bk-recap>
+          <input type="hidden" name="{{ t.fields.total }}" data-bk-total-field>
+          <fieldset>
+            <legend>{{ t.services.your_request }}</legend>
+            <div data-bk-fields></div>
+          </fieldset>
+{{ contact_fields('data-bk-contact') }}
+          <div class="rm-tq__summary" data-bk-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-bk-wa href="{{ wa(s.wa) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="{{ track }}-space"><span aria-hidden="true">💬</span> {{ t.services.wa_send }}</a>
+            <button type="submit" data-bk-submit data-track="form" data-track-label="{{ track }}-space">{{ t.services.mail_send }}</button>
+{{ extra_btn }}
+          </div>
+          <p class="rm-tq__legal">{{ t.services.legal }}</p>
+        </form>
+      </div>
+      </div>
+    </details>
+{%- endmacro %}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>{{ t.title }}</title>
+  <meta name="description" content="{{ t.description }}">
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:title" content="{{ t.title }}">
+  <meta property="og:description" content="{{ t.description }}">
+  <meta property="og:image" content="{{ hero_abs }}">
+  <meta property="og:url" content="{{ page_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="{{ t.locale }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ t.title }}">
+  <meta name="twitter:description" content="{{ t.description }}">
+  <meta name="twitter:image:src" content="{{ hero_abs }}">
+  <link rel="canonical" href="{{ page_url }}">
+{% for l in langs %}
+  <link rel="alternate" hreflang="{{ l }}" href="{{ urls[l] }}">
+{% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ urls.fr }}">
+{% if images.favicon %}
+  <link rel="icon" href="{{ images.favicon }}">
+{% endif %}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ lib }}/lib/sejour.css?v={{ version }}">
+{% if e.analytics.ga_id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ e.analytics.ga_id }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ e.analytics.ga_id }}');</script>
+{% endif %}
+<script>window.RM_BRAND = {{ brand_js }};</script>
+</head>
+<body data-rm-space="client" data-rm-etab="{{ e.id }}">
+<header class="rm-cs-head">
+  <div class="rm-cs-head__in">
+    <div class="rm-cs-head__brand">
+{% if images.logo %}
+      <img src="{{ images.logo }}" alt="{{ e.name }}" width="128" height="128" loading="eager">
+{% endif %}
+      <span class="rm-cs-head__name">{{ e.name }}<small>{{ t.space }}</small></span>
+    </div>
+    <div class="rm-cs-head__right">
+      <ul class="rm-cs-lang" aria-label="{{ t.lang_label }}">{% for l in langs %}<li><a href="{{ urls[l] }}"{% if l == lang %} aria-current="page"{% endif %} hreflang="{{ l }}">{{ l|upper }}</a></li>{% endfor %}</ul>
+      <a class="rm-cs-head__wa" href="{{ wa(t.wa_question) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="space-header"><span aria-hidden="true">💬</span><span class="rm-cs-head__wa-txt">WhatsApp</span></a>
+    </div>
+  </div>
+</header>
+<div class="rm-lp rm-cs" style="--terra:{{ e.theme.accent }};--terra-d:{{ e.theme.accent_dark }}">
+
+<section class="rm-lp-hero" id="lp-hero">
+  <div class="rm-lp-hero__bg" style="background-image:url('{{ images.hero }}')"></div>
+  <div class="rm-lp-hero__overlay"></div>
+  <div class="container rm-lp-hero__content">
+    <div class="text-center">
+      <span class="rm-lp-hero__eyebrow">{{ t.eyebrow }}</span>
+      <h1 class="rm-lp-hero__title"><strong>{{ t.h1 }}</strong></h1>
+      <p class="rm-lp-hero__subtitle">{{ t.subtitle }}</p>
+      <div class="rm-lp-cta-row">
+        <a class="rm-lp-btn rm-lp-btn--wa" href="{{ wa(t.wa_question) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="stay-hero"><span aria-hidden="true">💬</span> {{ t.question_btn }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="rm-ps-toc" aria-label="{{ t.h1 }}">
+  <div class="container">
+    <ul class="rm-ps-toc__list">
+        <li><a href="{{ page_path }}#arrivee">{{ t.toc.arrival }}</a></li>
+        <li><a href="{{ page_path }}#infos">{{ t.toc.infos }}</a></li>
+{% if services.transfer.enabled %}
+        <li><a href="{{ page_path }}#transfert">{{ t.toc.transfer }}</a></li>
+{% endif %}
+{% if services.dinner.enabled %}
+        <li><a href="{{ page_path }}#diner">{{ t.toc.dinner }}</a></li>
+{% endif %}
+{% if services.cooking.enabled %}
+        <li><a href="{{ page_path }}#cuisine">{{ t.toc.cooking }}</a></li>
+{% endif %}
+{% if services.excursions.enabled %}
+        <li><a href="{{ page_path }}#excursions">{{ t.toc.excursions }}</a></li>
+{% endif %}
+{% if services.group.enabled %}
+        <li><a href="{{ page_path }}#groupe">{{ t.toc.group }}</a></li>
+{% endif %}
+{% if services.spa.enabled %}
+        <li><a href="{{ page_path }}#hammam">{{ t.toc.spa }}</a></li>
+{% endif %}
+        <li><a href="{{ page_path }}#contact">{{ t.toc.contact }}</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="rm-ps-sec rm-ps-sec--white" id="arrivee">
+  <div class="container">
+    <h2 class="rm-ps-sec__title">{{ t.arrival.title }}</h2>
+    <div class="rm-ps-arrival">
+{% if e.stay.get("pending") %}
+      <p>{{ t.arrival.pending }}</p>
+      <a class="rm-lp-btn rm-lp-btn--wa" href="{{ wa(t.arrival.wa_pending) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="arrival"><span aria-hidden="true">🛎️</span> {{ t.arrival.pending_btn }}</a>
+{% else %}
+      <p>{{ t.arrival.room }}</p>
+      <p>{{ t.arrival.luggage }}</p>
+      <p>{{ t.arrival.breakfast }}</p>
+      <a class="rm-lp-btn rm-lp-btn--wa" href="{{ wa(t.arrival.wa_breakfast) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="breakfast"><span aria-hidden="true">🥐</span> {{ t.arrival.breakfast_btn }}</a>
+{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="rm-ps-sec rm-ps-sec--cream" id="infos">
+  <div class="container">
+    <h2 class="rm-ps-sec__title">{{ t.infos.title }}</h2>
+    <p class="rm-ps-sec__sub">{{ t.infos.sub }}</p>
+    <div class="rm-ps-info">
+      <div class="rm-ps-info__item">
+        <span class="rm-ps-icon" aria-hidden="true">🧾</span>
+        <h3>{{ t.infos.tax_h }}</h3>
+        <p>{{ t.infos.tax_p }}</p>
+      </div>
+      <div class="rm-ps-info__item">
+        <span class="rm-ps-icon" aria-hidden="true">💵</span>
+        <h3>{{ t.infos.extras_h }}</h3>
+        <p>{{ t.infos.extras_p }}</p>
+      </div>
+      <div class="rm-ps-info__item">
+        <span class="rm-ps-icon" aria-hidden="true">📍</span>
+        <h3>{{ t.infos.address_h }}</h3>
+        <p>{{ t.infos.address_p }}</p>
+        <a class="rm-ps-inline" href="{{ e.contact.map_url }}" target="_blank" rel="noopener noreferrer" data-track="directions" data-track-label="stay">{{ t.infos.directions }}</a>
+      </div>
+      <div class="rm-ps-info__item">
+        <span class="rm-ps-icon" aria-hidden="true">🕚</span>
+        <h3>{{ t.infos.checkout_h }}</h3>
+        <p>{{ t.infos.checkout_pending if e.stay.get("pending") else t.infos.checkout_p }}</p>
+      </div>
+      <div class="rm-ps-info__item">
+        <span class="rm-ps-icon" aria-hidden="true">🌙</span>
+        <h3>{{ t.infos.late_h }}</h3>
+        <p>{{ t.infos.late_p }}</p>
+        <a class="rm-ps-inline" href="{{ wa(t.infos.wa_late) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="late-arrival">{{ t.infos.late_btn }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rm-ps-sec rm-ps-sec--white" id="services">
+  <div class="container">
+    <h2 class="rm-ps-sec__title">{{ t.services.title }}</h2>
+    <p class="rm-ps-sec__sub">{{ t.services.sub }}</p>
+    <div class="rm-ps-accs">
+{% if services.transfer.enabled %}
+{% set s = t.transfer %}
+    <details class="rm-ps-acc" id="transfert" open>
+      <summary>
+        <span class="rm-ps-acc__thumb"><img src="{{ images.transfer }}" alt="{{ s.alt }}" width="148" height="120" loading="lazy"></span>
+        <span class="rm-ps-acc__txt">
+          <h3>{{ s.h }}</h3>
+          <p>{{ transfer.price }}</p>
+        </span>
+        <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
+      </summary>
+      <div class="rm-ps-acc__body">
+      <p>{{ s.intro }}</p>
+      <ul>
+        <li>{{ s.li1 }}</li>
+        <li>{{ s.li2 }}</li>
+{% for line in transfer.lines %}
+        <li>{{ line }}</li>
+{% endfor %}
+      </ul>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">{{ transfer.price }}</span> <span class="rm-ps-acc__pay">{{ t.services.cash }}</span></p>
+      <h4 class="rm-ps-acc__h4">{{ s.h4 }}</h4>
+      <p>{{ s.help }}</p>
+      <div class="rm-tq" data-rm-tq data-lang="{{ lang }}">
+        <form action="{{ envoi }}" method="POST">
+{{ hidden(s.subject) }}
+          <input type="hidden" name="{{ t.fields.recap }}" data-tq-recap>
+          <input type="hidden" name="{{ t.fields.total }}" data-tq-total-field>
+          <fieldset>
+            <legend>{{ s.trip }}</legend>
+            <div class="rm-tq__grid">
+              <label>{{ s.type }}
+                <select data-tq="type">
+                  <option value="airport">{{ s.airport }}</option>
+{% if transfer.has_station %}
+                  <option value="station">{{ s.station }}</option>
+{% endif %}
+                </select>
+              </label>
+              <label>{{ s.people }}
+                <select data-tq="people">
+{% for n in range(1, transfer.max_people + 1) %}
+                  <option value="{{ n }}">{{ n }}</option>
+{% endfor %}
+                  <option value="{{ transfer.max_people + 1 }}">{{ s.people_more.replace('{n}', (transfer.max_people + 1)|string) }}</option>
+                </select>
+              </label>
+              <label>{{ s.trips }}
+                <select data-tq="trips">
+                  <option value="both">{{ s.both if transfer.has_discount else s.both_nodiscount }}</option>
+                  <option value="arrival">{{ s.arrival_only }}</option>
+                  <option value="departure">{{ s.departure_only }}</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+          <fieldset data-tq-block="arrival">
+            <legend>{{ s.arrival }}</legend>
+            <div class="rm-tq__grid">
+              <label>{{ s.date }}
+                <input type="date" data-tq="arr_date" data-tq-required>
+              </label>
+              <label>{{ s.time }}
+                <input type="time" data-tq="arr_time" data-tq-required>
+              </label>
+              <label>{{ s.num }}
+                <input type="text" data-tq="arr_num" autocomplete="off">
+              </label>
+            </div>
+          </fieldset>
+          <fieldset data-tq-block="departure">
+            <legend>{{ s.departure }}</legend>
+            <div class="rm-tq__grid">
+              <label>{{ s.date }}
+                <input type="date" data-tq="dep_date" data-tq-required>
+              </label>
+              <label>{{ s.time }}
+                <input type="time" data-tq="dep_time" data-tq-required>
+              </label>
+              <label>{{ s.num_back }}
+                <input type="text" data-tq="dep_num" autocomplete="off">
+              </label>
+            </div>
+          </fieldset>
+{{ contact_fields('data-tq') }}
+          <div class="rm-tq__summary" data-tq-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-tq-wa href="{{ wa(s.wa) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="transfer-space"><span aria-hidden="true">💬</span> {{ t.services.wa_send }}</a>
+            <button type="submit" data-tq-submit data-track="form" data-track-label="transfer-space">{{ t.services.mail_send }}</button>
+          </div>
+          <p class="rm-tq__legal">{{ s.legal }}</p>
+        </form>
+      </div>
+      </div>
+    </details>
+{% endif %}
+{% if services.dinner.enabled %}
+{% set s = t.dinner %}
+{% call(part) booking('dinner', 'diner', 'diner', images.dinner, s) %}
+{% if part == 'price' %}{{ s.price.replace('{min}', dinner.min|string) }}{% else %}
+        <li>{{ s.li1 }}</li>
+        <li>{{ s.li2 }}</li>
+        <li>{{ s.li3 }}</li>
+        <li>{{ s.li4 }}</li>
+        <li>{{ dinner.formulas }}</li>
+        <li>{{ dinner.service }}</li>
+{% endif %}
+{% endcall %}
+{% endif %}
+{% if services.cooking.enabled %}
+{% set s = t.cooking %}
+{% call(part) booking('cooking', 'cuisine', 'cuisine', images.cooking, s) %}
+{% if part == 'price' %}{{ s.price.replace('{price}', cooking.price|string) }}{% else %}
+        <li>{{ s.li1 }}</li>
+        <li>{{ s.li2 }}</li>
+        <li>{{ s.li3 }}</li>
+        <li>{{ s.li4 }}</li>
+        <li>{{ s.li5.replace('{price}', cooking.price|string).replace('{max}', cooking.max|string) }}</li>
+{% endif %}
+{% endcall %}
+{% endif %}
+{% if services.excursions.enabled %}
+{% set s = t.excursions %}
+{% set more %}{% if excursions_more %}            <a class="rm-lp-btn rm-tq__more" href="{{ excursions_more }}" data-track="service" data-track-label="excursions-more"><span aria-hidden="true">🧭</span> {{ s.more }}</a>{% endif %}{% endset %}
+{% call(part) booking('excursions', 'excursions', 'excursions', images.excursions, s, more) %}
+{% if part == 'price' %}{{ s.price.replace('{min}', excursions.min|string) }}{% else %}
+        <li>{{ s.li1 }}</li>
+        <li>{{ s.li2 }}</li>
+        <li>{{ s.li3 }}</li>
+        <li>{{ s.li4 }}</li>
+        <li>{{ s.li5 }}</li>
+{% endif %}
+{% endcall %}
+{% endif %}
+{% if services.group.enabled %}
+{% set s = t.group %}
+    <details class="rm-ps-acc" id="groupe">
+      <summary>
+        <span class="rm-ps-acc__thumb"><img src="{{ images.group }}" alt="{{ s.alt }}" width="148" height="120" loading="lazy"></span>
+        <span class="rm-ps-acc__txt">
+          <h3>{{ s.h }}</h3>
+          <p>{{ s.price }}</p>
+        </span>
+        <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
+      </summary>
+      <div class="rm-ps-acc__body">
+      <p>{{ s.intro }}</p>
+      <ul>
+        <li>{{ s.li1 }}</li>
+        <li>{{ s.li2 }}</li>
+        <li>{{ s.li3 }}</li>
+      </ul>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">{{ s.price }}</span> <span class="rm-ps-acc__pay">{{ t.services.online }}</span></p>
+      <div class="rm-cs-gyg-clip">
+      <div class="rm-cs-gyg"
+           data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
+           data-gyg-locale-code="{{ t.gyg_locale }}"
+           data-gyg-widget="activities"
+           data-gyg-number-of-items="6"
+           data-gyg-q="{{ services.group.gyg_query }}"></div>
+      </div>
+      <p>{{ s.outro }}</p>
+      <a class="rm-lp-btn rm-lp-btn--primary" href="{{ services.group.gyg_url }}" target="_blank" rel="nofollow sponsored noopener" data-track="gyg" data-track-label="space-group">{{ s.btn }}</a>
+      </div>
+    </details>
+{% endif %}
+{% if services.spa.enabled %}
+{% set s = t.spa %}
+{% call(part) booking('spa', 'hammam', 'hammam', images.spa, s) %}
+{% if part == 'price' %}{{ s.price.replace('{mad}', spa.mad|string).replace('{eur}', spa.eur|string) }}{% else %}
+        <li>{{ s.li1 }}</li>
+        <li>{{ s.li2 }}</li>
+        <li>{{ s.li3 }}</li>
+        <li>{{ s.li4 }}</li>
+        <li>{{ s.li5.replace('{count}', spa.count|string) }}</li>
+        <li>{{ s.li6.replace('{from}', spa.open_from).replace('{to}', spa.open_to) }}</li>
+{% endif %}
+{% endcall %}
+{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="rm-ps-sec rm-ps-sec--cream" id="contact">
+  <div class="container">
+    <div class="rm-ps-contact">
+      <h2 class="rm-ps-sec__title">{{ t.contact.title }}</h2>
+      <p class="rm-ps-sec__sub">{{ t.contact.sub }}</p>
+      <div class="rm-lp-cta-row">
+        <a class="rm-lp-btn rm-lp-btn--wa" href="{{ wa(t.wa_question) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="stay-footer"><span aria-hidden="true">💬</span> {{ t.question_btn }}</a>
+      </div>
+      <form class="rm-ps-form" action="{{ envoi }}" method="POST">
+{{ hidden(t.contact.subject) }}
+        <h3>{{ t.contact.h3 }}</h3>
+        <p class="rm-ps-form__hint">{{ t.contact.hint }}</p>
+        <label>{{ t.fields.name }} *
+          <input type="text" name="{{ t.fields.name }}" required autocomplete="name">
+        </label>
+        <label>{{ t.fields.ref }}
+          <input type="text" name="{{ t.fields.ref }}">
+        </label>
+        <label>{{ t.fields.phone }}
+          <input type="tel" name="{{ t.fields.phone }}" autocomplete="tel">
+        </label>
+        <label>{{ t.fields.email }} *
+          <input type="email" name="{{ t.fields.email }}" required autocomplete="email">
+        </label>
+        <label>{{ t.fields.question }} *
+          <textarea name="{{ t.fields.question }}" rows="5" required></textarea>
+        </label>
+        <button type="submit" data-track="form" data-track-label="stay">{{ t.contact.send }}</button>
+        <p class="rm-ps-form__legal">{{ t.contact.legal }}</p>
+      </form>
+      <div class="rm-lp-contact">
+        <span><span aria-hidden="true">📞</span> <a href="tel:{{ e.contact.phone_display.replace(' ', '') }}" data-track="call" data-track-label="stay">{{ e.contact.phone_display }}</a></span>
+        <span><span aria-hidden="true">✉️</span> <a href="mailto:{{ e.contact.email }}">{{ e.contact.email }}</a></span>
+        <span><span aria-hidden="true">📍</span> {{ e.contact.address }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.rm-lp -->
+<footer class="rm-cs-foot">
+{% if images.logo_footer %}
+  <img src="{{ images.logo_footer }}" alt="{{ e.name }}" width="512" height="128" loading="lazy">
+{% else %}
+  <p class="rm-cs-foot__name">{{ e.name }}</p>
+{% endif %}
+  <p>{{ e.name }} — {{ e.contact.address_footer }}</p>
+  <p><a href="tel:{{ e.contact.phone_display.replace(' ', '') }}">{{ e.contact.phone_display }}</a> · <a href="mailto:{{ e.contact.email }}">{{ e.contact.email }}</a></p>
+  <p><a href="{{ e.contact.map_url }}" target="_blank" rel="noopener noreferrer" data-track="directions" data-track-label="space-footer">{{ t.footer.directions }}</a></p>
+</footer>
+<script src="{{ services_js }}?v={{ version }}" defer></script>
+<script src="{{ lib }}/lib/transfer-quote.js?v={{ version }}" defer></script>
+<script src="{{ lib }}/lib/rm-booking-engine.js?v={{ version }}" defer></script>
+<script src="{{ lib }}/lib/sejour-page.js?v={{ version }}" defer></script>
+<script src="{{ lib }}/lib/rm-antibot.js?v={{ version }}" defer></script>
+</body>
+</html>
