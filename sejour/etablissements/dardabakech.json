@@ -9,8 +9,8 @@
   },
   "site": {
     "turnstile_sitekey": null,
-    "base_url": "https://sejour.riadmylaya.com/dardabakech",
-    "output_dir": "sejour.riadmylaya.com/dardabakech",
+    "base_url": "https://monsejour-marrakech.com/dardabakech",
+    "output_dir": "monsejour-marrakech.com/dardabakech",
     "paths": { "fr": "/preparer-mon-sejour", "en": "/en/prepare-your-stay", "es": "/es/prepara-tu-estancia" },
     "thanks": { "fr": "/merci-sejour", "en": "/en/thank-you-stay", "es": "/es/gracias-estancia" },
     "excursions_more": null

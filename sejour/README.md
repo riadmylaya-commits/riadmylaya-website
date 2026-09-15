@@ -31,16 +31,18 @@ python3 sejour/build.py riad-bilkis
 
 | Dossier `dist/`                          | Destination                                              |
 |------------------------------------------|----------------------------------------------------------|
-| `sejour.riadmylaya.com/`                 | racine du sous-domaine **sejour.riadmylaya.com** (à créer) |
+| `monsejour-marrakech.com/`                 | hub commun **monsejour-marrakech.com** (alias cPanel → `public_html/sejour-hub/`) |
 | `riadbilkis.com/`                        | racine de **riadbilkis.com** (pages seulement)            |
 | `riadmylaya.com/`                        | version générée de la page Mylaya (référence / contrôle)  |
 
-Le sous-domaine héberge : la bibliothèque commune (`/lib`), les photos (`/assets`),
+L'ancien sous-domaine `sejour.riadmylaya.com` redirige (301) vers le hub.
+
+Le hub héberge : la bibliothèque commune (`/lib`), les photos (`/assets`),
 les pages de Dar Le Fennec et Dardabakech (`/dar-le-fennec/…`, `/dardabakech/…`) et le
 point d'entrée unique des formulaires `envoi.php` (les pages Bilkis y postent aussi).
 
 Après dépôt : copier `rm-mail-config.sample.php` en `rm-mail-config.php` et y mettre le
-mot de passe SMTP (fichier jamais versionné). Ajouter `sejour.riadmylaya.com` et
+mot de passe SMTP (fichier jamais versionné). Ajouter `monsejour-marrakech.com` et
 `riadbilkis.com` aux domaines autorisés du widget Cloudflare Turnstile, puis retirer
 `"turnstile_sitekey": null` du `site` de l'établissement (tant qu'il est là, le widget
 n'est pas chargé et seuls pièges, `_ts` et limite par IP protègent les formulaires).
@@ -54,8 +56,8 @@ propres sont servies par des `RewriteRule` dans le bloc « Riad Bilkis » du `.h
 | Établissement  | FR | EN | ES |
 |----------------|----|----|----|
 | Riad Bilkis    | riadbilkis.com/preparer-mon-sejour | /en/prepare-your-stay | /es/prepara-tu-estancia |
-| Dar Le Fennec  | sejour.riadmylaya.com/dar-le-fennec/preparer-mon-sejour | …/dar-le-fennec/en/prepare-your-stay | …/dar-le-fennec/es/prepara-tu-estancia |
-| Dardabakech    | sejour.riadmylaya.com/dardabakech/preparer-mon-sejour | …/dardabakech/en/prepare-your-stay | …/dardabakech/es/prepara-tu-estancia |
+| Dar Le Fennec  | monsejour-marrakech.com/dar-le-fennec/preparer-mon-sejour | …/dar-le-fennec/en/prepare-your-stay | …/dar-le-fennec/es/prepara-tu-estancia |
+| Dardabakech    | monsejour-marrakech.com/dardabakech/preparer-mon-sejour | …/dardabakech/en/prepare-your-stay | …/dardabakech/es/prepara-tu-estancia |
 
 Le jour où Dar Le Fennec ou Dardabakech a son propre domaine : changer `site.base_url`
 et `site.output_dir` dans son JSON, relancer le build — rien d'autre.
@@ -72,5 +74,5 @@ et `site.output_dir` dans son JSON, relancer le build — rien d'autre.
 3. `python3 sejour/build.py`, puis déposer le dossier généré.
 
 Tester en local : `SEJOUR_HUB_URL=http://localhost:8081 python3 sejour/build.py`, puis
-`php -S localhost:8081` dans `dist/sejour.riadmylaya.com` (avec un routeur qui sert
+`php -S localhost:8081` dans `dist/monsejour-marrakech.com` (avec un routeur qui sert
 `x.html` pour `/x`).

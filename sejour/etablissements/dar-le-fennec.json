@@ -9,8 +9,8 @@
   },
   "site": {
     "turnstile_sitekey": null,
-    "base_url": "https://sejour.riadmylaya.com/dar-le-fennec",
-    "output_dir": "sejour.riadmylaya.com/dar-le-fennec",
+    "base_url": "https://monsejour-marrakech.com/dar-le-fennec",
+    "output_dir": "monsejour-marrakech.com/dar-le-fennec",
     "paths": { "fr": "/preparer-mon-sejour", "en": "/en/prepare-your-stay", "es": "/es/prepara-tu-estancia" },
     "thanks": { "fr": "/merci-sejour", "en": "/en/thank-you-stay", "es": "/es/gracias-estancia" },
     "excursions_more": null

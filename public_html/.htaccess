@@ -1,8 +1,14 @@
 # Custom 404 error page
 ErrorDocument 404 /404.html
 
-# HTTP to HTTPS redirect
 RewriteEngine on
+
+# monsejour-marrakech.com (alias cPanel) → hub commun « Préparer mon séjour » (sejour/build.py)
+RewriteCond %{HTTP_HOST} ^(www\.)?monsejour-marrakech\.com$ [NC]
+RewriteCond %{REQUEST_URI} !^/sejour-hub/
+RewriteRule ^(.*)$ /sejour-hub/$1 [L]
+
+# HTTP to HTTPS redirect
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-SSL} !on
 RewriteCond %{HTTP_HOST} ^riadmylaya\.com$ [OR]
