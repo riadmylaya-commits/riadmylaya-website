@@ -42,11 +42,11 @@ button,input,select,textarea{font:inherit;color:inherit}
 /* ---------- Sommaire ---------- */
 .rm-ps-toc{background:var(--ink);padding:18px 0}
 .rm-ps-toc__list{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:0;padding:0;list-style:none}
-.rm-ps-toc__list a{display:block;font-family:'Quicksand',sans-serif;font-size:14.5px;color:#fff !important;background:rgba(255,255,255,.1);border:1px solid rgba(245,217,138,.45);border-radius:22px;padding:8px 15px;text-decoration:none}
-.rm-ps-toc__list a:hover{background:var(--terra);text-decoration:none}
+.rm-ps-toc__list a{display:block;font-family:'Quicksand',sans-serif;font-size:14.5px;font-weight:700;color:var(--ink) !important;background:#fff;border:1px solid #fff;border-radius:22px;padding:8px 15px;text-decoration:none}
+.rm-ps-toc__list a:hover{background:var(--terra);border-color:var(--terra);color:#fff !important;text-decoration:none}
 /* Guest area: the service menu follows the scroll, docked under the sticky header. */
 .rm-cs .rm-ps-toc{position:sticky;top:var(--rm-head-h,68px);z-index:900;padding:10px 0;box-shadow:0 6px 18px rgba(0,0,0,.18)}
-.rm-cs .rm-ps-toc__list a[aria-current="true"]{background:var(--terra);border-color:var(--terra)}
+.rm-cs .rm-ps-toc__list a[aria-current="true"]{background:var(--terra);border-color:var(--terra);color:#fff !important}
 @media(max-width:720px){
 .rm-cs .rm-ps-toc{padding:8px 0}
 .rm-cs .rm-ps-toc .container{padding-left:10px;padding-right:10px}
