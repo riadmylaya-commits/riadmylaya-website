@@ -233,10 +233,29 @@
       <ul>
         <li>{{ s.li1 }}</li>
         <li>{{ s.li2 }}</li>
+{% if s.get("detailed") %}
+{% for k in ("li3", "li4") if s.get(k) %}
+        <li>{{ s[k] }}</li>
+{% endfor %}
+      </ul>
+      <div class="rm-ps-blocks">
+{% for b in transfer.blocks %}
+        <div class="rm-ps-block">
+          <h5>{{ b.h }}</h5>
+          <ul>
+{% for r in b.rows %}
+            <li>{{ r }}</li>
+{% endfor %}
+          </ul>
+        </div>
+{% endfor %}
+      </div>
+{% else %}
 {% for line in transfer.lines %}
         <li>{{ line }}</li>
 {% endfor %}
       </ul>
+{% endif %}
       <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">{{ transfer.price }}</span> <span class="rm-ps-acc__pay">{{ t.services.cash }}</span></p>
       <h4 class="rm-ps-acc__h4">{{ s.h4 }}</h4>
       <p>{{ s.help }}</p>

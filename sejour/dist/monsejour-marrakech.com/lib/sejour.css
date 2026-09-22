@@ -213,3 +213,9 @@ button,input,select,textarea{font:inherit;color:inherit}
 .rm-ps-formulas{margin:8px 0 0;padding-left:18px}
 .rm-ps-formulas li{margin:4px 0}
 .rm-ps-formulas span{opacity:.85}
+
+.rm-ps-blocks{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:6px 0 14px}
+.rm-ps-block{padding:12px 14px;border:1px solid #f4e9da;border-radius:10px;background:#fffaf3}
+.rm-ps-block h5{margin:0 0 6px;font-family:'Quicksand',sans-serif;font-size:15.5px;font-weight:700;color:#3d2b1f}
+.rm-ps-block ul{margin:0;padding-left:0;list-style:none}
+.rm-ps-block li{margin:3px 0;font-size:14.5px}

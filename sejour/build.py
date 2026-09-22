@@ -36,7 +36,7 @@ DIST = ROOT / "dist"
 HUB_HOST = "monsejour-marrakech.com"
 HUB_URL = os.environ.get("SEJOUR_HUB_URL", "https://" + HUB_HOST)  # ex. http://localhost:8081 pour tester
 LANGS = ("fr", "en", "es")
-VERSION = "3"
+VERSION = "4"
 
 SHARED_JS = ["transfer-quote.js", "rm-booking-engine.js", "rm-antibot.js", "gyg-affiliate.js"]
 
@@ -127,6 +127,40 @@ def transfer_lines(t, conf, lang):
     return lines
 
 
+def tier_rows(t, tiers):
+    rows, prev = [], 0
+    for tier in tiers:
+        lo, hi = prev + 1, tier["max"]
+        key = "row_one" if hi == 1 else ("row_single" if lo == hi else "row_range")
+        rows.append(fmt(t[key], min=lo, max=hi, price=tier["price"]))
+        prev = hi
+    return rows
+
+
+def transfer_blocks(t, conf, lang):
+    """Présentation détaillée (par blocs) : tarifs aéroport, gare, suppléments de nuit, aller-retour."""
+    blocks = []
+    airport, station = conf.get("airport"), conf.get("station")
+    if airport:
+        blocks.append(dict(h=t["block_airport"], rows=tier_rows(t, airport["tiers"])))
+    if station:
+        blocks.append(dict(h=t["block_station"], rows=tier_rows(t, station["tiers"])))
+    rows = []
+    a_s = airport and airport.get("surcharge")
+    if a_s:
+        win = a_s.get("arrival") or a_s.get("departure")
+        rows.append(fmt(t["night_airport"], amount=a_s["amount"], a_from=hour(win["from"], lang), a_to=hour(win["to"], lang)))
+    s_s = station and station.get("surcharge")
+    if s_s and s_s.get("departure"):
+        rows.append(fmt(t["night_station"], amount=s_s["amount"], s_from=hour(s_s["departure"]["from"], lang), s_to=hour(s_s["departure"]["to"], lang)))
+    if rows:
+        blocks.append(dict(h=t["block_night"], rows=rows))
+    disc = airport and airport.get("round_trip_discount")
+    if disc:
+        blocks.append(dict(h=t["block_roundtrip"], rows=[fmt(t["roundtrip"], amount=disc["amount"])]))
+    return blocks
+
+
 def build_context(etab, lang, i18n_raw, services_all):
     g = etab["grammar"][lang]
     hub = HUB_URL
@@ -171,6 +205,7 @@ def build_context(etab, lang, i18n_raw, services_all):
         has_station=bool(station),
         has_discount=bool(airport and airport.get("round_trip_discount")),
         max_people=tr.get("max_people", 8),
+        blocks=transfer_blocks(t["transfer"], tr, lang),
     )
 
     dn = services["dinner"]

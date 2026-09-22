@@ -111,7 +111,17 @@
     "num": "N.º de vuelo o de tren",
     "num_back": "N.º de vuelo o de tren de vuelta",
     "legal": "Su solicitud se envía al riad, que le confirma el conductor y el precio. El traslado se paga en el riad en efectivo.",
-    "wa": "Hola, quiero reservar un traslado {with}.\nNombre completo de la reserva:\nIda — aeropuerto o estación, fecha, hora y n.º de vuelo / tren:\nVuelta — fecha, hora y n.º de vuelo / tren:\nNúmero de personas:"
+    "wa": "Hola, quiero reservar un traslado {with}.\nNombre completo de la reserva:\nIda — aeropuerto o estación, fecha, hora y n.º de vuelo / tren:\nVuelta — fecha, hora y n.º de vuelo / tren:\nNúmero de personas:",
+    "block_airport": "✈️ Traslado Aeropuerto Marrakech-Menara",
+    "block_station": "🚆 Traslado Estación de Marrakech",
+    "block_night": "🌙 Suplemento horario nocturno",
+    "block_roundtrip": "↔️ Reserva ida y vuelta aeropuerto",
+    "row_one": "1 persona — {price} €",
+    "row_single": "{max} personas — {price} €",
+    "row_range": "{min} a {max} personas — {price} €",
+    "night_airport": "+ {amount} € para los traslados al aeropuerto entre {a_from} y {a_to}.",
+    "night_station": "+ {amount} € para las salidas hacia la estación entre {s_from} y {s_to}.",
+    "roundtrip": "Cuando la llegada y la salida se reservan juntas, obtiene automáticamente {amount} € de descuento en el traslado de salida."
   },
   "dinner": {
     "h": "Cena marroquí",

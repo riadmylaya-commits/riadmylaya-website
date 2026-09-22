@@ -7,26 +7,61 @@ window.RM_SERVICES = {
  },
  "transfer": {
   "unit": "per_vehicle",
-  "max_people": 8,
+  "max_people": 7,
   "airport": {
    "tiers": [
     {
      "max": 4,
-     "price": 15
-    },
-    {
-     "max": 6,
      "price": 20
     },
     {
-     "max": 8,
+     "max": 6,
      "price": 25
+    },
+    {
+     "max": 7,
+     "price": 30
     }
    ],
+   "surcharge": {
+    "amount": 5,
+    "arrival": {
+     "from": "22:00",
+     "to": "07:00"
+    },
+    "departure": {
+     "from": "22:00",
+     "to": "07:00"
+    }
+   },
    "round_trip_discount": {
     "amount": 5,
     "leg": "departure"
    }
+  },
+  "station": {
+   "tiers": [
+    {
+     "max": 2,
+     "price": 12
+    },
+    {
+     "max": 4,
+     "price": 17
+    },
+    {
+     "max": 6,
+     "price": 20
+    }
+   ],
+   "surcharge": {
+    "amount": 5,
+    "departure": {
+     "from": "03:00",
+     "to": "07:45"
+    }
+   },
+   "round_trip_discount": null
   }
  },
  "dinner": {
