@@ -198,7 +198,7 @@
       fields: function (t) {
         var c = data().cooking;
         return '<div class="rm-tq__grid">' +
-          label(t.people, '<select data-bk="people">' + options(numbers(1, c.max_people)) + "</select>") +
+          label(t.people, '<select data-bk="people">' + options(numbers(c.min_people || 1, c.max_people)) + "</select>") +
           label(t.date + " *", '<input type="date" data-bk="date" data-bk-required>') +
           label(t.time, '<select data-bk="time">' + options(c.slots.map(function (s) {
             return { value: s, label: s };
@@ -207,7 +207,7 @@
       },
       compute: function (get, t) {
         var c = data().cooking;
-        var people = parseInt(get("people"), 10) || 1;
+        var people = Math.max(parseInt(get("people"), 10) || 1, c.min_people || 1);
         return {
           lines: [{ label: eur(c.price) + " " + t.perPerson + " × " + people, amount: eur(c.price * people) }],
           total: eur(c.price * people),

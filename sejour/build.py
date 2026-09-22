@@ -36,7 +36,7 @@ DIST = ROOT / "dist"
 HUB_HOST = "monsejour-marrakech.com"
 HUB_URL = os.environ.get("SEJOUR_HUB_URL", "https://" + HUB_HOST)  # ex. http://localhost:8081 pour tester
 LANGS = ("fr", "en", "es")
-VERSION = "5"
+VERSION = "6"
 
 SHARED_JS = ["transfer-quote.js", "rm-booking-engine.js", "rm-antibot.js", "gyg-affiliate.js"]
 
@@ -220,7 +220,7 @@ def build_context(etab, lang, i18n_raw, services_all):
         detailed=any(o.get("desc") for o in opts),
     )
     ck = services["cooking"]
-    cooking = dict(price=ck["price"], max=ck.get("max_people", 6))
+    cooking = dict(price=ck["price"], max=ck.get("max_people", 6), min=ck.get("min_people", 1))
     ex = services["excursions"]
     ex_min = min(min(v for v in it["tiers"].values()) for it in ex["items"] if it.get("tiers"))
     excursions = dict(min=ex_min)

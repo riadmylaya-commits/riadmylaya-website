@@ -362,12 +362,10 @@
 {% if services.cooking.enabled %}
 {% set s = t.cooking %}
 {% call(part) booking('cooking', 'cuisine', 'cuisine', images.cooking, s) %}
-{% if part == 'price' %}{{ s.price.replace('{price}', cooking.price|string) }}{% else %}
-        <li>{{ s.li1 }}</li>
-        <li>{{ s.li2 }}</li>
-        <li>{{ s.li3 }}</li>
-        <li>{{ s.li4 }}</li>
-        <li>{{ s.li5.replace('{price}', cooking.price|string).replace('{max}', cooking.max|string) }}</li>
+{% if part == 'price' %}{{ s.price.replace('{price}', cooking.price|string).replace('{min}', cooking.min|string) }}{% else %}
+{% for k in ("li1", "li2", "li3", "li4", "li5", "li6", "li7") if s.get(k) %}
+        <li>{{ s[k].replace('{price}', cooking.price|string).replace('{max}', cooking.max|string).replace('{min}', cooking.min|string) }}</li>
+{% endfor %}
 {% endif %}
 {% endcall %}
 {% endif %}

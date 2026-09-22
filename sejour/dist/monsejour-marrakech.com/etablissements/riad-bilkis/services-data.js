@@ -152,7 +152,8 @@ window.RM_SERVICES = {
    "13:30",
    "14:00",
    "14:30"
-  ]
+  ],
+  "min_people": 2
  },
  "excursions": {
   "unit": "total",

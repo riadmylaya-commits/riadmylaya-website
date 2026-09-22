@@ -176,7 +176,12 @@
       }
     },
     "cooking": {
-      "enabled": true
+      "enabled": true,
+      "override": {
+        "min_people": 2,
+        "max_people": 6,
+        "price": 45
+      }
     },
     "excursions": {
       "enabled": true
@@ -417,6 +422,18 @@
         "late_big": true,
         "late_btn": "Je préviens le riad de mon arrivée tardive",
         "wa_late": "Bonjour, je séjourne au Riad Bilkis. Je souhaite vous prévenir que mon arrivée sera tardive.\nHeure d'arrivée approximative / vol :"
+      },
+      "cooking": {
+        "h": "Cours de cuisine marocaine à Marrakech",
+        "price": "{price} € / personne — à partir de {min} personnes",
+        "intro": "Découvrez la cuisine marocaine lors d'un cours convivial avec notre partenaire. Préparez vous-même les salades marocaines et le tajine, puis dégustez le repas que vous avez préparé.",
+        "li1": "Préparation des salades marocaines et du tajine avec notre partenaire.",
+        "li2": "Durée : environ 4 heures.",
+        "li3": "Cours disponible le matin ou l'après-midi.",
+        "li4": "À la fin du cours, vous dégustez le repas que vous avez préparé.",
+        "li5": "À réserver au moins 24 heures à l'avance.",
+        "li6": "Minimum {min} personnes – maximum {max} personnes par cours.",
+        "li7": "💶 {price} € par personne."
       }
     },
     "en": {
@@ -438,6 +455,18 @@
         "late_big": true,
         "late_btn": "I'm letting the riad know I'll arrive late",
         "wa_late": "Hello, I'm staying at Riad Bilkis. I'd like to let you know that I will be arriving late.\nApproximate arrival time / flight:"
+      },
+      "cooking": {
+        "h": "Moroccan cooking class in Marrakech",
+        "price": "{price} € / person — from {min} people",
+        "intro": "Discover Moroccan cuisine in a friendly class with our partner. Prepare the Moroccan salads and the tagine yourself, then enjoy the meal you have cooked.",
+        "li1": "Preparation of Moroccan salads and tagine with our partner.",
+        "li2": "Duration: about 4 hours.",
+        "li3": "Class available in the morning or in the afternoon.",
+        "li4": "At the end of the class, you enjoy the meal you have prepared.",
+        "li5": "Book at least 24 hours in advance.",
+        "li6": "Minimum {min} people – maximum {max} people per class.",
+        "li7": "💶 {price} € per person."
       }
     },
     "es": {
@@ -459,6 +488,18 @@
         "late_big": true,
         "late_btn": "Aviso al riad de mi llegada tardía",
         "wa_late": "Hola, me alojo en el Riad Bilkis. Quiero avisarles de que mi llegada será tardía.\nHora aproximada de llegada / vuelo:"
+      },
+      "cooking": {
+        "h": "Clase de cocina marroquí en Marrakech",
+        "price": "{price} € / persona — a partir de {min} personas",
+        "intro": "Descubra la cocina marroquí en una clase amena con nuestro socio. Prepare usted mismo las ensaladas marroquíes y el tajín, y luego disfrute de la comida que ha preparado.",
+        "li1": "Preparación de las ensaladas marroquíes y del tajín con nuestro socio.",
+        "li2": "Duración: unas 4 horas.",
+        "li3": "Clase disponible por la mañana o por la tarde.",
+        "li4": "Al final de la clase, degusta la comida que ha preparado.",
+        "li5": "Reservar con al menos 24 horas de antelación.",
+        "li6": "Mínimo {min} personas – máximo {max} personas por clase.",
+        "li7": "💶 {price} € por persona."
       }
     }
   }
