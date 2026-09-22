@@ -118,7 +118,67 @@
       }
     },
     "dinner": {
-      "enabled": true
+      "enabled": true,
+      "override": {
+        "options": [
+          {
+            "id": "full",
+            "price": 25,
+            "name": {
+              "fr": "Menu complet",
+              "en": "Full menu",
+              "es": "Menú completo"
+            },
+            "desc": {
+              "fr": "Entrée + plat principal + dessert",
+              "en": "Starter + main course + dessert",
+              "es": "Entrante + plato principal + postre"
+            }
+          },
+          {
+            "id": "starter_main",
+            "price": 20,
+            "name": {
+              "fr": "Entrée + plat",
+              "en": "Starter + main",
+              "es": "Entrante + plato"
+            },
+            "desc": {
+              "fr": "Entrée + plat principal",
+              "en": "Starter + main course",
+              "es": "Entrante + plato principal"
+            }
+          },
+          {
+            "id": "main_dessert",
+            "price": 20,
+            "name": {
+              "fr": "Plat + dessert",
+              "en": "Main + dessert",
+              "es": "Plato + postre"
+            },
+            "desc": {
+              "fr": "Plat principal + dessert",
+              "en": "Main course + dessert",
+              "es": "Plato principal + postre"
+            }
+          },
+          {
+            "id": "main",
+            "price": 15,
+            "name": {
+              "fr": "Plat principal",
+              "en": "Main course",
+              "es": "Plato principal"
+            },
+            "desc": {
+              "fr": "Plat principal uniquement",
+              "en": "Main course only",
+              "es": "Solo plato principal"
+            }
+          }
+        ]
+      }
     },
     "cooking": {
       "enabled": true
@@ -341,5 +401,31 @@
     "to_email": "riadbilkis@gmail.com",
     "to_name": "Riad Bilkis",
     "from_name": "Riad Bilkis — Espace client"
+  },
+  "texts": {
+    "fr": {
+      "dinner": {
+        "intro": "Tajine, couscous ou pastilla préparés à la maison le jour même, avec des produits frais, et servis dans le patio à la lueur des bougies.",
+        "li2": null,
+        "li3": "À commander la veille ou au plus tard avant 12h le jour même.",
+        "service": "Service de {from} à {to} dans le patio."
+      }
+    },
+    "en": {
+      "dinner": {
+        "intro": "Tagine, couscous or pastilla home-cooked the same day with fresh produce, served in the patio by candlelight.",
+        "li2": null,
+        "li3": "To be ordered the day before or by 12 pm on the day at the latest.",
+        "service": "Served from {from} to {to} in the patio."
+      }
+    },
+    "es": {
+      "dinner": {
+        "intro": "Tajín, cuscús o pastela preparados en casa el mismo día con productos frescos, y servidos en el patio a la luz de las velas.",
+        "li2": null,
+        "li3": "Se pide la víspera o, como muy tarde, antes de las 12h del mismo día.",
+        "service": "Servicio de {from} a {to} en el patio."
+      }
+    }
   }
 }

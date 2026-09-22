@@ -136,7 +136,9 @@
     "h4": "Build and book my dinner",
     "help": "Choose your menu, the date and the time: the total appears immediately.",
     "subject": "Dinner request · {name}",
-    "wa": "Hello, I have a booking {at} and I would like to book the Moroccan dinner.\nFull name on the booking:\nBooking number:\nDate of the dinner:\nNumber of people:\nDish you would like (tagine, couscous, pastilla):"
+    "wa": "Hello, I have a booking {at} and I would like to book the Moroccan dinner.\nFull name on the booking:\nBooking number:\nDate of the dinner:\nNumber of people:\nDish you would like (tagine, couscous, pastilla):",
+    "formulas_h": "Our {count} menus:",
+    "per_person": "person"
   },
   "cooking": {
     "h": "Cooking class",

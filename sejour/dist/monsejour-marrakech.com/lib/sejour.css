@@ -210,3 +210,6 @@ button,input,select,textarea{font:inherit;color:inherit}
 .rm-gyg-list__title{font-weight:700;font-size:15.5px;line-height:1.35;color:#3d2b1f}
 .rm-gyg-list__btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Yanone Kaffeesatz',sans-serif;text-transform:uppercase;letter-spacing:1.2px;font-size:16px;padding:9px 14px;border-radius:6px;border:2px solid var(--terra);color:var(--terra) !important;text-decoration:none;transition:background .2s,color .2s}
 .rm-gyg-list__btn:hover{background:var(--terra);color:#fff !important;text-decoration:none}
+.rm-ps-formulas{margin:8px 0 0;padding-left:18px}
+.rm-ps-formulas li{margin:4px 0}
+.rm-ps-formulas span{opacity:.85}

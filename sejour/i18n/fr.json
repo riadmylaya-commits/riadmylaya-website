@@ -136,7 +136,9 @@
     "h4": "Composer et réserver mon dîner",
     "help": "Choisissez votre formule, la date et l'heure : le total s'affiche immédiatement.",
     "subject": "Demande de dîner · {name}",
-    "wa": "Bonjour, j'ai une réservation {at} et je souhaite réserver le dîner marocain.\nNom complet de la réservation :\nN° de réservation :\nDate du dîner :\nNombre de personnes :\nPlat souhaité (tajine, couscous, pastilla) :"
+    "wa": "Bonjour, j'ai une réservation {at} et je souhaite réserver le dîner marocain.\nNom complet de la réservation :\nN° de réservation :\nDate du dîner :\nNombre de personnes :\nPlat souhaité (tajine, couscous, pastilla) :",
+    "formulas_h": "Nos {count} formules :",
+    "per_person": "personne"
   },
   "cooking": {
     "h": "Cours de cuisine",

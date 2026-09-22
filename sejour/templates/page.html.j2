@@ -318,10 +318,20 @@
 {% call(part) booking('dinner', 'diner', 'diner', images.dinner, s) %}
 {% if part == 'price' %}{{ s.price.replace('{min}', dinner.min|string) }}{% else %}
         <li>{{ s.li1 }}</li>
-        <li>{{ s.li2 }}</li>
-        <li>{{ s.li3 }}</li>
+{% if s.get("li2") %}        <li>{{ s.li2 }}</li>
+{% endif %}        <li>{{ s.li3 }}</li>
         <li>{{ s.li4 }}</li>
+{% if dinner.detailed %}
+        <li>{{ s.formulas_h.replace('{count}', dinner.options|length|string) }}
+          <ul class="rm-ps-formulas">
+{% for o in dinner.options %}
+            <li><strong>{{ o.label }} — {{ o.price }} € / {{ s.per_person }}</strong>{% if o.desc %}<br><span>{{ o.desc }}</span>{% endif %}</li>
+{% endfor %}
+          </ul>
+        </li>
+{% else %}
         <li>{{ dinner.formulas }}</li>
+{% endif %}
         <li>{{ dinner.service }}</li>
 {% endif %}
 {% endcall %}
