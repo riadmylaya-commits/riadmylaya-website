@@ -108,10 +108,20 @@
     "departure": "Departure",
     "date": "Date",
     "time": "Time",
-    "num": "Flight or train number",
-    "num_back": "Return flight or train number",
+    "num": "Flight or train number (if travelling by train, enter 0000)",
+    "num_back": "Return flight or train number (if travelling by train, enter 0000)",
     "legal": "Your request is sent to the riad, which confirms the driver and the price. The transfer is paid on site in cash.",
-    "wa": "Hello, I would like to book a transfer {with}.\nFull name on the booking:\nArrival — airport or train station, date, time and flight / train number:\nReturn — date, time and flight / train number:\nNumber of people:"
+    "wa": "Hello, I would like to book a transfer {with}.\nFull name on the booking:\nArrival — airport or train station, date, time and flight / train number:\nReturn — date, time and flight / train number:\nNumber of people:",
+    "block_airport": "✈️ Marrakech-Menara Airport transfer",
+    "block_station": "🚆 Marrakech train station transfer",
+    "block_night": "🌙 Night-time surcharge",
+    "block_roundtrip": "↔️ Airport round-trip booking",
+    "row_one": "1 person — {price} €",
+    "row_single": "{max} people — {price} €",
+    "row_range": "{min} to {max} people — {price} €",
+    "night_airport": "+ {amount} € for airport transfers between {a_from} and {a_to}.",
+    "night_station": "+ {amount} € for departures to the station between {s_from} and {s_to}.",
+    "roundtrip": "When arrival and departure are booked together, you automatically get {amount} € off the departure transfer."
   },
   "dinner": {
     "h": "Moroccan dinner",

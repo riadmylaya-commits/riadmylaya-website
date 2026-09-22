@@ -108,10 +108,20 @@
     "departure": "Départ",
     "date": "Date",
     "time": "Heure",
-    "num": "N° de vol ou de train",
-    "num_back": "N° de vol ou de train du retour",
+    "num": "N° de vol ou de train (si vous voyagez en train, indiquez 0000)",
+    "num_back": "N° de vol ou de train du retour (si vous voyagez en train, indiquez 0000)",
     "legal": "Votre demande est envoyée au riad, qui vous confirme le chauffeur et le prix. Le transfert se règle sur place en espèces.",
-    "wa": "Bonjour, je souhaite réserver un transfert {with}.\nNom complet de la réservation :\nAller — aéroport ou gare, date, heure et n° de vol / train :\nRetour — date, heure et n° de vol / train :\nNombre de personnes :"
+    "wa": "Bonjour, je souhaite réserver un transfert {with}.\nNom complet de la réservation :\nAller — aéroport ou gare, date, heure et n° de vol / train :\nRetour — date, heure et n° de vol / train :\nNombre de personnes :",
+    "block_airport": "✈️ Transfert Aéroport Marrakech-Menara",
+    "block_station": "🚆 Transfert Gare de Marrakech",
+    "block_night": "🌙 Supplément horaires de nuit",
+    "block_roundtrip": "↔️ Réservation aller-retour aéroport",
+    "row_one": "1 personne — {price} €",
+    "row_single": "{max} personnes — {price} €",
+    "row_range": "{min} à {max} personnes — {price} €",
+    "night_airport": "+ {amount} € pour les transferts aéroport entre {a_from} et {a_to}.",
+    "night_station": "+ {amount} € pour les départs vers la gare entre {s_from} et {s_to}.",
+    "roundtrip": "Lorsque l'arrivée et le départ sont réservés ensemble, vous bénéficiez automatiquement de {amount} € de réduction sur le transfert de départ."
   },
   "dinner": {
     "h": "Dîner marocain",

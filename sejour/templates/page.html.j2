@@ -206,7 +206,11 @@
         <span class="rm-ps-icon" aria-hidden="true">🌙</span>
         <h3>{{ t.infos.late_h }}</h3>
         <p>{{ t.infos.late_p }}</p>
+{% if t.infos.get("late_big") %}
+        <a class="rm-lp-btn rm-lp-btn--wa" href="{{ wa(t.infos.wa_late) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="late-arrival"><span aria-hidden="true">💬</span> {{ t.infos.late_btn }}</a>
+{% else %}
         <a class="rm-ps-inline" href="{{ wa(t.infos.wa_late) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="late-arrival">{{ t.infos.late_btn }}</a>
+{% endif %}
       </div>
     </div>
   </div>
@@ -233,10 +237,29 @@
       <ul>
         <li>{{ s.li1 }}</li>
         <li>{{ s.li2 }}</li>
+{% if s.get("detailed") %}
+{% for k in ("li3", "li4") if s.get(k) %}
+        <li>{{ s[k] }}</li>
+{% endfor %}
+      </ul>
+      <div class="rm-ps-blocks">
+{% for b in transfer.blocks %}
+        <div class="rm-ps-block">
+          <h5>{{ b.h }}</h5>
+          <ul>
+{% for r in b.rows %}
+            <li>{{ r }}</li>
+{% endfor %}
+          </ul>
+        </div>
+{% endfor %}
+      </div>
+{% else %}
 {% for line in transfer.lines %}
         <li>{{ line }}</li>
 {% endfor %}
       </ul>
+{% endif %}
       <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">{{ transfer.price }}</span> <span class="rm-ps-acc__pay">{{ t.services.cash }}</span></p>
       <h4 class="rm-ps-acc__h4">{{ s.h4 }}</h4>
       <p>{{ s.help }}</p>
@@ -283,7 +306,7 @@
                 <input type="time" data-tq="arr_time" data-tq-required>
               </label>
               <label>{{ s.num }}
-                <input type="text" data-tq="arr_num" autocomplete="off">
+                <input type="text" data-tq="arr_num" data-tq-required autocomplete="off">
               </label>
             </div>
           </fieldset>
@@ -297,7 +320,7 @@
                 <input type="time" data-tq="dep_time" data-tq-required>
               </label>
               <label>{{ s.num_back }}
-                <input type="text" data-tq="dep_num" autocomplete="off">
+                <input type="text" data-tq="dep_num" data-tq-required autocomplete="off">
               </label>
             </div>
           </fieldset>
