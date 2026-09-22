@@ -206,7 +206,11 @@
         <span class="rm-ps-icon" aria-hidden="true">🌙</span>
         <h3>{{ t.infos.late_h }}</h3>
         <p>{{ t.infos.late_p }}</p>
+{% if t.infos.get("late_big") %}
+        <a class="rm-lp-btn rm-lp-btn--wa" href="{{ wa(t.infos.wa_late) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="late-arrival"><span aria-hidden="true">💬</span> {{ t.infos.late_btn }}</a>
+{% else %}
         <a class="rm-ps-inline" href="{{ wa(t.infos.wa_late) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="late-arrival">{{ t.infos.late_btn }}</a>
+{% endif %}
       </div>
     </div>
   </div>

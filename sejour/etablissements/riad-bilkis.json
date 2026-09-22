@@ -412,6 +412,11 @@
         "li2": "En cas de retard de votre vol, l'attente est incluse.",
         "li3": "Véhicule privé et climatisé.",
         "li4": "Tarif fixe par véhicule."
+      },
+      "infos": {
+        "late_big": true,
+        "late_btn": "Je préviens le riad de mon arrivée tardive",
+        "wa_late": "Bonjour, je séjourne au Riad Bilkis. Je souhaite vous prévenir que mon arrivée sera tardive.\nHeure d'arrivée approximative / vol :"
       }
     },
     "en": {
@@ -428,6 +433,11 @@
         "li2": "If your flight is delayed, waiting time is included.",
         "li3": "Private air-conditioned vehicle.",
         "li4": "Fixed price per vehicle."
+      },
+      "infos": {
+        "late_big": true,
+        "late_btn": "I'm letting the riad know I'll arrive late",
+        "wa_late": "Hello, I'm staying at Riad Bilkis. I'd like to let you know that I will be arriving late.\nApproximate arrival time / flight:"
       }
     },
     "es": {
@@ -444,6 +454,11 @@
         "li2": "Si su vuelo se retrasa, la espera está incluida.",
         "li3": "Vehículo privado con aire acondicionado.",
         "li4": "Precio fijo por vehículo."
+      },
+      "infos": {
+        "late_big": true,
+        "late_btn": "Aviso al riad de mi llegada tardía",
+        "wa_late": "Hola, me alojo en el Riad Bilkis. Quiero avisarles de que mi llegada será tardía.\nHora aproximada de llegada / vuelo:"
       }
     }
   }
