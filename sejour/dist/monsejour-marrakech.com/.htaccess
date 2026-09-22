@@ -3,6 +3,9 @@
 Options -Indexes
 RewriteEngine On
 
+# Validation ACME (Let's Encrypt) servie telle quelle
+RewriteRule ^\.well-known/ - [L]
+
 # Hôte canonique en HTTPS (www, ancien sejour.riadmylaya.com, riadmylaya.com/sejour-hub/…)
 RewriteCond %{HTTP_HOST} !^monsejour-marrakech\.com$ [OR]
 RewriteCond %{HTTPS} !=on

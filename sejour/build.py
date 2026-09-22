@@ -36,7 +36,7 @@ DIST = ROOT / "dist"
 HUB_HOST = "monsejour-marrakech.com"
 HUB_URL = os.environ.get("SEJOUR_HUB_URL", "https://" + HUB_HOST)  # ex. http://localhost:8081 pour tester
 LANGS = ("fr", "en", "es")
-VERSION = "2"
+VERSION = "4"
 
 SHARED_JS = ["transfer-quote.js", "rm-booking-engine.js", "rm-antibot.js", "gyg-affiliate.js"]
 
@@ -141,7 +141,7 @@ def build_context(etab, lang, i18n_raw, services_all):
         checkin=per_lang(stay.get("checkin")), luggage=per_lang(stay.get("luggage_from")), checkout=per_lang(stay.get("checkout")),
         breakfast=stay.get("breakfast_price") if stay.get("breakfast_price") is not None else "—", tax=per_lang(stay.get("tax")),
     )
-    t = deep_fmt(i18n_raw, vars_)
+    t = deep_fmt(merge(i18n_raw, (etab.get("texts") or {}).get(lang)), vars_)
 
     svc_conf = etab["services"]
     services = copy.deepcopy(services_all)
@@ -181,6 +181,8 @@ def build_context(etab, lang, i18n_raw, services_all):
                      count=t["dinner"]["count_words"].get(str(len(opts)), str(len(opts))),
                      list=", ".join(fmt(t["dinner"]["formula_item"], label=o["name"][lang], price=o["price"]) for o in opts)),
         service=fmt(t["dinner"]["service"], **{"from": dn["slots"][0], "to": dn["slots"][-1]}),
+        options=[dict(label=o["name"][lang], price=o["price"], desc=(o.get("desc") or {}).get(lang)) for o in opts],
+        detailed=any(o.get("desc") for o in opts),
     )
     ck = services["cooking"]
     cooking = dict(price=ck["price"], max=ck.get("max_people", 6))

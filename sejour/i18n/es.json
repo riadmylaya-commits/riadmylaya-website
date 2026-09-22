@@ -136,7 +136,9 @@
     "h4": "Componer y reservar mi cena",
     "help": "Elija su menú, la fecha y la hora: el total aparece inmediatamente.",
     "subject": "Solicitud de cena · {name}",
-    "wa": "Hola, tengo una reserva {at} y quiero reservar la cena marroquí.\nNombre completo de la reserva:\nN.º de reserva:\nFecha de la cena:\nNúmero de personas:\nPlato deseado (tajine, cuscús, pastela):"
+    "wa": "Hola, tengo una reserva {at} y quiero reservar la cena marroquí.\nNombre completo de la reserva:\nN.º de reserva:\nFecha de la cena:\nNúmero de personas:\nPlato deseado (tajine, cuscús, pastela):",
+    "formulas_h": "Nuestras {count} fórmulas:",
+    "per_person": "persona"
   },
   "cooking": {
     "h": "Clase de cocina",

@@ -49,9 +49,14 @@ window.RM_SERVICES = {
     "id": "full",
     "price": 25,
     "name": {
-     "fr": "Menu complet (entrée + plat + dessert)",
-     "en": "Full menu (starter + main + dessert)",
-     "es": "Menú completo (entrante + plato + postre)"
+     "fr": "Menu complet",
+     "en": "Full menu",
+     "es": "Menú completo"
+    },
+    "desc": {
+     "fr": "Entrée + plat principal + dessert",
+     "en": "Starter + main course + dessert",
+     "es": "Entrante + plato principal + postre"
     }
    },
    {
@@ -61,6 +66,11 @@ window.RM_SERVICES = {
      "fr": "Entrée + plat",
      "en": "Starter + main",
      "es": "Entrante + plato"
+    },
+    "desc": {
+     "fr": "Entrée + plat principal",
+     "en": "Starter + main course",
+     "es": "Entrante + plato principal"
     }
    },
    {
@@ -70,6 +80,11 @@ window.RM_SERVICES = {
      "fr": "Plat + dessert",
      "en": "Main + dessert",
      "es": "Plato + postre"
+    },
+    "desc": {
+     "fr": "Plat principal + dessert",
+     "en": "Main course + dessert",
+     "es": "Plato principal + postre"
     }
    },
    {
@@ -79,6 +94,11 @@ window.RM_SERVICES = {
      "fr": "Plat principal",
      "en": "Main course",
      "es": "Plato principal"
+    },
+    "desc": {
+     "fr": "Plat principal uniquement",
+     "en": "Main course only",
+     "es": "Solo plato principal"
     }
    }
   ]

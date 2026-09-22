@@ -318,10 +318,20 @@
 {% call(part) booking('dinner', 'diner', 'diner', images.dinner, s) %}
 {% if part == 'price' %}{{ s.price.replace('{min}', dinner.min|string) }}{% else %}
         <li>{{ s.li1 }}</li>
-        <li>{{ s.li2 }}</li>
-        <li>{{ s.li3 }}</li>
+{% if s.get("li2") %}        <li>{{ s.li2 }}</li>
+{% endif %}        <li>{{ s.li3 }}</li>
         <li>{{ s.li4 }}</li>
+{% if dinner.detailed %}
+        <li>{{ s.formulas_h.replace('{count}', dinner.options|length|string) }}
+          <ul class="rm-ps-formulas">
+{% for o in dinner.options %}
+            <li><strong>{{ o.label }} — {{ o.price }} € / {{ s.per_person }}</strong>{% if o.desc %}<br><span>{{ o.desc }}</span>{% endif %}</li>
+{% endfor %}
+          </ul>
+        </li>
+{% else %}
         <li>{{ dinner.formulas }}</li>
+{% endif %}
         <li>{{ dinner.service }}</li>
 {% endif %}
 {% endcall %}
@@ -370,6 +380,16 @@
         <li>{{ s.li3 }}</li>
       </ul>
       <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">{{ s.price }}</span> <span class="rm-ps-acc__pay">{{ t.services.online }}</span></p>
+{% if services.group.get("links") %}
+      <ul class="rm-gyg-list">
+{% for l in services.group.links %}
+        <li class="rm-gyg-list__item">
+          <span class="rm-gyg-list__title">{{ l.title[lang] }}</span>
+          <a class="rm-gyg-list__btn" href="{{ l.url }}" target="_blank" rel="nofollow sponsored noopener" data-track="gyg" data-track-label="gyg-{{ loop.index }}">{{ l.btn[lang] }}</a>
+        </li>
+{% endfor %}
+      </ul>
+{% else %}
       <div class="rm-cs-gyg-clip">
       <div class="rm-cs-gyg"
            data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
@@ -378,8 +398,9 @@
            data-gyg-number-of-items="6"
            data-gyg-q="{{ services.group.gyg_query }}"></div>
       </div>
+{% endif %}
       <p>{{ s.outro }}</p>
-      <a class="rm-lp-btn rm-lp-btn--primary" href="{{ services.group.gyg_url }}" target="_blank" rel="nofollow sponsored noopener" data-track="gyg" data-track-label="space-group">{{ s.btn }}</a>
+      <a class="rm-lp-btn rm-lp-btn--primary" href="{{ services.group.gyg_url }}" target="_blank" rel="nofollow sponsored noopener" data-track="gyg" data-track-label="space-group">{{ services.group.btn[lang] if services.group.get("btn") else s.btn }}</a>
       </div>
     </details>
 {% endif %}
