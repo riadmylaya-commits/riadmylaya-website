@@ -1,5 +1,25 @@
 /* Comportements de la page « Préparer mon séjour » (sommaire, ancres, widget GetYourGuide). Commun à tous les établissements. */
 (function () {
+  /* Mobile: open the WhatsApp app directly (whatsapp://send) instead of the wa.me landing page.
+     Links keep their https://wa.me href (desktop, no-JS, app missing → fallback after a short delay). */
+  var mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (mobile) {
+    document.addEventListener("click", function (ev) {
+      var a = ev.target.closest && ev.target.closest('a[href^="https://wa.me/"]');
+      if (!a || ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey) return;
+      var m = a.href.match(/^https:\/\/wa\.me\/(\d+)(?:\?text=(.*))?$/);
+      if (!m) return;
+      ev.preventDefault();
+      var fallback = a.href;
+      var deep = "whatsapp://send?phone=" + m[1] + (m[2] ? "&text=" + m[2] : "");
+      var t = setTimeout(function () { window.location.href = fallback; }, 1500);
+      var cancel = function () { if (document.hidden) { clearTimeout(t); document.removeEventListener("visibilitychange", cancel); } };
+      document.addEventListener("visibilitychange", cancel);
+      window.addEventListener("pagehide", function () { clearTimeout(t); }, { once: true });
+      window.location.href = deep;
+    });
+  }
+
   /* Load the GetYourGuide affiliate script only when the group block is opened. */
   var group = document.getElementById("groupe");
   if (group) {
