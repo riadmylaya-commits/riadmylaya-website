@@ -408,7 +408,7 @@
       "transfer": {
         "detailed": true,
         "intro": "Un chauffeur vous attend à l'aéroport ou à la gare et vous accompagne jusqu'au point d'accès au riad. Tarif fixe, sans négociation et sans mauvaise surprise.",
-        "li1": "À l'aéroport, votre chauffeur vous attend avec un panneau à votre nom.",
+        "li1": "Notre chauffeur vous attend avec un panneau au nom de RIAD BILKIS.",
         "li2": "En cas de retard de votre vol, l'attente est incluse.",
         "li3": "Véhicule privé et climatisé.",
         "li4": "Tarif fixe par véhicule."
@@ -424,7 +424,7 @@
       "transfer": {
         "detailed": true,
         "intro": "A driver waits for you at the airport or the train station and walks you to the riad's access point. Fixed price, no haggling, no surprises.",
-        "li1": "At the airport, your driver waits for you with a sign bearing your name.",
+        "li1": "Our driver waits for you holding a sign reading RIAD BILKIS.",
         "li2": "If your flight is delayed, waiting time is included.",
         "li3": "Private air-conditioned vehicle.",
         "li4": "Fixed price per vehicle."
@@ -440,7 +440,7 @@
       "transfer": {
         "detailed": true,
         "intro": "Un conductor le espera en el aeropuerto o en la estación y le acompaña hasta el punto de acceso al riad. Precio fijo, sin negociar y sin sorpresas.",
-        "li1": "En el aeropuerto, su conductor le espera con un cartel con su nombre.",
+        "li1": "Nuestro conductor le espera con un cartel con el nombre RIAD BILKIS.",
         "li2": "Si su vuelo se retrasa, la espera está incluida.",
         "li3": "Vehículo privado con aire acondicionado.",
         "li4": "Precio fijo por vehículo."
