@@ -3,17 +3,41 @@
   "name": "Riad Bilkis",
   "city": "Marrakech",
   "grammar": {
-    "fr": { "with": "avec le Riad Bilkis", "at": "au Riad Bilkis", "of": "du Riad Bilkis" },
-    "en": { "with": "with Riad Bilkis", "at": "at Riad Bilkis", "of": "Riad Bilkis" },
-    "es": { "with": "con el Riad Bilkis", "at": "en el Riad Bilkis", "of": "del Riad Bilkis" }
+    "fr": {
+      "with": "avec le Riad Bilkis",
+      "at": "au Riad Bilkis",
+      "of": "du Riad Bilkis"
+    },
+    "en": {
+      "with": "with Riad Bilkis",
+      "at": "at Riad Bilkis",
+      "of": "Riad Bilkis"
+    },
+    "es": {
+      "with": "con el Riad Bilkis",
+      "at": "en el Riad Bilkis",
+      "of": "del Riad Bilkis"
+    }
   },
   "site": {
     "turnstile_sitekey": null,
     "base_url": "https://riadbilkis.com",
     "output_dir": "riadbilkis.com",
-    "paths": { "fr": "/preparer-mon-sejour", "en": "/en/prepare-your-stay", "es": "/es/prepara-tu-estancia" },
-    "thanks": { "fr": "/merci-sejour", "en": "/en/thank-you-stay", "es": "/es/gracias-estancia" },
-    "excursions_more": { "fr": "https://riadbilkis.com/excursions", "en": "https://riadbilkis.com/en/excursions", "es": "https://riadbilkis.com/es/excursiones" }
+    "paths": {
+      "fr": "/preparer-mon-sejour",
+      "en": "/en/prepare-your-stay",
+      "es": "/es/prepara-tu-estancia"
+    },
+    "thanks": {
+      "fr": "/merci-sejour",
+      "en": "/en/thank-you-stay",
+      "es": "/es/gracias-estancia"
+    },
+    "excursions_more": {
+      "fr": "https://riadbilkis.com/excursions",
+      "en": "https://riadbilkis.com/en/excursions",
+      "es": "https://riadbilkis.com/es/excursiones"
+    }
   },
   "contact": {
     "whatsapp": "212625675494",
@@ -35,16 +59,35 @@
     "group": "{hub}/assets/common/activites-prive-groupe.jpg",
     "spa": "{hub}/assets/common/hammam-interior.jpg"
   },
-  "theme": { "accent": "#b07a3c", "accent_dark": "#7d5527" },
+  "theme": {
+    "accent": "#b07a3c",
+    "accent_dark": "#7d5527"
+  },
   "analytics": {
     "ga_id": null
   },
   "stay": {
-    "checkin": { "fr": "13h", "en": "1 pm", "es": "las 13h" },
-    "luggage_from": { "fr": "9h", "en": "9 am", "es": "las 9h" },
-    "checkout": { "fr": "11h", "en": "11 am", "es": "las 11h" },
+    "checkin": {
+      "fr": "13h",
+      "en": "1 pm",
+      "es": "las 13h"
+    },
+    "luggage_from": {
+      "fr": "9h",
+      "en": "9 am",
+      "es": "las 9h"
+    },
+    "checkout": {
+      "fr": "11h",
+      "en": "11 am",
+      "es": "las 11h"
+    },
     "breakfast_price": 6,
-    "tax": { "fr": "2,50", "en": "2.50", "es": "2,50" }
+    "tax": {
+      "fr": "2,50",
+      "en": "2.50",
+      "es": "2,50"
+    }
   },
   "services": {
     "transfer": {
@@ -52,12 +95,24 @@
       "override": {
         "airport": {
           "tiers": [
-            { "max": 4, "price": 15 },
-            { "max": 6, "price": 20 },
-            { "max": 8, "price": 25 }
+            {
+              "max": 4,
+              "price": 15
+            },
+            {
+              "max": 6,
+              "price": 20
+            },
+            {
+              "max": 8,
+              "price": 25
+            }
           ],
           "surcharge": null,
-          "round_trip_discount": { "amount": 5, "leg": "departure" }
+          "round_trip_discount": {
+            "amount": 5,
+            "leg": "departure"
+          }
         },
         "station": null
       }
@@ -74,7 +129,209 @@
     "group": {
       "enabled": true,
       "gyg_url": "https://gyg.me/pieHSnog",
-      "gyg_query": "Marrakech, Morocco"
+      "gyg_query": "Marrakech, Morocco",
+      "links": [
+        {
+          "title": {
+            "fr": "Jardin Majorelle + Musée YSL + Musée Pierre Bergé",
+            "en": "Majorelle Garden + YSL Museum + Pierre Bergé Museum",
+            "es": "Jardín Majorelle + Museo YSL + Museo Pierre Bergé"
+          },
+          "btn": {
+            "fr": "Voir les disponibilités",
+            "en": "Check availability",
+            "es": "Ver disponibilidad"
+          },
+          "url": "https://gyg.me/hHN8hT4m"
+        },
+        {
+          "title": {
+            "fr": "Médersa Ben Youssef",
+            "en": "Ben Youssef Madrasa",
+            "es": "Madraza Ben Youssef"
+          },
+          "btn": {
+            "fr": "Réserver la visite",
+            "en": "Book the visit",
+            "es": "Reservar la visita"
+          },
+          "url": "https://gyg.me/KuFWiDLL"
+        },
+        {
+          "title": {
+            "fr": "Palais Bahia",
+            "en": "Bahia Palace",
+            "es": "Palacio Bahia"
+          },
+          "btn": {
+            "fr": "Réserver la visite",
+            "en": "Book the visit",
+            "es": "Reservar la visita"
+          },
+          "url": "https://gyg.me/46IcKWlP"
+        },
+        {
+          "title": {
+            "fr": "Le Jardin Secret",
+            "en": "Le Jardin Secret",
+            "es": "Le Jardin Secret"
+          },
+          "btn": {
+            "fr": "Découvrir & réserver",
+            "en": "Discover & book",
+            "es": "Descubrir y reservar"
+          },
+          "url": "https://gyg.me/poQY0DZX"
+        },
+        {
+          "title": {
+            "fr": "Tombeaux Saadiens",
+            "en": "Saadian Tombs",
+            "es": "Tumbas Saadíes"
+          },
+          "btn": {
+            "fr": "Réserver la visite",
+            "en": "Book the visit",
+            "es": "Reservar la visita"
+          },
+          "url": "https://gyg.me/ohTXhaBI"
+        },
+        {
+          "title": {
+            "fr": "Médina, souks & artisans avec guide",
+            "en": "Medina, souks & artisans with a guide",
+            "es": "Medina, zocos y artesanos con guía"
+          },
+          "btn": {
+            "fr": "Découvrir la médina",
+            "en": "Discover the medina",
+            "es": "Descubrir la medina"
+          },
+          "url": "https://gyg.me/Cre03K7R"
+        },
+        {
+          "title": {
+            "fr": "Jemaa el-Fna & visite nocturne de Marrakech",
+            "en": "Jemaa el-Fna & Marrakech by night",
+            "es": "Jemaa el-Fna y visita nocturna de Marrakech"
+          },
+          "btn": {
+            "fr": "Réserver la visite",
+            "en": "Book the visit",
+            "es": "Reservar la visita"
+          },
+          "url": "https://gyg.me/b680GqoK"
+        },
+        {
+          "title": {
+            "fr": "Vol en montgolfière + petit-déjeuner berbère",
+            "en": "Hot-air balloon flight + Berber breakfast",
+            "es": "Vuelo en globo + desayuno bereber"
+          },
+          "btn": {
+            "fr": "Voir les disponibilités",
+            "en": "Check availability",
+            "es": "Ver disponibilidad"
+          },
+          "url": "https://gyg.me/b0txvWuO"
+        },
+        {
+          "title": {
+            "fr": "Désert d’Agafay : quad + chameau + dîner-spectacle",
+            "en": "Agafay Desert: quad + camel + dinner show",
+            "es": "Desierto de Agafay: quad + camello + cena con espectáculo"
+          },
+          "btn": {
+            "fr": "Réserver l’expérience",
+            "en": "Book the experience",
+            "es": "Reservar la experiencia"
+          },
+          "url": "https://gyg.me/BTiMnLnS"
+        },
+        {
+          "title": {
+            "fr": "Désert d’Agafay : coucher de soleil + dîner-spectacle",
+            "en": "Agafay Desert: sunset + dinner show",
+            "es": "Desierto de Agafay: puesta de sol + cena con espectáculo"
+          },
+          "btn": {
+            "fr": "Réserver l’expérience",
+            "en": "Book the experience",
+            "es": "Reservar la experiencia"
+          },
+          "url": "https://gyg.me/UC6eYFqj"
+        },
+        {
+          "title": {
+            "fr": "Vallée de l’Ourika + Atlas + cascades",
+            "en": "Ourika Valley + Atlas + waterfalls",
+            "es": "Valle del Ourika + Atlas + cascadas"
+          },
+          "btn": {
+            "fr": "Voir l’excursion",
+            "en": "See the excursion",
+            "es": "Ver la excursión"
+          },
+          "url": "https://gyg.me/FP9b9D3W"
+        },
+        {
+          "title": {
+            "fr": "Cascades d’Ouzoud : randonnée guidée + bateau",
+            "en": "Ouzoud Waterfalls: guided hike + boat",
+            "es": "Cascadas de Ouzoud: senderismo guiado + barco"
+          },
+          "btn": {
+            "fr": "Voir l’excursion",
+            "en": "See the excursion",
+            "es": "Ver la excursión"
+          },
+          "url": "https://gyg.me/73XechT1"
+        },
+        {
+          "title": {
+            "fr": "Essaouira : excursion d’une journée depuis Marrakech",
+            "en": "Essaouira: day trip from Marrakech",
+            "es": "Essaouira: excursión de un día desde Marrakech"
+          },
+          "btn": {
+            "fr": "Voir l’excursion",
+            "en": "See the excursion",
+            "es": "Ver la excursión"
+          },
+          "url": "https://gyg.me/1qPFh4dm"
+        },
+        {
+          "title": {
+            "fr": "Aït-Ben-Haddou & Ouarzazate",
+            "en": "Aït-Ben-Haddou & Ouarzazate",
+            "es": "Aït-Ben-Haddou y Ouarzazate"
+          },
+          "btn": {
+            "fr": "Voir l’excursion",
+            "en": "See the excursion",
+            "es": "Ver la excursión"
+          },
+          "url": "https://gyg.me/pwMA7HSt"
+        },
+        {
+          "title": {
+            "fr": "Merzouga & désert du Sahara : circuit 3 jours",
+            "en": "Merzouga & Sahara Desert: 3-day tour",
+            "es": "Merzouga y desierto del Sahara: circuito de 3 días"
+          },
+          "btn": {
+            "fr": "Voir le circuit",
+            "en": "See the tour",
+            "es": "Ver el circuito"
+          },
+          "url": "https://gyg.me/NhEOk4Q6"
+        }
+      ],
+      "btn": {
+        "fr": "Voir toutes les activités à Marrakech",
+        "en": "See all activities in Marrakech",
+        "es": "Ver todas las actividades en Marrakech"
+      }
     },
     "spa": {
       "enabled": true

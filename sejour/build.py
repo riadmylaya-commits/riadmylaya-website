@@ -36,7 +36,7 @@ DIST = ROOT / "dist"
 HUB_HOST = "monsejour-marrakech.com"
 HUB_URL = os.environ.get("SEJOUR_HUB_URL", "https://" + HUB_HOST)  # ex. http://localhost:8081 pour tester
 LANGS = ("fr", "en", "es")
-VERSION = "1"
+VERSION = "2"
 
 SHARED_JS = ["transfer-quote.js", "rm-booking-engine.js", "rm-antibot.js", "gyg-affiliate.js"]
 

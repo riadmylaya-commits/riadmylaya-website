@@ -370,6 +370,16 @@
         <li>{{ s.li3 }}</li>
       </ul>
       <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">{{ s.price }}</span> <span class="rm-ps-acc__pay">{{ t.services.online }}</span></p>
+{% if services.group.get("links") %}
+      <ul class="rm-gyg-list">
+{% for l in services.group.links %}
+        <li class="rm-gyg-list__item">
+          <span class="rm-gyg-list__title">{{ l.title[lang] }}</span>
+          <a class="rm-gyg-list__btn" href="{{ l.url }}" target="_blank" rel="nofollow sponsored noopener" data-track="gyg" data-track-label="gyg-{{ loop.index }}">{{ l.btn[lang] }}</a>
+        </li>
+{% endfor %}
+      </ul>
+{% else %}
       <div class="rm-cs-gyg-clip">
       <div class="rm-cs-gyg"
            data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
@@ -378,8 +388,9 @@
            data-gyg-number-of-items="6"
            data-gyg-q="{{ services.group.gyg_query }}"></div>
       </div>
+{% endif %}
       <p>{{ s.outro }}</p>
-      <a class="rm-lp-btn rm-lp-btn--primary" href="{{ services.group.gyg_url }}" target="_blank" rel="nofollow sponsored noopener" data-track="gyg" data-track-label="space-group">{{ s.btn }}</a>
+      <a class="rm-lp-btn rm-lp-btn--primary" href="{{ services.group.gyg_url }}" target="_blank" rel="nofollow sponsored noopener" data-track="gyg" data-track-label="space-group">{{ services.group.btn[lang] if services.group.get("btn") else s.btn }}</a>
       </div>
     </details>
 {% endif %}
