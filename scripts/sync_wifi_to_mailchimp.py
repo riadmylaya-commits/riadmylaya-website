@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Synchronise les contacts du portail Wi-Fi NextWi vers l'audience Mailchimp.
 
-Les invites du portail Wi-Fi (dev-admin.mynextwi.com) sont recuperes puis
+Les invites du portail Wi-Fi (admin.mynextwi.com) sont recuperes puis
 ajoutes/mis a jour dans l'audience Mailchimp du Riad Mylaya, avec le tag
 "Wi-Fi Riad Mylaya", la source et la date de derniere connexion.
 
@@ -9,7 +9,7 @@ Variables d'environnement requises :
     NEXTWI_EMAIL, NEXTWI_PASSWORD, MAILCHIMP_API_KEY
 
 Optionnelles :
-    NEXTWI_BASE_URL   (defaut : https://dev-admin.mynextwi.com)
+    NEXTWI_BASE_URL   (defaut : https://admin.mynextwi.com)
     NEXTWI_LOCATION   (defaut : Riad Mylaya)
     MAILCHIMP_LIST_ID (defaut : 867269a555)
     MAILCHIMP_TAG     (defaut : Wi-Fi Riad Mylaya)
@@ -26,7 +26,7 @@ import sys
 
 import requests
 
-NEXTWI_BASE_URL = os.environ.get("NEXTWI_BASE_URL", "https://dev-admin.mynextwi.com")
+NEXTWI_BASE_URL = os.environ.get("NEXTWI_BASE_URL", "https://admin.mynextwi.com")
 NEXTWI_LOCATION = os.environ.get("NEXTWI_LOCATION", "Riad Mylaya")
 MAILCHIMP_LIST_ID = os.environ.get("MAILCHIMP_LIST_ID", "867269a555")
 MAILCHIMP_TAG = os.environ.get("MAILCHIMP_TAG", "Wi-Fi Riad Mylaya")
