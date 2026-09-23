@@ -11,8 +11,14 @@
       if (!m) return;
       ev.preventDefault();
       var fallback = a.href;
-      var deep = "whatsapp://send?phone=" + m[1] + (m[2] ? "&text=" + m[2] : "");
-      var t = setTimeout(function () { window.location.href = fallback; }, 1500);
+      var query = "phone=" + m[1] + (m[2] ? "&text=" + m[2] : "");
+      if (/Android/i.test(navigator.userAgent)) {
+        /* Chrome Android: intent URL opens the app and falls back to wa.me itself if it is missing. */
+        window.location.href = "intent://send?" + query + "#Intent;scheme=whatsapp;package=com.whatsapp;S.browser_fallback_url=" + encodeURIComponent(fallback) + ";end";
+        return;
+      }
+      var deep = "whatsapp://send?" + query;
+      var t = setTimeout(function () { window.location.href = fallback; }, 2500);
       var cancel = function () { if (document.hidden) { clearTimeout(t); document.removeEventListener("visibilitychange", cancel); } };
       document.addEventListener("visibilitychange", cancel);
       window.addEventListener("pagehide", function () { clearTimeout(t); }, { once: true });
