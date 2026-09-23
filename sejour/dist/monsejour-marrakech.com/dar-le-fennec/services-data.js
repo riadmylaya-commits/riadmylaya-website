@@ -7,7 +7,7 @@ window.RM_SERVICES = {
  },
  "transfer": {
   "unit": "per_vehicle",
-  "max_people": 8,
+  "max_people": 7,
   "airport": {
    "tiers": [
     {
@@ -21,10 +21,6 @@ window.RM_SERVICES = {
     {
      "max": 7,
      "price": 30
-    },
-    {
-     "max": 8,
-     "price": 35
     }
    ],
    "surcharge": {
@@ -88,9 +84,14 @@ window.RM_SERVICES = {
     "id": "full",
     "price": 25,
     "name": {
-     "fr": "Menu complet (entrée + plat + dessert)",
-     "en": "Full menu (starter + main + dessert)",
-     "es": "Menú completo (entrante + plato + postre)"
+     "fr": "Menu complet",
+     "en": "Full menu",
+     "es": "Menú completo"
+    },
+    "desc": {
+     "fr": "Entrée + plat principal + dessert",
+     "en": "Starter + main course + dessert",
+     "es": "Entrante + plato principal + postre"
     }
    },
    {
@@ -100,6 +101,11 @@ window.RM_SERVICES = {
      "fr": "Entrée + plat",
      "en": "Starter + main",
      "es": "Entrante + plato"
+    },
+    "desc": {
+     "fr": "Entrée + plat principal",
+     "en": "Starter + main course",
+     "es": "Entrante + plato principal"
     }
    },
    {
@@ -109,6 +115,11 @@ window.RM_SERVICES = {
      "fr": "Plat + dessert",
      "en": "Main + dessert",
      "es": "Plato + postre"
+    },
+    "desc": {
+     "fr": "Plat principal + dessert",
+     "en": "Main course + dessert",
+     "es": "Plato principal + postre"
     }
    },
    {
@@ -118,6 +129,11 @@ window.RM_SERVICES = {
      "fr": "Plat principal",
      "en": "Main course",
      "es": "Plato principal"
+    },
+    "desc": {
+     "fr": "Plat principal uniquement",
+     "en": "Main course only",
+     "es": "Solo plato principal"
     }
    }
   ]
@@ -136,7 +152,8 @@ window.RM_SERVICES = {
    "13:30",
    "14:00",
    "14:30"
-  ]
+  ],
+  "min_people": 2
  },
  "excursions": {
   "unit": "total",
