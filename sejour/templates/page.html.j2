@@ -175,8 +175,12 @@
 {% else %}
       <p>{{ t.arrival.room }}</p>
       <p>{{ t.arrival.luggage }}</p>
+{% if t.arrival.get("early") %}
+      <p><strong>{{ t.arrival.early.q }}</strong><br>{{ t.arrival.early.text }}</p>
+{% else %}
       <p>{{ t.arrival.breakfast }}</p>
       <a class="rm-lp-btn rm-lp-btn--wa" href="{{ wa(t.arrival.wa_breakfast) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="breakfast"><span aria-hidden="true">🥐</span> {{ t.arrival.breakfast_btn }}</a>
+{% endif %}
 {% endif %}
     </div>
   </div>

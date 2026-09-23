@@ -430,6 +430,12 @@
         "li5": "À réserver au moins 24 heures à l'avance.",
         "li6": "Minimum {min} personnes – maximum {max} personnes par cours.",
         "li7": "💶 {price} € par personne."
+      },
+      "arrival": {
+        "early": {
+          "q": "Vous arrivez tôt le matin ?",
+          "text": "Profitez d'un petit-déjeuner sur la terrasse du Riad Mylaya en attendant votre check-in. Nous nous occupons de vos bagages et les transférons directement à Dar Le Fennec."
+        }
       }
     },
     "en": {
@@ -463,6 +469,12 @@
         "li5": "Book at least 24 hours in advance.",
         "li6": "Minimum {min} people – maximum {max} people per class.",
         "li7": "💶 {price} € per person."
+      },
+      "arrival": {
+        "early": {
+          "q": "Arriving early in the morning?",
+          "text": "Enjoy breakfast on the terrace of Riad Mylaya while you wait for check-in. We take care of your luggage and transfer it directly to Dar Le Fennec."
+        }
       }
     },
     "es": {
@@ -496,6 +508,12 @@
         "li5": "Reservar con al menos 24 horas de antelación.",
         "li6": "Mínimo {min} personas – máximo {max} personas por clase.",
         "li7": "💶 {price} € por persona."
+      },
+      "arrival": {
+        "early": {
+          "q": "¿Llega temprano por la mañana?",
+          "text": "Disfrute de un desayuno en la terraza del Riad Mylaya mientras espera su check-in. Nos ocupamos de su equipaje y lo trasladamos directamente a Dar Le Fennec."
+        }
       }
     }
   }
