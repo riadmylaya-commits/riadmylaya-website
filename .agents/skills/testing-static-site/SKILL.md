@@ -152,6 +152,66 @@ xdotool getactivewindow windowsize 800 900   # then re-read window.innerWidth
 Screenshots of the small window are tiny on a scaled display — use the `zoom` action on the
 browser viewport region to produce legible mobile evidence.
 
+#### To get a *true* 390px viewport, use the DevTools device toolbar (not window resizing)
+
+Window resizing bottoms out at `innerWidth == 500` on this Chrome no matter what `wmctrl`/
+`xdotool windowsize` are told. For a real phone width (390px etc.), open DevTools and toggle
+device mode, which gives an exact emulated viewport that screenshots cleanly:
+
+1. `F12`, then `ctrl+shift+m` (device toolbar). Type the width into the `Dimensions` W field
+   (and a **height near 420** — the docked DevTools panel clips the device frame, so a tall
+   emulated height leaves most of the page off-screen and unscreenshottable).
+2. Re-read `window.innerWidth` to confirm the override took effect.
+3. **Closing DevTools (`F12`) also exits device mode** and reverts to desktop width — so keep
+   the panel open for the whole mobile pass, and use the device-toolbar icon at the top-left of
+   the DevTools panel to re-toggle rather than the keyboard shortcut (the shortcut is swallowed
+   if focus is inside the page or the panel).
+4. Screen coordinates are **scaled**: the screenshot is 1024px wide while the display is larger,
+   so a 390px emulated viewport occupies only ~260 screenshot px. Convert viewport→screen with
+   `screen_x = frame_left + viewport_x * (1024/actual_width)` (≈0.667 here) before clicking, or
+   you will click the wrong element — this is how an intended click on one `<details>` accordion
+   lands on its neighbour.
+
+Numeric overflow assertion that actually discriminates a broken responsive grid:
+
+```js
+JSON.stringify((function(){var iw=innerWidth,bad=[],clip=[];
+  document.querySelectorAll('.rm-gyg-theme, .rm-cs-act').forEach(function(a,i){
+    var r=a.getBoundingClientRect();
+    if(r.right>iw+1||r.left<-1)bad.push(i);
+    if(a.scrollWidth>a.clientWidth+1)clip.push(i);});
+  return {iw:iw, docScrollWidth:document.documentElement.scrollWidth,
+          horizOverflow:document.documentElement.scrollWidth>iw+1,
+          outside:bad, clipped:clip};})())
+// pass: horizOverflow false, outside [], clipped []
+```
+Note `body{overflow-x:hidden}` is set site-wide, so a horizontal scrollbar may never appear
+visually even when a child overflows — the per-element `getBoundingClientRect().right` check is
+the only reliable signal, never the screenshot alone.
+
+### A CDP helper that picks `pages[0]` will silently target the DevTools window
+
+`/home/ubuntu/cdp2.py` selects the first `type=="page"` target from `/json/list`. **When
+DevTools is open it is itself a `page` target** (`devtools://devtools/bundled/...`), and it
+often sorts first — so every `eval` runs against the DevTools document and returns
+`querySelectorAll(...).length == 0` or `TypeError: Cannot read properties of null`. That looks
+exactly like "the feature did not render" and has previously produced a false bug report.
+Always pin the target and sanity-check the URL:
+
+```bash
+curl -s localhost:9333/json/list | python3 -c "import json,sys;[print(t['id'],t['type'],t['url'][:70]) for t in json.load(sys.stdin)]"
+TAB=$(curl -s localhost:9333/json/list | python3 -c "import json,sys;print([t['id'] for t in json.load(sys.stdin) if t['type']=='page' and 'riadmylaya' in t['url']][0])") \
+  PORT=9333 python3 /home/ubuntu/cdp2.py eval 'location.pathname'
+```
+If a DOM count comes back 0 or `null`, re-check `location.href` **before** concluding anything.
+
+### DevTools open can pause the page in the debugger
+
+With DevTools open, `rm-antibot.js` / Cloudflare's `api.js` can hit a `debugger` statement: the
+page freezes behind a "Paused in debugger" overlay and screenshots show a half-rendered page.
+Click the resume (▶) button in the overlay or in the Sources panel to continue. This is an
+anti-automation artifact of having DevTools open, not a site defect — do not report it as one.
+
 ### Localised page templates are easy to get wrong
 Pages are Mobirise exports; the navbar is identified by a `cid-*` class and each language
 directory has its **own** `assets/mbr-additional.css`. A page that copies the FR navbar into
