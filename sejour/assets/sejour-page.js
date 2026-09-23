@@ -11,8 +11,14 @@
       if (!m) return;
       ev.preventDefault();
       var fallback = a.href;
-      var deep = "whatsapp://send?phone=" + m[1] + (m[2] ? "&text=" + m[2] : "");
-      var t = setTimeout(function () { window.location.href = fallback; }, 1500);
+      var query = "phone=" + m[1] + (m[2] ? "&text=" + m[2] : "");
+      if (/Android/i.test(navigator.userAgent)) {
+        /* Chrome Android: intent URL opens the app and falls back to wa.me itself if it is missing. */
+        window.location.href = "intent://send?" + query + "#Intent;scheme=whatsapp;package=com.whatsapp;S.browser_fallback_url=" + encodeURIComponent(fallback) + ";end";
+        return;
+      }
+      var deep = "whatsapp://send?" + query;
+      var t = setTimeout(function () { window.location.href = fallback; }, 2500);
       var cancel = function () { if (document.hidden) { clearTimeout(t); document.removeEventListener("visibilitychange", cancel); } };
       document.addEventListener("visibilitychange", cancel);
       window.addEventListener("pagehide", function () { clearTimeout(t); }, { once: true });
@@ -74,7 +80,7 @@
     if (location.hash.length > 1) reveal(decodeURIComponent(location.hash.slice(1)), false);
   });
   /* Highlight the service the guest is currently reading. */
-  var links = [].slice.call(document.querySelectorAll(".rm-ps-toc__list a"));
+  var links = [].slice.call(document.querySelectorAll(".rm-ps-toc__list a, .rm-ps-sheet__list a"));
   if (links.length) {
     var pending = false;
     var spy = function () {
@@ -97,6 +103,22 @@
       window.requestAnimationFrame(spy);
     }, { passive: true });
     spy();
+  }
+
+  /* Mobile "Services" bottom sheet. */
+  var sheet = document.getElementById("rm-ps-sheet");
+  var sheetBtn = document.querySelector(".rm-ps-toc__btn");
+  if (sheet && sheetBtn) {
+    var setSheet = function (open) {
+      sheet.hidden = !open;
+      sheetBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("rm-sheet-open", open);
+    };
+    sheetBtn.addEventListener("click", function () { setSheet(sheet.hidden); });
+    sheet.addEventListener("click", function (ev) {
+      if (ev.target.closest && ev.target.closest("[data-sheet-close]")) setSheet(false);
+    });
+    document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && !sheet.hidden) setSheet(false); });
   }
 
   if (location.hash.length > 1) {

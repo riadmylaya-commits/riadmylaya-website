@@ -36,7 +36,7 @@ DIST = ROOT / "dist"
 HUB_HOST = "monsejour-marrakech.com"
 HUB_URL = os.environ.get("SEJOUR_HUB_URL", "https://" + HUB_HOST)  # ex. http://localhost:8081 pour tester
 LANGS = ("fr", "en", "es")
-VERSION = "8"
+VERSION = "10"
 
 SHARED_JS = ["transfer-quote.js", "rm-booking-engine.js", "rm-antibot.js", "gyg-affiliate.js"]
 
@@ -301,7 +301,7 @@ def build_hub(etabs, env):
 
 def main(argv):
     env = Environment(loader=FileSystemLoader(str(ROOT / "templates")), undefined=StrictUndefined,
-                      autoescape=False, trim_blocks=True, lstrip_blocks=True)
+                      autoescape=False, trim_blocks=True, lstrip_blocks=True, extensions=["jinja2.ext.do"])
     env.filters["urlq"] = lambda s: quote(s, safe="")
     i18n = {l: json.loads((ROOT / "i18n" / (l + ".json")).read_text(encoding="utf-8")) for l in LANGS}
     services_all = load_services()

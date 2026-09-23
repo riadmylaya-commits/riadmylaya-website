@@ -22,7 +22,7 @@
   <link rel="alternate" hreflang="x-default" href="https://riadbilkis.com/preparer-mon-sejour">
   <link rel="icon" href="https://riadbilkis.com/favicon.ico">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://monsejour-marrakech.com/lib/sejour.css?v=8">
+  <link rel="stylesheet" href="https://monsejour-marrakech.com/lib/sejour.css?v=10">
 <script>window.RM_BRAND = {"whatsapp": "212625675494", "name": "Riad Bilkis", "phone": "+212 625 675 494", "names": {"fr": {"with": "avec le Riad Bilkis", "at": "au Riad Bilkis", "of": "du Riad Bilkis"}, "en": {"with": "with Riad Bilkis", "at": "at Riad Bilkis", "of": "Riad Bilkis"}, "es": {"with": "con el Riad Bilkis", "at": "en el Riad Bilkis", "of": "del Riad Bilkis"}}, "turnstile_sitekey": ""};</script>
 </head>
 <body data-rm-space="client" data-rm-etab="riad-bilkis">
@@ -57,16 +57,31 @@
 <nav class="rm-ps-toc" aria-label="Prepare your stay">
   <div class="container">
     <ul class="rm-ps-toc__list">
-        <li><a href="/en/prepare-your-stay#arrivee">Arrival &amp; luggage</a></li>
-        <li><a href="/en/prepare-your-stay#infos">Practical information</a></li>
+        <li><a href="/en/prepare-your-stay#arrivee"><span class="rm-ps-toc__full">Arrival &amp; luggage</span><span class="rm-ps-toc__short">Arrival</span></a></li>
+        <li><a href="/en/prepare-your-stay#infos"><span class="rm-ps-toc__full">Practical information</span><span class="rm-ps-toc__short">Info</span></a></li>
         <li><a href="/en/prepare-your-stay#transfert">Transfer</a></li>
-        <li><a href="/en/prepare-your-stay#diner">Moroccan dinner</a></li>
-        <li><a href="/en/prepare-your-stay#cuisine">Cooking class</a></li>
-        <li><a href="/en/prepare-your-stay#excursions">Private excursions</a></li>
-        <li><a href="/en/prepare-your-stay#groupe">Group excursions</a></li>
-        <li><a href="/en/prepare-your-stay#hammam">Hammam &amp; massage</a></li>
-        <li><a href="/en/prepare-your-stay#contact">Contact us</a></li>
+        <li class="rm-ps-toc__more"><a href="/en/prepare-your-stay#diner">Moroccan dinner</a></li>
+        <li class="rm-ps-toc__more"><a href="/en/prepare-your-stay#cuisine">Cooking class</a></li>
+        <li class="rm-ps-toc__more"><a href="/en/prepare-your-stay#excursions">Private excursions</a></li>
+        <li class="rm-ps-toc__more"><a href="/en/prepare-your-stay#groupe">Group excursions</a></li>
+        <li class="rm-ps-toc__more"><a href="/en/prepare-your-stay#hammam">Hammam &amp; massage</a></li>
+        <li class="rm-ps-toc__more"><a href="/en/prepare-your-stay#contact">Contact us</a></li>
+        <li class="rm-ps-toc__menu"><button type="button" class="rm-ps-toc__btn" aria-expanded="false" aria-controls="rm-ps-sheet"><span aria-hidden="true">☰</span> Services</button></li>
     </ul>
+  </div>
+  <div class="rm-ps-sheet" id="rm-ps-sheet" hidden>
+    <div class="rm-ps-sheet__bg" data-sheet-close></div>
+    <div class="rm-ps-sheet__panel" role="dialog" aria-modal="true" aria-label="Services">
+      <div class="rm-ps-sheet__head"><span>Services</span><button type="button" class="rm-ps-sheet__close" data-sheet-close aria-label="Close">✕</button></div>
+      <ul class="rm-ps-sheet__list">
+        <li><a href="/en/prepare-your-stay#diner" data-sheet-close><span class="rm-ps-sheet__ico" aria-hidden="true">🍽️</span>Moroccan dinner</a></li>
+        <li><a href="/en/prepare-your-stay#cuisine" data-sheet-close><span class="rm-ps-sheet__ico" aria-hidden="true">🥘</span>Cooking class</a></li>
+        <li><a href="/en/prepare-your-stay#excursions" data-sheet-close><span class="rm-ps-sheet__ico" aria-hidden="true">🧭</span>Private excursions</a></li>
+        <li><a href="/en/prepare-your-stay#groupe" data-sheet-close><span class="rm-ps-sheet__ico" aria-hidden="true">🚌</span>Group excursions</a></li>
+        <li><a href="/en/prepare-your-stay#hammam" data-sheet-close><span class="rm-ps-sheet__ico" aria-hidden="true">🧖</span>Hammam &amp; massage</a></li>
+        <li><a href="/en/prepare-your-stay#contact" data-sheet-close><span class="rm-ps-sheet__ico" aria-hidden="true">✉️</span>Contact us</a></li>
+      </ul>
+    </div>
   </div>
 </nav>
 
@@ -663,10 +678,10 @@
   <p><a href="tel:+212625675494">+212 625 675 494</a> · <a href="mailto:riadbilkis@gmail.com">riadbilkis@gmail.com</a></p>
   <p><a href="https://www.google.com/maps/search/?api=1&query=Riad+Bilkis+117+Derb+Jdid+Marrakech" target="_blank" rel="noopener noreferrer" data-track="directions" data-track-label="space-footer">Get directions</a></p>
 </footer>
-<script src="https://monsejour-marrakech.com/etablissements/riad-bilkis/services-data.js?v=8" defer></script>
-<script src="https://monsejour-marrakech.com/lib/transfer-quote.js?v=8" defer></script>
-<script src="https://monsejour-marrakech.com/lib/rm-booking-engine.js?v=8" defer></script>
-<script src="https://monsejour-marrakech.com/lib/sejour-page.js?v=8" defer></script>
-<script src="https://monsejour-marrakech.com/lib/rm-antibot.js?v=8" defer></script>
+<script src="https://monsejour-marrakech.com/etablissements/riad-bilkis/services-data.js?v=10" defer></script>
+<script src="https://monsejour-marrakech.com/lib/transfer-quote.js?v=10" defer></script>
+<script src="https://monsejour-marrakech.com/lib/rm-booking-engine.js?v=10" defer></script>
+<script src="https://monsejour-marrakech.com/lib/sejour-page.js?v=10" defer></script>
+<script src="https://monsejour-marrakech.com/lib/rm-antibot.js?v=10" defer></script>
 </body>
 </html>

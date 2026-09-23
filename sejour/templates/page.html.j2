@@ -134,28 +134,34 @@
 <nav class="rm-ps-toc" aria-label="{{ t.h1 }}">
   <div class="container">
     <ul class="rm-ps-toc__list">
-        <li><a href="{{ page_path }}#arrivee">{{ t.toc.arrival }}</a></li>
-        <li><a href="{{ page_path }}#infos">{{ t.toc.infos }}</a></li>
+        <li><a href="{{ page_path }}#arrivee"><span class="rm-ps-toc__full">{{ t.toc.arrival }}</span><span class="rm-ps-toc__short">{{ t.toc.arrival_short }}</span></a></li>
+        <li><a href="{{ page_path }}#infos"><span class="rm-ps-toc__full">{{ t.toc.infos }}</span><span class="rm-ps-toc__short">{{ t.toc.infos_short }}</span></a></li>
 {% if services.transfer.enabled %}
         <li><a href="{{ page_path }}#transfert">{{ t.toc.transfer }}</a></li>
 {% endif %}
-{% if services.dinner.enabled %}
-        <li><a href="{{ page_path }}#diner">{{ t.toc.dinner }}</a></li>
-{% endif %}
-{% if services.cooking.enabled %}
-        <li><a href="{{ page_path }}#cuisine">{{ t.toc.cooking }}</a></li>
-{% endif %}
-{% if services.excursions.enabled %}
-        <li><a href="{{ page_path }}#excursions">{{ t.toc.excursions }}</a></li>
-{% endif %}
-{% if services.group.enabled %}
-        <li><a href="{{ page_path }}#groupe">{{ t.toc.group }}</a></li>
-{% endif %}
-{% if services.spa.enabled %}
-        <li><a href="{{ page_path }}#hammam">{{ t.toc.spa }}</a></li>
-{% endif %}
-        <li><a href="{{ page_path }}#contact">{{ t.toc.contact }}</a></li>
+{% set more = [] %}
+{% if services.dinner.enabled %}{% do more.append(('diner', '🍽️', t.toc.dinner)) %}{% endif %}
+{% if services.cooking.enabled %}{% do more.append(('cuisine', '🥘', t.toc.cooking)) %}{% endif %}
+{% if services.excursions.enabled %}{% do more.append(('excursions', '🧭', t.toc.excursions)) %}{% endif %}
+{% if services.group.enabled %}{% do more.append(('groupe', '🚌', t.toc.group)) %}{% endif %}
+{% if services.spa.enabled %}{% do more.append(('hammam', '🧖', t.toc.spa)) %}{% endif %}
+{% do more.append(('contact', '✉️', t.toc.contact)) %}
+{% for id, icon, label in more %}
+        <li class="rm-ps-toc__more"><a href="{{ page_path }}#{{ id }}">{{ label }}</a></li>
+{% endfor %}
+        <li class="rm-ps-toc__menu"><button type="button" class="rm-ps-toc__btn" aria-expanded="false" aria-controls="rm-ps-sheet"><span aria-hidden="true">☰</span> {{ t.toc.services }}</button></li>
     </ul>
+  </div>
+  <div class="rm-ps-sheet" id="rm-ps-sheet" hidden>
+    <div class="rm-ps-sheet__bg" data-sheet-close></div>
+    <div class="rm-ps-sheet__panel" role="dialog" aria-modal="true" aria-label="{{ t.toc.services }}">
+      <div class="rm-ps-sheet__head"><span>{{ t.toc.services }}</span><button type="button" class="rm-ps-sheet__close" data-sheet-close aria-label="{{ t.toc.close }}">✕</button></div>
+      <ul class="rm-ps-sheet__list">
+{% for id, icon, label in more %}
+        <li><a href="{{ page_path }}#{{ id }}" data-sheet-close><span class="rm-ps-sheet__ico" aria-hidden="true">{{ icon }}</span>{{ label }}</a></li>
+{% endfor %}
+      </ul>
+    </div>
   </div>
 </nav>
 
