@@ -118,21 +118,29 @@ a { color: var(--rb-terra); }
 .rb-banner h2 { color: #fff; font-size: clamp(26px, 4vw, 42px); }
 .rb-banner p { color: #F7ECE1; margin: 0 auto 26px; max-width: 720px; }
 
-/* ---------- Themes ---------- */
-.rb-themes { padding: 60px 0 70px; background: #fff; }
-.rb-themes__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-@media (max-width: 992px) { .rb-themes__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 520px) { .rb-themes__grid { grid-template-columns: 1fr; } }
-.rb-theme {
-  display: flex; flex-direction: column; background: var(--rb-cream);
-  border: 1px solid var(--rb-border); border-radius: 10px; padding: 24px 20px;
-  text-decoration: none; color: inherit; transition: transform .3s, box-shadow .3s;
+/* ---------- Activites reservables (cartes GetYourGuide) ---------- */
+.rb-acts { padding: 60px 0 70px; background: #fff; }
+.rb-acts__group {
+  font-size: clamp(22px, 2.6vw, 28px); color: #8a5a3c; text-align: center;
+  margin: 46px 0 22px; padding-top: 8px;
 }
-.rb-theme:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0, 0, 0, .1); color: inherit; }
-.rb-theme__icon { font-size: 30px; margin-bottom: 10px; }
-.rb-theme h3 { font-size: 22px; color: #8a5a3c; margin-bottom: 8px; }
-.rb-theme p { font-size: 16px; line-height: 1.7; color: var(--rb-ink-soft); margin: 0 0 14px; flex: 1 1 auto; }
-.rb-theme__cta { font-weight: 700; font-size: 13px; color: var(--rb-terra); border-bottom: 2px solid var(--rb-terra); padding-bottom: 2px; align-self: flex-start; }
+.rb-acts__group:first-of-type { margin-top: 0; }
+.rb-acts__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+@media (max-width: 992px) { .rb-acts__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .rb-acts__grid { grid-template-columns: 1fr; } }
+.rb-act {
+  display: flex; flex-direction: column; background: var(--rb-cream);
+  border: 1px solid var(--rb-border); border-radius: 10px; padding: 26px 22px 24px;
+  transition: transform .3s, box-shadow .3s;
+}
+.rb-act:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0, 0, 0, .1); }
+.rb-act__icon { font-size: 30px; line-height: 1; margin-bottom: 10px; }
+.rb-act h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; letter-spacing: .4px;
+  font-size: 23px; line-height: 1.25; color: var(--rb-ink); margin: 0 0 10px;
+}
+.rb-act p { font-size: 16px; line-height: 1.7; color: var(--rb-ink-soft); margin: 0 0 20px; flex: 1 1 auto; }
+.rb-act__cta { align-self: flex-start; font-size: 13px; padding: 13px 22px; }
 
 /* ---------- Aide + mention affiliation ---------- */
 .rb-help { padding: 0 0 70px; background: #fff; }
