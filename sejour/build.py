@@ -36,7 +36,7 @@ DIST = ROOT / "dist"
 HUB_HOST = "monsejour-marrakech.com"
 HUB_URL = os.environ.get("SEJOUR_HUB_URL", "https://" + HUB_HOST)  # ex. http://localhost:8081 pour tester
 LANGS = ("fr", "en", "es")
-VERSION = "9"
+VERSION = "10"
 
 SHARED_JS = ["transfer-quote.js", "rm-booking-engine.js", "rm-antibot.js", "gyg-affiliate.js"]
 
@@ -206,6 +206,7 @@ def build_context(etab, lang, i18n_raw, services_all):
         has_discount=bool(airport and airport.get("round_trip_discount")),
         max_people=tr.get("max_people", 8),
         blocks=transfer_blocks(t["transfer"], tr, lang),
+        formulas=tr.get("formulas"),
     )
 
     dn = services["dinner"]

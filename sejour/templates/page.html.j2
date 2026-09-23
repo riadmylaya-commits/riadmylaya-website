@@ -237,12 +237,126 @@
       <summary>
         <span class="rm-ps-acc__thumb"><img src="{{ images.transfer }}" alt="{{ s.alt }}" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
-          <h3>{{ s.h }}</h3>
-          <p>{{ transfer.price }}</p>
+          <h3>{{ s.formulas.h if transfer.formulas else s.h }}</h3>
+          <p>{{ s.formulas.price if transfer.formulas else transfer.price }}</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
       <div class="rm-ps-acc__body">
+{% if transfer.formulas %}
+{% set f = s.formulas %}
+      <p>{{ f.intro }}</p>
+      <div class="rm-ps-blocks rm-ps-formulas">
+        <div class="rm-ps-block">
+          <h5>{{ f.f1_h }}</h5>
+          <p class="rm-ps-formula__sub">{{ f.f1_sub }}</p>
+          <p><strong>{{ f.f1_gift }}</strong></p>
+          <ul>
+{% for r in f.f1_items %}
+            <li>{{ r }}</li>
+{% endfor %}
+          </ul>
+          <p><em>{{ f.f1_sum }}</em></p>
+        </div>
+        <div class="rm-ps-block">
+          <h5>{{ f.f2_h }}</h5>
+          <p><strong>{{ f.f2_gift }}</strong></p>
+          <ul>
+{% for r in f.f2_items %}
+            <li>{{ r }}</li>
+{% endfor %}
+          </ul>
+          <p><em>{{ f.f2_sum }}</em></p>
+        </div>
+      </div>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">{{ f.recap1 }}</span><br><span class="rm-ps-acc__price">{{ f.recap2 }}</span></p>
+      <h4 class="rm-ps-acc__h4">{{ f.h4 }}</h4>
+      <p>{{ f.help }}</p>
+      <div class="rm-tq rm-tq--formulas" data-rm-tq data-tq-mode="formulas" data-lang="{{ lang }}">
+        <form action="{{ envoi }}" method="POST">
+{{ hidden(s.subject) }}
+          <input type="hidden" name="{{ t.fields.recap }}" data-tq-recap>
+          <input type="hidden" name="{{ t.fields.total }}" data-tq-total-field>
+          <fieldset>
+            <legend>{{ f.choose }}</legend>
+            <div class="rm-tq__radios">
+              <label class="rm-tq__radio"><input type="radio" name="rm_formula" value="cash" data-tq="formula" checked> <span>{{ f.f1_opt }}</span></label>
+              <label class="rm-tq__radio"><input type="radio" name="rm_formula" value="online" data-tq="formula"> <span>{{ f.f2_opt }}</span></label>
+            </div>
+          </fieldset>
+          <fieldset data-tq-block="arrival">
+            <legend>{{ f.arrival }}</legend>
+            <div class="rm-tq__grid">
+              <label>{{ f.arr_date }}
+                <input type="date" data-tq="arr_date" data-tq-required>
+              </label>
+              <label>{{ f.arr_time }}
+                <input type="time" data-tq="arr_time" data-tq-required>
+              </label>
+              <label>{{ f.flight }}
+                <input type="text" data-tq="arr_num" data-tq-required autocomplete="off">
+              </label>
+              <label>{{ f.airline }}
+                <input type="text" data-tq="arr_airline" data-tq-required autocomplete="off">
+              </label>
+              <label>{{ f.people }}
+                <select data-tq="people">
+{% for n in range(1, transfer.max_people + 1) %}
+                  <option value="{{ n }}">{{ n }}</option>
+{% endfor %}
+                </select>
+              </label>
+            </div>
+            <ul class="rm-tq__checks">
+              <li><input type="checkbox" checked disabled> {{ f.chk_arr }}</li>
+              <li><input type="checkbox" checked disabled> {{ f.chk_cart_arr }}</li>
+            </ul>
+          </fieldset>
+          <fieldset data-tq-block="departure">
+            <legend><span data-tq-show="cash">{{ f.departure }}</span><span data-tq-show="online">{{ f.departure_opt }}</span></legend>
+            <label class="rm-tq__radio" data-tq-show="online"><input type="checkbox" data-tq="want_dep"> <span>{{ f.want_dep }}</span></label>
+            <div data-tq-block="departure_fields">
+            <div class="rm-tq__grid">
+              <label>{{ f.dep_date }}
+                <input type="date" data-tq="dep_date" data-tq-required>
+              </label>
+              <label>{{ f.dep_time }}
+                <input type="time" data-tq="dep_time" data-tq-required>
+              </label>
+              <label>{{ f.flight }}
+                <input type="text" data-tq="dep_num" data-tq-required autocomplete="off">
+              </label>
+              <label>{{ f.airline }}
+                <input type="text" data-tq="dep_airline" data-tq-required autocomplete="off">
+              </label>
+              <label>{{ f.people }}
+                <select data-tq="dep_people">
+{% for n in range(1, transfer.max_people + 1) %}
+                  <option value="{{ n }}">{{ n }}</option>
+{% endfor %}
+                </select>
+              </label>
+            </div>
+            <ul class="rm-tq__checks" data-tq-show="cash">
+              <li><input type="checkbox" checked disabled> {{ f.chk_dep }}</li>
+              <li><input type="checkbox" checked disabled> {{ f.chk_cart_dep }}</li>
+            </ul>
+            <ul class="rm-tq__checks" data-tq-show="online">
+              <li><label><input type="checkbox" data-tq="pay_dep" checked> {{ f.pay_dep }}</label></li>
+              <li><label><input type="checkbox" data-tq="pay_cart"> {{ f.pay_cart }}</label></li>
+            </ul>
+            </div>
+          </fieldset>
+{{ contact_fields('data-tq') }}
+          <div class="rm-tq__summary" data-tq-summary aria-live="polite"></div>
+          <div class="rm-tq__actions">
+            <a class="rm-lp-btn rm-lp-btn--wa" data-tq-wa href="{{ wa(s.wa) }}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="transfer-space"><span aria-hidden="true">💬</span> {{ t.services.wa_send }}</a>
+            <button type="submit" data-tq-submit data-track="form" data-track-label="transfer-space">{{ t.services.mail_send }}</button>
+          </div>
+          <p class="rm-tq__legal">{{ f.legal }}</p>
+        </form>
+      </div>
+{% else %}
       <p>{{ s.intro }}</p>
       <ul>
         <li>{{ s.li1 }}</li>
@@ -343,6 +457,7 @@
           <p class="rm-tq__legal">{{ s.legal }}</p>
         </form>
       </div>
+{% endif %}
       </div>
     </details>
 {% endif %}
