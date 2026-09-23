@@ -22,7 +22,7 @@
   <link rel="alternate" hreflang="x-default" href="https://monsejour-marrakech.com/dar-le-fennec/preparer-mon-sejour">
   <link rel="icon" href="/assets/common/favicon.png">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/lib/sejour.css?v=9">
+  <link rel="stylesheet" href="/lib/sejour.css?v=10">
 <script>window.RM_BRAND = {"whatsapp": "212664631990", "name": "Dar Le Fennec", "phone": "+212 664 631 990", "names": {"fr": {"with": "avec Dar Le Fennec", "at": "à Dar Le Fennec", "of": "de Dar Le Fennec"}, "en": {"with": "with Dar Le Fennec", "at": "at Dar Le Fennec", "of": "Dar Le Fennec"}, "es": {"with": "con Dar Le Fennec", "at": "en Dar Le Fennec", "of": "de Dar Le Fennec"}}, "turnstile_sitekey": ""};</script>
 </head>
 <body data-rm-space="client" data-rm-etab="dar-le-fennec">
@@ -141,54 +141,40 @@
       <summary>
         <span class="rm-ps-acc__thumb"><img src="/assets/common/transfert-marrakech.jpg" alt="Private vehicle for Dar Le Fennec transfers in Marrakech" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
-          <h3>Airport / station transfer</h3>
-          <p>Airport from 20 € · Train station from 12 €</p>
+          <h3>Airport transfer & luggage cart</h3>
+          <p>Free depending on how you pay for your stay</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
       <div class="rm-ps-acc__body">
-      <p>A driver waits for you at the airport or the train station and walks you to the riad's access point. Fixed price, no haggling, no surprises.</p>
-      <ul>
-        <li>Our driver waits for you holding a sign reading DAR LE FENNEC.</li>
-        <li>If your flight is delayed, waiting time is included.</li>
-        <li>Private air-conditioned vehicle.</li>
-        <li>Fixed price per vehicle.</li>
-      </ul>
-      <div class="rm-ps-blocks">
+      <p>Depending on how you pay for your stay, your airport transfer and luggage cart are free. Choose your option below: the form adapts and the total is clearly shown before you submit.</p>
+      <div class="rm-ps-blocks rm-ps-formulas">
         <div class="rm-ps-block">
-          <h5>✈️ Marrakech-Menara Airport transfer</h5>
+          <h5>🟢 Option 1 — Stay paid in cash</h5>
+          <p class="rm-ps-formula__sub">In euros (€), $, £ or dirhams (MAD)</p>
+          <p><strong>🎁 Free:</strong></p>
           <ul>
-            <li>1 to 4 people — 20 €</li>
-            <li>5 to 6 people — 25 €</li>
-            <li>7 people — 30 €</li>
+            <li>Arrival transfer from Marrakech airport</li>
+            <li>Luggage cart on arrival</li>
+            <li>Airport transfer on departure</li>
+            <li>Luggage cart on departure</li>
           </ul>
+          <p><em>Round-trip transfer + round-trip luggage cart completely free.</em></p>
         </div>
         <div class="rm-ps-block">
-          <h5>🚆 Marrakech train station transfer</h5>
+          <h5>🔵 Option 2 — Stay paid online</h5>
+          <p><strong>🎁 On arrival:</strong></p>
           <ul>
-            <li>1 to 2 people — 12 €</li>
-            <li>3 to 4 people — 17 €</li>
-            <li>5 to 6 people — 20 €</li>
+            <li>Airport → Dar Le Fennec transfer: free</li>
+            <li>Luggage cart: free</li>
           </ul>
-        </div>
-        <div class="rm-ps-block">
-          <h5>🌙 Night-time surcharge</h5>
-          <ul>
-            <li>+ 5 € for airport transfers between 10 pm and 7 am.</li>
-            <li>+ 5 € for departures to the station between 3 am and 7:45 am.</li>
-          </ul>
-        </div>
-        <div class="rm-ps-block">
-          <h5>↔️ Airport round-trip booking</h5>
-          <ul>
-            <li>When arrival and departure are booked together, you automatically get 5 € off the departure transfer.</li>
-          </ul>
+          <p><em>Departure optional and paid — the price is calculated and shown before you submit.</em></p>
         </div>
       </div>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Airport from 20 € · Train station from 12 €</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
-      <h4 class="rm-ps-acc__h4">Calculate and book my transfer</h4>
-      <p>Choose your trip: the price appears immediately, surcharges and return discount included.</p>
-      <div class="rm-tq" data-rm-tq data-lang="en">
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">💶 Cash payment = arrival + departure + round-trip cart FREE</span><br><span class="rm-ps-acc__price">💳 Online payment = arrival + arrival cart FREE / departure optional and PAID</span></p>
+      <h4 class="rm-ps-acc__h4">Book my transfer</h4>
+      <p>Tick your option, then fill in your flight details.</p>
+      <div class="rm-tq rm-tq--formulas" data-rm-tq data-tq-mode="formulas" data-lang="en">
         <form action="/envoi.php" method="POST">
 <input type="hidden" name="_subject" value="Transfer request · Dar Le Fennec">
           <input type="hidden" name="_lang" value="en">
@@ -198,13 +184,26 @@
           <input type="hidden" name="Request summary" data-tq-recap>
           <input type="hidden" name="Estimated total" data-tq-total-field>
           <fieldset>
-            <legend>Your trip</legend>
+            <legend>Your option</legend>
+            <div class="rm-tq__radios">
+              <label class="rm-tq__radio"><input type="radio" name="rm_formula" value="cash" data-tq="formula" checked> <span>Stay paid in cash</span></label>
+              <label class="rm-tq__radio"><input type="radio" name="rm_formula" value="online" data-tq="formula"> <span>Stay paid online</span></label>
+            </div>
+          </fieldset>
+          <fieldset data-tq-block="arrival">
+            <legend>Arrival</legend>
             <div class="rm-tq__grid">
-              <label>Airport or train station
-                <select data-tq="type">
-                  <option value="airport">Marrakech-Menara airport</option>
-                  <option value="station">Marrakech train station</option>
-                </select>
+              <label>Arrival date
+                <input type="date" data-tq="arr_date" data-tq-required>
+              </label>
+              <label>Arrival time
+                <input type="time" data-tq="arr_time" data-tq-required>
+              </label>
+              <label>Flight number
+                <input type="text" data-tq="arr_num" data-tq-required autocomplete="off">
+              </label>
+              <label>Airline
+                <input type="text" data-tq="arr_airline" data-tq-required autocomplete="off">
               </label>
               <label>Number of people
                 <select data-tq="people">
@@ -215,44 +214,51 @@
                   <option value="5">5</option>
                   <option value="6">6</option>
                   <option value="7">7</option>
-                  <option value="8">8 people or more</option>
-                </select>
-              </label>
-              <label>Trips needed
-                <select data-tq="trips">
-                  <option value="both">Arrival + departure (automatic airport discount)</option>
-                  <option value="arrival">Arrival only</option>
-                  <option value="departure">Departure only</option>
                 </select>
               </label>
             </div>
-          </fieldset>
-          <fieldset data-tq-block="arrival">
-            <legend>Arrival</legend>
-            <div class="rm-tq__grid">
-              <label>Date
-                <input type="date" data-tq="arr_date" data-tq-required>
-              </label>
-              <label>Time
-                <input type="time" data-tq="arr_time" data-tq-required>
-              </label>
-              <label>Flight or train number (if travelling by train, enter 0000)
-                <input type="text" data-tq="arr_num" data-tq-required autocomplete="off">
-              </label>
-            </div>
+            <ul class="rm-tq__checks">
+              <li><input type="checkbox" checked disabled> Arrival transfer — FREE</li>
+              <li><input type="checkbox" checked disabled> Arrival luggage cart — FREE</li>
+            </ul>
           </fieldset>
           <fieldset data-tq-block="departure">
-            <legend>Departure</legend>
+            <legend><span data-tq-show="cash">Departure</span><span data-tq-show="online">Departure — optional and paid</span></legend>
+            <label class="rm-tq__radio" data-tq-show="online"><input type="checkbox" data-tq="want_dep"> <span>I would like to book my departure transfer</span></label>
+            <div data-tq-block="departure_fields">
             <div class="rm-tq__grid">
-              <label>Date
+              <label>Departure flight date
                 <input type="date" data-tq="dep_date" data-tq-required>
               </label>
-              <label>Time
+              <label>Flight time
                 <input type="time" data-tq="dep_time" data-tq-required>
               </label>
-              <label>Return flight or train number (if travelling by train, enter 0000)
+              <label>Flight number
                 <input type="text" data-tq="dep_num" data-tq-required autocomplete="off">
               </label>
+              <label>Airline
+                <input type="text" data-tq="dep_airline" data-tq-required autocomplete="off">
+              </label>
+              <label>Number of people
+                <select data-tq="dep_people">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                </select>
+              </label>
+            </div>
+            <ul class="rm-tq__checks" data-tq-show="cash">
+              <li><input type="checkbox" checked disabled> Departure transfer — FREE</li>
+              <li><input type="checkbox" checked disabled> Departure luggage cart — FREE</li>
+            </ul>
+            <ul class="rm-tq__checks" data-tq-show="online">
+              <li><label><input type="checkbox" data-tq="pay_dep" checked> Dar Le Fennec → airport transfer — PAID</label></li>
+              <li><label><input type="checkbox" data-tq="pay_cart"> Luggage cart on departure — PAID</label></li>
+            </ul>
             </div>
           </fieldset>
 <fieldset>
@@ -277,7 +283,7 @@
             <a class="rm-lp-btn rm-lp-btn--wa" data-tq-wa href="https://wa.me/212664631990?text=Hello%2C%20I%20would%20like%20to%20book%20a%20transfer%20with%20Dar%20Le%20Fennec.%0AFull%20name%20on%20the%20booking%3A%0AArrival%20%E2%80%94%20airport%20or%20train%20station%2C%20date%2C%20time%20and%20flight%20%2F%20train%20number%3A%0AReturn%20%E2%80%94%20date%2C%20time%20and%20flight%20%2F%20train%20number%3A%0ANumber%20of%20people%3A" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-track-label="transfer-space"><span aria-hidden="true">💬</span> Send my request on WhatsApp</a>
             <button type="submit" data-tq-submit data-track="form" data-track-label="transfer-space">Send my request by email</button>
           </div>
-          <p class="rm-tq__legal">Your request is sent to the riad, which confirms the driver and the price. The transfer is paid on site in cash.</p>
+          <p class="rm-tq__legal">Your request is sent to the riad, which confirms the driver. Paid services are settled on site in cash.</p>
         </form>
       </div>
       </div>
@@ -677,10 +683,10 @@
   <p><a href="tel:+212664631990">+212 664 631 990</a> · <a href="mailto:darlefennec@gmail.com">darlefennec@gmail.com</a></p>
   <p><a href="https://www.google.com/maps/search/?api=1&query=Riad+Dar+Le+Fennec+191+Derb+Dabachi+Marrakech" target="_blank" rel="noopener noreferrer" data-track="directions" data-track-label="space-footer">Get directions</a></p>
 </footer>
-<script src="/dar-le-fennec/services-data.js?v=9" defer></script>
-<script src="/lib/transfer-quote.js?v=9" defer></script>
-<script src="/lib/rm-booking-engine.js?v=9" defer></script>
-<script src="/lib/sejour-page.js?v=9" defer></script>
-<script src="/lib/rm-antibot.js?v=9" defer></script>
+<script src="/dar-le-fennec/services-data.js?v=10" defer></script>
+<script src="/lib/transfer-quote.js?v=10" defer></script>
+<script src="/lib/rm-booking-engine.js?v=10" defer></script>
+<script src="/lib/sejour-page.js?v=10" defer></script>
+<script src="/lib/rm-antibot.js?v=10" defer></script>
 </body>
 </html>

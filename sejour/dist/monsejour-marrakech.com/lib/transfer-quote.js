@@ -288,12 +288,204 @@
     render();
   }
 
+  /* Two-formula mode (data-tq-mode="formulas"): the transfer is free depending
+     on how the stay is paid; only the optional departure of the "online"
+     formula is charged (airport tiers + night surcharge + luggage cart). */
+  var FI18N = {
+    fr: {
+      formula: "Formule", cash: "Paiement du séjour en espèces", online: "Paiement du séjour en ligne",
+      offered: "OFFERT", transfer: "Transfert", cart: "Charrette à bagages",
+      night: "supplément nuit (22h–7h)", cartTbc: "tarif communiqué par le riad",
+      total: "Total à payer sur place", free: "Rien à payer : votre transfert et la charrette sont offerts 🎁",
+      noDep: "Départ non demandé — vous pourrez toujours le réserver plus tard.",
+      incomplete: "Complétez la date et l'heure du vol de départ pour voir votre total.",
+      cashNote: "Le départ se règle sur place en espèces.",
+      waIntro: "Bonjour, je souhaite réserver mon transfert aéroport {with}.",
+      lName: "Nom complet de la réservation", lRef: "N° de réservation", lPhone: "Téléphone",
+      lPeople: "Nombre de personnes", lFlight: "vol", lAirline: "compagnie", lDetail: "Détail", lTotal: "TOTAL",
+      pending: "Demande à confirmer par le riad."
+    },
+    en: {
+      formula: "Option", cash: "Stay paid in cash", online: "Stay paid online",
+      offered: "FREE", transfer: "Transfer", cart: "Luggage cart",
+      night: "night surcharge (10 pm–7 am)", cartTbc: "price given by the riad",
+      total: "Total to pay on site", free: "Nothing to pay: your transfer and luggage cart are free 🎁",
+      noDep: "Departure not requested — you can still book it later.",
+      incomplete: "Fill in the departure flight date and time to see your total.",
+      cashNote: "The departure is paid on site in cash.",
+      waIntro: "Hello, I would like to book my airport transfer {with}.",
+      lName: "Full name on the booking", lRef: "Booking no.", lPhone: "Phone",
+      lPeople: "Number of people", lFlight: "flight", lAirline: "airline", lDetail: "Details", lTotal: "TOTAL",
+      pending: "Request to be confirmed by the riad."
+    },
+    es: {
+      formula: "Fórmula", cash: "Estancia pagada en efectivo", online: "Estancia pagada en línea",
+      offered: "GRATIS", transfer: "Traslado", cart: "Carrito de equipaje",
+      night: "suplemento nocturno (22h–7h)", cartTbc: "precio comunicado por el riad",
+      total: "Total a pagar en el riad", free: "Nada que pagar: su traslado y el carrito son gratis 🎁",
+      noDep: "Salida no solicitada — podrá reservarla más adelante.",
+      incomplete: "Complete la fecha y la hora del vuelo de salida para ver su total.",
+      cashNote: "La salida se paga en el riad en efectivo.",
+      waIntro: "Hola, deseo reservar mi traslado al aeropuerto {with}.",
+      lName: "Nombre completo de la reserva", lRef: "N.º de reserva", lPhone: "Teléfono",
+      lPeople: "Número de personas", lFlight: "vuelo", lAirline: "compañía", lDetail: "Detalle", lTotal: "TOTAL",
+      pending: "Solicitud pendiente de confirmación por el riad."
+    }
+  };
+
+  function initFormulas(root) {
+    var lang = root.getAttribute("data-lang") || "fr";
+    var t = FI18N[lang] || FI18N.fr;
+    var base = I18N[lang] || I18N.fr;
+    var conf = (window.RM_SERVICES && window.RM_SERVICES.transfer) || {};
+    var cartPrice = conf.formulas && typeof conf.formulas.cart_price === "number" ? conf.formulas.cart_price : null;
+    var form = root.querySelector("form");
+    var summary = root.querySelector("[data-tq-summary]");
+    var waLink = root.querySelector("[data-tq-wa]");
+    var recap = root.querySelector("[data-tq-recap]");
+    var totalField = root.querySelector("[data-tq-total-field]");
+    var depFields = root.querySelector("[data-tq-block='departure_fields']");
+
+    function val(name) {
+      var el = root.querySelector('[data-tq="' + name + '"]');
+      return el ? el.value.trim() : "";
+    }
+    function checked(name) {
+      var el = root.querySelector('[data-tq="' + name + '"]');
+      return !!(el && el.checked && !el.disabled);
+    }
+    function formula() {
+      var el = root.querySelector('[data-tq="formula"]:checked');
+      return el && el.value === "online" ? "online" : "cash";
+    }
+    function setBlock(block, on) {
+      if (!block) return;
+      block.hidden = !on;
+      Array.prototype.forEach.call(block.querySelectorAll("input, select"), function (el) {
+        if (el.hasAttribute("data-tq-required")) {
+          el.disabled = !on;
+          if (on) el.setAttribute("required", "required");
+          else el.removeAttribute("required");
+        }
+      });
+    }
+    function showFor(f) {
+      Array.prototype.forEach.call(root.querySelectorAll("[data-tq-show]"), function (el) {
+        el.hidden = el.getAttribute("data-tq-show") !== f;
+      });
+    }
+    function dateTime(date, time) {
+      return date && time ? date + " · " + time : (date || time || "");
+    }
+    function money(n) { return n + " €"; }
+
+    function compute() {
+      var f = formula();
+      showFor(f);
+      var wantsDep = f === "cash" || checked("want_dep");
+      setBlock(depFields, wantsDep);
+
+      var lines = [];
+      var total = 0;
+      var complete = true;
+      var cartTbc = false;
+      var aLabel = base.arrival + (dateTime(val("arr_date"), val("arr_time")) ? " (" + dateTime(val("arr_date"), val("arr_time")) + ")" : "");
+      lines.push({ label: t.transfer + " — " + aLabel, free: true });
+      lines.push({ label: t.cart + " — " + base.arrival, free: true });
+
+      if (wantsDep) {
+        var dLabel = base.departure + (dateTime(val("dep_date"), val("dep_time")) ? " (" + dateTime(val("dep_date"), val("dep_time")) + ")" : "");
+        if (f === "cash") {
+          lines.push({ label: t.transfer + " — " + dLabel, free: true });
+          lines.push({ label: t.cart + " — " + base.departure, free: true });
+        } else {
+          var people = parseInt(val("dep_people"), 10) || 1;
+          if (!val("dep_date") || !val("dep_time")) complete = false;
+          if (checked("pay_dep")) {
+            var rate = baseRate("airport", people);
+            var sur = surcharge("airport", val("dep_time"), true);
+            lines.push({ label: t.transfer + " — " + dLabel + " · " + people + " " + (lang === "fr" ? "pers." : lang === "es" ? "pers." : "people"), amount: rate === null ? 0 : rate });
+            if (sur) lines.push({ label: t.night, amount: sur, sub: true });
+            total += (rate || 0) + sur;
+          }
+          if (checked("pay_cart")) {
+            if (cartPrice === null) { lines.push({ label: t.cart + " — " + base.departure, tbc: true }); cartTbc = true; }
+            else { lines.push({ label: t.cart + " — " + base.departure, amount: cartPrice }); total += cartPrice; }
+          }
+        }
+      }
+      return { formula: f, wantsDep: wantsDep, lines: lines, total: total, complete: complete, cartTbc: cartTbc };
+    }
+
+    function amountText(l) {
+      if (l.free) return t.offered;
+      if (l.tbc) return t.cartTbc;
+      return money(l.amount);
+    }
+
+    function render() {
+      var q = compute();
+      var html = '<ul class="rm-tq__lines">';
+      q.lines.forEach(function (l) {
+        html += '<li' + (l.sub ? ' class="rm-tq__line--sub"' : "") + "><span>" + l.label + "</span><span>" + amountText(l) + "</span></li>";
+      });
+      html += "</ul>";
+      var paid = q.formula === "online" && q.wantsDep;
+      if (paid) {
+        html += '<p class="rm-tq__total"><span>' + t.total + "</span><span>" + money(q.total) + (q.cartTbc ? " + " + t.cart.toLowerCase() : "") + "</span></p>";
+        html += '<p class="rm-tq__cash">' + t.cashNote + (q.complete ? "" : " " + t.incomplete) + "</p>";
+      } else {
+        html += '<p class="rm-tq__total rm-tq__total--free"><span>' + t.total + "</span><span>" + money(0) + "</span></p>";
+        html += '<p class="rm-tq__cash">' + t.free + (q.formula === "online" ? " " + t.noDep : "") + "</p>";
+      }
+      summary.innerHTML = html;
+
+      var lines = [brand(lang, t.waIntro), ""];
+      lines.push(t.formula + " : " + (q.formula === "cash" ? t.cash : t.online));
+      lines.push(t.lName + " : " + (val("name") || "…"));
+      if (val("ref")) lines.push(t.lRef + " : " + val("ref"));
+      lines.push(t.lPhone + " : " + (val("phone") || "…"));
+      lines.push(base.arrival + " : " + (dateTime(val("arr_date"), val("arr_time")) || "…") +
+        (val("arr_num") ? " — " + t.lFlight + " " + val("arr_num") : "") +
+        (val("arr_airline") ? " (" + val("arr_airline") + ")" : "") + " — " + t.lPeople + " : " + (val("people") || "…"));
+      if (q.wantsDep) {
+        lines.push(base.departure + " : " + (dateTime(val("dep_date"), val("dep_time")) || "…") +
+          (val("dep_num") ? " — " + t.lFlight + " " + val("dep_num") : "") +
+          (val("dep_airline") ? " (" + val("dep_airline") + ")" : "") + " — " + t.lPeople + " : " + (val("dep_people") || "…"));
+      } else {
+        lines.push(base.departure + " : " + t.noDep);
+      }
+      lines.push("", t.lDetail + " : " + q.lines.map(function (l) { return l.label + " " + amountText(l); }).join(" · "));
+      lines.push(t.lTotal + " : " + money(q.total) + (q.cartTbc ? " + " + t.cart.toLowerCase() + " (" + t.cartTbc + ")" : ""));
+      lines.push(t.pending);
+
+      var text = lines.join("\n");
+      if (waLink) waLink.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+      if (recap) recap.value = text;
+      if (totalField) totalField.value = money(q.total) + (q.cartTbc ? " + " + t.cart.toLowerCase() : "");
+    }
+
+    form.addEventListener("input", render);
+    form.addEventListener("change", render);
+    if (waLink) {
+      waLink.addEventListener("click", function (e) {
+        if (!form.checkValidity()) {
+          e.preventDefault();
+          form.reportValidity();
+        }
+      });
+    }
+    render();
+  }
+
   function boot() {
     if (!rates("airport")) {
       console.error("transfer-quote.js: rm-services-data.js must be loaded first.");
       return;
     }
-    Array.prototype.forEach.call(document.querySelectorAll("[data-rm-tq]"), init);
+    Array.prototype.forEach.call(document.querySelectorAll("[data-rm-tq]"), function (root) {
+      (root.getAttribute("data-tq-mode") === "formulas" ? initFormulas : init)(root);
+    });
   }
 
   if (document.readyState === "loading") {
