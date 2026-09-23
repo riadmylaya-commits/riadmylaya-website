@@ -293,42 +293,39 @@
      formula is charged (airport tiers + night surcharge + luggage cart). */
   var FI18N = {
     fr: {
-      formula: "Formule", cash: "Paiement du séjour en espèces", online: "Paiement du séjour en ligne",
-      offered: "OFFERT", transfer: "Transfert", cart: "Charrette à bagages",
-      night: "supplément nuit (22h–7h)", cartTbc: "tarif communiqué par le riad",
-      total: "Total à payer sur place", free: "Rien à payer : votre transfert et la charrette sont offerts 🎁",
-      noDep: "Départ non demandé — vous pourrez toujours le réserver plus tard.",
+      formula: "Paiement du séjour", cash: "en espèces", online: "en ligne",
+      offered: "OFFERT", transfer: "Transfert", cart: "Charrette à bagages", night: "supplément nuit (22h–7h)",
+      from: "à partir de {p}", cartTbc: "tarif communiqué par le riad", pers: "pers.",
+      total: "Total à payer sur place", free: "Rien à payer 🎁", noDep: "non demandé",
       incomplete: "Complétez la date et l'heure du vol de départ pour voir votre total.",
       cashNote: "Le départ se règle sur place en espèces.",
       waIntro: "Bonjour, je souhaite réserver mon transfert aéroport {with}.",
       lName: "Nom complet de la réservation", lRef: "N° de réservation", lPhone: "Téléphone",
-      lPeople: "Nombre de personnes", lFlight: "vol", lAirline: "compagnie", lDetail: "Détail", lTotal: "TOTAL",
+      lPeople: "Nombre de personnes", lFlight: "vol", lDetail: "Détail", lTotal: "TOTAL",
       pending: "Demande à confirmer par le riad."
     },
     en: {
-      formula: "Option", cash: "Stay paid in cash", online: "Stay paid online",
-      offered: "FREE", transfer: "Transfer", cart: "Luggage cart",
-      night: "night surcharge (10 pm–7 am)", cartTbc: "price given by the riad",
-      total: "Total to pay on site", free: "Nothing to pay: your transfer and luggage cart are free 🎁",
-      noDep: "Departure not requested — you can still book it later.",
+      formula: "Stay paid", cash: "in cash", online: "online",
+      offered: "FREE", transfer: "Transfer", cart: "Luggage cart", night: "night surcharge (10 pm–7 am)",
+      from: "from {p}", cartTbc: "price given by the riad", pers: "people",
+      total: "Total to pay on site", free: "Nothing to pay 🎁", noDep: "not requested",
       incomplete: "Fill in the departure flight date and time to see your total.",
       cashNote: "The departure is paid on site in cash.",
       waIntro: "Hello, I would like to book my airport transfer {with}.",
       lName: "Full name on the booking", lRef: "Booking no.", lPhone: "Phone",
-      lPeople: "Number of people", lFlight: "flight", lAirline: "airline", lDetail: "Details", lTotal: "TOTAL",
+      lPeople: "Number of people", lFlight: "flight", lDetail: "Details", lTotal: "TOTAL",
       pending: "Request to be confirmed by the riad."
     },
     es: {
-      formula: "Fórmula", cash: "Estancia pagada en efectivo", online: "Estancia pagada en línea",
-      offered: "GRATIS", transfer: "Traslado", cart: "Carrito de equipaje",
-      night: "suplemento nocturno (22h–7h)", cartTbc: "precio comunicado por el riad",
-      total: "Total a pagar en el riad", free: "Nada que pagar: su traslado y el carrito son gratis 🎁",
-      noDep: "Salida no solicitada — podrá reservarla más adelante.",
+      formula: "Estancia pagada", cash: "en efectivo", online: "en línea",
+      offered: "GRATIS", transfer: "Traslado", cart: "Carrito de equipaje", night: "suplemento nocturno (22h–7h)",
+      from: "desde {p}", cartTbc: "precio comunicado por el riad", pers: "pers.",
+      total: "Total a pagar en el riad", free: "Nada que pagar 🎁", noDep: "no solicitada",
       incomplete: "Complete la fecha y la hora del vuelo de salida para ver su total.",
       cashNote: "La salida se paga en el riad en efectivo.",
       waIntro: "Hola, deseo reservar mi traslado al aeropuerto {with}.",
       lName: "Nombre completo de la reserva", lRef: "N.º de reserva", lPhone: "Teléfono",
-      lPeople: "Número de personas", lFlight: "vuelo", lAirline: "compañía", lDetail: "Detalle", lTotal: "TOTAL",
+      lPeople: "Número de personas", lFlight: "vuelo", lDetail: "Detalle", lTotal: "TOTAL",
       pending: "Solicitud pendiente de confirmación por el riad."
     }
   };
@@ -344,29 +341,31 @@
     var waLink = root.querySelector("[data-tq-wa]");
     var recap = root.querySelector("[data-tq-recap]");
     var totalField = root.querySelector("[data-tq-total-field]");
+    var steps = root.querySelector("[data-tq-block='steps']");
     var depFields = root.querySelector("[data-tq-block='departure_fields']");
+    var depPrice = root.querySelector("[data-tq-dep-price]");
+    var cartPriceEl = root.querySelector("[data-tq-cart-price]");
 
+    function money(n) { return n + " €"; }
     function val(name) {
       var el = root.querySelector('[data-tq="' + name + '"]');
       return el ? el.value.trim() : "";
+    }
+    function radio(name) {
+      var el = root.querySelector('[data-tq="' + name + '"]:checked');
+      return el ? el.value : "";
     }
     function checked(name) {
       var el = root.querySelector('[data-tq="' + name + '"]');
       return !!(el && el.checked && !el.disabled);
     }
-    function formula() {
-      var el = root.querySelector('[data-tq="formula"]:checked');
-      return el && el.value === "online" ? "online" : "cash";
-    }
     function setBlock(block, on) {
       if (!block) return;
       block.hidden = !on;
-      Array.prototype.forEach.call(block.querySelectorAll("input, select"), function (el) {
-        if (el.hasAttribute("data-tq-required")) {
-          el.disabled = !on;
-          if (on) el.setAttribute("required", "required");
-          else el.removeAttribute("required");
-        }
+      Array.prototype.forEach.call(block.querySelectorAll("[data-tq-required]"), function (el) {
+        el.disabled = !on;
+        if (on) el.setAttribute("required", "required");
+        else el.removeAttribute("required");
       });
     }
     function showFor(f) {
@@ -377,37 +376,38 @@
     function dateTime(date, time) {
       return date && time ? date + " · " + time : (date || time || "");
     }
-    function money(n) { return n + " €"; }
+    function when(prefix) {
+      var dt = dateTime(val(prefix + "_date"), val(prefix + "_time"));
+      return dt ? " (" + dt + ")" : "";
+    }
 
     function compute() {
-      var f = formula();
+      var f = radio("formula");
+      setBlock(steps, !!f);
+      if (!f) return null;
       showFor(f);
-      var wantsDep = f === "cash" || checked("want_dep");
+      var wantsDep = radio("dep_choice") === "yes";
       setBlock(depFields, wantsDep);
+      var cartEl = root.querySelector('[data-tq="pay_cart"]');
+      if (cartEl) cartEl.disabled = !(wantsDep && f === "online");
 
-      var lines = [];
-      var total = 0;
-      var complete = true;
-      var cartTbc = false;
-      var aLabel = base.arrival + (dateTime(val("arr_date"), val("arr_time")) ? " (" + dateTime(val("arr_date"), val("arr_time")) + ")" : "");
-      lines.push({ label: t.transfer + " — " + aLabel, free: true });
-      lines.push({ label: t.cart + " — " + base.arrival, free: true });
+      var lines = [{ label: t.transfer + " + " + t.cart.toLowerCase() + " — " + base.arrival + when("arr"), free: true }];
+      var total = 0, complete = true, cartTbc = false;
+      var minRate = baseRate("airport", 1);
+      if (depPrice) depPrice.textContent = minRate === null ? "" : "(" + t.from.replace("{p}", money(minRate)) + ")";
+      if (cartPriceEl) cartPriceEl.textContent = cartPrice === null ? "(" + t.cartTbc + ")" : "(" + money(cartPrice) + ")";
 
       if (wantsDep) {
-        var dLabel = base.departure + (dateTime(val("dep_date"), val("dep_time")) ? " (" + dateTime(val("dep_date"), val("dep_time")) + ")" : "");
         if (f === "cash") {
-          lines.push({ label: t.transfer + " — " + dLabel, free: true });
-          lines.push({ label: t.cart + " — " + base.departure, free: true });
+          lines.push({ label: t.transfer + " + " + t.cart.toLowerCase() + " — " + base.departure + when("dep"), free: true });
         } else {
           var people = parseInt(val("dep_people"), 10) || 1;
           if (!val("dep_date") || !val("dep_time")) complete = false;
-          if (checked("pay_dep")) {
-            var rate = baseRate("airport", people);
-            var sur = surcharge("airport", val("dep_time"), true);
-            lines.push({ label: t.transfer + " — " + dLabel + " · " + people + " " + (lang === "fr" ? "pers." : lang === "es" ? "pers." : "people"), amount: rate === null ? 0 : rate });
-            if (sur) lines.push({ label: t.night, amount: sur, sub: true });
-            total += (rate || 0) + sur;
-          }
+          var rate = baseRate("airport", people) || 0;
+          var sur = surcharge("airport", val("dep_time"), true);
+          lines.push({ label: t.transfer + " — " + base.departure + when("dep") + " · " + people + " " + t.pers, amount: rate });
+          if (sur) lines.push({ label: t.night, amount: sur, sub: true });
+          total += rate + sur;
           if (checked("pay_cart")) {
             if (cartPrice === null) { lines.push({ label: t.cart + " — " + base.departure, tbc: true }); cartTbc = true; }
             else { lines.push({ label: t.cart + " — " + base.departure, amount: cartPrice }); total += cartPrice; }
@@ -425,19 +425,16 @@
 
     function render() {
       var q = compute();
+      if (!q) { summary.innerHTML = ""; return; }
+      var paid = q.formula === "online" && q.wantsDep;
       var html = '<ul class="rm-tq__lines">';
       q.lines.forEach(function (l) {
         html += '<li' + (l.sub ? ' class="rm-tq__line--sub"' : "") + "><span>" + l.label + "</span><span>" + amountText(l) + "</span></li>";
       });
       html += "</ul>";
-      var paid = q.formula === "online" && q.wantsDep;
-      if (paid) {
-        html += '<p class="rm-tq__total"><span>' + t.total + "</span><span>" + money(q.total) + (q.cartTbc ? " + " + t.cart.toLowerCase() : "") + "</span></p>";
-        html += '<p class="rm-tq__cash">' + t.cashNote + (q.complete ? "" : " " + t.incomplete) + "</p>";
-      } else {
-        html += '<p class="rm-tq__total rm-tq__total--free"><span>' + t.total + "</span><span>" + money(0) + "</span></p>";
-        html += '<p class="rm-tq__cash">' + t.free + (q.formula === "online" ? " " + t.noDep : "") + "</p>";
-      }
+      var totalTxt = money(q.total) + (q.cartTbc ? " + " + t.cart.toLowerCase() : "");
+      html += '<p class="rm-tq__total' + (paid ? "" : " rm-tq__total--free") + '"><span>' + t.total + "</span><span>" + totalTxt + "</span></p>";
+      html += '<p class="rm-tq__cash">' + (paid ? t.cashNote + (q.complete ? "" : " " + t.incomplete) : t.free) + "</p>";
       summary.innerHTML = html;
 
       var lines = [brand(lang, t.waIntro), ""];
@@ -456,13 +453,13 @@
         lines.push(base.departure + " : " + t.noDep);
       }
       lines.push("", t.lDetail + " : " + q.lines.map(function (l) { return l.label + " " + amountText(l); }).join(" · "));
-      lines.push(t.lTotal + " : " + money(q.total) + (q.cartTbc ? " + " + t.cart.toLowerCase() + " (" + t.cartTbc + ")" : ""));
+      lines.push(t.lTotal + " : " + totalTxt);
       lines.push(t.pending);
 
       var text = lines.join("\n");
       if (waLink) waLink.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
       if (recap) recap.value = text;
-      if (totalField) totalField.value = money(q.total) + (q.cartTbc ? " + " + t.cart.toLowerCase() : "");
+      if (totalField) totalField.value = totalTxt;
     }
 
     form.addEventListener("input", render);

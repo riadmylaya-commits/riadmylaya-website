@@ -245,45 +245,19 @@
       <div class="rm-ps-acc__body">
 {% if transfer.formulas %}
 {% set f = s.formulas %}
-      <p>{{ f.intro }}</p>
-      <div class="rm-ps-blocks rm-ps-formulas">
-        <div class="rm-ps-block">
-          <h5>{{ f.f1_h }}</h5>
-          <p class="rm-ps-formula__sub">{{ f.f1_sub }}</p>
-          <p><strong>{{ f.f1_gift }}</strong></p>
-          <ul>
-{% for r in f.f1_items %}
-            <li>{{ r }}</li>
-{% endfor %}
-          </ul>
-          <p><em>{{ f.f1_sum }}</em></p>
-        </div>
-        <div class="rm-ps-block">
-          <h5>{{ f.f2_h }}</h5>
-          <p><strong>{{ f.f2_gift }}</strong></p>
-          <ul>
-{% for r in f.f2_items %}
-            <li>{{ r }}</li>
-{% endfor %}
-          </ul>
-          <p><em>{{ f.f2_sum }}</em></p>
-        </div>
-      </div>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">{{ f.recap1 }}</span><br><span class="rm-ps-acc__price">{{ f.recap2 }}</span></p>
-      <h4 class="rm-ps-acc__h4">{{ f.h4 }}</h4>
-      <p>{{ f.help }}</p>
       <div class="rm-tq rm-tq--formulas" data-rm-tq data-tq-mode="formulas" data-lang="{{ lang }}">
         <form action="{{ envoi }}" method="POST">
 {{ hidden(s.subject) }}
           <input type="hidden" name="{{ t.fields.recap }}" data-tq-recap>
           <input type="hidden" name="{{ t.fields.total }}" data-tq-total-field>
           <fieldset>
-            <legend>{{ f.choose }}</legend>
+            <legend>{{ f.q_pay }}</legend>
             <div class="rm-tq__radios">
-              <label class="rm-tq__radio"><input type="radio" name="rm_formula" value="cash" data-tq="formula" checked> <span>{{ f.f1_opt }}</span></label>
-              <label class="rm-tq__radio"><input type="radio" name="rm_formula" value="online" data-tq="formula"> <span>{{ f.f2_opt }}</span></label>
+              <label class="rm-tq__radio rm-tq__radio--card"><input type="radio" name="rm_formula" value="cash" data-tq="formula"> <span><strong>{{ f.f1_opt }}</strong><small>{{ f.f1_sub }}</small><em>{{ f.f1_gift }}</em></span></label>
+              <label class="rm-tq__radio rm-tq__radio--card"><input type="radio" name="rm_formula" value="online" data-tq="formula"> <span><strong>{{ f.f2_opt }}</strong><em>{{ f.f2_gift }}</em><small>{{ f.f2_note }}</small></span></label>
             </div>
           </fieldset>
+          <div data-tq-block="steps">
           <fieldset data-tq-block="arrival">
             <legend>{{ f.arrival }}</legend>
             <div class="rm-tq__grid">
@@ -307,14 +281,14 @@
                 </select>
               </label>
             </div>
-            <ul class="rm-tq__checks">
-              <li><input type="checkbox" checked disabled> {{ f.chk_arr }}</li>
-              <li><input type="checkbox" checked disabled> {{ f.chk_cart_arr }}</li>
-            </ul>
           </fieldset>
           <fieldset data-tq-block="departure">
-            <legend><span data-tq-show="cash">{{ f.departure }}</span><span data-tq-show="online">{{ f.departure_opt }}</span></legend>
-            <label class="rm-tq__radio" data-tq-show="online"><input type="checkbox" data-tq="want_dep"> <span>{{ f.want_dep }}</span></label>
+            <legend>{{ f.departure }}</legend>
+            <p class="rm-tq__q"><span data-tq-show="cash">{{ f.q_dep_cash }}</span><span data-tq-show="online">{{ f.q_dep_online }} <strong data-tq-dep-price></strong></span></p>
+            <div class="rm-tq__radios rm-tq__radios--inline">
+              <label class="rm-tq__radio"><input type="radio" name="rm_dep" value="yes" data-tq="dep_choice"> <span>{{ f.yes }}</span></label>
+              <label class="rm-tq__radio"><input type="radio" name="rm_dep" value="no" data-tq="dep_choice" checked> <span>{{ f.no }}</span></label>
+            </div>
             <div data-tq-block="departure_fields">
             <div class="rm-tq__grid">
               <label>{{ f.dep_date }}
@@ -337,14 +311,7 @@
                 </select>
               </label>
             </div>
-            <ul class="rm-tq__checks" data-tq-show="cash">
-              <li><input type="checkbox" checked disabled> {{ f.chk_dep }}</li>
-              <li><input type="checkbox" checked disabled> {{ f.chk_cart_dep }}</li>
-            </ul>
-            <ul class="rm-tq__checks" data-tq-show="online">
-              <li><label><input type="checkbox" data-tq="pay_dep" checked> {{ f.pay_dep }}</label></li>
-              <li><label><input type="checkbox" data-tq="pay_cart"> {{ f.pay_cart }}</label></li>
-            </ul>
+            <label class="rm-tq__radio" data-tq-show="online"><input type="checkbox" data-tq="pay_cart" checked> <span>{{ f.cart_dep }} <strong data-tq-cart-price></strong></span></label>
             </div>
           </fieldset>
 {{ contact_fields('data-tq') }}
@@ -354,6 +321,7 @@
             <button type="submit" data-tq-submit data-track="form" data-track-label="transfer-space">{{ t.services.mail_send }}</button>
           </div>
           <p class="rm-tq__legal">{{ f.legal }}</p>
+          </div>
         </form>
       </div>
 {% else %}

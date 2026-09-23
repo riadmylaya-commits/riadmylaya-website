@@ -255,3 +255,11 @@ body.rm-sheet-open{overflow:hidden}
 .rm-tq__checks label{display:flex;align-items:center;gap:8px;cursor:pointer}
 .rm-tq__checks input{margin:0;width:16px;height:16px;flex:none}
 .rm-tq__total--free span:last-child{color:#1f7a3a}
+.rm-tq__radio--card{align-items:flex-start}
+.rm-tq__radio--card>span{display:grid;gap:2px;font-weight:400}
+.rm-tq__radio--card strong{font-size:17px}
+.rm-tq__radio--card small{color:var(--muted,#6b5d4a);font-size:13px}
+.rm-tq__radio--card em{font-style:normal;color:#1f7a3a;font-weight:600}
+.rm-tq__radio input[type=radio]:checked+span strong{color:var(--accent,#b5532b)}
+.rm-tq__q{margin:4px 0 6px;font-weight:600}
+.rm-tq__radios--inline{grid-template-columns:1fr 1fr}
