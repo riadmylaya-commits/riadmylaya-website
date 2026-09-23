@@ -20,7 +20,11 @@
     "excursions": "Excursiones privadas",
     "group": "Excursiones en grupo",
     "spa": "Hammam y masaje",
-    "contact": "Escríbanos"
+    "contact": "Escríbanos",
+    "services": "Servicios",
+    "close": "Cerrar",
+    "arrival_short": "Llegada",
+    "infos_short": "Info"
   },
   "arrival": {
     "title": "Llegada y equipaje",

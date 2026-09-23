@@ -74,7 +74,7 @@
     if (location.hash.length > 1) reveal(decodeURIComponent(location.hash.slice(1)), false);
   });
   /* Highlight the service the guest is currently reading. */
-  var links = [].slice.call(document.querySelectorAll(".rm-ps-toc__list a"));
+  var links = [].slice.call(document.querySelectorAll(".rm-ps-toc__list a, .rm-ps-sheet__list a"));
   if (links.length) {
     var pending = false;
     var spy = function () {
@@ -97,6 +97,22 @@
       window.requestAnimationFrame(spy);
     }, { passive: true });
     spy();
+  }
+
+  /* Mobile "Services" bottom sheet. */
+  var sheet = document.getElementById("rm-ps-sheet");
+  var sheetBtn = document.querySelector(".rm-ps-toc__btn");
+  if (sheet && sheetBtn) {
+    var setSheet = function (open) {
+      sheet.hidden = !open;
+      sheetBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("rm-sheet-open", open);
+    };
+    sheetBtn.addEventListener("click", function () { setSheet(sheet.hidden); });
+    sheet.addEventListener("click", function (ev) {
+      if (ev.target.closest && ev.target.closest("[data-sheet-close]")) setSheet(false);
+    });
+    document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && !sheet.hidden) setSheet(false); });
   }
 
   if (location.hash.length > 1) {
