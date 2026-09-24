@@ -36,7 +36,7 @@ window.RM_SERVICES = {
    }
   },
   "formulas": {
-   "cart_price": null
+   "cart_price": 5
   }
  },
  "dinner": {

@@ -108,7 +108,7 @@
           "round_trip_discount": null
         },
         "formulas": {
-          "cart_price": null
+          "cart_price": 5
         },
         "station": null
       }
