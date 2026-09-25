@@ -82,7 +82,8 @@
       "en": "11 am",
       "es": "las 11h"
     },
-    "breakfast_price": 6,
+    "breakfast_price": 7,
+    "breakfast_button": true,
     "tax": {
       "fr": "2,50",
       "en": "2.50",
@@ -180,7 +181,8 @@
       "override": {
         "min_people": 2,
         "max_people": 6,
-        "price": 45
+        "price": 45,
+        "slots": ["10:30", "14:30"]
       }
     },
     "excursions": {
