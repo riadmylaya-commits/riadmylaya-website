@@ -33,35 +33,10 @@ window.RM_SERVICES = {
      "from": "22:00",
      "to": "07:00"
     }
-   },
-   "round_trip_discount": {
-    "amount": 5,
-    "leg": "departure"
    }
   },
-  "station": {
-   "tiers": [
-    {
-     "max": 2,
-     "price": 12
-    },
-    {
-     "max": 4,
-     "price": 17
-    },
-    {
-     "max": 6,
-     "price": 20
-    }
-   ],
-   "surcharge": {
-    "amount": 5,
-    "departure": {
-     "from": "03:00",
-     "to": "07:45"
-    }
-   },
-   "round_trip_discount": null
+  "formulas": {
+   "cart_price": 5
   }
  },
  "dinner": {
@@ -144,13 +119,6 @@ window.RM_SERVICES = {
   "max_people": 6,
   "slots": [
    "10:30",
-   "11:00",
-   "11:30",
-   "12:00",
-   "12:30",
-   "13:00",
-   "13:30",
-   "14:00",
    "14:30"
   ],
   "min_people": 2

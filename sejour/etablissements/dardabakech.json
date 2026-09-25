@@ -78,12 +78,13 @@
       "en": "11 am",
       "es": "las 11h"
     },
-    "breakfast_price": 6,
+    "breakfast_price": 7,
     "tax": {
       "fr": "2,50",
       "en": "2.50",
       "es": "2,50"
-    }
+    },
+    "breakfast_button": true
   },
   "services": {
     "transfer": {
@@ -104,8 +105,13 @@
               "max": 7,
               "price": 30
             }
-          ]
-        }
+          ],
+          "round_trip_discount": null
+        },
+        "formulas": {
+          "cart_price": 5
+        },
+        "station": null
       }
     },
     "dinner": {
@@ -176,7 +182,11 @@
       "override": {
         "min_people": 2,
         "max_people": 6,
-        "price": 45
+        "price": 45,
+        "slots": [
+          "10:30",
+          "14:30"
+        ]
       }
     },
     "excursions": {
@@ -237,7 +247,7 @@
             "en": "Discover & book",
             "es": "Descubrir y reservar"
           },
-          "url": "https://gyg.me/poQY0DZX"
+          "url": "https://gyg.me/IPgZa125"
         },
         {
           "title": {
@@ -263,7 +273,7 @@
             "en": "Discover the medina",
             "es": "Descubrir la medina"
           },
-          "url": "https://gyg.me/Cre03K7R"
+          "url": "https://gyg.me/iIZh8PWB"
         },
         {
           "title": {
@@ -406,14 +416,6 @@
         "li3": "À commander la veille ou au plus tard avant 12h le jour même.",
         "service": "Service de {from} à {to} dans le patio."
       },
-      "transfer": {
-        "detailed": true,
-        "intro": "Un chauffeur vous attend à l'aéroport ou à la gare et vous accompagne jusqu'au point d'accès au riad. Tarif fixe, sans négociation et sans mauvaise surprise.",
-        "li1": "Notre chauffeur vous attend avec un panneau au nom de DARDABAKECH.",
-        "li2": "En cas de retard de votre vol, l'attente est incluse.",
-        "li3": "Véhicule privé et climatisé.",
-        "li4": "Tarif fixe par véhicule."
-      },
       "infos": {
         "late_big": true,
         "late_btn": "Je préviens le riad de mon arrivée tardive",
@@ -445,14 +447,6 @@
         "li3": "To be ordered the day before or by 12 pm on the day at the latest.",
         "service": "Served from {from} to {to} in the patio."
       },
-      "transfer": {
-        "detailed": true,
-        "intro": "A driver waits for you at the airport or the train station and walks you to the riad's access point. Fixed price, no haggling, no surprises.",
-        "li1": "Our driver waits for you holding a sign reading DARDABAKECH.",
-        "li2": "If your flight is delayed, waiting time is included.",
-        "li3": "Private air-conditioned vehicle.",
-        "li4": "Fixed price per vehicle."
-      },
       "infos": {
         "late_big": true,
         "late_btn": "I'm letting the riad know I'll arrive late",
@@ -483,14 +477,6 @@
         "li2": null,
         "li3": "Se pide la víspera o, como muy tarde, antes de las 12h del mismo día.",
         "service": "Servicio de {from} a {to} en el patio."
-      },
-      "transfer": {
-        "detailed": true,
-        "intro": "Un conductor le espera en el aeropuerto o en la estación y le acompaña hasta el punto de acceso al riad. Precio fijo, sin negociar y sin sorpresas.",
-        "li1": "Nuestro conductor le espera con un cartel con el nombre DARDABAKECH.",
-        "li2": "Si su vuelo se retrasa, la espera está incluida.",
-        "li3": "Vehículo privado con aire acondicionado.",
-        "li4": "Precio fijo por vehículo."
       },
       "infos": {
         "late_big": true,
