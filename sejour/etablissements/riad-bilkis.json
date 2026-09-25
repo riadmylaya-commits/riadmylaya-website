@@ -1,0 +1,526 @@
+{
+  "id": "riad-bilkis",
+  "name": "Riad Bilkis",
+  "city": "Marrakech",
+  "grammar": {
+    "fr": {
+      "with": "avec le Riad Bilkis",
+      "at": "au Riad Bilkis",
+      "of": "du Riad Bilkis"
+    },
+    "en": {
+      "with": "with Riad Bilkis",
+      "at": "at Riad Bilkis",
+      "of": "Riad Bilkis"
+    },
+    "es": {
+      "with": "con el Riad Bilkis",
+      "at": "en el Riad Bilkis",
+      "of": "del Riad Bilkis"
+    }
+  },
+  "site": {
+    "turnstile_sitekey": null,
+    "base_url": "https://riadbilkis.com",
+    "output_dir": "riadbilkis.com",
+    "paths": {
+      "fr": "/preparer-mon-sejour",
+      "en": "/en/prepare-your-stay",
+      "es": "/es/prepara-tu-estancia"
+    },
+    "thanks": {
+      "fr": "/merci-sejour",
+      "en": "/en/thank-you-stay",
+      "es": "/es/gracias-estancia"
+    },
+    "excursions_more": {
+      "fr": "https://riadbilkis.com/excursions",
+      "en": "https://riadbilkis.com/en/excursions",
+      "es": "https://riadbilkis.com/es/excursiones"
+    }
+  },
+  "contact": {
+    "whatsapp": "212625675494",
+    "phone_display": "+212 625 675 494",
+    "email": "riadbilkis@gmail.com",
+    "address": "117 Derb Jdid, Bab Doukkala — Médina, Marrakech 40030",
+    "address_footer": "117 Derb Jdid, Bab Doukkala, Médina, Marrakech",
+    "map_url": "https://www.google.com/maps/search/?api=1&query=Riad+Bilkis+117+Derb+Jdid+Marrakech"
+  },
+  "images": {
+    "favicon": "https://riadbilkis.com/favicon.ico",
+    "logo": null,
+    "logo_footer": null,
+    "hero": "{hub}/assets/riad-bilkis/patio.jpg",
+    "transfer": "{hub}/assets/common/transfert-marrakech.jpg",
+    "dinner": "{hub}/assets/common/diner-marocain.jpg",
+    "cooking": "{hub}/assets/common/cooking-hero.jpg",
+    "excursions": "{hub}/assets/common/excursion-marrakech.jpeg",
+    "group": "{hub}/assets/common/activites-prive-groupe.jpg",
+    "spa": "{hub}/assets/common/hammam-interior.jpg"
+  },
+  "theme": {
+    "accent": "#b07a3c",
+    "accent_dark": "#7d5527"
+  },
+  "analytics": {
+    "ga_id": null
+  },
+  "stay": {
+    "checkin": {
+      "fr": "13h",
+      "en": "1 pm",
+      "es": "las 13h"
+    },
+    "luggage_from": {
+      "fr": "9h",
+      "en": "9 am",
+      "es": "las 9h"
+    },
+    "checkout": {
+      "fr": "11h",
+      "en": "11 am",
+      "es": "las 11h"
+    },
+    "breakfast_price": 7,
+    "breakfast_button": true,
+    "tax": {
+      "fr": "2,50",
+      "en": "2.50",
+      "es": "2,50"
+    }
+  },
+  "services": {
+    "transfer": {
+      "enabled": true,
+      "override": {
+        "max_people": 7,
+        "airport": {
+          "tiers": [
+            {
+              "max": 4,
+              "price": 20
+            },
+            {
+              "max": 6,
+              "price": 25
+            },
+            {
+              "max": 7,
+              "price": 30
+            }
+          ]
+        }
+      }
+    },
+    "dinner": {
+      "enabled": true,
+      "override": {
+        "options": [
+          {
+            "id": "full",
+            "price": 25,
+            "name": {
+              "fr": "Menu complet",
+              "en": "Full menu",
+              "es": "Menú completo"
+            },
+            "desc": {
+              "fr": "Entrée + plat principal + dessert",
+              "en": "Starter + main course + dessert",
+              "es": "Entrante + plato principal + postre"
+            }
+          },
+          {
+            "id": "starter_main",
+            "price": 20,
+            "name": {
+              "fr": "Entrée + plat",
+              "en": "Starter + main",
+              "es": "Entrante + plato"
+            },
+            "desc": {
+              "fr": "Entrée + plat principal",
+              "en": "Starter + main course",
+              "es": "Entrante + plato principal"
+            }
+          },
+          {
+            "id": "main_dessert",
+            "price": 20,
+            "name": {
+              "fr": "Plat + dessert",
+              "en": "Main + dessert",
+              "es": "Plato + postre"
+            },
+            "desc": {
+              "fr": "Plat principal + dessert",
+              "en": "Main course + dessert",
+              "es": "Plato principal + postre"
+            }
+          },
+          {
+            "id": "main",
+            "price": 15,
+            "name": {
+              "fr": "Plat principal",
+              "en": "Main course",
+              "es": "Plato principal"
+            },
+            "desc": {
+              "fr": "Plat principal uniquement",
+              "en": "Main course only",
+              "es": "Solo plato principal"
+            }
+          }
+        ]
+      }
+    },
+    "cooking": {
+      "enabled": true,
+      "override": {
+        "min_people": 2,
+        "max_people": 6,
+        "price": 45,
+        "slots": ["10:30", "14:30"]
+      }
+    },
+    "excursions": {
+      "enabled": true
+    },
+    "group": {
+      "enabled": true,
+      "gyg_url": "https://gyg.me/pieHSnog",
+      "gyg_query": "Marrakech, Morocco",
+      "links": [
+        {
+          "title": {
+            "fr": "Jardin Majorelle + Musée YSL + Musée Pierre Bergé",
+            "en": "Majorelle Garden + YSL Museum + Pierre Bergé Museum",
+            "es": "Jardín Majorelle + Museo YSL + Museo Pierre Bergé"
+          },
+          "btn": {
+            "fr": "Voir les disponibilités",
+            "en": "Check availability",
+            "es": "Ver disponibilidad"
+          },
+          "url": "https://gyg.me/hHN8hT4m"
+        },
+        {
+          "title": {
+            "fr": "Médersa Ben Youssef",
+            "en": "Ben Youssef Madrasa",
+            "es": "Madraza Ben Youssef"
+          },
+          "btn": {
+            "fr": "Réserver la visite",
+            "en": "Book the visit",
+            "es": "Reservar la visita"
+          },
+          "url": "https://gyg.me/KuFWiDLL"
+        },
+        {
+          "title": {
+            "fr": "Palais Bahia",
+            "en": "Bahia Palace",
+            "es": "Palacio Bahia"
+          },
+          "btn": {
+            "fr": "Réserver la visite",
+            "en": "Book the visit",
+            "es": "Reservar la visita"
+          },
+          "url": "https://gyg.me/46IcKWlP"
+        },
+        {
+          "title": {
+            "fr": "Le Jardin Secret",
+            "en": "Le Jardin Secret",
+            "es": "Le Jardin Secret"
+          },
+          "btn": {
+            "fr": "Découvrir & réserver",
+            "en": "Discover & book",
+            "es": "Descubrir y reservar"
+          },
+          "url": "https://gyg.me/IPgZa125"
+        },
+        {
+          "title": {
+            "fr": "Tombeaux Saadiens",
+            "en": "Saadian Tombs",
+            "es": "Tumbas Saadíes"
+          },
+          "btn": {
+            "fr": "Réserver la visite",
+            "en": "Book the visit",
+            "es": "Reservar la visita"
+          },
+          "url": "https://gyg.me/ohTXhaBI"
+        },
+        {
+          "title": {
+            "fr": "Médina, souks & artisans avec guide",
+            "en": "Medina, souks & artisans with a guide",
+            "es": "Medina, zocos y artesanos con guía"
+          },
+          "btn": {
+            "fr": "Découvrir la médina",
+            "en": "Discover the medina",
+            "es": "Descubrir la medina"
+          },
+          "url": "https://gyg.me/iIZh8PWB"
+        },
+        {
+          "title": {
+            "fr": "Jemaa el-Fna & visite nocturne de Marrakech",
+            "en": "Jemaa el-Fna & Marrakech by night",
+            "es": "Jemaa el-Fna y visita nocturna de Marrakech"
+          },
+          "btn": {
+            "fr": "Réserver la visite",
+            "en": "Book the visit",
+            "es": "Reservar la visita"
+          },
+          "url": "https://gyg.me/b680GqoK"
+        },
+        {
+          "title": {
+            "fr": "Vol en montgolfière + petit-déjeuner berbère",
+            "en": "Hot-air balloon flight + Berber breakfast",
+            "es": "Vuelo en globo + desayuno bereber"
+          },
+          "btn": {
+            "fr": "Voir les disponibilités",
+            "en": "Check availability",
+            "es": "Ver disponibilidad"
+          },
+          "url": "https://gyg.me/b0txvWuO"
+        },
+        {
+          "title": {
+            "fr": "Désert d’Agafay : quad + chameau + dîner-spectacle",
+            "en": "Agafay Desert: quad + camel + dinner show",
+            "es": "Desierto de Agafay: quad + camello + cena con espectáculo"
+          },
+          "btn": {
+            "fr": "Réserver l’expérience",
+            "en": "Book the experience",
+            "es": "Reservar la experiencia"
+          },
+          "url": "https://gyg.me/BTiMnLnS"
+        },
+        {
+          "title": {
+            "fr": "Désert d’Agafay : coucher de soleil + dîner-spectacle",
+            "en": "Agafay Desert: sunset + dinner show",
+            "es": "Desierto de Agafay: puesta de sol + cena con espectáculo"
+          },
+          "btn": {
+            "fr": "Réserver l’expérience",
+            "en": "Book the experience",
+            "es": "Reservar la experiencia"
+          },
+          "url": "https://gyg.me/UC6eYFqj"
+        },
+        {
+          "title": {
+            "fr": "Vallée de l’Ourika + Atlas + cascades",
+            "en": "Ourika Valley + Atlas + waterfalls",
+            "es": "Valle del Ourika + Atlas + cascadas"
+          },
+          "btn": {
+            "fr": "Voir l’excursion",
+            "en": "See the excursion",
+            "es": "Ver la excursión"
+          },
+          "url": "https://gyg.me/FP9b9D3W"
+        },
+        {
+          "title": {
+            "fr": "Cascades d’Ouzoud : randonnée guidée + bateau",
+            "en": "Ouzoud Waterfalls: guided hike + boat",
+            "es": "Cascadas de Ouzoud: senderismo guiado + barco"
+          },
+          "btn": {
+            "fr": "Voir l’excursion",
+            "en": "See the excursion",
+            "es": "Ver la excursión"
+          },
+          "url": "https://gyg.me/73XechT1"
+        },
+        {
+          "title": {
+            "fr": "Essaouira : excursion d’une journée depuis Marrakech",
+            "en": "Essaouira: day trip from Marrakech",
+            "es": "Essaouira: excursión de un día desde Marrakech"
+          },
+          "btn": {
+            "fr": "Voir l’excursion",
+            "en": "See the excursion",
+            "es": "Ver la excursión"
+          },
+          "url": "https://gyg.me/1qPFh4dm"
+        },
+        {
+          "title": {
+            "fr": "Aït-Ben-Haddou & Ouarzazate",
+            "en": "Aït-Ben-Haddou & Ouarzazate",
+            "es": "Aït-Ben-Haddou y Ouarzazate"
+          },
+          "btn": {
+            "fr": "Voir l’excursion",
+            "en": "See the excursion",
+            "es": "Ver la excursión"
+          },
+          "url": "https://gyg.me/pwMA7HSt"
+        },
+        {
+          "title": {
+            "fr": "Merzouga & désert du Sahara : circuit 3 jours",
+            "en": "Merzouga & Sahara Desert: 3-day tour",
+            "es": "Merzouga y desierto del Sahara: circuito de 3 días"
+          },
+          "btn": {
+            "fr": "Voir le circuit",
+            "en": "See the tour",
+            "es": "Ver el circuito"
+          },
+          "url": "https://gyg.me/NhEOk4Q6"
+        }
+      ],
+      "btn": {
+        "fr": "Voir toutes les activités à Marrakech",
+        "en": "See all activities in Marrakech",
+        "es": "Ver todas las actividades en Marrakech"
+      }
+    },
+    "spa": {
+      "enabled": true
+    }
+  },
+  "mail": {
+    "to_email": "riadbilkis@gmail.com",
+    "to_name": "Riad Bilkis",
+    "from_name": "Riad Bilkis — Espace client"
+  },
+  "texts": {
+    "fr": {
+      "dinner": {
+        "intro": "Tajine, couscous ou pastilla préparés à la maison le jour même, avec des produits frais, et servis dans le patio à la lueur des bougies.",
+        "li2": null,
+        "li3": "À commander la veille ou au plus tard avant 12h le jour même.",
+        "service": "Service de {from} à {to} dans le patio."
+      },
+      "transfer": {
+        "detailed": true,
+        "intro": "Un chauffeur vous attend à l'aéroport ou à la gare et vous accompagne jusqu'au point d'accès au riad. Tarif fixe, sans négociation et sans mauvaise surprise.",
+        "li1": "Notre chauffeur vous attend avec un panneau au nom de RIAD BILKIS.",
+        "li2": "En cas de retard de votre vol, l'attente est incluse.",
+        "li3": "Véhicule privé et climatisé.",
+        "li4": "Tarif fixe par véhicule."
+      },
+      "infos": {
+        "late_big": true,
+        "late_btn": "Je préviens le riad de mon arrivée tardive",
+        "wa_late": "Bonjour, je séjourne au Riad Bilkis. Je souhaite vous prévenir que mon arrivée sera tardive.\nHeure d'arrivée approximative / vol :"
+      },
+      "cooking": {
+        "h": "Cours de cuisine marocaine à Marrakech",
+        "price": "{price} € / personne — à partir de {min} personnes",
+        "intro": "Découvrez la cuisine marocaine lors d'un cours convivial avec notre partenaire. Préparez vous-même les salades marocaines et le tajine, puis dégustez le repas que vous avez préparé.",
+        "li1": "Préparation des salades marocaines et du tajine avec notre partenaire.",
+        "li2": "Durée : environ 4 heures.",
+        "li3": "Cours disponible le matin ou l'après-midi.",
+        "li4": "À la fin du cours, vous dégustez le repas que vous avez préparé.",
+        "li5": "À réserver au moins 24 heures à l'avance.",
+        "li6": "Minimum {min} personnes – maximum {max} personnes par cours.",
+        "li7": "💶 {price} € par personne."
+      },
+      "arrival": {
+        "early": {
+          "q": "Vous arrivez tôt le matin ?",
+          "text": "Profitez d'un petit-déjeuner sur la terrasse du Riad Mylaya en attendant votre check-in. Nous nous occupons de vos bagages et les transférons directement au Riad Bilkis."
+        }
+      }
+    },
+    "en": {
+      "dinner": {
+        "intro": "Tagine, couscous or pastilla home-cooked the same day with fresh produce, served in the patio by candlelight.",
+        "li2": null,
+        "li3": "To be ordered the day before or by 12 pm on the day at the latest.",
+        "service": "Served from {from} to {to} in the patio."
+      },
+      "transfer": {
+        "detailed": true,
+        "intro": "A driver waits for you at the airport or the train station and walks you to the riad's access point. Fixed price, no haggling, no surprises.",
+        "li1": "Our driver waits for you holding a sign reading RIAD BILKIS.",
+        "li2": "If your flight is delayed, waiting time is included.",
+        "li3": "Private air-conditioned vehicle.",
+        "li4": "Fixed price per vehicle."
+      },
+      "infos": {
+        "late_big": true,
+        "late_btn": "I'm letting the riad know I'll arrive late",
+        "wa_late": "Hello, I'm staying at Riad Bilkis. I'd like to let you know that I will be arriving late.\nApproximate arrival time / flight:"
+      },
+      "cooking": {
+        "h": "Moroccan cooking class in Marrakech",
+        "price": "{price} € / person — from {min} people",
+        "intro": "Discover Moroccan cuisine in a friendly class with our partner. Prepare the Moroccan salads and the tagine yourself, then enjoy the meal you have cooked.",
+        "li1": "Preparation of Moroccan salads and tagine with our partner.",
+        "li2": "Duration: about 4 hours.",
+        "li3": "Class available in the morning or in the afternoon.",
+        "li4": "At the end of the class, you enjoy the meal you have prepared.",
+        "li5": "Book at least 24 hours in advance.",
+        "li6": "Minimum {min} people – maximum {max} people per class.",
+        "li7": "💶 {price} € per person."
+      },
+      "arrival": {
+        "early": {
+          "q": "Arriving early in the morning?",
+          "text": "Enjoy breakfast on the terrace of Riad Mylaya while you wait for check-in. We take care of your luggage and transfer it directly to Riad Bilkis."
+        }
+      }
+    },
+    "es": {
+      "dinner": {
+        "intro": "Tajín, cuscús o pastela preparados en casa el mismo día con productos frescos, y servidos en el patio a la luz de las velas.",
+        "li2": null,
+        "li3": "Se pide la víspera o, como muy tarde, antes de las 12h del mismo día.",
+        "service": "Servicio de {from} a {to} en el patio."
+      },
+      "transfer": {
+        "detailed": true,
+        "intro": "Un conductor le espera en el aeropuerto o en la estación y le acompaña hasta el punto de acceso al riad. Precio fijo, sin negociar y sin sorpresas.",
+        "li1": "Nuestro conductor le espera con un cartel con el nombre RIAD BILKIS.",
+        "li2": "Si su vuelo se retrasa, la espera está incluida.",
+        "li3": "Vehículo privado con aire acondicionado.",
+        "li4": "Precio fijo por vehículo."
+      },
+      "infos": {
+        "late_big": true,
+        "late_btn": "Aviso al riad de mi llegada tardía",
+        "wa_late": "Hola, me alojo en el Riad Bilkis. Quiero avisarles de que mi llegada será tardía.\nHora aproximada de llegada / vuelo:"
+      },
+      "cooking": {
+        "h": "Clase de cocina marroquí en Marrakech",
+        "price": "{price} € / persona — a partir de {min} personas",
+        "intro": "Descubra la cocina marroquí en una clase amena con nuestro socio. Prepare usted mismo las ensaladas marroquíes y el tajín, y luego disfrute de la comida que ha preparado.",
+        "li1": "Preparación de las ensaladas marroquíes y del tajín con nuestro socio.",
+        "li2": "Duración: unas 4 horas.",
+        "li3": "Clase disponible por la mañana o por la tarde.",
+        "li4": "Al final de la clase, degusta la comida que ha preparado.",
+        "li5": "Reservar con al menos 24 horas de antelación.",
+        "li6": "Mínimo {min} personas – máximo {max} personas por clase.",
+        "li7": "💶 {price} € por persona."
+      },
+      "arrival": {
+        "early": {
+          "q": "¿Llega temprano por la mañana?",
+          "text": "Disfrute de un desayuno en la terraza del Riad Mylaya mientras espera su check-in. Nos ocupamos de su equipaje y lo trasladamos directamente al Riad Bilkis."
+        }
+      }
+    }
+  }
+}

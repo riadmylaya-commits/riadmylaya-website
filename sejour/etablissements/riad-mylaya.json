@@ -1,0 +1,59 @@
+{
+  "id": "riad-mylaya",
+  "name": "Riad Mylaya",
+  "city": "Marrakech",
+  "grammar": {
+    "fr": { "with": "avec le Riad Mylaya", "at": "au Riad Mylaya", "of": "du Riad Mylaya" },
+    "en": { "with": "with Riad Mylaya", "at": "at Riad Mylaya", "of": "Riad Mylaya" },
+    "es": { "with": "con el Riad Mylaya", "at": "en el Riad Mylaya", "of": "del Riad Mylaya" }
+  },
+  "site": {
+    "base_url": "https://riadmylaya.com",
+    "output_dir": "riadmylaya.com",
+    "paths": { "fr": "/preparer-mon-sejour", "en": "/en/prepare-your-stay", "es": "/es/preparar-mi-estancia" },
+    "thanks": { "fr": "/merci-sejour", "en": "/en/thank-you-stay", "es": "/es/gracias-estancia" },
+    "excursions_more": { "fr": "/excursions", "en": "/en/excursions", "es": "/es/excursiones" }
+  },
+  "contact": {
+    "whatsapp": "212661351989",
+    "phone_display": "+212 661 351 989",
+    "email": "contact@riadmylaya.com",
+    "address": "163 Derb Bounba, Arset Ihiri — Médina, Marrakech",
+    "address_footer": "163 Derb Bounba, Arset Ihiri, Médina, Marrakech",
+    "map_url": "https://maps.app.goo.gl/f6u2Dhybbw8uzf637"
+  },
+  "images": {
+    "favicon": "/assets/images/logo-notxt.png",
+    "logo": "/assets/images/logo-notxt.png",
+    "logo_footer": "/assets/images/logo-white-wide.png",
+    "hero": "/assets/images/riad-mylaya-patio.jpg",
+    "transfer": "/assets/images/transfert-marrakech.jpg",
+    "dinner": "/assets/images/riad-mylaya-dinner.jpg",
+    "cooking": "/assets/images/cooking-hero.jpg",
+    "excursions": "/assets/images/pexels-moussa-idrissi-3581916.jpeg",
+    "group": "/assets/images/activites-prive-groupe.jpg",
+    "spa": "/assets/images/spa/hammam-interior.jpg"
+  },
+  "theme": { "accent": "#c0754a", "accent_dark": "#8a6a3b" },
+  "analytics": { "ga_id": "G-WY8GJP57WY" },
+  "stay": {
+    "checkin": { "fr": "14h", "en": "2 pm", "es": "las 14h" },
+    "luggage_from": { "fr": "9h", "en": "9 am", "es": "las 9h" },
+    "checkout": { "fr": "11h", "en": "11 am", "es": "las 11h" },
+    "breakfast_price": 7,
+    "tax": { "fr": "2,50", "en": "2.50", "es": "2,50" }
+  },
+  "services": {
+    "transfer": { "enabled": true },
+    "dinner": { "enabled": true },
+    "cooking": { "enabled": true },
+    "excursions": { "enabled": true },
+    "group": { "enabled": true, "gyg_url": "https://gyg.me/pieHSnog", "gyg_query": "Marrakech, Morocco" },
+    "spa": { "enabled": true }
+  },
+  "mail": {
+    "to_email": "contact@riadmylaya.com",
+    "to_name": "Riad Mylaya",
+    "from_name": "Riad Mylaya — Site web"
+  }
+}
