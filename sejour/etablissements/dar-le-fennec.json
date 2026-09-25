@@ -78,7 +78,8 @@
       "en": "11 am",
       "es": "las 11h"
     },
-    "breakfast_price": 6,
+    "breakfast_price": 7,
+    "breakfast_button": true,
     "tax": {
       "fr": "2,50",
       "en": "2.50",
@@ -181,7 +182,8 @@
       "override": {
         "min_people": 2,
         "max_people": 6,
-        "price": 45
+        "price": 45,
+        "slots": ["10:30", "14:30"]
       }
     },
     "excursions": {
@@ -242,7 +244,7 @@
             "en": "Discover & book",
             "es": "Descubrir y reservar"
           },
-          "url": "https://gyg.me/poQY0DZX"
+          "url": "https://gyg.me/IPgZa125"
         },
         {
           "title": {
@@ -268,7 +270,7 @@
             "en": "Discover the medina",
             "es": "Descubrir la medina"
           },
-          "url": "https://gyg.me/Cre03K7R"
+          "url": "https://gyg.me/iIZh8PWB"
         },
         {
           "title": {
