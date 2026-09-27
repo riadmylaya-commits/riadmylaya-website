@@ -201,6 +201,21 @@ def head(lang, a):
            cat=CATS[a["cat"]][lang][1], faq=faq_jsonld(a))
 
 
+FAQ_TITLE = {"fr": "Questions fréquentes", "en": "Frequently asked questions",
+             "es": "Preguntas frecuentes"}
+
+
+def faq_section(lang, a):
+    """Visible FAQ, unless the body already carries one written by hand."""
+    if not a.get("faq") or 'id="faq"' in a["body"]:
+        return ""
+    out = ['<h2 id="faq">%s</h2>' % FAQ_TITLE[lang]]
+    for i, (q, ans) in enumerate(a["faq"], 1):
+        out.append('<h3 id="faq-%d">%s</h3>' % (i, q))
+        out.append("<p>%s</p>" % ans)
+    return "\n" + "\n".join(out) + "\n"
+
+
 def faq_jsonld(a):
     if not a.get("faq"):
         return ""
@@ -353,7 +368,7 @@ def article_page(lang, a, related):
     t = L[lang]
     d = a["date"].split("-")
     pretty = "%s/%s/%s" % (d[2], d[1], d[0])
-    body = a["body"].replace("[[CTA]]", cta_inline(lang))
+    body = a["body"].replace("[[CTA]]", cta_inline(lang)) + faq_section(lang, a)
     rel = "\n".join(card(lang, r) for r in related)
     return (head(lang, a) + """<body class="rm-blog-body">
 <script type="application/ld+json">{{
@@ -401,7 +416,7 @@ def article_page(lang, a, related):
 </main>
 """.format(img=a["image"], caturl=cat_url(a["cat"], lang), cat=CATS[a["cat"]][lang][1],
            h1=a["h1"], pub=t["published"], date=pretty, read=a["read"],
-           readlabel=t["read"], back=t["back_cat"], toc=toc(lang, a["body"]),
+           readlabel=t["read"], back=t["back_cat"], toc=toc(lang, body),
            body=body.strip(), credit=photo_credit(lang, a), ctafoot=cta_footer(lang),
            relh=t["related"], rel=rel)
             + footer(lang))
@@ -419,7 +434,7 @@ def photo_credit(lang, a):
             'target="_blank">%s</a> — %s, <a href="%s" rel="license nofollow noopener" '
             'target="_blank">%s</a></p>\n'
             % (c["page"], html.escape(c["title"]), html.escape(c["author"]),
-               c["license_url"], html.escape(c["license"])))
+               c["license_url"], html.escape(c["license"][lang])))
 
 
 # ---------------------------------------------------------------- index update
