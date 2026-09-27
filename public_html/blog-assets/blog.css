@@ -145,6 +145,9 @@ a:hover{color:var(--rm-gold)}
 .rm-article-container{max-width:780px;margin:0 auto;padding:56px 24px 30px}
 .rm-article-back{display:inline-block;margin-bottom:20px;font-family:'Yanone Kaffeesatz',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;color:var(--rm-text-mute)}
 .rm-article-back:hover{color:var(--rm-gold)}
+.rm-article-credit{margin:28px 0 0;font-size:13px;line-height:1.6;color:var(--rm-text-mute)}
+.rm-article-credit a{color:var(--rm-text-mute);text-decoration:underline}
+.rm-article-credit a:hover{color:var(--rm-gold)}
 
 .rm-article-toc{
   background:var(--rm-cream);border-left:3px solid var(--rm-gold);
