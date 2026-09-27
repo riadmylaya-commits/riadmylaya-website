@@ -406,4 +406,321 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Blog -->
+  <url>
+    <loc>https://riadmylaya.com/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/conseils-pratiques/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/conseils-pratiques/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/practical-tips/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/consejos-practicos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/conseils-pratiques/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/culture-traditions/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/culture-traditions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/culture-traditions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/cultura-tradiciones/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/culture-traditions/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/decouvrir-marrakech/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/decouvrir-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/discover-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/descubrir-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/decouvrir-marrakech/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/experiences-activites/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/experiences-activites/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/experiences-activities/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/experiencias-actividades/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/experiences-activites/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/itineraires-programmes/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/itineraires-programmes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/itineraries-programs/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/itinerarios-programas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/itineraires-programmes/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/expositions-marrakech-2026</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/expositions-marrakech-2026"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-exhibitions-2026"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/exposiciones-marrakech-2026"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/expositions-marrakech-2026"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/hammam-marocain-authentique</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/hammam-marocain-authentique"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/hammam-marocain-authentique"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/musees-monuments-jardins-marrakech</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/musees-monuments-jardins-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-museums-monuments-gardens"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/museos-monumentos-jardines-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/musees-monuments-jardins-marrakech"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/prix-budget-marrakech</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/prix-budget-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-prices-budget"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/precios-presupuesto-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/prix-budget-marrakech"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/que-faire-marrakech-3-jours</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/que-faire-marrakech-3-jours"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-3-day-itinerary"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/que-hacer-marrakech-3-dias"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/que-faire-marrakech-3-jours"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/blog/visiter-medina-marrakech-guide</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/visiter-medina-marrakech-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/visiter-medina-marrakech-guide"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/blog/culture-traditions/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/culture-traditions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/culture-traditions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/cultura-tradiciones/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/culture-traditions/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/blog/discover-marrakech/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/decouvrir-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/discover-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/descubrir-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/decouvrir-marrakech/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/blog/experiences-activities/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/experiences-activites/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/experiences-activities/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/experiencias-actividades/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/experiences-activites/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/blog/itineraries-programs/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/itineraires-programmes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/itineraries-programs/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/itinerarios-programas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/itineraires-programmes/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/blog/practical-tips/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/conseils-pratiques/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/practical-tips/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/consejos-practicos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/conseils-pratiques/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/blog/marrakech-3-day-itinerary</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/que-faire-marrakech-3-jours"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-3-day-itinerary"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/que-hacer-marrakech-3-dias"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/que-faire-marrakech-3-jours"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/blog/marrakech-exhibitions-2026</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/expositions-marrakech-2026"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-exhibitions-2026"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/exposiciones-marrakech-2026"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/expositions-marrakech-2026"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/blog/marrakech-museums-monuments-gardens</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/musees-monuments-jardins-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-museums-monuments-gardens"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/museos-monumentos-jardines-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/musees-monuments-jardins-marrakech"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/en/blog/marrakech-prices-budget</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/prix-budget-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-prices-budget"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/precios-presupuesto-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/prix-budget-marrakech"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/blog/consejos-practicos/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/conseils-pratiques/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/practical-tips/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/consejos-practicos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/conseils-pratiques/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/blog/cultura-tradiciones/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/culture-traditions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/culture-traditions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/cultura-tradiciones/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/culture-traditions/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/blog/descubrir-marrakech/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/decouvrir-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/discover-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/descubrir-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/decouvrir-marrakech/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/blog/experiencias-actividades/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/experiences-activites/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/experiences-activities/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/experiencias-actividades/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/experiences-activites/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/blog/itinerarios-programas/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/itineraires-programmes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/itineraries-programs/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/itinerarios-programas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/itineraires-programmes/"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/blog/exposiciones-marrakech-2026</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/expositions-marrakech-2026"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-exhibitions-2026"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/exposiciones-marrakech-2026"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/expositions-marrakech-2026"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/blog/museos-monumentos-jardines-marrakech</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/musees-monuments-jardins-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-museums-monuments-gardens"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/museos-monumentos-jardines-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/musees-monuments-jardins-marrakech"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/blog/precios-presupuesto-marrakech</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/prix-budget-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-prices-budget"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/precios-presupuesto-marrakech"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/prix-budget-marrakech"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://riadmylaya.com/es/blog/que-hacer-marrakech-3-dias</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/blog/que-faire-marrakech-3-jours"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/blog/marrakech-3-day-itinerary"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://riadmylaya.com/es/blog/que-hacer-marrakech-3-dias"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://riadmylaya.com/blog/que-faire-marrakech-3-jours"/>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
