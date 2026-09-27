@@ -368,7 +368,8 @@ def article_page(lang, a, related):
     t = L[lang]
     d = a["date"].split("-")
     pretty = "%s/%s/%s" % (d[2], d[1], d[0])
-    body = a["body"].replace("[[CTA]]", cta_inline(lang)) + faq_section(lang, a)
+    body = a["body"].replace("[[CTA]]", cta_inline(lang))
+    faq = faq_section(lang, a)
     rel = "\n".join(card(lang, r) for r in related)
     return (head(lang, a) + """<body class="rm-blog-body">
 <script type="application/ld+json">{{
@@ -402,7 +403,7 @@ def article_page(lang, a, related):
 {toc}
   <div class="rm-article-body">
     {body}
-{credit}  </div>
+{credit}{faq}  </div>
 {ctafoot}
 </div>
 </article>
@@ -416,8 +417,9 @@ def article_page(lang, a, related):
 </main>
 """.format(img=a["image"], caturl=cat_url(a["cat"], lang), cat=CATS[a["cat"]][lang][1],
            h1=a["h1"], pub=t["published"], date=pretty, read=a["read"],
-           readlabel=t["read"], back=t["back_cat"], toc=toc(lang, body),
-           body=body.strip(), credit=photo_credit(lang, a), ctafoot=cta_footer(lang),
+           readlabel=t["read"], back=t["back_cat"], toc=toc(lang, body + faq),
+           body=body.strip(), credit=photo_credit(lang, a), faq=faq,
+           ctafoot=cta_footer(lang),
            relh=t["related"], rel=rel)
             + footer(lang))
 
