@@ -51,6 +51,7 @@ a:hover{color:var(--rm-gold)}
 .rm-blog-nav a.rm-nav-current{color:var(--rm-gold-light);border-bottom-color:var(--rm-gold-light)}
 .rm-lang-switch{display:flex;gap:10px;padding-left:10px;border-left:1px solid rgba(255,255,255,0.2)}
 .rm-lang-switch a{padding:3px 6px;font-size:13px}
+.rm-lang-switch a.rm-lang-current{color:var(--rm-gold-light);font-weight:600}
 .rm-blog-book-btn{
   background:var(--rm-gold);color:#fff!important;padding:10px 22px;border-radius:4px;
   text-transform:uppercase;letter-spacing:1.5px;font-weight:600;font-size:16px;

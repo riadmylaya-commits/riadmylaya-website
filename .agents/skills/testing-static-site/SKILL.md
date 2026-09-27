@@ -172,6 +172,31 @@ device mode, which gives an exact emulated viewport that screenshots cleanly:
    you will click the wrong element — this is how an intended click on one `<details>` accordion
    lands on its neighbour.
 
+#### Simpler and more reliable than the device toolbar: `Emulation.setDeviceMetricsOverride` over CDP
+
+Driving device metrics straight over CDP avoids every DevTools pitfall above (no docked panel
+clipping the frame, no extra DevTools `page` target, no `debugger` pauses, no coordinate scaling
+beyond the usual screenshot scale) and gives an exact viewport that screenshots cleanly:
+
+```python
+await send("Emulation.setDeviceMetricsOverride", {
+    "width": 390, "height": 820, "deviceScaleFactor": 1, "mobile": True,
+    "screenWidth": 390, "screenHeight": 820})
+await send("Emulation.setTouchEmulationEnabled", {"enabled": True, "maxTouchPoints": 5})
+# ... measure / screenshot ...
+await send("Emulation.clearDeviceMetricsOverride")
+```
+
+The emulated page renders in the top-left of the window, so `computer` screenshots and native
+clicks work directly against viewport coordinates. See `/home/ubuntu/emu390.py` (`on|off`) and
+`/home/ubuntu/mobile_sweep.py` for a ready harness.
+
+**Trap: the override can be dropped on navigation.** Observed repeatedly — after `Page.navigate`
+(or a native in-page click that navigates) the page reverts to desktop width. **Re-apply the
+override after every navigation and re-assert `innerWidth === 390` in the same evaluate that does
+the measuring**, otherwise you will happily report "no overflow at 390px" from a 1600px viewport —
+a false pass. Any per-page mobile sweep must therefore be navigate → re-apply → wait → measure.
+
 Numeric overflow assertion that actually discriminates a broken responsive grid:
 
 ```js
@@ -188,6 +213,45 @@ JSON.stringify((function(){var iw=innerWidth,bad=[],clip=[];
 Note `body{overflow-x:hidden}` is set site-wide, so a horizontal scrollbar may never appear
 visually even when a child overflows — the per-element `getBoundingClientRect().right` check is
 the only reliable signal, never the screenshot alone.
+
+### The omnibox silently inline-autocompletes to a previously visited URL
+
+Typing `localhost:8099/blog/` + Enter can load `localhost:8099/blog/musees-monuments-jardins-marrakech`
+instead, because Chrome's inline autocomplete appends a suggestion from history and Enter accepts
+it. On a blog this is nasty: you think you are on the index asserting card counts, but you are on
+an article. Defeat it by pressing `Delete` (kills the inline completion) before `Return`, and
+**always assert `location.pathname`** after any omnibox navigation:
+
+```
+ctrl+a  →  type the URL  →  key Delete  →  key Return  →  verify location.pathname
+```
+
+### Blog in-UI navigation escapes to production unless you rewrite the origin
+
+Blog headers, language switchers, category chips and guest-area links are **absolute**
+`https://riadmylaya.com/...` URLs, so a native click leaves `localhost:8099` and loads
+**production** — which serves the *old deployed* markup. Testing a header/switcher change by
+clicking is then a guaranteed **false negative** (the change looks unimplemented).
+
+`/home/ubuntu/serve_proxy.py` supports `REWRITE_ORIGIN=1`, which swaps only the origin
+(`https://riadmylaya.com` → `http://localhost:8099`) in served HTML, preserving path/query/fragment
+verbatim, so native clicks exercise exactly the paths the branch produces:
+
+```bash
+REWRITE_ORIGIN=1 python3 /home/ubuntu/serve_proxy.py &
+```
+
+Verify after enabling it: 0 leftover `riadmylaya.com` links in the served HTML, `portal.freetobook.com`
+links **untouched**, and `class="rm-lang-current"`/`aria-current` intact. Also check `location.host`
+after any click. Article cards use relative hrefs and stay local either way.
+
+### Language-switcher highlight: move the pointer away before screenshotting
+
+The active language is styled `.rm-lang-switch a.rm-lang-current{color:var(--rm-gold-light);font-weight:600}`.
+The switcher also has a **hover** style using the same gold, so if the cursor is resting over a
+sibling link your screenshot shows *two* gold languages and looks like a bug. Always `mouse_move`
+somewhere neutral before capturing, and corroborate with computed styles: exactly one
+`.rm-lang-current`, its `color` differing from both siblings and `fontWeight >= 600`.
 
 ### A CDP helper that picks `pages[0]` will silently target the DevTools window
 
