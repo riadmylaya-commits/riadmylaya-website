@@ -422,7 +422,7 @@
               <label>Hora
                 <input type="time" data-tq="arr_time" data-tq-required>
               </label>
-              <label>N.º de vuelo o de tren
+              <label><span data-tq-label="arr_num">N.º de vuelo</span>
                 <input type="text" data-tq="arr_num" autocomplete="off">
               </label>
             </div>
@@ -436,7 +436,7 @@
               <label>Hora
                 <input type="time" data-tq="dep_time" data-tq-required>
               </label>
-              <label>N.º de vuelo o de tren de vuelta
+              <label><span data-tq-label="dep_num">N.º de vuelo de vuelta</span>
                 <input type="text" data-tq="dep_num" autocomplete="off">
               </label>
             </div>
@@ -451,7 +451,7 @@
                 <input type="text" name="N.º de reserva" data-tq="ref">
               </label>
               <label>Teléfono / WhatsApp *
-                <input type="tel" name="Teléfono / WhatsApp" data-tq="phone" required autocomplete="tel">
+                <input type="tel" data-rm-phone name="Teléfono / WhatsApp" data-tq="phone" required autocomplete="tel">
               </label>
               <label>Correo electrónico
                 <input type="email" name="Correo electrónico" data-tq="mail" autocomplete="email">
@@ -512,7 +512,7 @@
                 <input type="text" name="N.º de reserva" data-bk-contact="ref">
               </label>
               <label>Teléfono / WhatsApp *
-                <input type="tel" name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+                <input type="tel" data-rm-phone name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
               </label>
               <label>Correo electrónico
                 <input type="email" name="Correo electrónico" data-bk-contact="mail" autocomplete="email">
@@ -572,7 +572,7 @@
                 <input type="text" name="N.º de reserva" data-bk-contact="ref">
               </label>
               <label>Teléfono / WhatsApp *
-                <input type="tel" name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+                <input type="tel" data-rm-phone name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
               </label>
               <label>Correo electrónico
                 <input type="email" name="Correo electrónico" data-bk-contact="mail" autocomplete="email">
@@ -632,7 +632,7 @@
                 <input type="text" name="N.º de reserva" data-bk-contact="ref">
               </label>
               <label>Teléfono / WhatsApp *
-                <input type="tel" name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+                <input type="tel" data-rm-phone name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
               </label>
               <label>Correo electrónico
                 <input type="email" name="Correo electrónico" data-bk-contact="mail" autocomplete="email">
@@ -741,7 +741,7 @@
                 <input type="text" name="N.º de reserva" data-bk-contact="ref">
               </label>
               <label>Teléfono / WhatsApp *
-                <input type="tel" name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
+                <input type="tel" data-rm-phone name="Teléfono / WhatsApp" data-bk-contact="phone" required autocomplete="tel">
               </label>
               <label>Correo electrónico
                 <input type="email" name="Correo electrónico" data-bk-contact="mail" autocomplete="email">
@@ -785,7 +785,7 @@
           <input type="text" name="N.º de reserva">
         </label>
         <label>Teléfono
-          <input type="tel" name="Teléfono" autocomplete="tel">
+          <input type="tel" data-rm-phone name="Teléfono" autocomplete="tel">
         </label>
         <label>Correo electrónico *
           <input type="email" name="Correo electrónico" required autocomplete="email">
@@ -814,7 +814,8 @@
 </footer>
 <script src="/ads-tracking.js?v=1789290833" defer></script>
 <script src="/rm-services-data.js?v=1789290833" defer></script>
-<script src="/transfer-quote.js?v=1789290833" defer></script>
+<script src="/rm-phone.js?v=20260928-1" defer></script>
+<script src="/transfer-quote.js?v=20260928-1" defer></script>
 <script src="/rm-booking-engine.js?v=1789290833" defer></script>
 <script src="/rm-antibot.js?v=1789385994" defer></script>
 <script>

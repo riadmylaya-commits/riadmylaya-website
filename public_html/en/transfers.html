@@ -311,7 +311,7 @@
         <li><strong>Train station:</strong> 5 € surcharge per transfer for departures between 3 am and 7:45 am.</li>
         <li>The return discount applies to the departure transfer only, and only for the airport.</li>
         <li>All transfers are paid <strong>on site in cash</strong>.</li>
-        <li>To book, send us your date, your time and your flight or train number.</li>
+        <li>To book, send us your date, your time and your flight number (airport) or the city you travel from (train station).</li>
       </ul>
     </div>
   </div>
@@ -370,7 +370,7 @@
               <label>Time
                 <input type="time" data-tq="arr_time" data-tq-required>
               </label>
-              <label>Flight or train number
+              <label><span data-tq-label="arr_num">Flight number</span>
                 <input type="text" data-tq="arr_num" autocomplete="off">
               </label>
             </div>
@@ -384,7 +384,7 @@
               <label>Time
                 <input type="time" data-tq="dep_time" data-tq-required>
               </label>
-              <label>Return flight or train number
+              <label><span data-tq-label="dep_num">Return flight number</span>
                 <input type="text" data-tq="dep_num" autocomplete="off">
               </label>
             </div>
@@ -399,7 +399,7 @@
                 <input type="text" name="Booking number" data-tq="ref">
               </label>
               <label>Phone / WhatsApp *
-                <input type="tel" name="Phone / WhatsApp" data-tq="phone" required autocomplete="tel">
+                <input type="tel" data-rm-phone name="Phone / WhatsApp" data-tq="phone" required autocomplete="tel">
               </label>
               <label>Email
                 <input type="email" name="Email" data-tq="mail" autocomplete="email">
@@ -524,7 +524,8 @@
 <script src="/common-ui.js" defer></script>
 <script src="/ads-tracking.js" defer></script>
 <script src="/rm-services-data.js?v=1789290833" defer></script>
-<script src="/transfer-quote.js?v=1789290833" defer></script>
+<script src="/rm-phone.js?v=20260928-1" defer></script>
+<script src="/transfer-quote.js?v=20260928-1" defer></script>
 <script src="/rm-antibot.js?v=1789385994" defer></script>
 </body>
 </html>

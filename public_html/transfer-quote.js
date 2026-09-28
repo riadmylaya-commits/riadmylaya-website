@@ -34,8 +34,15 @@
       lTrip: "Trajet",
       lPeople: "Nombre de personnes",
       lFlight: "n° de vol / train",
+      flightNo: "N° de vol",
+      flightNoReturn: "N° de vol retour",
+      cityFrom: "Ville de départ",
+      cityHint: "Casablanca, Rabat, Fès, Tanger…",
+      lFlightNo: "n° de vol",
+      lCityFrom: "ville de départ",
       airport: "Aéroport Marrakech-Menara",
       station: "Gare de Marrakech",
+      marrakech: "Marrakech",
       lDetail: "Détail",
       lTotal: "TOTAL",
       pending: "Demande à confirmer par le riad."
@@ -57,8 +64,15 @@
       lTrip: "Transfer",
       lPeople: "Number of people",
       lFlight: "flight / train no.",
+      flightNo: "Flight number",
+      flightNoReturn: "Return flight number",
+      cityFrom: "City you travel from",
+      cityHint: "Casablanca, Rabat, Fès, Tangier…",
+      lFlightNo: "flight no.",
+      lCityFrom: "from",
       airport: "Marrakech-Menara airport",
       station: "Marrakech train station",
+      marrakech: "Marrakech",
       lDetail: "Breakdown",
       lTotal: "TOTAL",
       pending: "Request to be confirmed by the riad."
@@ -80,8 +94,15 @@
       lTrip: "Traslado",
       lPeople: "Número de personas",
       lFlight: "n.º de vuelo / tren",
+      flightNo: "N.º de vuelo",
+      flightNoReturn: "N.º de vuelo de vuelta",
+      cityFrom: "Ciudad de salida",
+      cityHint: "Casablanca, Rabat, Fez, Tánger…",
+      lFlightNo: "n.º de vuelo",
+      lCityFrom: "desde",
       airport: "Aeropuerto Marrakech-Menara",
       station: "Estación de Marrakech",
+      marrakech: "Marrakech",
       lDetail: "Detalle",
       lTotal: "TOTAL",
       pending: "Solicitud pendiente de confirmación por el riad."
@@ -168,6 +189,43 @@
       return date && time ? date + " · " + time : (date || time || "");
     }
 
+    function label(name) {
+      return root.querySelector('[data-tq-label="' + name + '"]');
+    }
+
+    var shownKind = null;
+
+    /* Airport guests give a flight number; station guests give the city they
+       travel from — and on departure that city is always Marrakech. A value
+       typed for one mode never survives into the other, where it would be
+       sent to the riad under the wrong caption. */
+    function applyKind(kind) {
+      var station = kind === "station";
+      var changed = shownKind !== null && shownKind !== kind;
+      shownKind = kind;
+      var arrLabel = label("arr_num");
+      var depLabel = label("dep_num");
+      var arrInput = field("arr_num");
+      var depInput = field("dep_num");
+
+      if (arrLabel) arrLabel.textContent = station ? t.cityFrom : t.flightNo;
+      if (depLabel) depLabel.textContent = station ? t.cityFrom : t.flightNoReturn;
+      if (arrInput) {
+        arrInput.placeholder = station ? t.cityHint : "";
+        if (changed) arrInput.value = "";
+      }
+      if (!depInput) return;
+
+      if (station) {
+        depInput.value = t.marrakech;
+        depInput.readOnly = true;
+        depInput.placeholder = "";
+      } else {
+        if (changed || depInput.readOnly) depInput.value = "";
+        depInput.readOnly = false;
+      }
+    }
+
     function compute() {
       var kind = val("type") === "station" ? "station" : "airport";
       var people = parseInt(val("people"), 10) || 1;
@@ -177,6 +235,7 @@
 
       setBlock(arrivalBlock, wantsArrival);
       setBlock(departureBlock, wantsDeparture);
+      applyKind(kind);
 
       var rate = baseRate(kind, people);
       var lines = [];
@@ -239,13 +298,14 @@
       lines.push(t.lPhone + " : " + (val("phone") || "…"));
       lines.push(t.lTrip + " : " + kindLabel);
       lines.push(t.lPeople + " : " + q.people);
+      var numLabel = q.kind === "station" ? t.lCityFrom : t.lFlightNo;
       if (q.trips !== "departure") {
         lines.push(t.arrival + " : " + (dateTime(val("arr_date"), val("arr_time")) || "…") +
-          (val("arr_num") ? " — " + t.lFlight + " " + val("arr_num") : ""));
+          (val("arr_num") ? " — " + numLabel + " " + val("arr_num") : ""));
       }
       if (q.trips !== "arrival") {
         lines.push(t.departure + " : " + (dateTime(val("dep_date"), val("dep_time")) || "…") +
-          (val("dep_num") ? " — " + t.lFlight + " " + val("dep_num") : ""));
+          (val("dep_num") ? " — " + numLabel + " " + val("dep_num") : ""));
       }
       if (q.quoteOnly) {
         lines.push("", t.quote);

@@ -311,7 +311,7 @@
         <li><strong>Estación:</strong> suplemento de 5 € por traslado para las salidas entre las 3h00 y las 7h45.</li>
         <li>El descuento de ida y vuelta se aplica solo al traslado de salida y solo en el aeropuerto.</li>
         <li>Todos los traslados se pagan <strong>en el riad en efectivo</strong>.</li>
-        <li>Para reservar, indíquenos su fecha, su hora y su número de vuelo o de tren.</li>
+        <li>Para reservar, indíquenos su fecha, su hora y su n.º de vuelo (aeropuerto) o su ciudad de salida (estación).</li>
       </ul>
     </div>
   </div>
@@ -370,7 +370,7 @@
               <label>Hora
                 <input type="time" data-tq="arr_time" data-tq-required>
               </label>
-              <label>N.º de vuelo o de tren
+              <label><span data-tq-label="arr_num">N.º de vuelo</span>
                 <input type="text" data-tq="arr_num" autocomplete="off">
               </label>
             </div>
@@ -384,7 +384,7 @@
               <label>Hora
                 <input type="time" data-tq="dep_time" data-tq-required>
               </label>
-              <label>N.º de vuelo o de tren de vuelta
+              <label><span data-tq-label="dep_num">N.º de vuelo de vuelta</span>
                 <input type="text" data-tq="dep_num" autocomplete="off">
               </label>
             </div>
@@ -399,7 +399,7 @@
                 <input type="text" name="N.º de reserva" data-tq="ref">
               </label>
               <label>Teléfono / WhatsApp *
-                <input type="tel" name="Teléfono / WhatsApp" data-tq="phone" required autocomplete="tel">
+                <input type="tel" data-rm-phone name="Teléfono / WhatsApp" data-tq="phone" required autocomplete="tel">
               </label>
               <label>Correo electrónico
                 <input type="email" name="Correo electrónico" data-tq="mail" autocomplete="email">
@@ -524,7 +524,8 @@
 <script src="/common-ui.js" defer></script>
 <script src="/ads-tracking.js" defer></script>
 <script src="/rm-services-data.js?v=1789290833" defer></script>
-<script src="/transfer-quote.js?v=1789290833" defer></script>
+<script src="/rm-phone.js?v=20260928-1" defer></script>
+<script src="/transfer-quote.js?v=20260928-1" defer></script>
 <script src="/rm-antibot.js?v=1789385994" defer></script>
 </body>
 </html>
