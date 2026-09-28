@@ -46,12 +46,50 @@
       n + " \u00d7 " + price + " \u20ac " + box.getAttribute("data-per") + ")";
   }
 
+  function transferMode(form) {
+    var point = form.querySelector("[data-rb-point]");
+    if (!point) return null;
+    var opt = point.options[point.selectedIndex];
+    return (opt && opt.getAttribute("data-mode")) || "airport";
+  }
+
+  /* Les libelles vol / ville de depart suivent le point de transfert choisi. */
+  function updateTransferPoint(form) {
+    var mode = transferMode(form);
+    if (!mode) return;
+    var rail = mode === "station";
+    var labels = form.querySelectorAll("[data-rb-flip]");
+    Array.prototype.forEach.call(labels, function (label) {
+      var text = label.querySelector("[data-rb-flip-text]");
+      if (text) text.textContent = label.getAttribute(rail ? "data-rail" : "data-air");
+      var field = label.querySelector("input");
+      if (!field) return;
+      var placeholder = field.getAttribute(rail ? "data-rail-placeholder" : "data-air-placeholder");
+      field.placeholder = placeholder || "";
+      var fixed = field.getAttribute("data-rail-value");
+      if (!fixed) return;
+      if (rail) {
+        field.value = fixed;
+        field.readOnly = true;
+      } else {
+        if (field.value === fixed) field.value = "";
+        field.readOnly = false;
+      }
+    });
+  }
+
   function serialize(form) {
     var data = {};
     Array.prototype.forEach.call(form.elements, function (el) {
       if (!el.name) return;
       data[el.name] = el.value;
     });
+    if (data.phoneNumber !== undefined) {
+      var number = (data.phoneNumber || "").trim();
+      data.phone = number ? (data.phoneCode || "") + " " + number : "";
+      delete data.phoneCode;
+      delete data.phoneNumber;
+    }
     data.type = form.getAttribute("data-rb-form");
     data.lang = form.getAttribute("data-lang");
     data.page = window.location.pathname;
@@ -91,6 +129,7 @@
       if (ok) {
         setStatus(form, t.ok, "ok");
         form.reset();
+        updateTransferPoint(form);
         updateTotal(form);
       } else {
         setStatus(form, t.err, "err");
@@ -107,6 +146,9 @@
       var guests = form.querySelector("[data-rb-guests]");
       if (menu) menu.addEventListener("change", function () { updateTotal(form); });
       if (guests) guests.addEventListener("input", function () { updateTotal(form); });
+      var point = form.querySelector("[data-rb-point]");
+      if (point) point.addEventListener("change", function () { updateTransferPoint(form); });
+      updateTransferPoint(form);
       updateTotal(form);
     });
 

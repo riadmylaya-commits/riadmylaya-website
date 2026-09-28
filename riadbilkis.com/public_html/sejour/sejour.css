@@ -85,6 +85,10 @@
   color: var(--rb-ink); background: #fff; border: 1px solid var(--rb-border); border-radius: 6px; text-transform: none;
 }
 .rb-form input:focus, .rb-form select:focus, .rb-form textarea:focus { outline: 2px solid var(--rb-clay); border-color: var(--rb-clay); }
+.rb-phone { display: flex; gap: 8px; align-items: stretch; }
+.rb-form .rb-phone select { flex: 0 0 42%; min-width: 0; }
+.rb-form .rb-phone input { flex: 1 1 auto; min-width: 0; }
+.rb-form input[readonly] { background: #F6F1E9; color: #5A4A38; }
 .rb-form__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
 .rb-form button.rb-btn { border: 0; cursor: pointer; font-family: inherit; }
 .rb-form button[disabled] { opacity: .6; cursor: progress; }

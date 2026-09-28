@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="/gyg/activites.css?v=20260907">
-  <link rel="stylesheet" href="/sejour/sejour.css?v=20260907">
+  <link rel="stylesheet" href="/sejour/sejour.css?v=20260925">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://riadbilkis.com/en/"},{"@type":"ListItem","position":2,"name":"Practical information and services","item":"https://riadbilkis.com/en/practical-information"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What time is breakfast served at Riad Bilkis?","acceptedAnswer":{"@type":"Answer","text":"The Moroccan breakfast is served from 8:00 am to 10:30 am and is included in the room rate. Before 7:30 am we prepare a takeaway breakfast. After 10:30 am, breakfast is available for €6 per person."}},{"@type":"Question","name":"What are the check-in and check-out times?","acceptedAnswer":{"@type":"Answer","text":"Check-in is possible from 1 pm and check-out is no later than 11 am. If your flight is very early or very late, let us know and we will arrange things."}},{"@type":"Question","name":"Is there parking near the riad?","acceptedAnswer":{"@type":"Answer","text":"The riad is inside the medina, in Bab Doukkala. Parking is available nearby for €4 per 24-hour period; we send you the directions before you arrive."}},{"@type":"Question","name":"Can I have my laundry done at the riad?","acceptedAnswer":{"@type":"Answer","text":"Yes. Leave your laundry in a bag next to the washing machine: the service costs €5 per load and is available from 9 am to 3 pm. Towels and bed linen are changed every two to three days depending on the length of your stay."}},{"@type":"Question","name":"Does the riad arrange airport transfers?","acceptedAnswer":{"@type":"Answer","text":"Yes, with a private driver from and to Marrakech-Menara airport: €15 one way and €25 return. You can request it directly from this page."}}]}</script>
   <link rel="stylesheet" href="/rb-header.css?v=20260907">
@@ -148,8 +148,19 @@
       <div class="rb-form__grid">
         <label>Full name *<input type="text" name="name" required></label>
         <label>Email *<input type="email" name="email" required></label>
-        <label>Phone / WhatsApp (with country code)<input type="tel" name="phone"></label>
+        <label>Phone / WhatsApp
+          <span class="rb-phone">
+            <select name="phoneCode" aria-label="Country dialling code"><option value="+33">🇫🇷 +33 France</option><option value="+34">🇪🇸 +34 Spain</option><option value="+44" selected>🇬🇧 +44 United Kingdom</option><option value="+32">🇧🇪 +32 Belgium</option><option value="+41">🇨🇭 +41 Switzerland</option><option value="+49">🇩🇪 +49 Germany</option><option value="+39">🇮🇹 +39 Italy</option><option value="+31">🇳🇱 +31 Netherlands</option><option value="+351">🇵🇹 +351 Portugal</option><option value="+352">🇱🇺 +352 Luxembourg</option><option value="+353">🇮🇪 +353 Ireland</option><option value="+43">🇦🇹 +43 Austria</option><option value="+45">🇩🇰 +45 Denmark</option><option value="+46">🇸🇪 +46 Sweden</option><option value="+47">🇳🇴 +47 Norway</option><option value="+358">🇫🇮 +358 Finland</option><option value="+48">🇵🇱 +48 Poland</option><option value="+420">🇨🇿 +420 Czechia</option><option value="+1">🇺🇸 +1 United States</option><option value="+1">🇨🇦 +1 Canada</option><option value="+212">🇲🇦 +212 Morocco</option><option value="+213">🇩🇿 +213 Algeria</option><option value="+216">🇹🇳 +216 Tunisia</option><option value="+971">🇦🇪 +971 United Arab Emirates</option><option value="+966">🇸🇦 +966 Saudi Arabia</option><option value="+55">🇧🇷 +55 Brazil</option><option value="+61">🇦🇺 +61 Australia</option><option value="+81">🇯🇵 +81 Japan</option><option value="+86">🇨🇳 +86 China</option></select>
+            <input type="tel" name="phoneNumber" inputmode="tel" autocomplete="tel-national" placeholder="7700 900123">
+          </span>
+        </label>
         <label>Number of guests *<input type="number" name="guests" min="1" max="12" value="2" required></label>
+        <label>Transfer point *
+          <select name="transferPoint" data-rb-point required>
+            <option value="Marrakech-Menara airport" data-mode="airport">✈️ Marrakech-Menara airport</option>
+            <option value="Marrakech train station" data-mode="station">🚆 Marrakech train station</option>
+          </select>
+        </label>
         <label>Transfer type *
           <select name="transferType" required>
             <option value="Arrival and departure">Arrival and departure</option>
@@ -158,11 +169,11 @@
           </select>
         </label>
         <label>Arrival date<input type="date" name="arrivalDate"></label>
-        <label>Arrival time at airport<input type="time" name="arrivalTime"></label>
-        <label>Flight number<input type="text" name="arrivalFlight"></label>
+        <label data-rb-flip data-air="Arrival time at airport" data-rail="Arrival time at the station"><span data-rb-flip-text>Arrival time at airport</span><input type="time" name="arrivalTime"></label>
+        <label data-rb-flip data-air="Flight number" data-rail="City you travel from"><span data-rb-flip-text>Flight number</span><input type="text" name="arrivalFlight" placeholder="E.g. AT 811" data-air-placeholder="E.g. AT 811" data-rail-placeholder="E.g. Casablanca, Rabat, Fez, Tangier…"></label>
         <label>Departure date<input type="date" name="departureDate"></label>
         <label>Preferred pickup time from riad<input type="time" name="departureTime"></label>
-        <label>Departure flight number (if available)<input type="text" name="departureFlight"></label>
+        <label data-rb-flip data-air="Return flight number" data-rail="Departure city: Marrakech"><span data-rb-flip-text>Return flight number</span><input type="text" name="departureFlight" placeholder="E.g. AT 810" data-air-placeholder="E.g. AT 810" data-rail-value="Marrakech"></label>
       </div>
       <label class="rb-form__full">Message / allergies / dietary preferences<textarea name="message" rows="3"></textarea></label>
       <div class="rb-form__actions">
@@ -226,7 +237,7 @@
 </footer>
 
 <script src="/common-ui.js" defer></script>
-<script src="/sejour/forms.js" defer></script>
+<script src="/sejour/forms.js?v=20260925" defer></script>
 <script defer src="/rb-header.js?v=20260907"></script>
 </body>
 </html>

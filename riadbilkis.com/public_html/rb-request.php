@@ -92,9 +92,12 @@ $labels = array(
         'guests' => 'Personnes', 'menu' => 'Formule', 'message' => 'Message',
     ),
     'transfer' => array(
-        'phone' => 'Telephone', 'guests' => 'Personnes', 'transferType' => 'Type de transfert',
-        'arrivalDate' => 'Date arrivee', 'arrivalTime' => 'Heure arrivee', 'arrivalFlight' => 'Vol arrivee',
-        'departureDate' => 'Date depart', 'departureTime' => 'Heure depart', 'departureFlight' => 'Vol depart',
+        'phone' => 'Telephone', 'guests' => 'Personnes',
+        'transferPoint' => 'Point de transfert', 'transferType' => 'Type de transfert',
+        'arrivalDate' => 'Date arrivee', 'arrivalTime' => 'Heure arrivee',
+        'arrivalFlight' => 'Vol arrivee / ville de depart',
+        'departureDate' => 'Date depart', 'departureTime' => 'Heure depart',
+        'departureFlight' => 'Vol retour / ville de depart',
         'message' => 'Message',
     ),
     'info' => array(
