@@ -110,6 +110,7 @@ $T = array(
         'lang' => 'fr',
         'stop_title' => 'Nous n’avons pas pu envoyer votre demande',
         'stop_text' => 'Par sécurité, notre site limite le nombre d’envois successifs. Réessayez dans quelques minutes ou écrivez-nous directement — nous vous répondrons avec plaisir.',
+        'fail_text' => 'Une erreur technique a empêché l’envoi de votre demande. Rien ne nous est parvenu : merci de réessayer, ou de nous écrire directement sur WhatsApp ou par e-mail.',
     ),
     'en' => array(
         'title' => 'New booking request',
@@ -145,6 +146,7 @@ $T = array(
         'lang' => 'en',
         'stop_title' => 'We could not send your request',
         'stop_text' => 'For security reasons our website limits the number of successive submissions. Please try again in a few minutes, or contact us directly — we will be glad to help.',
+        'fail_text' => 'A technical error prevented your request from being sent. Nothing reached us: please try again, or write to us directly on WhatsApp or by email.',
     ),
     'es' => array(
         'title' => 'Nueva solicitud de reserva',
@@ -180,6 +182,7 @@ $T = array(
         'lang' => 'es',
         'stop_title' => 'No hemos podido enviar su solicitud',
         'stop_text' => 'Por seguridad, nuestra web limita el número de envíos seguidos. Vuelva a intentarlo en unos minutos o escríbanos directamente — le atenderemos con mucho gusto.',
+        'fail_text' => 'Un error técnico ha impedido el envío de su solicitud. No hemos recibido nada: vuelva a intentarlo o escríbanos directamente por WhatsApp o correo electrónico.',
     ),
 );
 
@@ -438,8 +441,12 @@ function rm_next_ok($next, $origins)
     return false;
 }
 
-function rm_stop_page($t, $code)
+function rm_stop_page($t, $code, $text = '')
 {
+    global $RM_BRAND;
+    if ($text === '') {
+        $text = $t['stop_text'];
+    }
     header('Content-Type: text/html; charset=UTF-8', true, $code);
     header('Cache-Control: no-store');
     echo '<!DOCTYPE html><html lang="' . rm_h($t['lang']) . '"><head><meta charset="utf-8">'
@@ -449,8 +456,8 @@ function rm_stop_page($t, $code)
         . '<body style="margin:0;background:#f2ede4;font:400 16px/1.6 Arial,Helvetica,sans-serif;color:#232323;">'
         . '<div style="max-width:520px;margin:8vh auto;padding:28px 24px;background:#fff;border:1px solid #e7ddcd;border-radius:14px;">'
         . '<h1 style="margin:0 0 12px;font:700 22px/1.3 Georgia,\'Times New Roman\',serif;">' . rm_h($t['stop_title']) . '</h1>'
-        . '<p style="margin:0 0 18px;">' . rm_h($t['stop_text']) . '</p>'
-        . '<p style="margin:0 0 8px;"><a href="https://wa.me/212661351989" style="display:inline-block;padding:11px 18px;border-radius:8px;background:#25d366;color:#fff;text-decoration:none;font-weight:700;">WhatsApp</a>'
+        . '<p style="margin:0 0 18px;">' . rm_h($text) . '</p>'
+        . '<p style="margin:0 0 8px;"><a href="https://wa.me/' . preg_replace('/\D/', '', $RM_BRAND['phone']) . '" style="display:inline-block;padding:11px 18px;border-radius:8px;background:#25d366;color:#fff;text-decoration:none;font-weight:700;">WhatsApp</a>'
         . ' <a href="mailto:' . rm_h($RM_BRAND['email']) . '" style="display:inline-block;padding:11px 18px;border-radius:8px;background:#8a6a3b;color:#fff;text-decoration:none;font-weight:700;">' . rm_h($RM_BRAND['email']) . '</a></p>'
         . '<p style="margin:18px 0 0;"><a href="' . rm_h($t['ack_url']) . '" style="color:#8a6a3b;">' . rm_h($t['ack_back']) . '</a></p>'
         . '</div></body></html>';
@@ -471,6 +478,10 @@ if (!rm_next_ok($next, $RM_BRAND['next_origins'])) {
 
 /* pièges à robots : on fait comme si tout allait bien, sans rien envoyer */
 if (rm_is_bot($CONFIG)) {
+    @error_log('[rm-envoi] rejet robot etab=' . $BRAND_NAME . ' ip=' . rm_client_ip()
+        . ' honey=' . (isset($_POST['_honey']) ? strlen((string) $_POST['_honey']) : '-')
+        . ' url=' . (isset($_POST['_url']) ? strlen((string) $_POST['_url']) : '-')
+        . ' ts=' . (isset($_POST['_ts']) ? rm_clean($_POST['_ts']) : '-'));
     header('Location: ' . $next, true, 303);
     exit;
 }
@@ -493,6 +504,7 @@ if (!rm_turnstile_ok($CONFIG, $clientIp)) {
     rm_stop_page($t, 403);
 }
 if (!rm_rate_ok($CONFIG, $clientIp)) {
+    @error_log('[rm-envoi] limite d\'envois atteinte etab=' . $BRAND_NAME . ' ip=' . $clientIp);
     rm_stop_page($t, 429);
 }
 
@@ -510,7 +522,7 @@ foreach ($_POST as $key => $value) {
     if (strpos($key, '_') === 0) {
         continue;
     }
-    if (strtolower($key) === 'page') {
+    if (in_array(strtolower($key), array('page', 'cf-turnstile-response', 'g-recaptcha-response'), true)) {
         continue;
     }
     $value = rm_clean($value);
@@ -1021,7 +1033,8 @@ if ($CONFIG['smtp_pass'] !== '') {
 }
 
 /* confirmation de réception au client (contenu généré ici, pas par le formulaire) */
-if ($sent && $email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+$ackState = 'none';
+if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $ackBoundary = 'rmack' . bin2hex(random_bytes(12));
     $ackHeaders = 'From: ' . rm_mime_header($BRAND_NAME) . ' <' . $CONFIG['from_email'] . ">\r\n"
         . 'To: ' . ($name !== '' ? rm_mime_header($name) . ' ' : '') . '<' . $email . ">\r\n"
@@ -1040,10 +1053,14 @@ if ($sent && $email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
         . chunk_split(base64_encode($ackHtml)) . "\r\n"
         . '--' . $ackBoundary . "--\r\n";
     $ackErr = '';
-    if (!rm_smtp_send($CONFIG, array($email), $ackHeaders, $ackBody, $ackErr)) {
-        @error_log('[rm-envoi] client ack failed: ' . $ackErr);
+    if (rm_smtp_send($CONFIG, array($email), $ackHeaders, $ackBody, $ackErr)) {
+        $ackState = 'ok';
+    } else {
+        $ackState = 'ko:' . $ackErr;
     }
 }
+
+$fallbackState = 'none';
 
 if (!$sent) {
     /* filet de sécurité : la demande repart vers FormSubmit, rien n'est perdu */
@@ -1061,7 +1078,22 @@ if (!$sent) {
         CURLOPT_HTTPHEADER => array('Referer: https://' . $RM_BRAND['domain'] . '/'),
     ));
     curl_exec($ch);
+    $fallbackCode = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
+    $fallbackState = ($fallbackCode >= 200 && $fallbackCode < 400) ? 'ok' : 'ko:' . $fallbackCode;
+}
+
+@error_log('[rm-envoi] envoi etab=' . $BRAND_NAME . ' lang=' . $lang
+    . ' service=' . $service
+    . ' client=' . ($email !== '' ? $email : '-')
+    . ' proprietaire=' . ($sent ? 'ok:' . implode(',', $recipients) : 'ko')
+    . ' confirmation=' . $ackState
+    . ' secours=' . $fallbackState
+    . ($sent ? '' : ' smtp=' . $err));
+
+/* aucune page de succès si la demande n'est partie ni par SMTP ni par le relais */
+if (!$sent && strpos($fallbackState, 'ok') !== 0) {
+    rm_stop_page($t, 500, $t['fail_text']);
 }
 
 header('Location: ' . $next, true, 303);
