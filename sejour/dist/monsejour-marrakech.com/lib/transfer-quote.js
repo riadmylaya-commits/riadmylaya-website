@@ -45,7 +45,9 @@
       lPhone: "Téléphone",
       lTrip: "Trajet",
       lPeople: "Nombre de personnes",
-      lFlight: "n° de vol / train",
+      lFlight: "n° de vol", lCity: "ville de départ",
+      fFlight: "N° de vol", fFlightBack: "N° de vol retour",
+      fCity: "Ville de départ (ex. Casablanca, Rabat, Fès, Tanger…)", fCityBack: "Ville de départ : Marrakech",
       airport: "Aéroport Marrakech-Menara",
       station: "Gare de Marrakech",
       lDetail: "Détail",
@@ -68,7 +70,9 @@
       lPhone: "Phone",
       lTrip: "Transfer",
       lPeople: "Number of people",
-      lFlight: "flight / train no.",
+      lFlight: "flight no.", lCity: "departure city",
+      fFlight: "Flight number", fFlightBack: "Return flight number",
+      fCity: "Departure city (e.g. Casablanca, Rabat, Fez, Tangier…)", fCityBack: "Departure city: Marrakech",
       airport: "Marrakech-Menara airport",
       station: "Marrakech train station",
       lDetail: "Breakdown",
@@ -91,7 +95,9 @@
       lPhone: "Teléfono",
       lTrip: "Traslado",
       lPeople: "Número de personas",
-      lFlight: "n.º de vuelo / tren",
+      lFlight: "n.º de vuelo", lCity: "ciudad de salida",
+      fFlight: "N.º de vuelo", fFlightBack: "N.º de vuelo de regreso",
+      fCity: "Ciudad de salida (ej. Casablanca, Rabat, Fez, Tánger…)", fCityBack: "Ciudad de salida: Marrakech",
       airport: "Aeropuerto Marrakech-Menara",
       station: "Estación de Marrakech",
       lDetail: "Detalle",
@@ -102,6 +108,106 @@
 
   function money(n) {
     return n + " €";
+  }
+
+  /* Phone field: country selector (flag + dialling code) placed before the
+     number. The visible <input> loses its name; a hidden input with the
+     original name carries "+33 6 12 34 56 78" so PHP/e-mail stay unchanged. */
+  var COUNTRIES = [
+    ["FR", "33"], ["BE", "32"], ["CH", "41"], ["LU", "352"], ["ES", "34"], ["PT", "351"],
+    ["GB", "44"], ["IE", "353"], ["IT", "39"], ["DE", "49"], ["AT", "43"], ["NL", "31"],
+    ["DK", "45"], ["SE", "46"], ["NO", "47"], ["FI", "358"], ["PL", "48"], ["CZ", "420"],
+    ["GR", "30"], ["TR", "90"], ["MA", "212"], ["DZ", "213"], ["TN", "216"], ["SN", "221"],
+    ["US", "1"], ["CA", "1"], ["MX", "52"], ["BR", "55"], ["AR", "54"], ["CL", "56"],
+    ["CO", "57"], ["AU", "61"], ["NZ", "64"], ["JP", "81"], ["CN", "86"], ["IN", "91"],
+    ["AE", "971"], ["SA", "966"], ["QA", "974"], ["IL", "972"], ["RU", "7"], ["ZA", "27"]
+  ];
+  var DEFAULT_CC = { fr: "FR", en: "GB", es: "ES" };
+
+  function flag(iso) {
+    return String.fromCodePoint(0x1F1E6 + iso.charCodeAt(0) - 65, 0x1F1E6 + iso.charCodeAt(1) - 65);
+  }
+
+  function countryName(iso, lang) {
+    try {
+      if (window.Intl && Intl.DisplayNames) {
+        return new Intl.DisplayNames([lang], { type: "region" }).of(iso) || iso;
+      }
+    } catch (e) { /* fall through */ }
+    return iso;
+  }
+
+  function injectPhoneCss() {
+    if (document.getElementById("rm-tq-phone-css")) return;
+    var css = document.createElement("style");
+    css.id = "rm-tq-phone-css";
+    css.textContent =
+      ".rm-tq__phone{display:flex;gap:8px;margin-top:6px}" +
+      ".rm-tq__phone select.rm-tq__cc{width:auto;flex:0 0 auto;max-width:46%;margin-top:0;padding-left:10px;padding-right:28px}" +
+      ".rm-tq__phone input{flex:1 1 auto;min-width:0;margin-top:0}";
+    document.head.appendChild(css);
+  }
+
+  function enhancePhone(root, lang) {
+    var input = root.querySelector('[data-tq="phone"]');
+    if (!input || input.getAttribute("data-tq-cc-ready")) return function () { return ""; };
+    injectPhoneCss();
+    var fieldName = input.getAttribute("name");
+    var wrap = document.createElement("div");
+    wrap.className = "rm-tq__phone";
+    var select = document.createElement("select");
+    select.className = "rm-tq__cc";
+    select.setAttribute("data-tq", "phone_cc");
+    select.setAttribute("aria-label", lang === "en" ? "Country code" : lang === "es" ? "Prefijo internacional" : "Indicatif international");
+    var names = COUNTRIES.map(function (c) {
+      return { iso: c[0], code: c[1], name: countryName(c[0], lang) };
+    }).sort(function (a, b) { return a.name.localeCompare(b.name, lang); });
+    names.forEach(function (c) {
+      var o = document.createElement("option");
+      o.value = "+" + c.code;
+      o.setAttribute("data-iso", c.iso);
+      o.textContent = flag(c.iso) + " " + c.name + " (+" + c.code + ")";
+      if (c.iso === (DEFAULT_CC[lang] || "FR")) o.selected = true;
+      select.appendChild(o);
+    });
+    var hidden = document.createElement("input");
+    hidden.type = "hidden";
+    if (fieldName) hidden.name = fieldName;
+    input.removeAttribute("name");
+    input.setAttribute("data-tq-cc-ready", "1");
+    input.placeholder = "6 12 34 56 78";
+    input.parentNode.insertBefore(wrap, input);
+    wrap.appendChild(select);
+    wrap.appendChild(input);
+    wrap.appendChild(hidden);
+
+    function full() {
+      var n = input.value.trim().replace(/^\+\d+\s*/, "").replace(/^0+/, "");
+      return n ? select.value + " " + n : "";
+    }
+    function sync() {
+      /* Number typed with its own +code (e.g. +34 6…) : follow it. */
+      var m = /^\+(\d{1,3})/.exec(input.value.trim());
+      if (m) {
+        for (var i = 0; i < select.options.length; i++) {
+          if (select.options[i].value === "+" + m[1]) { select.selectedIndex = i; break; }
+        }
+      }
+      hidden.value = full();
+    }
+    input.addEventListener("input", sync);
+    select.addEventListener("change", sync);
+    sync();
+    return full;
+  }
+
+  function setLabelText(input, text) {
+    var label = input ? input.parentNode : null;
+    while (label && label.tagName !== "LABEL") label = label.parentNode;
+    if (!label) return;
+    var node = label.firstChild;
+    while (node && !(node.nodeType === 3 && node.nodeValue.trim())) node = node.nextSibling;
+    if (node) node.nodeValue = text + " ";
   }
 
   function minutes(time) {
@@ -163,6 +269,31 @@
 
     var arrivalBlock = root.querySelector("[data-tq-block='arrival']");
     var departureBlock = root.querySelector("[data-tq-block='departure']");
+    var phoneFull = enhancePhone(root, lang);
+    var currentKind = null;
+
+    /* Airport: flight numbers. Station: departure city on arrival, and the
+       departure leg always starts from Marrakech (pre-filled, read-only). */
+    function applyKind(kind) {
+      if (kind === currentKind) return;
+      currentKind = kind;
+      var arr = field("arr_num");
+      var dep = field("dep_num");
+      if (kind === "station") {
+        setLabelText(arr, t.fCity);
+        setLabelText(dep, t.fCityBack);
+        if (arr) { arr.placeholder = "Casablanca, Rabat, Fès…"; arr.setAttribute("autocomplete", "off"); }
+        if (dep) { dep.value = "Marrakech"; dep.readOnly = true; dep.setAttribute("data-tq-auto", "1"); }
+      } else {
+        setLabelText(arr, t.fFlight);
+        setLabelText(dep, t.fFlightBack);
+        if (arr) arr.placeholder = "";
+        if (dep) {
+          dep.readOnly = false;
+          if (dep.getAttribute("data-tq-auto")) { dep.value = ""; dep.removeAttribute("data-tq-auto"); }
+        }
+      }
+    }
 
     function setBlock(block, on) {
       if (!block) return;
@@ -189,6 +320,7 @@
 
       setBlock(arrivalBlock, wantsArrival);
       setBlock(departureBlock, wantsDeparture);
+      applyKind(kind);
 
       var rate = baseRate(kind, people);
       var lines = [];
@@ -248,16 +380,17 @@
       var lines = [brand(lang, t.waIntro), ""];
       lines.push(t.lName + " : " + (val("name") || "…"));
       if (val("ref")) lines.push(t.lRef + " : " + val("ref"));
-      lines.push(t.lPhone + " : " + (val("phone") || "…"));
+      lines.push(t.lPhone + " : " + (phoneFull() || val("phone") || "…"));
       lines.push(t.lTrip + " : " + kindLabel);
       lines.push(t.lPeople + " : " + q.people);
+      var numLabel = q.kind === "station" ? t.lCity : t.lFlight;
       if (q.trips !== "departure") {
         lines.push(t.arrival + " : " + (dateTime(val("arr_date"), val("arr_time")) || "…") +
-          (val("arr_num") ? " — " + t.lFlight + " " + val("arr_num") : ""));
+          (val("arr_num") ? " — " + numLabel + " " + val("arr_num") : ""));
       }
       if (q.trips !== "arrival") {
         lines.push(t.departure + " : " + (dateTime(val("dep_date"), val("dep_time")) || "…") +
-          (val("dep_num") ? " — " + t.lFlight + " " + val("dep_num") : ""));
+          (val("dep_num") ? " — " + numLabel + " " + val("dep_num") : ""));
       }
       if (q.quoteOnly) {
         lines.push("", t.quote);
@@ -345,6 +478,7 @@
     var depFields = root.querySelector("[data-tq-block='departure_fields']");
     var depPrice = root.querySelector("[data-tq-dep-price]");
     var cartPriceEl = root.querySelector("[data-tq-cart-price]");
+    var phoneFull = enhancePhone(root, lang);
 
     function money(n) { return n + " €"; }
     function val(name) {
@@ -441,7 +575,7 @@
       lines.push(t.formula + " : " + (q.formula === "cash" ? t.cash : t.online));
       lines.push(t.lName + " : " + (val("name") || "…"));
       if (val("ref")) lines.push(t.lRef + " : " + val("ref"));
-      lines.push(t.lPhone + " : " + (val("phone") || "…"));
+      lines.push(t.lPhone + " : " + (phoneFull() || val("phone") || "…"));
       lines.push(base.arrival + " : " + (dateTime(val("arr_date"), val("arr_time")) || "…") +
         (val("arr_num") ? " — " + t.lFlight + " " + val("arr_num") : "") +
         (val("arr_airline") ? " (" + val("arr_airline") + ")" : "") + " — " + t.lPeople + " : " + (val("people") || "…"));
