@@ -2,7 +2,9 @@
  * Riad Mylaya — protection anti-robots des formulaires.
  *
  * Sur chaque formulaire envoyé à /rm-envoi.php (ou envoi.php de l'espace commun) :
- *   - un second champ piège invisible (_url) ;
+ *   - un second champ piège invisible (_rm_ctrl — nom volontairement sans
+ *     signification pour que le remplissage automatique du navigateur ne le
+ *     complète jamais) ;
  *   - l'horodatage d'ouverture de la page (_ts), pour repérer les envois
  *     instantanés des robots ;
  *   - le widget Cloudflare Turnstile, invisible tant que Cloudflare ne juge pas
@@ -62,16 +64,19 @@
   }
 
   function trap(form) {
-    if (form.querySelector('[name="_url"]')) return;
+    if (form.querySelector('[name="_rm_ctrl"]')) return;
     var wrap = document.createElement("div");
     wrap.setAttribute("aria-hidden", "true");
     wrap.style.cssText =
       "position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;";
     var input = document.createElement("input");
     input.type = "text";
-    input.name = "_url";
+    input.name = "_rm_ctrl";
     input.tabIndex = -1;
     input.autocomplete = "off";
+    input.setAttribute("data-lpignore", "true");
+    input.setAttribute("data-1p-ignore", "true");
+    input.setAttribute("data-form-type", "other");
     wrap.appendChild(input);
     form.appendChild(wrap);
   }

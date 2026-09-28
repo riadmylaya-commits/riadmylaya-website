@@ -285,24 +285,34 @@ function rm_client_ip()
 }
 
 /** Signaux qu'aucun visiteur humain ne produit : champ piège rempli, formulaire
- *  envoyé en une fraction de seconde, horodatage absent alors que le script
- *  anti-robots l'ajoute sur toutes les pages. */
+ *  envoyé en une fraction de seconde, horodatage illisible.
+ *  Le remplissage automatique d'un navigateur peut compléter un champ piège
+ *  (l'ancien champ « _url » recevait l'adresse du site) : un piège rempli ne
+ *  suffit donc jamais seul à écarter une demande dont l'horodatage prouve
+ *  qu'elle a été saisie par une personne. */
 function rm_is_bot($CONFIG)
 {
-    foreach (array('_honey', '_url') as $trapField) {
+    $trapFilled = false;
+    foreach (array('_honey', '_rm_ctrl') as $trapField) {
         if (isset($_POST[$trapField]) && rm_clean($_POST[$trapField]) !== '') {
-            return true;
+            $trapFilled = true;
         }
     }
     if (!isset($_POST['_ts'])) {
-        return false;
+        return $trapFilled;
     }
     $ts = rm_clean($_POST['_ts']);
     if ($ts === '' || !ctype_digit($ts)) {
         return true;
     }
     $elapsed = time() - (int) ($ts / 1000);
-    return $elapsed < (int) $CONFIG['min_fill_seconds'] || $elapsed < 0;
+    if ($elapsed < (int) $CONFIG['min_fill_seconds'] || $elapsed < 0) {
+        return true;
+    }
+    if ($trapFilled) {
+        @error_log('[rm-envoi] piege rempli mais saisie humaine (' . $elapsed . ' s) : demande conservee');
+    }
+    return false;
 }
 
 function rm_rate_dir($CONFIG)
@@ -480,7 +490,7 @@ if (!rm_next_ok($next, $RM_BRAND['next_origins'])) {
 if (rm_is_bot($CONFIG)) {
     @error_log('[rm-envoi] rejet robot etab=' . $BRAND_NAME . ' ip=' . rm_client_ip()
         . ' honey=' . (isset($_POST['_honey']) ? strlen((string) $_POST['_honey']) : '-')
-        . ' url=' . (isset($_POST['_url']) ? strlen((string) $_POST['_url']) : '-')
+        . ' ctrl=' . (isset($_POST['_rm_ctrl']) ? strlen((string) $_POST['_rm_ctrl']) : '-')
         . ' ts=' . (isset($_POST['_ts']) ? rm_clean($_POST['_ts']) : '-'));
     header('Location: ' . $next, true, 303);
     exit;
