@@ -131,7 +131,7 @@
      browser region is only trusted when it agrees with the page language. */
   var REGIONS = {
     fr: ["FR", "BE", "CH", "CA", "LU", "MA", "DZ", "TN", "SN", "CI", "ML", "CM", "GA", "MR"],
-    es: ["ES", "MX", "AR", "CL", "CO", "PE", "UY", "VE", "EC", "CR", "PA", "DO", "US"],
+    es: ["ES", "MX", "AR", "CL", "CO", "PE", "UY", "VE", "EC", "CR", "PA", "DO"],
     en: null
   };
 
