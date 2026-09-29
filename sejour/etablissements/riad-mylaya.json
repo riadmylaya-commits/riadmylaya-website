@@ -53,6 +53,7 @@
   },
   "mail": {
     "to_email": "contact@riadmylaya.com",
+    "to_extra": ["riadmylaya@gmail.com"],
     "to_name": "Riad Mylaya",
     "from_name": "Riad Mylaya — Site web"
   }

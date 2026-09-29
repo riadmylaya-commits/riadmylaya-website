@@ -304,6 +304,7 @@ def main(argv):
     env = Environment(loader=FileSystemLoader(str(ROOT / "templates")), undefined=StrictUndefined,
                       autoescape=False, trim_blocks=True, lstrip_blocks=True, extensions=["jinja2.ext.do"])
     env.filters["urlq"] = lambda s: quote(s, safe="")
+    env.filters["php"] = lambda s: "'" + str(s).replace("\\", "\\\\").replace("'", "\\'") + "'"
     i18n = {l: json.loads((ROOT / "i18n" / (l + ".json")).read_text(encoding="utf-8")) for l in LANGS}
     services_all = load_services()
     files = sorted((ROOT / "etablissements").glob("*.json"))

@@ -12,6 +12,8 @@ return array(
     'from_name' => 'Riad Mylaya — Site web',
     'to_email' => 'contact@riadmylaya.com',
     'to_name' => 'Riad Mylaya',
+    // Autres boîtes qui reçoivent chaque demande, en plus de to_email.
+    'to_extra' => array('riadmylaya@gmail.com'),
     'bcc_email' => '',
     'whatsapp_country' => '212',
     'fallback_url' => 'https://formsubmit.co/contact@riadmylaya.com',

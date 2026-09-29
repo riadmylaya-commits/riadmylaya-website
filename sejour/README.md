@@ -62,9 +62,26 @@ propres sont servies par des `RewriteRule` dans le bloc « Riad Bilkis » du `.h
 Le jour où Dar Le Fennec ou Dardabakech a son propre domaine : changer `site.base_url`
 et `site.output_dir` dans son JSON, relancer le build — rien d'autre.
 
+## Destinataires des demandes
+
+Chaque établissement reçoit ses demandes uniquement sur les adresses de son bloc `mail` :
+`to_email` (adresse principale, aussi utilisée en réponse à l'accusé de réception du client)
+et `to_extra` (liste d'autres boîtes, facultative). Le `bcc_email` éventuel du
+`rm-mail-config.php` du hub n'est jamais appliqué aux établissements.
+
+| Établissement | Reçoit les demandes                          | WhatsApp          |
+|---------------|----------------------------------------------|-------------------|
+| Riad Mylaya   | contact@riadmylaya.com, riadmylaya@gmail.com | +212 661 351 989  |
+| Riad Bilkis   | riadbilkis@gmail.com                         | +212 625 675 494  |
+| Dar Le Fennec | darlefennec@gmail.com                        | +212 664 631 990  |
+| Dardabakech   | darlefennec@gmail.com                        | +212 664 631 990  |
+
+Les pages du Riad Mylaya (`public_html/`) postent vers `public_html/rm-envoi.php`, dont les
+valeurs par défaut (`to_email` + `to_extra`) suivent ce même tableau.
+
 ## Ajouter / modifier un établissement
 
-1. Copier `etablissements/dardabakech.json`, changer `id`, `name`, `grammar`, `contact`,
+1. Copier `etablissements/dardabakech.json`, changer `id`, `name`, `grammar`, `contact`, `mail`,
    `images`, `theme`, `stay`, `services` (chaque service a `enabled: true/false` et ses
    tarifs qui écrasent ceux de `public_html/rm-services-data.js`).
    Tant que les horaires (arrivée, bagages, départ, petit-déjeuner) ne sont pas connus :

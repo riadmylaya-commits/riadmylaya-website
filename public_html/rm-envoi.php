@@ -43,6 +43,8 @@ $CONFIG = array(
     'from_name' => 'Riad Mylaya — Site web',
     'to_email' => 'contact@riadmylaya.com',
     'to_name' => 'Riad Mylaya',
+    /* autres boîtes qui reçoivent chaque demande (en plus de to_email) */
+    'to_extra' => array('riadmylaya@gmail.com'),
     'bcc_email' => '',
     'whatsapp_country' => '212',
     'fallback_url' => 'https://formsubmit.co/contact@riadmylaya.com',
@@ -993,9 +995,23 @@ if ($name !== '') {
     $mailSubject .= ' · ' . $name;
 }
 
+$toExtra = array();
+if (isset($CONFIG['to_extra']) && is_array($CONFIG['to_extra'])) {
+    foreach ($CONFIG['to_extra'] as $one) {
+        $one = trim((string) $one);
+        if (filter_var($one, FILTER_VALIDATE_EMAIL) && strcasecmp($one, $CONFIG['to_email']) !== 0) {
+            $toExtra[] = $one;
+        }
+    }
+}
+$toExtra = array_values(array_unique($toExtra));
+
 $boundary = 'rmb' . bin2hex(random_bytes(8));
 $headers = 'From: ' . rm_mime_header($CONFIG['from_name']) . ' <' . $CONFIG['from_email'] . ">\r\n"
-    . 'To: ' . rm_mime_header($CONFIG['to_name']) . ' <' . $CONFIG['to_email'] . ">\r\n"
+    . 'To: ' . implode(', ', array_merge(
+        array(rm_mime_header($CONFIG['to_name']) . ' <' . $CONFIG['to_email'] . '>'),
+        $toExtra
+    )) . "\r\n"
     . 'Subject: ' . rm_mime_header($mailSubject) . "\r\n"
     . 'Date: ' . date('r') . "\r\n"
     . 'Message-ID: <' . bin2hex(random_bytes(10)) . '@' . $RM_BRAND['domain'] . '>' . "\r\n"
@@ -1028,7 +1044,7 @@ if ($cc) {
     $headers .= 'Cc: ' . implode(', ', $cc) . "\r\n";
 }
 
-$recipients = array($CONFIG['to_email']);
+$recipients = array_merge(array($CONFIG['to_email']), $toExtra);
 foreach ($cc as $one) {
     $recipients[] = $one;
 }
@@ -1079,6 +1095,7 @@ if (!$sent) {
     unset($post['_next'], $post['_template'], $post['_captcha']);
     $post['_captcha'] = 'false';
     $post['_subject'] = $mailSubject;
+    $post['_cc'] = implode(',', array_merge($toExtra, $cc));
     $ch = curl_init($CONFIG['fallback_url']);
     curl_setopt_array($ch, array(
         CURLOPT_POST => true,
