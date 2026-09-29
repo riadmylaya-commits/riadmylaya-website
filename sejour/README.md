@@ -76,6 +76,13 @@ et `to_extra` (liste d'autres boîtes, facultative). Le `bcc_email` éventuel du
 | Dar Le Fennec | darlefennec@gmail.com                        | +212 664 631 990  |
 | Dardabakech   | darlefennec@gmail.com                        | +212 664 631 990  |
 
+Expéditeur : par défaut toutes les demandes partent du compte SMTP commun
+(`contact@riadmylaya.com`, `rm-mail-config.php` du hub). Un établissement peut envoyer
+depuis sa propre adresse via `rm-mail-config-<id>.php` (non versionné) à la racine du hub ;
+le Riad Bilkis utilise ainsi `riadbilkis@gmail.com` (voir
+`hub/rm-mail-config-riad-bilkis.sample.php`, qui relit le mot de passe d'application Gmail
+dans `/home/riaductd/rb-mail-config.php`).
+
 Les pages du Riad Mylaya (`public_html/`) postent vers `public_html/rm-envoi.php`, dont les
 valeurs par défaut (`to_email` + `to_extra`) suivent ce même tableau.
 

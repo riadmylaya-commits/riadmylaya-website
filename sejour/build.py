@@ -295,7 +295,8 @@ def build_hub(etabs, env):
         if d.is_dir():
             shutil.copytree(d, hub / "assets" / d.name, dirs_exist_ok=True)
     shutil.copy(PUBLIC / "rm-envoi.php", hub / "rm-envoi.php")
-    for f in ("envoi.php", ".htaccess", "rm-mail-config.sample.php", "index.html"):
+    for f in ("envoi.php", ".htaccess", "rm-mail-config.sample.php", "rm-mail-config-riad-bilkis.sample.php",
+              "index.html"):
         shutil.copy(ROOT / "hub" / f, hub / f)
     write(hub / "etablissements.php", env.get_template("etablissements.php.j2").render(etabs=etabs, langs=LANGS, hub=HUB_URL))
 
