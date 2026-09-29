@@ -214,45 +214,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-  <!-- page14 (Découvrir Marrakech) -->
-  <url>
-    <loc>https://riadmylaya.com/page14</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/page14"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/page14"/>
-    <lastmod>2026-04-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://riadmylaya.com/en/page14</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/page14"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://riadmylaya.com/en/page14"/>
-    <lastmod>2026-04-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <!-- page16 (Cours de cuisine) -->
-  <url>
-    <loc>https://riadmylaya.com/page16</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://riadmylaya.com/page16"/>
-    <lastmod>2026-04-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <!-- page18 (Autres plaisirs) -->
-  <url>
-    <loc>https://riadmylaya.com/page18</loc>
-    <lastmod>2026-04-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <!-- page19 (Dîner traditionnel) -->
-  <url>
-    <loc>https://riadmylaya.com/page19</loc>
-    <lastmod>2026-04-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
   <!-- hammam-spa -->
   <url>
     <loc>https://riadmylaya.com/hammam-spa</loc>
