@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SignatureCanvas from 'react-signature-canvas';
@@ -9,41 +9,136 @@ import { api } from '../utils/api';
 
 const today = () => new Date().toISOString().split('T')[0];
 
+const DRAFT_KEY = 'riad_register_draft';
+const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
+const PHOTO_MAX_SIDE = 1600;
+
+const emptyForm = () => ({
+  room: '',
+  lastName: '',
+  firstName: '',
+  dateOfBirth: '',
+  placeOfBirth: '',
+  nationality: '',
+  occupation: '',
+  cinNumber: '',
+  moroccoEntryNumber: '',
+  arrivalDate: '',
+  departureDate: '',
+  accompanyingChildren: 0,
+  comingFrom: '',
+  goingTo: '',
+  passportNumber: '',
+  passportIssueDate: '',
+  passportIssuePlace: '',
+  permanentAddress: '',
+  registrationDate: today(),
+});
+
+type FormData = ReturnType<typeof emptyForm>;
+
+interface Draft {
+  savedAt: number;
+  form: FormData;
+  passportPhoto: string;
+  passportFileName: string;
+  signature: string;
+}
+
+function loadDraft(): Draft | null {
+  try {
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if (!raw) return null;
+    const draft = JSON.parse(raw) as Draft;
+    if (!draft.form || Date.now() - draft.savedAt > DRAFT_TTL_MS) {
+      localStorage.removeItem(DRAFT_KEY);
+      return null;
+    }
+    return draft;
+  } catch {
+    return null;
+  }
+}
+
+function saveDraft(draft: Omit<Draft, 'savedAt'>) {
+  try {
+    localStorage.setItem(DRAFT_KEY, JSON.stringify({ ...draft, savedAt: Date.now() }));
+  } catch {
+    try {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ ...draft, passportPhoto: '', signature: '', savedAt: Date.now() }));
+    } catch {
+      /* storage unavailable */
+    }
+  }
+}
+
+function clearDraft() {
+  try {
+    localStorage.removeItem(DRAFT_KEY);
+  } catch {
+    /* storage unavailable */
+  }
+}
+
+function readFileAsDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result as string);
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
+
+async function fileToResizedDataUrl(file: File): Promise<string> {
+  const original = await readFileAsDataUrl(file);
+  try {
+    const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+      const el = new Image();
+      el.onload = () => resolve(el);
+      el.onerror = () => reject(new Error('decode'));
+      el.src = original;
+    });
+    const scale = Math.min(1, PHOTO_MAX_SIDE / Math.max(img.width, img.height));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(img.width * scale);
+    canvas.height = Math.round(img.height * scale);
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return original;
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const resized = canvas.toDataURL('image/jpeg', 0.85);
+    return resized.length < original.length ? resized : original;
+  } catch {
+    return original;
+  }
+}
+
 export default function RegisterPage() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const sigCanvas = useRef<SignatureCanvas>(null);
   const isFr = i18n.language === 'fr';
 
-  const [form, setForm] = useState({
-    room: '',
-    lastName: '',
-    firstName: '',
-    dateOfBirth: '',
-    placeOfBirth: '',
-    nationality: '',
-    occupation: '',
-    cinNumber: '',
-    moroccoEntryNumber: '',
-    arrivalDate: '',
-    departureDate: '',
-    accompanyingChildren: 0,
-    comingFrom: '',
-    goingTo: '',
-    passportNumber: '',
-    passportIssueDate: '',
-    passportIssuePlace: '',
-    permanentAddress: '',
-    registrationDate: today(),
-  });
+  const [draft] = useState(loadDraft);
+  const [form, setForm] = useState<FormData>(() => ({ ...emptyForm(), ...(draft?.form ?? {}) }));
 
-  const [passportPhoto, setPassportPhoto] = useState<string>('');
-  const [passportFileName, setPassportFileName] = useState<string>('');
-  const [signatureData, setSignatureData] = useState<string>('');
+  const [passportPhoto, setPassportPhoto] = useState<string>(draft?.passportPhoto ?? '');
+  const [passportFileName, setPassportFileName] = useState<string>(draft?.passportFileName ?? '');
+  const [signatureData, setSignatureData] = useState<string>(draft?.signature ?? '');
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
+
+  useEffect(() => {
+    if (draft?.signature && sigCanvas.current) {
+      sigCanvas.current.fromDataURL(draft.signature);
+    }
+  }, [draft]);
+
+  useEffect(() => {
+    if (submitted) return;
+    saveDraft({ form, passportPhoto, passportFileName, signature: signatureData });
+  }, [form, passportPhoto, passportFileName, signatureData, submitted]);
 
   const updateField = (field: string, value: string | number) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -60,9 +155,8 @@ export default function RegisterPage() {
     const file = e.target.files?.[0];
     if (!file) return;
     setPassportFileName(file.name);
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPassportPhoto(reader.result as string);
+    fileToResizedDataUrl(file).then((dataUrl) => {
+      setPassportPhoto(dataUrl);
       if (attemptedSubmit) {
         setErrors((prev) => {
           const next = { ...prev };
@@ -70,8 +164,7 @@ export default function RegisterPage() {
           return next;
         });
       }
-    };
-    reader.readAsDataURL(file);
+    });
   };
 
   const clearSignature = () => {
@@ -146,6 +239,7 @@ export default function RegisterPage() {
         passportPhoto,
         signature: signatureData,
       });
+      clearDraft();
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch {
@@ -304,7 +398,6 @@ export default function RegisterPage() {
                   <input
                     type="file"
                     accept="image/*"
-                    capture="environment"
                     onChange={handlePhotoChange}
                     className="hidden"
                   />
