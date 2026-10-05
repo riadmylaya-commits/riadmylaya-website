@@ -183,7 +183,10 @@
         "min_people": 2,
         "max_people": 6,
         "price": 45,
-        "slots": ["10:30", "14:30"]
+        "slots": [
+          "10:30",
+          "14:30"
+        ]
       }
     },
     "excursions": {
@@ -191,7 +194,7 @@
     },
     "group": {
       "enabled": true,
-      "gyg_url": "https://gyg.me/pieHSnog",
+      "gyg_url": "https://gyg.me/aVIg37CJ",
       "gyg_query": "Marrakech, Morocco",
       "links": [
         {
@@ -218,7 +221,7 @@
             "en": "Book the visit",
             "es": "Reservar la visita"
           },
-          "url": "https://gyg.me/KuFWiDLL"
+          "url": "https://gyg.me/23MulxR0"
         },
         {
           "title": {
@@ -235,29 +238,29 @@
         },
         {
           "title": {
-            "fr": "Le Jardin Secret",
-            "en": "Le Jardin Secret",
-            "es": "Le Jardin Secret"
+            "fr": "Le Jardin Secret et Médersa Ben Youssef",
+            "en": "Le Jardin Secret & Ben Youssef Madrasa",
+            "es": "Le Jardin Secret y Madraza Ben Youssef"
           },
           "btn": {
             "fr": "Découvrir & réserver",
             "en": "Discover & book",
             "es": "Descubrir y reservar"
           },
-          "url": "https://gyg.me/IPgZa125"
+          "url": "https://gyg.me/PQAvoPm2"
         },
         {
           "title": {
-            "fr": "Tombeaux Saadiens",
-            "en": "Saadian Tombs",
-            "es": "Tumbas Saadíes"
+            "fr": "Tombeaux Saadiens – application de guide numérique",
+            "en": "Saadian Tombs – digital guide app",
+            "es": "Tumbas Saadíes – aplicación de guía digital"
           },
           "btn": {
             "fr": "Réserver la visite",
             "en": "Book the visit",
             "es": "Reservar la visita"
           },
-          "url": "https://gyg.me/ohTXhaBI"
+          "url": "https://gyg.me/dYXi81jI"
         },
         {
           "title": {
@@ -270,7 +273,7 @@
             "en": "Discover the medina",
             "es": "Descubrir la medina"
           },
-          "url": "https://gyg.me/iIZh8PWB"
+          "url": "https://gyg.me/cCQtT0lT"
         },
         {
           "title": {
@@ -283,7 +286,7 @@
             "en": "Book the visit",
             "es": "Reservar la visita"
           },
-          "url": "https://gyg.me/b680GqoK"
+          "url": "https://gyg.me/UIM5FgMu"
         },
         {
           "title": {
@@ -296,7 +299,7 @@
             "en": "Check availability",
             "es": "Ver disponibilidad"
           },
-          "url": "https://gyg.me/b0txvWuO"
+          "url": "https://gyg.me/3IarM3pg"
         },
         {
           "title": {
@@ -309,7 +312,7 @@
             "en": "Book the experience",
             "es": "Reservar la experiencia"
           },
-          "url": "https://gyg.me/BTiMnLnS"
+          "url": "https://gyg.me/FsxeOGU7"
         },
         {
           "title": {
@@ -322,7 +325,7 @@
             "en": "Book the experience",
             "es": "Reservar la experiencia"
           },
-          "url": "https://gyg.me/UC6eYFqj"
+          "url": "https://gyg.me/Zz6mcdIg"
         },
         {
           "title": {
@@ -335,7 +338,7 @@
             "en": "See the excursion",
             "es": "Ver la excursión"
           },
-          "url": "https://gyg.me/FP9b9D3W"
+          "url": "https://gyg.me/s1SaIL8f"
         },
         {
           "title": {
@@ -348,7 +351,7 @@
             "en": "See the excursion",
             "es": "Ver la excursión"
           },
-          "url": "https://gyg.me/73XechT1"
+          "url": "https://gyg.me/gWcwvW8D"
         },
         {
           "title": {
@@ -361,7 +364,7 @@
             "en": "See the excursion",
             "es": "Ver la excursión"
           },
-          "url": "https://gyg.me/1qPFh4dm"
+          "url": "https://gyg.me/vkt3oHan"
         },
         {
           "title": {
@@ -374,7 +377,7 @@
             "en": "See the excursion",
             "es": "Ver la excursión"
           },
-          "url": "https://gyg.me/pwMA7HSt"
+          "url": "https://gyg.me/JDOVgyI0"
         },
         {
           "title": {
@@ -387,7 +390,7 @@
             "en": "See the tour",
             "es": "Ver el circuito"
           },
-          "url": "https://gyg.me/NhEOk4Q6"
+          "url": "https://gyg.me/ds9DBtQa"
         }
       ],
       "btn": {
