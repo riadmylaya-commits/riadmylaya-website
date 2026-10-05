@@ -1,0 +1,1939 @@
+{
+  "_lisez_moi": "Base commune des excursions (Riad Mylaya / Riad Bilkis). Modifier ce seul fichier met a jour toutes les pages excursions. « pricing » sert de tarif par defaut ; « pricing_par_riad » permet un tarif different par riad (ex. \"bilkis\": {...}).",
+  "version": 1,
+  "updated": "2026-08-31",
+  "currency": "EUR",
+  "excursions": [
+    {
+      "slug": "3-vallees",
+      "order": 1,
+      "image": "3vallees.jpg",
+      "distance_km": 145,
+      "duration": {
+        "fr": "8 heures",
+        "en": "8 hours",
+        "es": "8 horas"
+      },
+      "title": {
+        "fr": "Les 3 Vallées de l'Atlas",
+        "en": "The 3 Valleys of the Atlas",
+        "es": "Los 3 Valles del Atlas"
+      },
+      "short": {
+        "fr": "Découvrez les plus belles vallées du Haut Atlas : la vallée de l'Ourika, Sidi Fares et la vallée d'Asni.",
+        "en": "Discover the finest valleys of the High Atlas: Ourika, Sidi Fares and Asni.",
+        "es": "Descubra los valles más bellos del Alto Atlas: Ourika, Sidi Fares y Asni."
+      },
+      "body": {
+        "fr": [
+          {
+            "type": "p",
+            "text": "L'excursion des 3 Vallées est une journée complète à la découverte des plus beaux paysages du Haut Atlas marocain. Vous traverserez trois vallées distinctes, chacune avec sa propre personnalité."
+          },
+          {
+            "type": "p",
+            "text": "Au programme :"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "La Vallée de l'Ourika avec ses villages berbères colorés",
+              "La Vallée de Sidi Fares et ses panoramas grandioses",
+              "La Vallée d'Asni, porte d'entrée vers le Toubkal",
+              "Pause thé à la menthe dans une maison berbère",
+              "Déjeuner traditionnel inclus"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Vous serez accompagné(e) d'un guide local qui partage avec passion les traditions et l'histoire de la région."
+          }
+        ],
+        "en": [
+          {
+            "type": "p",
+            "text": "The 3 Valleys excursion is a full day discovering the finest landscapes of the Moroccan High Atlas. You will cross three distinct valleys, each with its own personality."
+          },
+          {
+            "type": "p",
+            "text": "On the programme:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "The Ourika Valley and its colourful Berber villages",
+              "The Sidi Fares Valley and its sweeping panoramas",
+              "The Asni Valley, gateway to Mount Toubkal",
+              "Mint tea break in a Berber home",
+              "Traditional lunch included"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "You will be accompanied by a local guide who shares the traditions and history of the region with passion."
+          }
+        ],
+        "es": [
+          {
+            "type": "p",
+            "text": "La excursión de los 3 Valles es un día completo para descubrir los paisajes más bellos del Alto Atlas marroquí. Atravesará tres valles distintos, cada uno con su propia personalidad."
+          },
+          {
+            "type": "p",
+            "text": "En el programa:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "El valle de Ourika y sus coloridos pueblos berberes",
+              "El valle de Sidi Fares y sus panoramas grandiosos",
+              "El valle de Asni, puerta de entrada al Toubkal",
+              "Pausa con té a la menta en una casa bereber",
+              "Almuerzo tradicional incluido"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Le acompañará un guía local que comparte con pasión las tradiciones y la historia de la región."
+          }
+        ]
+      },
+      "included": {
+        "fr": [
+          "Transport aller-retour depuis le Riad",
+          "Guide local francophone",
+          "Visite des 3 vallées",
+          "Déjeuner traditionnel inclus",
+          "Pause thé chez l'habitant"
+        ],
+        "en": [
+          "Return transport from the riad",
+          "French-speaking local guide",
+          "Visit of the 3 valleys",
+          "Traditional lunch included",
+          "Mint tea break with a local family"
+        ],
+        "es": [
+          "Transporte de ida y vuelta desde el riad",
+          "Guía local francófono",
+          "Visita de los 3 valles",
+          "Almuerzo tradicional incluido",
+          "Pausa con té en casa de una familia"
+        ]
+      },
+      "excluded": {
+        "fr": [
+          "Boissons supplémentaires",
+          "Pourboires",
+          "Dépenses personnelles"
+        ],
+        "en": [
+          "Extra drinks",
+          "Tips",
+          "Personal expenses"
+        ],
+        "es": [
+          "Bebidas adicionales",
+          "Propinas",
+          "Gastos personales"
+        ]
+      },
+      "itinerary_title": {
+        "fr": "Itinéraire de la journée",
+        "en": "Itinerary of the day",
+        "es": "Itinerario de la jornada"
+      },
+      "itinerary": {
+        "fr": [
+          {
+            "time": "08h00",
+            "label": "Départ du riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Vallée de l'Ourika"
+          },
+          {
+            "time": "10h30",
+            "label": "Vallée de Sidi Fares"
+          },
+          {
+            "time": "12h00",
+            "label": "Déjeuner berbère"
+          },
+          {
+            "time": "13h30",
+            "label": "Vallée d'Asni"
+          },
+          {
+            "time": "15h00",
+            "label": "Pause thé à la menthe"
+          },
+          {
+            "time": "16h00",
+            "label": "Retour vers Marrakech"
+          }
+        ],
+        "en": [
+          {
+            "time": "08h00",
+            "label": "Departure from the riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Ourika Valley"
+          },
+          {
+            "time": "10h30",
+            "label": "Sidi Fares Valley"
+          },
+          {
+            "time": "12h00",
+            "label": "Berber lunch"
+          },
+          {
+            "time": "13h30",
+            "label": "Asni Valley"
+          },
+          {
+            "time": "15h00",
+            "label": "Mint tea break"
+          },
+          {
+            "time": "16h00",
+            "label": "Return to Marrakech"
+          }
+        ],
+        "es": [
+          {
+            "time": "08h00",
+            "label": "Salida del riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Valle de Ourika"
+          },
+          {
+            "time": "10h30",
+            "label": "Valle de Sidi Fares"
+          },
+          {
+            "time": "12h00",
+            "label": "Almuerzo bereber"
+          },
+          {
+            "time": "13h30",
+            "label": "Valle de Asni"
+          },
+          {
+            "time": "15h00",
+            "label": "Pausa con té a la menta"
+          },
+          {
+            "time": "16h00",
+            "label": "Regreso a Marrakech"
+          }
+        ]
+      },
+      "pricing": {
+        "type": "standard",
+        "min_people": 1,
+        "currency": "EUR",
+        "tiers": {
+          "1": 120,
+          "2": 75,
+          "3": 60,
+          "4": 50
+        }
+      },
+      "pricing_par_riad": {}
+    },
+    {
+      "slug": "imlil",
+      "order": 2,
+      "image": "imlil.jpg",
+      "distance_km": 80,
+      "duration": {
+        "fr": "8 heures",
+        "en": "8 hours",
+        "es": "8 horas"
+      },
+      "title": {
+        "fr": "Randonnée d'Imlil dans le Haut Atlas",
+        "en": "Imlil trek in the High Atlas",
+        "es": "Senderismo en Imlil, Alto Atlas"
+      },
+      "short": {
+        "fr": "Une magnifique randonnée au cœur du village d'Imlil, point de départ du célèbre mont Toubkal.",
+        "en": "A beautiful hike around the village of Imlil, gateway to Mount Toubkal.",
+        "es": "Una magnífica caminata en el pueblo de Imlil, punto de partida del monte Toubkal."
+      },
+      "body": {
+        "fr": [
+          {
+            "type": "p",
+            "text": "Imlil est le point de départ des randonnées vers le sommet du Toubkal, le plus haut sommet d'Afrique du Nord (4 167m). Ce village berbère accueillant offre une immersion totale dans la culture montagnarde."
+          },
+          {
+            "type": "p",
+            "text": "Ce qui vous attend :"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Randonnée guidée à travers les terrasses cultivées d'Imlil",
+              "Visite de villages berbères traditionnels",
+              "Vue imprenable sur le massif du Toubkal",
+              "Découverte de la kasbah du Toubkal",
+              "Déjeuner berbère traditionnel chez l'habitant"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Niveau de difficulté modéré. Prévoir des chaussures de marche confortables."
+          }
+        ],
+        "en": [
+          {
+            "type": "p",
+            "text": "Imlil is the starting point for treks to the summit of Toubkal, the highest peak in North Africa (4,167 m). This welcoming Berber village offers a full immersion in mountain culture."
+          },
+          {
+            "type": "p",
+            "text": "What awaits you:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Guided hike through the cultivated terraces of Imlil",
+              "Visit of traditional Berber villages",
+              "Stunning views of the Toubkal massif",
+              "Discovery of the Kasbah du Toubkal",
+              "Traditional Berber lunch with a local family"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Moderate difficulty. Comfortable walking shoes recommended."
+          }
+        ],
+        "es": [
+          {
+            "type": "p",
+            "text": "Imlil es el punto de partida de las caminatas hacia la cima del Toubkal, la más alta del norte de África (4.167 m). Este acogedor pueblo bereber ofrece una inmersión total en la cultura de montaña."
+          },
+          {
+            "type": "p",
+            "text": "Lo que le espera:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Caminata guiada por las terrazas cultivadas de Imlil",
+              "Visita de pueblos bereberes tradicionales",
+              "Vistas impresionantes del macizo del Toubkal",
+              "Descubrimiento de la Kasbah du Toubkal",
+              "Almuerzo bereber tradicional en casa de una familia"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Dificultad moderada. Se recomienda calzado de marcha cómodo."
+          }
+        ]
+      },
+      "included": {
+        "fr": [
+          "Transport aller-retour depuis le Riad",
+          "Guide de montagne certifié",
+          "Randonnée guidée",
+          "Déjeuner berbère chez l'habitant",
+          "Visite de la kasbah du Toubkal"
+        ],
+        "en": [
+          "Return transport from the riad",
+          "Certified mountain guide",
+          "Guided hike",
+          "Berber lunch with a local family",
+          "Visit of the Kasbah du Toubkal"
+        ],
+        "es": [
+          "Transporte de ida y vuelta desde el riad",
+          "Guía de montaña certificado",
+          "Caminata guiada",
+          "Almuerzo bereber en casa de una familia",
+          "Visita de la Kasbah du Toubkal"
+        ]
+      },
+      "excluded": {
+        "fr": [
+          "Boissons supplémentaires",
+          "Pourboires",
+          "Mule pour la montée (en option)"
+        ],
+        "en": [
+          "Extra drinks",
+          "Tips",
+          "Mule for the climb (optional)"
+        ],
+        "es": [
+          "Bebidas adicionales",
+          "Propinas",
+          "Mula para la subida (opcional)"
+        ]
+      },
+      "itinerary_title": {
+        "fr": "Itinéraire de la journée",
+        "en": "Itinerary of the day",
+        "es": "Itinerario de la jornada"
+      },
+      "itinerary": {
+        "fr": [
+          {
+            "time": "08h00",
+            "label": "Départ du riad"
+          },
+          {
+            "time": "09h30",
+            "label": "Arrivée à Imlil"
+          },
+          {
+            "time": "10h00",
+            "label": "Début de la randonnée"
+          },
+          {
+            "time": "12h30",
+            "label": "Déjeuner chez l'habitant"
+          },
+          {
+            "time": "14h00",
+            "label": "Visite de la kasbah"
+          },
+          {
+            "time": "15h30",
+            "label": "Retour vers Marrakech"
+          }
+        ],
+        "en": [
+          {
+            "time": "08h00",
+            "label": "Departure from the riad"
+          },
+          {
+            "time": "09h30",
+            "label": "Arrival in Imlil"
+          },
+          {
+            "time": "10h00",
+            "label": "Start of the hike"
+          },
+          {
+            "time": "12h30",
+            "label": "Lunch with a local family"
+          },
+          {
+            "time": "14h00",
+            "label": "Visit of the kasbah"
+          },
+          {
+            "time": "15h30",
+            "label": "Return to Marrakech"
+          }
+        ],
+        "es": [
+          {
+            "time": "08h00",
+            "label": "Salida del riad"
+          },
+          {
+            "time": "09h30",
+            "label": "Llegada a Imlil"
+          },
+          {
+            "time": "10h00",
+            "label": "Inicio de la caminata"
+          },
+          {
+            "time": "12h30",
+            "label": "Almuerzo en casa de una familia"
+          },
+          {
+            "time": "14h00",
+            "label": "Visita de la kasbah"
+          },
+          {
+            "time": "15h30",
+            "label": "Regreso a Marrakech"
+          }
+        ]
+      },
+      "pricing": {
+        "type": "standard",
+        "min_people": 1,
+        "currency": "EUR",
+        "tiers": {
+          "1": 130,
+          "2": 75,
+          "3": 60,
+          "4": 50
+        }
+      },
+      "pricing_par_riad": {}
+    },
+    {
+      "slug": "agafay",
+      "order": 3,
+      "image": "agafay.jpg",
+      "distance_km": 75,
+      "duration": {
+        "fr": "8 heures",
+        "en": "8 hours",
+        "es": "8 horas"
+      },
+      "title": {
+        "fr": "Désert d'Agafay, Lac Lalla Takerkoust & Atlas",
+        "en": "Agafay Desert, Lalla Takerkoust Lake & Atlas",
+        "es": "Desierto de Agafay, lago Lalla Takerkoust y Atlas"
+      },
+      "short": {
+        "fr": "Une excursion complète entre désert, lac et montagnes en une seule journée.",
+        "en": "A complete day between desert, lake and mountains.",
+        "es": "Una excursión completa entre desierto, lago y montañas en un solo día."
+      },
+      "body": {
+        "fr": [
+          {
+            "type": "p",
+            "text": "Cette excursion vous offre trois expériences en une seule journée : le désert pierreux d'Agafay, le magnifique lac Lalla Takerkoust et les premiers contreforts de l'Atlas."
+          },
+          {
+            "type": "p",
+            "text": "Points forts de l'excursion :"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Le désert d'Agafay, surnommé « le petit désert » de Marrakech",
+              "Le lac artificiel de Lalla Takerkoust, parfait pour des photos panoramiques",
+              "Panorama sur les montagnes enneigées du Haut Atlas",
+              "Balade en quad ou à dos de chameau (en option)",
+              "Déjeuner berbère avec vue sur le lac"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Une journée variée parfaite pour les amoureux de nature et de grands espaces."
+          }
+        ],
+        "en": [
+          {
+            "type": "p",
+            "text": "This excursion offers three experiences in a single day: the stony Agafay desert, the beautiful Lalla Takerkoust lake and the first foothills of the Atlas."
+          },
+          {
+            "type": "p",
+            "text": "Highlights:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "The Agafay desert, nicknamed Marrakech's “little desert”",
+              "The Lalla Takerkoust reservoir, perfect for panoramic photos",
+              "Views over the snow-capped High Atlas mountains",
+              "Quad bike or camel ride (optional)",
+              "Berber lunch overlooking the lake"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "A varied day, perfect for lovers of nature and wide open spaces."
+          }
+        ],
+        "es": [
+          {
+            "type": "p",
+            "text": "Esta excursión ofrece tres experiencias en un solo día: el desierto pedregoso de Agafay, el magnífico lago Lalla Takerkoust y las primeras laderas del Atlas."
+          },
+          {
+            "type": "p",
+            "text": "Puntos destacados:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "El desierto de Agafay, apodado «el pequeño desierto» de Marrakech",
+              "El lago artificial de Lalla Takerkoust, ideal para fotos panorámicas",
+              "Panorama de las montañas nevadas del Alto Atlas",
+              "Paseo en quad o en camello (opcional)",
+              "Almuerzo bereber con vistas al lago"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Un día variado, perfecto para los amantes de la naturaleza y los grandes espacios."
+          }
+        ]
+      },
+      "included": {
+        "fr": [
+          "Transport aller-retour depuis le Riad",
+          "Guide local francophone",
+          "Visite du désert d'Agafay",
+          "Déjeuner berbère avec vue",
+          "Arrêt au lac Lalla Takerkoust"
+        ],
+        "en": [
+          "Return transport from the riad",
+          "French-speaking local guide",
+          "Visit of the Agafay desert",
+          "Berber lunch with a view",
+          "Stop at Lalla Takerkoust lake"
+        ],
+        "es": [
+          "Transporte de ida y vuelta desde el riad",
+          "Guía local francófono",
+          "Visita del desierto de Agafay",
+          "Almuerzo bereber con vistas",
+          "Parada en el lago Lalla Takerkoust"
+        ]
+      },
+      "excluded": {
+        "fr": [
+          "Quad / balade en chameau (en option)",
+          "Boissons supplémentaires",
+          "Pourboires"
+        ],
+        "en": [
+          "Quad bike / camel ride (optional)",
+          "Extra drinks",
+          "Tips"
+        ],
+        "es": [
+          "Quad o paseo en camello (opcional)",
+          "Bebidas adicionales",
+          "Propinas"
+        ]
+      },
+      "itinerary_title": {
+        "fr": "Itinéraire de la journée",
+        "en": "Itinerary of the day",
+        "es": "Itinerario de la jornada"
+      },
+      "itinerary": {
+        "fr": [
+          {
+            "time": "08h00",
+            "label": "Départ du riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Désert d'Agafay"
+          },
+          {
+            "time": "10h30",
+            "label": "Lac Lalla Takerkoust"
+          },
+          {
+            "time": "12h00",
+            "label": "Déjeuner berbère"
+          },
+          {
+            "time": "14h00",
+            "label": "Panorama Atlas"
+          },
+          {
+            "time": "15h30",
+            "label": "Retour vers Marrakech"
+          }
+        ],
+        "en": [
+          {
+            "time": "08h00",
+            "label": "Departure from the riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Agafay desert"
+          },
+          {
+            "time": "10h30",
+            "label": "Lalla Takerkoust lake"
+          },
+          {
+            "time": "12h00",
+            "label": "Berber lunch"
+          },
+          {
+            "time": "14h00",
+            "label": "Atlas panorama"
+          },
+          {
+            "time": "15h30",
+            "label": "Return to Marrakech"
+          }
+        ],
+        "es": [
+          {
+            "time": "08h00",
+            "label": "Salida del riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Desierto de Agafay"
+          },
+          {
+            "time": "10h30",
+            "label": "Lago Lalla Takerkoust"
+          },
+          {
+            "time": "12h00",
+            "label": "Almuerzo bereber"
+          },
+          {
+            "time": "14h00",
+            "label": "Panorama del Atlas"
+          },
+          {
+            "time": "15h30",
+            "label": "Regreso a Marrakech"
+          }
+        ]
+      },
+      "pricing": {
+        "type": "standard",
+        "min_people": 1,
+        "currency": "EUR",
+        "tiers": {
+          "1": 120,
+          "2": 75,
+          "3": 60,
+          "4": 50
+        }
+      },
+      "pricing_par_riad": {}
+    },
+    {
+      "slug": "dromadaire-agafay",
+      "order": 4,
+      "image": "sunset-camel.jpg",
+      "distance_km": 40,
+      "duration": {
+        "fr": "4-5 heures",
+        "en": "4-5 hours",
+        "es": "4-5 horas"
+      },
+      "title": {
+        "fr": "Coucher de Soleil & Balade en Dromadaire à Agafay",
+        "en": "Sunset & camel ride in Agafay",
+        "es": "Puesta de sol y paseo en dromedario en Agafay"
+      },
+      "short": {
+        "fr": "Une expérience magique dans le désert au coucher du soleil avec balade en dromadaire.",
+        "en": "A magical desert experience at sunset, with a camel ride.",
+        "es": "Una experiencia mágica en el desierto al atardecer, con paseo en dromedario."
+      },
+      "body": {
+        "fr": [
+          {
+            "type": "p",
+            "text": "Vivez un moment magique dans le désert d'Agafay avec cette excursion en fin de journée. Le coucher de soleil sur les dunes rocheuses d'Agafay est un spectacle à couper le souffle."
+          },
+          {
+            "type": "p",
+            "text": "L'expérience comprend :"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Transport aller-retour depuis le Riad",
+              "Balade en dromadaire au coucher du soleil (30-45 min)",
+              "Thé à la menthe traditionnel dans un camp berbère",
+              "Moment photo face au coucher de soleil",
+              "Retour au Riad en soirée"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Une expérience romantique et inoubliable, idéale pour les couples."
+          }
+        ],
+        "en": [
+          {
+            "type": "p",
+            "text": "Enjoy a magical moment in the Agafay desert with this late-afternoon excursion. Sunset over the rocky dunes of Agafay is a breathtaking sight."
+          },
+          {
+            "type": "p",
+            "text": "The experience includes:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Return transport from the riad",
+              "Camel ride at sunset (30-45 min)",
+              "Traditional mint tea in a Berber camp",
+              "Photo stop facing the sunset",
+              "Evening return to the riad"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "A romantic and unforgettable experience, ideal for couples."
+          }
+        ],
+        "es": [
+          {
+            "type": "p",
+            "text": "Viva un momento mágico en el desierto de Agafay con esta excursión de final de jornada. La puesta de sol sobre las dunas rocosas de Agafay es un espectáculo impresionante."
+          },
+          {
+            "type": "p",
+            "text": "La experiencia incluye:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Transporte de ida y vuelta desde el riad",
+              "Paseo en dromedario al atardecer (30-45 min)",
+              "Té a la menta tradicional en un campamento bereber",
+              "Parada fotográfica frente a la puesta de sol",
+              "Regreso al riad por la noche"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Una experiencia romántica e inolvidable, ideal para parejas."
+          }
+        ]
+      },
+      "included": {
+        "fr": [
+          "Transport aller-retour depuis le Riad",
+          "Balade en dromadaire (30-45 min)",
+          "Thé à la menthe au camp berbère",
+          "Moment photo coucher de soleil"
+        ],
+        "en": [
+          "Return transport from the riad",
+          "Camel ride (30-45 min)",
+          "Mint tea at the Berber camp",
+          "Sunset photo stop"
+        ],
+        "es": [
+          "Transporte de ida y vuelta desde el riad",
+          "Paseo en dromedario (30-45 min)",
+          "Té a la menta en el campamento bereber",
+          "Parada fotográfica al atardecer"
+        ]
+      },
+      "excluded": {
+        "fr": [
+          "Dîner (en option)",
+          "Pourboires",
+          "Dépenses personnelles"
+        ],
+        "en": [
+          "Dinner (optional)",
+          "Tips",
+          "Personal expenses"
+        ],
+        "es": [
+          "Cena (opcional)",
+          "Propinas",
+          "Gastos personales"
+        ]
+      },
+      "itinerary_title": {
+        "fr": "Itinéraire de la journée",
+        "en": "Itinerary of the day",
+        "es": "Itinerario de la jornada"
+      },
+      "itinerary": {
+        "fr": [
+          {
+            "time": "16h00",
+            "label": "Départ du riad"
+          },
+          {
+            "time": "17h00",
+            "label": "Arrivée au désert d'Agafay"
+          },
+          {
+            "time": "17h30",
+            "label": "Balade en dromadaire"
+          },
+          {
+            "time": "18h30",
+            "label": "Thé au camp + coucher de soleil"
+          },
+          {
+            "time": "19h30",
+            "label": "Retour vers Marrakech"
+          }
+        ],
+        "en": [
+          {
+            "time": "16h00",
+            "label": "Departure from the riad"
+          },
+          {
+            "time": "17h00",
+            "label": "Arrival in the Agafay desert"
+          },
+          {
+            "time": "17h30",
+            "label": "Camel ride"
+          },
+          {
+            "time": "18h30",
+            "label": "Tea at the camp + sunset"
+          },
+          {
+            "time": "19h30",
+            "label": "Return to Marrakech"
+          }
+        ],
+        "es": [
+          {
+            "time": "16h00",
+            "label": "Salida del riad"
+          },
+          {
+            "time": "17h00",
+            "label": "Llegada al desierto de Agafay"
+          },
+          {
+            "time": "17h30",
+            "label": "Paseo en dromedario"
+          },
+          {
+            "time": "18h30",
+            "label": "Té en el campamento y puesta de sol"
+          },
+          {
+            "time": "19h30",
+            "label": "Regreso a Marrakech"
+          }
+        ]
+      },
+      "pricing": {
+        "type": "standard",
+        "min_people": 1,
+        "currency": "EUR",
+        "tiers": {
+          "1": 100,
+          "2": 60,
+          "3": 55,
+          "4": 50
+        }
+      },
+      "pricing_par_riad": {}
+    },
+    {
+      "slug": "essaouira",
+      "order": 5,
+      "image": "essaouira.jpg",
+      "distance_km": 170,
+      "duration": {
+        "fr": "10h30",
+        "en": "10.5 hours",
+        "es": "10 h 30"
+      },
+      "title": {
+        "fr": "Essaouira – Côte Atlantique",
+        "en": "Essaouira – Atlantic coast",
+        "es": "Essaouira – Costa Atlántica"
+      },
+      "short": {
+        "fr": "Une journée détente au bord de l'océan Atlantique dans une ville classée UNESCO.",
+        "en": "A relaxing day by the Atlantic Ocean in a UNESCO-listed town.",
+        "es": "Un día de relax junto al océano Atlántico en una ciudad declarada por la UNESCO."
+      },
+      "body": {
+        "fr": [
+          {
+            "type": "p",
+            "text": "Essaouira, la perle de l'Atlantique, est une ville portuaire fortifiée classée au patrimoine mondial de l'UNESCO. Son mélange unique de culture, d'art et de plages vous enchantera."
+          },
+          {
+            "type": "p",
+            "text": "Au programme de cette journée :"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Arrêt dans une coopérative d'huile d'argan en route",
+              "Visite libre de la médina d'Essaouira",
+              "Le port de pêche et le marché aux poissons",
+              "Les remparts et la sqala du port",
+              "Déjeuner de poisson frais face à l'océan",
+              "Temps libre pour profiter de la plage"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Une bouffée d'air frais et marin, loin de la chaleur de Marrakech."
+          }
+        ],
+        "en": [
+          {
+            "type": "p",
+            "text": "Essaouira, the pearl of the Atlantic, is a fortified port town listed as a UNESCO World Heritage Site. Its unique blend of culture, art and beaches will delight you."
+          },
+          {
+            "type": "p",
+            "text": "On the programme:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Stop at an argan oil cooperative on the way",
+              "Free visit of the Essaouira medina",
+              "The fishing port and the fish market",
+              "The ramparts and the Skala of the port",
+              "Fresh fish lunch facing the ocean",
+              "Free time to enjoy the beach"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "A breath of fresh sea air, far from the heat of Marrakech."
+          }
+        ],
+        "es": [
+          {
+            "type": "p",
+            "text": "Essaouira, la perla del Atlántico, es una ciudad portuaria fortificada declarada Patrimonio de la Humanidad por la UNESCO. Su mezcla única de cultura, arte y playas le encantará."
+          },
+          {
+            "type": "p",
+            "text": "En el programa de la jornada:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Parada en una cooperativa de aceite de argán durante el camino",
+              "Visita libre de la medina de Essaouira",
+              "El puerto pesquero y el mercado de pescado",
+              "Las murallas y la Skala del puerto",
+              "Almuerzo de pescado fresco frente al océano",
+              "Tiempo libre para disfrutar de la playa"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Una bocanada de aire marino, lejos del calor de Marrakech."
+          }
+        ]
+      },
+      "included": {
+        "fr": [
+          "Transport aller-retour depuis le Riad",
+          "Arrêt coopérative d'huile d'argan",
+          "Visite libre de la médina",
+          "Temps libre plage"
+        ],
+        "en": [
+          "Return transport from the riad",
+          "Stop at an argan oil cooperative",
+          "Free visit of the medina",
+          "Free time at the beach"
+        ],
+        "es": [
+          "Transporte de ida y vuelta desde el riad",
+          "Parada en una cooperativa de aceite de argán",
+          "Visita libre de la medina",
+          "Tiempo libre en la playa"
+        ]
+      },
+      "excluded": {
+        "fr": [
+          "Déjeuner (non inclus)",
+          "Activités nautiques",
+          "Pourboires",
+          "Dépenses personnelles"
+        ],
+        "en": [
+          "Lunch (not included)",
+          "Water sports",
+          "Tips",
+          "Personal expenses"
+        ],
+        "es": [
+          "Almuerzo (no incluido)",
+          "Actividades náuticas",
+          "Propinas",
+          "Gastos personales"
+        ]
+      },
+      "itinerary_title": {
+        "fr": "Itinéraire de la journée",
+        "en": "Itinerary of the day",
+        "es": "Itinerario de la jornada"
+      },
+      "itinerary": {
+        "fr": [
+          {
+            "time": "07h30",
+            "label": "Départ du riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Arrêt coopérative d'argan"
+          },
+          {
+            "time": "10h00",
+            "label": "Arrivée à Essaouira"
+          },
+          {
+            "time": "10h30",
+            "label": "Visite de la médina"
+          },
+          {
+            "time": "12h30",
+            "label": "Déjeuner face à l'océan"
+          },
+          {
+            "time": "14h00",
+            "label": "Temps libre / plage"
+          },
+          {
+            "time": "16h00",
+            "label": "Départ retour"
+          },
+          {
+            "time": "18h00",
+            "label": "Arrivée à Marrakech"
+          }
+        ],
+        "en": [
+          {
+            "time": "07h30",
+            "label": "Departure from the riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Argan cooperative stop"
+          },
+          {
+            "time": "10h00",
+            "label": "Arrival in Essaouira"
+          },
+          {
+            "time": "10h30",
+            "label": "Visit of the medina"
+          },
+          {
+            "time": "12h30",
+            "label": "Lunch facing the ocean"
+          },
+          {
+            "time": "14h00",
+            "label": "Free time / beach"
+          },
+          {
+            "time": "16h00",
+            "label": "Return departure"
+          },
+          {
+            "time": "18h00",
+            "label": "Arrival in Marrakech"
+          }
+        ],
+        "es": [
+          {
+            "time": "07h30",
+            "label": "Salida del riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Parada en la cooperativa de argán"
+          },
+          {
+            "time": "10h00",
+            "label": "Llegada a Essaouira"
+          },
+          {
+            "time": "10h30",
+            "label": "Visita de la medina"
+          },
+          {
+            "time": "12h30",
+            "label": "Almuerzo frente al océano"
+          },
+          {
+            "time": "14h00",
+            "label": "Tiempo libre / playa"
+          },
+          {
+            "time": "16h00",
+            "label": "Salida de regreso"
+          },
+          {
+            "time": "18h00",
+            "label": "Llegada a Marrakech"
+          }
+        ]
+      },
+      "pricing": {
+        "type": "flat_then_per_person",
+        "min_people": 1,
+        "currency": "EUR",
+        "flat_up_to": 3,
+        "flat_price": 120,
+        "price_4": 140,
+        "extra_per_person": 24
+      },
+      "pricing_par_riad": {}
+    },
+    {
+      "slug": "ouzoud",
+      "order": 6,
+      "image": "ouzoud.jpg",
+      "distance_km": 180,
+      "duration": {
+        "fr": "9h30",
+        "en": "9.5 hours",
+        "es": "9 h 30"
+      },
+      "title": {
+        "fr": "Cascades d'Ouzoud",
+        "en": "Ouzoud Waterfalls",
+        "es": "Cascadas de Ouzoud"
+      },
+      "short": {
+        "fr": "Les plus belles cascades du Maroc avec randonnée et déjeuner traditionnel.",
+        "en": "Morocco's most beautiful waterfalls, with a hike and a traditional lunch.",
+        "es": "Las cascadas más bellas de Marruecos, con caminata y almuerzo tradicional."
+      },
+      "body": {
+        "fr": [
+          {
+            "type": "p",
+            "text": "Les Cascades d'Ouzoud sont les plus spectaculaires du Maroc, avec une hauteur de plus de 110 mètres. Ce site naturel exceptionnel est un incontournable pour les amoureux de la nature."
+          },
+          {
+            "type": "p",
+            "text": "Votre journée comprend :"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Randonnée à travers les oliveraies jusqu'aux cascades",
+              "Observation des singes magots dans leur habitat naturel",
+              "Balade en barque au pied des cascades (en option)",
+              "Baignade dans les bassins naturels (selon saison)",
+              "Déjeuner traditionnel avec vue sur les cascades"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Prévoir des chaussures confortables et un maillot de bain en été."
+          }
+        ],
+        "en": [
+          {
+            "type": "p",
+            "text": "The Ouzoud Waterfalls are the most spectacular in Morocco, dropping more than 110 metres. This exceptional natural site is a must for nature lovers."
+          },
+          {
+            "type": "p",
+            "text": "Your day includes:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Hike through the olive groves down to the falls",
+              "Watching Barbary macaques in their natural habitat",
+              "Boat ride at the foot of the falls (optional)",
+              "Swimming in the natural pools (season permitting)",
+              "Traditional lunch with a view of the falls"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Bring comfortable shoes and a swimsuit in summer."
+          }
+        ],
+        "es": [
+          {
+            "type": "p",
+            "text": "Las cascadas de Ouzoud son las más espectaculares de Marruecos, con más de 110 metros de altura. Este excepcional paraje natural es imprescindible para los amantes de la naturaleza."
+          },
+          {
+            "type": "p",
+            "text": "Su jornada incluye:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Caminata entre olivares hasta las cascadas",
+              "Observación de los monos magots en su hábitat natural",
+              "Paseo en barca al pie de las cascadas (opcional)",
+              "Baño en las piscinas naturales (según la temporada)",
+              "Almuerzo tradicional con vistas a las cascadas"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Lleve calzado cómodo y bañador en verano."
+          }
+        ]
+      },
+      "included": {
+        "fr": [
+          "Transport aller-retour depuis le Riad",
+          "Guide local",
+          "Randonnée guidée aux cascades",
+          "Déjeuner traditionnel avec vue"
+        ],
+        "en": [
+          "Return transport from the riad",
+          "Local guide",
+          "Guided hike to the waterfalls",
+          "Traditional lunch with a view"
+        ],
+        "es": [
+          "Transporte de ida y vuelta desde el riad",
+          "Guía local",
+          "Caminata guiada hasta las cascadas",
+          "Almuerzo tradicional con vistas"
+        ]
+      },
+      "excluded": {
+        "fr": [
+          "Balade en barque (en option)",
+          "Boissons supplémentaires",
+          "Pourboires"
+        ],
+        "en": [
+          "Boat ride (optional)",
+          "Extra drinks",
+          "Tips"
+        ],
+        "es": [
+          "Paseo en barca (opcional)",
+          "Bebidas adicionales",
+          "Propinas"
+        ]
+      },
+      "itinerary_title": {
+        "fr": "Itinéraire de la journée",
+        "en": "Itinerary of the day",
+        "es": "Itinerario de la jornada"
+      },
+      "itinerary": {
+        "fr": [
+          {
+            "time": "07h30",
+            "label": "Départ du riad"
+          },
+          {
+            "time": "10h00",
+            "label": "Arrivée aux Cascades d'Ouzoud"
+          },
+          {
+            "time": "10h30",
+            "label": "Randonnée vers les cascades"
+          },
+          {
+            "time": "12h00",
+            "label": "Observation des singes magots"
+          },
+          {
+            "time": "13h00",
+            "label": "Déjeuner face aux cascades"
+          },
+          {
+            "time": "14h30",
+            "label": "Temps libre / baignade"
+          },
+          {
+            "time": "15h30",
+            "label": "Départ retour"
+          },
+          {
+            "time": "17h00",
+            "label": "Arrivée à Marrakech"
+          }
+        ],
+        "en": [
+          {
+            "time": "07h30",
+            "label": "Departure from the riad"
+          },
+          {
+            "time": "10h00",
+            "label": "Arrival at the Ouzoud Waterfalls"
+          },
+          {
+            "time": "10h30",
+            "label": "Hike down to the falls"
+          },
+          {
+            "time": "12h00",
+            "label": "Watching the Barbary macaques"
+          },
+          {
+            "time": "13h00",
+            "label": "Lunch facing the falls"
+          },
+          {
+            "time": "14h30",
+            "label": "Free time / swimming"
+          },
+          {
+            "time": "15h30",
+            "label": "Return departure"
+          },
+          {
+            "time": "17h00",
+            "label": "Arrival in Marrakech"
+          }
+        ],
+        "es": [
+          {
+            "time": "07h30",
+            "label": "Salida del riad"
+          },
+          {
+            "time": "10h00",
+            "label": "Llegada a las cascadas de Ouzoud"
+          },
+          {
+            "time": "10h30",
+            "label": "Caminata hacia las cascadas"
+          },
+          {
+            "time": "12h00",
+            "label": "Observación de los monos magots"
+          },
+          {
+            "time": "13h00",
+            "label": "Almuerzo frente a las cascadas"
+          },
+          {
+            "time": "14h30",
+            "label": "Tiempo libre / baño"
+          },
+          {
+            "time": "15h30",
+            "label": "Salida de regreso"
+          },
+          {
+            "time": "17h00",
+            "label": "Llegada a Marrakech"
+          }
+        ]
+      },
+      "pricing": {
+        "type": "standard",
+        "min_people": 1,
+        "currency": "EUR",
+        "tiers": {
+          "1": 150,
+          "2": 85,
+          "3": 70,
+          "4": 60
+        }
+      },
+      "pricing_par_riad": {}
+    },
+    {
+      "slug": "ourika",
+      "order": 7,
+      "image": "ourika.jpg",
+      "distance_km": 70,
+      "duration": {
+        "fr": "7 heures",
+        "en": "7 hours",
+        "es": "7 horas"
+      },
+      "title": {
+        "fr": "Vallée de l'Ourika",
+        "en": "Ourika Valley",
+        "es": "Valle de Ourika"
+      },
+      "short": {
+        "fr": "Une escapade nature à seulement quelques kilomètres de Marrakech.",
+        "en": "A nature escape just a few kilometres from Marrakech.",
+        "es": "Una escapada a la naturaleza a pocos kilómetros de Marrakech."
+      },
+      "body": {
+        "fr": [
+          {
+            "type": "p",
+            "text": "La Vallée de l'Ourika est l'une des destinations les plus prisées au départ de Marrakech. Située à seulement 70 km de la ville, cette vallée verdoyante offre un dépaysement total avec ses paysages de montagnes, ses villages berbères authentiques et ses rivières cristallines."
+          },
+          {
+            "type": "p",
+            "text": "Pendant cette excursion, vous découvrirez :"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Les villages berbères traditionnels perchés à flanc de montagne",
+              "Les cascades naturelles où vous pourrez vous rafraîchir",
+              "Le jardin botanique de la Bioaromatic avec ses plantes médicinales",
+              "Déjeuner traditionnel dans un restaurant local"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Idéale pour une escapade nature accessible et dépourvue de difficulté, cette excursion convient à tous les âges."
+          }
+        ],
+        "en": [
+          {
+            "type": "p",
+            "text": "The Ourika Valley is one of the most popular destinations from Marrakech. Just 70 km from the city, this green valley offers a complete change of scene with its mountain landscapes, authentic Berber villages and crystal-clear rivers."
+          },
+          {
+            "type": "p",
+            "text": "During this excursion you will discover:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Traditional Berber villages perched on the mountainside",
+              "The natural waterfalls where you can cool off",
+              "The Bioaromatic botanical garden and its medicinal plants",
+              "Traditional lunch in a local restaurant"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Ideal for an easy nature escape, this excursion suits all ages."
+          }
+        ],
+        "es": [
+          {
+            "type": "p",
+            "text": "El valle de Ourika es uno de los destinos más apreciados desde Marrakech. A solo 70 km de la ciudad, este valle verde ofrece un cambio total de aires con sus paisajes de montaña, sus auténticos pueblos bereberes y sus ríos cristalinos."
+          },
+          {
+            "type": "p",
+            "text": "Durante esta excursión descubrirá:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Los pueblos bereberes tradicionales en la ladera de la montaña",
+              "Las cascadas naturales donde podrá refrescarse",
+              "El jardín botánico Bioaromatic y sus plantas medicinales",
+              "Almuerzo tradicional en un restaurante local"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Ideal para una escapada a la naturaleza sencilla y sin dificultad, esta excursión es apta para todas las edades."
+          }
+        ]
+      },
+      "included": {
+        "fr": [
+          "Transport aller-retour depuis le Riad",
+          "Guide local francophone",
+          "Visite des villages berbères",
+          "Déjeuner traditionnel",
+          "Visite du jardin botanique"
+        ],
+        "en": [
+          "Return transport from the riad",
+          "French-speaking local guide",
+          "Visit of the Berber villages",
+          "Traditional lunch",
+          "Visit of the botanical garden"
+        ],
+        "es": [
+          "Transporte de ida y vuelta desde el riad",
+          "Guía local francófono",
+          "Visita de los pueblos bereberes",
+          "Almuerzo tradicional",
+          "Visita del jardín botánico"
+        ]
+      },
+      "excluded": {
+        "fr": [
+          "Boissons supplémentaires",
+          "Pourboires",
+          "Dépenses personnelles"
+        ],
+        "en": [
+          "Extra drinks",
+          "Tips",
+          "Personal expenses"
+        ],
+        "es": [
+          "Bebidas adicionales",
+          "Propinas",
+          "Gastos personales"
+        ]
+      },
+      "itinerary_title": {
+        "fr": "Itinéraire de la journée",
+        "en": "Itinerary of the day",
+        "es": "Itinerario de la jornada"
+      },
+      "itinerary": {
+        "fr": [
+          {
+            "time": "08h00",
+            "label": "Départ du riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Arrivée dans la Vallée de l'Ourika"
+          },
+          {
+            "time": "09h30",
+            "label": "Visite des villages berbères"
+          },
+          {
+            "time": "11h00",
+            "label": "Randonnée vers les cascades"
+          },
+          {
+            "time": "12h30",
+            "label": "Déjeuner traditionnel"
+          },
+          {
+            "time": "14h00",
+            "label": "Visite du jardin botanique"
+          },
+          {
+            "time": "15h00",
+            "label": "Retour vers Marrakech"
+          }
+        ],
+        "en": [
+          {
+            "time": "08h00",
+            "label": "Departure from the riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Arrival in the Ourika Valley"
+          },
+          {
+            "time": "09h30",
+            "label": "Visit of the Berber villages"
+          },
+          {
+            "time": "11h00",
+            "label": "Hike to the waterfalls"
+          },
+          {
+            "time": "12h30",
+            "label": "Traditional lunch"
+          },
+          {
+            "time": "14h00",
+            "label": "Visit of the botanical garden"
+          },
+          {
+            "time": "15h00",
+            "label": "Return to Marrakech"
+          }
+        ],
+        "es": [
+          {
+            "time": "08h00",
+            "label": "Salida del riad"
+          },
+          {
+            "time": "09h00",
+            "label": "Llegada al valle de Ourika"
+          },
+          {
+            "time": "09h30",
+            "label": "Visita de los pueblos bereberes"
+          },
+          {
+            "time": "11h00",
+            "label": "Caminata hacia las cascadas"
+          },
+          {
+            "time": "12h30",
+            "label": "Almuerzo tradicional"
+          },
+          {
+            "time": "14h00",
+            "label": "Visita del jardín botánico"
+          },
+          {
+            "time": "15h00",
+            "label": "Regreso a Marrakech"
+          }
+        ]
+      },
+      "pricing": {
+        "type": "standard",
+        "min_people": 1,
+        "currency": "EUR",
+        "tiers": {
+          "1": 100,
+          "2": 65,
+          "3": 55,
+          "4": 45
+        }
+      },
+      "pricing_par_riad": {}
+    },
+    {
+      "slug": "ouarzazate",
+      "order": 8,
+      "image": "ouarzazate.jpg",
+      "distance_km": 200,
+      "duration": {
+        "fr": "12 heures",
+        "en": "12 hours",
+        "es": "12 horas"
+      },
+      "title": {
+        "fr": "Ouarzazate & Aït Ben Haddou",
+        "en": "Ouarzazate & Aït Ben Haddou",
+        "es": "Uarzazat y Ait Ben Haddou"
+      },
+      "short": {
+        "fr": "Une immersion dans les paysages du sud marocain et ses célèbres kasbahs classées UNESCO.",
+        "en": "Southern Moroccan landscapes and its famous UNESCO kasbahs.",
+        "es": "Los paisajes del sur de Marruecos y sus famosas kasbahs de la UNESCO."
+      },
+      "body": {
+        "fr": [
+          {
+            "type": "p",
+            "text": "L'excursion vers Ouarzazate et Aït Ben Haddou est une aventure à travers les paysages spectaculaires du sud marocain. Le ksar d'Aït Ben Haddou, classé au patrimoine mondial de l'UNESCO, a servi de décor à de nombreux films hollywoodiens."
+          },
+          {
+            "type": "p",
+            "text": "Les temps forts de la journée :"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Traversée du col du Tizi n'Tichka (2 260 m) avec vues panoramiques",
+              "Visite du ksar d'Aït Ben Haddou",
+              "Visite des studios cinématographiques de Ouarzazate",
+              "Découverte de la kasbah de Taourirt",
+              "Déjeuner berbère dans un restaurant local"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Une immersion cinématographique dans les paysages désertiques les plus célèbres du Maroc."
+          }
+        ],
+        "en": [
+          {
+            "type": "p",
+            "text": "The excursion to Ouarzazate and Aït Ben Haddou is an adventure through the spectacular landscapes of southern Morocco. The ksar of Aït Ben Haddou, a UNESCO World Heritage Site, has been the setting for many Hollywood films."
+          },
+          {
+            "type": "p",
+            "text": "Highlights of the day:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Crossing the Tizi n'Tichka pass (2,260 m) with panoramic views",
+              "Visit of the ksar of Aït Ben Haddou",
+              "Visit of the Ouarzazate film studios",
+              "Discovery of the Taourirt kasbah",
+              "Berber lunch in a local restaurant"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "A cinematic immersion in Morocco's most famous desert landscapes."
+          }
+        ],
+        "es": [
+          {
+            "type": "p",
+            "text": "La excursión a Uarzazat y Ait Ben Haddou es una aventura por los paisajes espectaculares del sur de Marruecos. El ksar de Ait Ben Haddou, Patrimonio de la Humanidad por la UNESCO, ha servido de escenario a numerosas películas de Hollywood."
+          },
+          {
+            "type": "p",
+            "text": "Los momentos destacados de la jornada:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Paso del puerto de Tizi n'Tichka (2.260 m) con vistas panorámicas",
+              "Visita del ksar de Ait Ben Haddou",
+              "Visita de los estudios de cine de Uarzazat",
+              "Descubrimiento de la kasbah de Taourirt",
+              "Almuerzo bereber en un restaurante local"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Una inmersión cinematográfica en los paisajes desérticos más famosos de Marruecos."
+          }
+        ]
+      },
+      "included": {
+        "fr": [
+          "Transport aller-retour depuis le Riad",
+          "Guide local francophone",
+          "Visite du ksar d'Aït Ben Haddou",
+          "Visite des studios de cinéma",
+          "Déjeuner berbère"
+        ],
+        "en": [
+          "Return transport from the riad",
+          "French-speaking local guide",
+          "Visit of the ksar of Aït Ben Haddou",
+          "Visit of the film studios",
+          "Berber lunch"
+        ],
+        "es": [
+          "Transporte de ida y vuelta desde el riad",
+          "Guía local francófono",
+          "Visita del ksar de Ait Ben Haddou",
+          "Visita de los estudios de cine",
+          "Almuerzo bereber"
+        ]
+      },
+      "excluded": {
+        "fr": [
+          "Entrée aux studios (en option)",
+          "Boissons supplémentaires",
+          "Pourboires"
+        ],
+        "en": [
+          "Studio entrance fee (optional)",
+          "Extra drinks",
+          "Tips"
+        ],
+        "es": [
+          "Entrada a los estudios (opcional)",
+          "Bebidas adicionales",
+          "Propinas"
+        ]
+      },
+      "itinerary_title": {
+        "fr": "Itinéraire de la journée",
+        "en": "Itinerary of the day",
+        "es": "Itinerario de la jornada"
+      },
+      "itinerary": {
+        "fr": [
+          {
+            "time": "07h00",
+            "label": "Départ du riad"
+          },
+          {
+            "time": "09h30",
+            "label": "Col du Tizi n'Tichka (arrêt photo)"
+          },
+          {
+            "time": "10h30",
+            "label": "Arrivée au ksar d'Aït Ben Haddou"
+          },
+          {
+            "time": "12h30",
+            "label": "Déjeuner berbère"
+          },
+          {
+            "time": "14h00",
+            "label": "Studios cinématographiques"
+          },
+          {
+            "time": "15h30",
+            "label": "Kasbah de Taourirt"
+          },
+          {
+            "time": "16h30",
+            "label": "Départ retour"
+          },
+          {
+            "time": "19h00",
+            "label": "Arrivée à Marrakech"
+          }
+        ],
+        "en": [
+          {
+            "time": "07h00",
+            "label": "Departure from the riad"
+          },
+          {
+            "time": "09h30",
+            "label": "Tizi n'Tichka pass (photo stop)"
+          },
+          {
+            "time": "10h30",
+            "label": "Arrival at the ksar of Aït Ben Haddou"
+          },
+          {
+            "time": "12h30",
+            "label": "Berber lunch"
+          },
+          {
+            "time": "14h00",
+            "label": "Film studios"
+          },
+          {
+            "time": "15h30",
+            "label": "Taourirt kasbah"
+          },
+          {
+            "time": "16h30",
+            "label": "Return departure"
+          },
+          {
+            "time": "19h00",
+            "label": "Arrival in Marrakech"
+          }
+        ],
+        "es": [
+          {
+            "time": "07h00",
+            "label": "Salida del riad"
+          },
+          {
+            "time": "09h30",
+            "label": "Puerto de Tizi n'Tichka (parada fotográfica)"
+          },
+          {
+            "time": "10h30",
+            "label": "Llegada al ksar de Ait Ben Haddou"
+          },
+          {
+            "time": "12h30",
+            "label": "Almuerzo bereber"
+          },
+          {
+            "time": "14h00",
+            "label": "Estudios de cine"
+          },
+          {
+            "time": "15h30",
+            "label": "Kasbah de Taourirt"
+          },
+          {
+            "time": "16h30",
+            "label": "Salida de regreso"
+          },
+          {
+            "time": "19h00",
+            "label": "Llegada a Marrakech"
+          }
+        ]
+      },
+      "pricing": {
+        "type": "standard",
+        "min_people": 2,
+        "currency": "EUR",
+        "tiers": {
+          "2": 110,
+          "3": 95,
+          "4": 80
+        }
+      },
+      "pricing_par_riad": {}
+    }
+  ]
+}
