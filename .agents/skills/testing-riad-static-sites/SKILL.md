@@ -310,6 +310,25 @@ Related expectation to set with the requester: GetYourGuide has no Spanish rende
 products in this environment, so ES cards legitimately render in English; only *French* pages
 reached from EN/ES are a defect.
 
+The same signal works in reverse, and it is the cheapest way to audit a freshly regenerated
+batch: **on the FR page, a card whose destination renders in English (and in USD) is almost
+certainly a link that was NOT regenerated.** When the owner hands over "a new series of N short
+links", don't only diff the IDs against the old list — record the rendered destination language
+per card. Observed on `/activites-groupe` after the 2026 swap: the 14 new IDs all rendered
+French/EUR, while the two IDs carried over unchanged (`hHN8hT4m`, `46IcKWlP`) rendered in
+English/USD. The ID diff reports "no old IDs remain" and looks clean; only the rendered language
+exposes the partial regeneration. Report it as an inconsistency, not a defect.
+
+Two more things that bite on every batch:
+- The general "all activities" link appears **twice** (widget `[data-gyg-fallback]` + closing
+  banner), so `a[href*="gyg.me"]` returns **17** nodes for 16 links. Assert `ids.slice(0,16)`
+  against the expected list and that the 17th equals the 16th — a naive whole-array compare
+  fails on a correct page.
+- When the batch also retitles cards, the ID check and the copy check are independent: compare
+  the new card title with the *rendered* destination title, and report scope overlap between
+  adjacent cards by numeric `tNNNNNN` id (distinct product ids are **not** proof of distinct
+  offerings — `t556996` and `t603290` both sell Ben Youssef + Jardin Secret).
+
 Layout note: the cards use `.rb-acts__grid` with `repeat(3,1fr)`, `@media (max-width:992px)`
 → 2 columns and `@media (max-width:560px)` → 1 column. Measure the real column count by
 grouping `Math.round(getBoundingClientRect().left)` rather than reading the CSS. Bottom-aligned
