@@ -1,0 +1,33 @@
+<?php
+/* Généré par sejour/build.py depuis sejour/etablissements/*.json — ne pas modifier à la main. */
+return array(
+{% for e in etabs %}
+    '{{ e.id }}' => array(
+        'brand' => array(
+            'name' => {{ e.name|php }},
+            'city' => {{ e.city|php }},
+            'address' => {{ e.contact.address_footer|php }},
+            'domain' => {{ e.site.base_url.split('/')[2]|php }},
+            'phone' => {{ e.contact.phone_display|php }},
+            'email' => {{ e.contact.email|php }},
+            'of_fr' => {{ e.grammar.fr.of|php }},
+            'of_es' => {{ e.grammar.es.of|php }},
+            'ack_url' => array(
+{% for l in langs %}
+                '{{ l }}' => {{ (e.site.base_url ~ e.site.paths[l])|php }},
+{% endfor %}
+            ),
+            'next_origins' => array({{ ('https://' ~ e.site.base_url.split('/')[2])|php }}, {{ ('https://www.' ~ e.site.base_url.split('/')[2])|php }}, {{ hub|php }}),
+            'default_next' => {{ (e.site.base_url ~ e.site.thanks.fr)|php }},
+        ),
+        'mail' => array(
+            'to_email' => {{ e.mail.to_email|php }},
+            'to_extra' => array({% for x in e.mail.to_extra|default([]) %}{{ x|php }}{{ ", " if not loop.last }}{% endfor %}),
+            'to_name' => {{ e.mail.to_name|php }},
+            'from_name' => {{ e.mail.from_name|php }},
+            'bcc_email' => '',
+            'fallback_url' => {{ ('https://formsubmit.co/' ~ e.mail.to_email)|php }},
+        ),
+    ),
+{% endfor %}
+);
