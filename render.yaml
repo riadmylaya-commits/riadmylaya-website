@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: riadmylaya
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    envVars:
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
