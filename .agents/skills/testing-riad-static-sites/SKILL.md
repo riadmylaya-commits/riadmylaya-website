@@ -295,6 +295,21 @@ card links were generated under the *other* riad's account and resolve with
 always report the `cmp=` value per link rather than assuming, and note that the short links can
 only be regenerated in the GetYourGuide partner dashboard, not in this repo.
 
+**4. Does the destination render in the visitor's language?** This is the check that source
+parity hides, because all three languages intentionally ship the *same* 16 short-link IDs. Most
+`gyg.me` links let GetYourGuide negotiate locale from the browser, but some are generated with a
+locale baked in: links generated from the FR partner dashboard resolve to `getyourguide.fr` /
+`/fr-fr/...` and render a fully French page — French `<h1>`, French controls, FR/EUR — even for
+an EN or ES visitor (observed on `IPgZa125` and `iIZh8PWB`, and true of most of the 2026 batch).
+So when auditing a multilingual activity page, click the cards **from each
+language page** and record the *rendered page language*, not just the rendered title. A useful
+tell before clicking: in a redirect pre-sweep, the offending links land on `/marrakech-l208/`
+with a French slug while the healthy ones land on `/marrakesh-l208/` with an English slug —
+treat that only as a hint of which cards to click, never as the verdict (slugs go stale).
+Related expectation to set with the requester: GetYourGuide has no Spanish rendering for these
+products in this environment, so ES cards legitimately render in English; only *French* pages
+reached from EN/ES are a defect.
+
 Layout note: the cards use `.rb-acts__grid` with `repeat(3,1fr)`, `@media (max-width:992px)`
 → 2 columns and `@media (max-width:560px)` → 1 column. Measure the real column count by
 grouping `Math.round(getBoundingClientRect().left)` rather than reading the CSS. Bottom-aligned
