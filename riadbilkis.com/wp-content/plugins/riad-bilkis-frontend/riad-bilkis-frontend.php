@@ -12,6 +12,7 @@ require_once __DIR__ . '/riad-bilkis-i18n.php';
 require_once __DIR__ . '/riad-bilkis-blog.php';
 require_once __DIR__ . '/riad-bilkis-cookies.php';
 require_once __DIR__ . '/riad-bilkis-excursions.php';
+require_once __DIR__ . '/riad-bilkis-cf7.php';
 
 const RIAD_BILKIS_ACTIVITIES = array(
     'fr' => array('url' => '/activites-groupe',      'label' => 'Activités'),

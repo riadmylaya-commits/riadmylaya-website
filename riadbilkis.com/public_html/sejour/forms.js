@@ -7,9 +7,9 @@
 
   var MESSAGES = {
     fr: {
-      ok: "Merci ! Votre demande a bien ete envoyee. Nous vous confirmons par e-mail.",
-      err: "L'envoi a echoue. Ecrivez-nous sur WhatsApp ou a riadbilkis@gmail.com.",
-      missing: "Merci de completer les champs obligatoires.",
+      ok: "Merci ! Votre demande a bien \u00e9t\u00e9 envoy\u00e9e. Nous vous confirmons par e-mail.",
+      err: "L'envoi a \u00e9chou\u00e9. \u00c9crivez-nous sur WhatsApp ou \u00e0 riadbilkis@gmail.com.",
+      missing: "Merci de compl\u00e9ter les champs obligatoires.",
       sending: "Envoi en cours\u2026"
     },
     en: {
@@ -19,8 +19,8 @@
       sending: "Sending\u2026"
     },
     es: {
-      ok: "\u00a1Gracias! Su solicitud ha sido enviada. Le confirmaremos por correo electronico.",
-      err: "El envio ha fallado. Escribanos por WhatsApp o a riadbilkis@gmail.com.",
+      ok: "\u00a1Gracias! Su solicitud ha sido enviada. Le confirmaremos por correo electr\u00f3nico.",
+      err: "El env\u00edo ha fallado. Escr\u00edbanos por WhatsApp o a riadbilkis@gmail.com.",
       missing: "Complete los campos obligatorios, por favor.",
       sending: "Enviando\u2026"
     }
