@@ -221,6 +221,8 @@ body.rm-sheet-open{overflow:hidden}
 .rm-ps-acc__body{padding:4px 18px 24px;font-family:'Quicksand',sans-serif;border-top:1px solid #f4e9da}
 .rm-ps-acc__body p{font-size:15.5px;line-height:1.65;color:#555;margin:14px 0}
 .rm-ps-acc__body ul{margin:0 0 14px;padding-left:20px}
+.rm-ps-acc__body .rm-ps-acc__sub{margin:16px 0 4px;color:#3d2b1f}
+.rm-ps-acc__body .rm-ps-acc__sub + ul{margin-top:0}
 .rm-ps-acc__body li{font-size:15.5px;line-height:1.7;color:#555}
 .rm-ps-acc__meta{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:14px 0 16px}
 .rm-ps-acc__price{font-family:'Yanone Kaffeesatz',sans-serif;font-size:20px;color:var(--ink);letter-spacing:.5px}
@@ -398,20 +400,37 @@ body.rm-sheet-open{overflow:hidden}
         <span class="rm-ps-acc__thumb"><img src="/assets/images/transfert-marrakech.jpg" alt="Vehículo privado para los traslados del Riad Mylaya en Marrakech" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
           <h3>Traslado aeropuerto / estación</h3>
-          <p>Aeropuerto desde 20 € · Estación desde 12 €</p>
+          <p>Aeropuerto: desde 20 € · Estación: desde 12 €</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
       <div class="rm-ps-acc__body">
-      <p>Un conductor le espera en el aeropuerto o en la estación y le lleva directamente al riad. Precio fijo, sin negociar ni esperar.</p>
+      <p>Empiece su estancia con total tranquilidad: un conductor le recibe en el aeropuerto o en la estación y le lleva directamente al riad. <strong>El precio es fijo</strong>, sin negociar ni esperas adicionales.</p>
       <ul>
-        <li>Un conductor le espera con un cartel con su nombre; la espera está incluida aunque su vuelo se retrase.</li>
-        <li>Vehículo privado con aire acondicionado, precio fijo por vehículo sea cual sea el equipaje.</li>
-        <li>Aeropuerto: 20 € (1 a 4 pers.), 25 € (5-6), 30 € (7), 35 € (8) · Estación: 12 € (1 a 2 pers.), 17 € (3-4), 20 € (5-6).</li>
-        <li>Suplemento de 5 € entre las 22h00 y las 7h00 para el aeropuerto, y para las salidas de la estación entre las 3h00 y las 7h45.</li>
-        <li>Ida y vuelta al aeropuerto: 5 € de descuento en el traslado de salida, aplicados automáticamente.</li>
+        <li>Su conductor le espera <strong>con un cartel a nombre de Riad Mylaya</strong>. <strong>La espera está incluida, incluso si su vuelo se retrasa.</strong></li>
+        <li><strong>Vehículo privado con aire acondicionado</strong>, <strong>tarifa fija por vehículo</strong>, sea cual sea el equipaje.</li>
       </ul>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Aeropuerto desde 20 € · Estación desde 12 €</span> <span class="rm-ps-acc__pay">💵 A pagar en el riad en efectivo</span></p>
+      <p class="rm-ps-acc__sub"><strong>Tarifas aeropuerto:</strong></p>
+      <ul>
+        <li><strong>1 a 4 personas: 20 €</strong></li>
+        <li><strong>5 a 6 personas: 25 €</strong></li>
+        <li><strong>7 personas: 30 €</strong></li>
+        <li><strong>8 personas: 35 €</strong></li>
+      </ul>
+      <p class="rm-ps-acc__sub"><strong>Tarifas estación:</strong></p>
+      <ul>
+        <li><strong>1 a 2 personas: 12 €</strong></li>
+        <li><strong>3 a 4 personas: 17 €</strong></li>
+        <li><strong>5 a 6 personas: 20 €</strong></li>
+      </ul>
+      <p class="rm-ps-acc__sub"><strong>Suplementos:</strong></p>
+      <ul>
+        <li>Aeropuerto: <strong>+5 € entre las 22h00 y las 7h00</strong>.</li>
+        <li>Estación: <strong>+5 € para las salidas entre las 3h00 y las 7h45</strong>.</li>
+      </ul>
+      <p class="rm-ps-acc__sub"><strong>Ventaja ida y vuelta:</strong></p>
+      <p>Al reservar un traslado al aeropuerto de ida y vuelta, se beneficia automáticamente de un <strong>descuento de 5 € en el traslado de salida</strong>.</p>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Aeropuerto desde 20 € · Estación desde 12 €</span> <span class="rm-ps-acc__pay">💵 Pago: <strong>a pagar en el riad en efectivo</strong>.</span></p>
       <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Calcular y reservar mi traslado</h4>
       <p>Elija su trayecto: el precio aparece inmediatamente, con suplementos y descuento de ida y vuelta incluidos.</p>
       <div class="rm-tq" data-rm-tq data-lang="es">
@@ -487,13 +506,10 @@ body.rm-sheet-open{overflow:hidden}
               <label>Nombre completo de la reserva *
                 <input type="text" name="Nombre completo de la reserva" data-tq="name" required autocomplete="name">
               </label>
-              <label>N.º de reserva
-                <input type="text" name="N.º de reserva" data-tq="ref">
-              </label>
               <label>Teléfono / WhatsApp *
                 <input type="tel" data-rm-phone name="Teléfono / WhatsApp" data-tq="phone" required autocomplete="tel">
               </label>
-              <label>Correo electrónico
+              <label>Correo electrónico (opcional)
                 <input type="email" name="Correo electrónico" data-tq="mail" autocomplete="email">
               </label>
             </div>

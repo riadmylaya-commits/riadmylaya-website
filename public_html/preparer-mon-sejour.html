@@ -221,6 +221,8 @@ body.rm-sheet-open{overflow:hidden}
 .rm-ps-acc__body{padding:4px 18px 24px;font-family:'Quicksand',sans-serif;border-top:1px solid #f4e9da}
 .rm-ps-acc__body p{font-size:15.5px;line-height:1.65;color:#555;margin:14px 0}
 .rm-ps-acc__body ul{margin:0 0 14px;padding-left:20px}
+.rm-ps-acc__body .rm-ps-acc__sub{margin:16px 0 4px;color:#3d2b1f}
+.rm-ps-acc__body .rm-ps-acc__sub + ul{margin-top:0}
 .rm-ps-acc__body li{font-size:15.5px;line-height:1.7;color:#555}
 .rm-ps-acc__meta{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:14px 0 16px}
 .rm-ps-acc__price{font-family:'Yanone Kaffeesatz',sans-serif;font-size:20px;color:var(--ink);letter-spacing:.5px}
@@ -398,20 +400,37 @@ body.rm-sheet-open{overflow:hidden}
         <span class="rm-ps-acc__thumb"><img src="/assets/images/transfert-marrakech.jpg" alt="Véhicule privé pour les transferts du Riad Mylaya à Marrakech" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
           <h3>Transfert aéroport / gare</h3>
-          <p>Aéroport à partir de 20 € · Gare à partir de 12 €</p>
+          <p>Aéroport : à partir de 20 € · Gare : à partir de 12 €</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
       <div class="rm-ps-acc__body">
-      <p>Un chauffeur vous attend à l'aéroport ou à la gare et vous conduit directement au riad. Prix fixe, sans négociation ni attente.</p>
+      <p>Commencez votre séjour en toute sérénité : un chauffeur vous accueille à l'aéroport ou à la gare et vous conduit directement au riad. <strong>Le prix est fixe</strong>, sans négociation ni attente supplémentaire.</p>
       <ul>
-        <li>Un chauffeur vous attend avec un panneau à votre nom, l'attente est incluse même si votre vol est retardé.</li>
-        <li>Véhicule privé climatisé, prix fixe par véhicule quel que soit le nombre de bagages.</li>
-        <li>Aéroport : 20 € (1 à 4 pers.), 25 € (5-6), 30 € (7), 35 € (8) · Gare : 12 € (1 à 2 pers.), 17 € (3-4), 20 € (5-6).</li>
-        <li>Supplément de 5 € entre 22h00 et 7h00 pour l'aéroport, et pour les départs de la gare entre 3h00 et 7h45.</li>
-        <li>Aller-retour aéroport : 5 € de réduction sur le transfert de départ, appliqués automatiquement.</li>
+        <li>Votre chauffeur vous attend <strong>avec un panneau au nom de Riad Mylaya</strong>. <strong>L'attente est incluse, même en cas de retard de votre vol.</strong></li>
+        <li><strong>Véhicule privé climatisé</strong>, <strong>tarif fixe par véhicule</strong>, quel que soit le nombre de bagages.</li>
       </ul>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Aéroport à partir de 20 € · Gare à partir de 12 €</span> <span class="rm-ps-acc__pay">💵 À régler sur place en espèces</span></p>
+      <p class="rm-ps-acc__sub"><strong>Tarifs aéroport :</strong></p>
+      <ul>
+        <li><strong>1 à 4 personnes : 20 €</strong></li>
+        <li><strong>5 à 6 personnes : 25 €</strong></li>
+        <li><strong>7 personnes : 30 €</strong></li>
+        <li><strong>8 personnes : 35 €</strong></li>
+      </ul>
+      <p class="rm-ps-acc__sub"><strong>Tarifs gare :</strong></p>
+      <ul>
+        <li><strong>1 à 2 personnes : 12 €</strong></li>
+        <li><strong>3 à 4 personnes : 17 €</strong></li>
+        <li><strong>5 à 6 personnes : 20 €</strong></li>
+      </ul>
+      <p class="rm-ps-acc__sub"><strong>Suppléments :</strong></p>
+      <ul>
+        <li>Aéroport : <strong>+5 € entre 22h00 et 7h00</strong>.</li>
+        <li>Gare : <strong>+5 € pour les départs entre 3h00 et 7h45</strong>.</li>
+      </ul>
+      <p class="rm-ps-acc__sub"><strong>Avantage aller-retour :</strong></p>
+      <p>Pour toute réservation d'un transfert aéroport aller-retour, bénéficiez automatiquement d'une <strong>réduction de 5 € sur le transfert de départ</strong>.</p>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Aéroport à partir de 20 € · Gare à partir de 12 €</span> <span class="rm-ps-acc__pay">💵 Paiement : <strong>à régler sur place en espèces</strong>.</span></p>
       <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Calculer et réserver mon transfert</h4>
       <p>Choisissez votre trajet : le prix s'affiche immédiatement, suppléments et remise aller-retour inclus.</p>
       <div class="rm-tq" data-rm-tq data-lang="fr">
@@ -487,13 +506,10 @@ body.rm-sheet-open{overflow:hidden}
               <label>Nom complet de la réservation *
                 <input type="text" name="Nom complet de la réservation" data-tq="name" required autocomplete="name">
               </label>
-              <label>N° de réservation
-                <input type="text" name="N° de réservation" data-tq="ref">
-              </label>
               <label>Téléphone / WhatsApp *
                 <input type="tel" data-rm-phone name="Téléphone / WhatsApp" data-tq="phone" required autocomplete="tel">
               </label>
-              <label>E-mail
+              <label>E-mail (facultatif)
                 <input type="email" name="E-mail" data-tq="mail" autocomplete="email">
               </label>
             </div>

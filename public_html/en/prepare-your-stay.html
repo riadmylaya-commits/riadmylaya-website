@@ -221,6 +221,8 @@ body.rm-sheet-open{overflow:hidden}
 .rm-ps-acc__body{padding:4px 18px 24px;font-family:'Quicksand',sans-serif;border-top:1px solid #f4e9da}
 .rm-ps-acc__body p{font-size:15.5px;line-height:1.65;color:#555;margin:14px 0}
 .rm-ps-acc__body ul{margin:0 0 14px;padding-left:20px}
+.rm-ps-acc__body .rm-ps-acc__sub{margin:16px 0 4px;color:#3d2b1f}
+.rm-ps-acc__body .rm-ps-acc__sub + ul{margin-top:0}
 .rm-ps-acc__body li{font-size:15.5px;line-height:1.7;color:#555}
 .rm-ps-acc__meta{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:14px 0 16px}
 .rm-ps-acc__price{font-family:'Yanone Kaffeesatz',sans-serif;font-size:20px;color:var(--ink);letter-spacing:.5px}
@@ -398,20 +400,37 @@ body.rm-sheet-open{overflow:hidden}
         <span class="rm-ps-acc__thumb"><img src="/assets/images/transfert-marrakech.jpg" alt="Private vehicle for Riad Mylaya transfers in Marrakech" width="148" height="120" loading="lazy"></span>
         <span class="rm-ps-acc__txt">
           <h3>Airport / station transfer</h3>
-          <p>Airport from 20 € · Train station from 12 €</p>
+          <p>Airport: from 20 € · Train station: from 12 €</p>
         </span>
         <span class="rm-ps-acc__chev" aria-hidden="true">⌄</span>
       </summary>
       <div class="rm-ps-acc__body">
-      <p>A driver waits for you at the airport or the train station and takes you straight to the riad. Fixed price, no haggling, no waiting.</p>
+      <p>Start your stay with complete peace of mind: a driver welcomes you at the airport or the train station and takes you straight to the riad. <strong>The price is fixed</strong>, with no haggling and no extra waiting.</p>
       <ul>
-        <li>A driver waits for you with a sign bearing your name; waiting time is included even if your flight is delayed.</li>
-        <li>Private air-conditioned vehicle, fixed price per vehicle whatever the amount of luggage.</li>
-        <li>Airport: 20 € (1 to 4 people), 25 € (5-6), 30 € (7), 35 € (8) · Train station: 12 € (1 to 2 people), 17 € (3-4), 20 € (5-6).</li>
-        <li>5 € surcharge between 10 pm and 7 am for the airport, and for station departures between 3 am and 7:45 am.</li>
-        <li>Airport return trip: 5 € off the departure transfer, applied automatically.</li>
+        <li>Your driver waits for you <strong>with a Riad Mylaya sign</strong>. <strong>Waiting time is included, even if your flight is delayed.</strong></li>
+        <li><strong>Private air-conditioned vehicle</strong>, <strong>fixed price per vehicle</strong>, whatever the amount of luggage.</li>
       </ul>
-      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Airport from 20 € · Train station from 12 €</span> <span class="rm-ps-acc__pay">💵 Paid on site in cash</span></p>
+      <p class="rm-ps-acc__sub"><strong>Airport rates:</strong></p>
+      <ul>
+        <li><strong>1 to 4 people: 20 €</strong></li>
+        <li><strong>5 to 6 people: 25 €</strong></li>
+        <li><strong>7 people: 30 €</strong></li>
+        <li><strong>8 people: 35 €</strong></li>
+      </ul>
+      <p class="rm-ps-acc__sub"><strong>Train station rates:</strong></p>
+      <ul>
+        <li><strong>1 to 2 people: 12 €</strong></li>
+        <li><strong>3 to 4 people: 17 €</strong></li>
+        <li><strong>5 to 6 people: 20 €</strong></li>
+      </ul>
+      <p class="rm-ps-acc__sub"><strong>Surcharges:</strong></p>
+      <ul>
+        <li>Airport: <strong>+5 € between 10:00 pm and 7:00 am</strong>.</li>
+        <li>Train station: <strong>+5 € for departures between 3:00 am and 7:45 am</strong>.</li>
+      </ul>
+      <p class="rm-ps-acc__sub"><strong>Return-trip advantage:</strong></p>
+      <p>When you book a return airport transfer, you automatically get <strong>5 € off the departure transfer</strong>.</p>
+      <p class="rm-ps-acc__meta"><span class="rm-ps-acc__price">Airport from 20 € · Train station from 12 €</span> <span class="rm-ps-acc__pay">💵 Payment: <strong>paid on site in cash</strong>.</span></p>
       <h4 style="font-family:'Yanone Kaffeesatz',sans-serif;font-size:22px;color:#8a6a3b;margin:22px 0 4px;letter-spacing:.5px">Calculate and book my transfer</h4>
       <p>Choose your trip: the price appears immediately, surcharges and return discount included.</p>
       <div class="rm-tq" data-rm-tq data-lang="en">
@@ -487,13 +506,10 @@ body.rm-sheet-open{overflow:hidden}
               <label>Full name on the booking *
                 <input type="text" name="Full name on the booking" data-tq="name" required autocomplete="name">
               </label>
-              <label>Booking number
-                <input type="text" name="Booking number" data-tq="ref">
-              </label>
               <label>Phone / WhatsApp *
                 <input type="tel" data-rm-phone name="Phone / WhatsApp" data-tq="phone" required autocomplete="tel">
               </label>
-              <label>Email
+              <label>Email (optional)
                 <input type="email" name="Email" data-tq="mail" autocomplete="email">
               </label>
             </div>
