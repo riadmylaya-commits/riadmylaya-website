@@ -54,7 +54,7 @@
       early: "early departure surcharge (3–7:45 am)",
       discount: "return discount",
       total: "Total to pay on site",
-      cash: "Paid on site in cash, on the day of the transfer.",
+      cash: "Paid on site, on the day of the transfer.",
       quote: "For 7 people or more, please contact us so that we can arrange a suitable vehicle.",
       incomplete: "Fill in the dates and times to see your total.",
       waIntro: "Hello, I would like to book a transfer with Riad Mylaya.",

@@ -58,7 +58,7 @@
       none: "— None —",
       choose: "— Choose —",
       total: "Estimated total",
-      cash: "Paid on site in cash.",
+      cash: "Paid on site.",
       spaCash: "Indicative amount, paid directly at the spa.",
       incomplete: "Choose the date to complete your request.",
       perPerson: "/ person",
