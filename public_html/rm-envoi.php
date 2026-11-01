@@ -10,7 +10,29 @@
  * qu'aucune demande client ne puisse être perdue.
  *
  * Le mot de passe vit dans rm-mail-config.php, non versionné.
+ *
+ * Multi-établissements : un script appelant peut définir $RM_BRAND (nom,
+ * adresse, téléphone, e-mail, URLs de retour, hôtes de redirection autorisés)
+ * et $RM_CONFIG_OVERRIDE avant d'inclure ce fichier ; sans cela, les valeurs
+ * du Riad Mylaya s'appliquent.
  */
+
+$RM_BRAND = array_merge(array(
+    'name' => 'Riad Mylaya',
+    'city' => 'Marrakech',
+    'address' => '163 Derb Bounba, Arset Ihiri, Médina, Marrakech',
+    'domain' => 'riadmylaya.com',
+    'phone' => '+212 661 351 989',
+    'email' => 'contact@riadmylaya.com',
+    'ack_url' => array(
+        'fr' => 'https://riadmylaya.com/preparer-mon-sejour',
+        'en' => 'https://riadmylaya.com/en/prepare-your-stay',
+        'es' => 'https://riadmylaya.com/es/preparar-mi-estancia',
+    ),
+    /* origines (https://hôte) vers lesquelles _next peut rediriger */
+    'next_origins' => array('https://riadmylaya.com', 'https://www.riadmylaya.com'),
+    'default_next' => '/merci',
+), isset($RM_BRAND) && is_array($RM_BRAND) ? $RM_BRAND : array());
 
 $CONFIG = array(
     'smtp_host' => 'mail.privateemail.com',
@@ -37,6 +59,7 @@ $CONFIG = array(
     'rate_dir' => '',
     /* un formulaire rempli en moins de N secondes vient d'un robot */
     'min_fill_seconds' => 3,
+    'ehlo_host' => 'riadmylaya.com',
 );
 $local = __DIR__ . '/rm-mail-config.php';
 if (is_readable($local)) {
@@ -45,6 +68,12 @@ if (is_readable($local)) {
         $CONFIG = array_merge($CONFIG, $override);
     }
 }
+if (isset($RM_CONFIG_OVERRIDE) && is_array($RM_CONFIG_OVERRIDE)) {
+    $CONFIG = array_merge($CONFIG, $RM_CONFIG_OVERRIDE);
+}
+$BRAND_NAME = $RM_BRAND['name'];
+$BRAND_SIGN = $RM_BRAND['name'] . ' — ' . $RM_BRAND['address'];
+$BRAND_CONTACT = $RM_BRAND['phone'] . ' · ' . $RM_BRAND['email'];
 
 $T = array(
     'fr' => array(
@@ -53,20 +82,20 @@ $T = array(
         'details' => 'Détails de la réservation',
         'payment' => 'Paiement',
         'total' => 'Montant total',
-        'cash' => 'À régler sur place en espèces.',
+        'cash' => 'À régler sur place.',
         'confirm' => 'Demande à confirmer par le riad',
         'call' => 'Appeler',
         'wa' => 'WhatsApp',
         'reply' => 'Répondre par e-mail',
         'received' => 'Reçue le',
         'service' => 'Demande client',
-        'foot' => 'Message envoyé automatiquement depuis riadmylaya.com',
+        'foot' => 'Message envoyé automatiquement depuis ' . $RM_BRAND['domain'],
         'name' => 'Nom complet de la réservation',
         'nomail' => 'Le client n’a pas laissé d’adresse e-mail.',
         'booked' => 'Service demandé',
         'title_q' => 'Nouvelle question d’un client',
         'message' => 'Message du client',
-        'ack_subject' => 'Votre demande a bien été reçue – Riad Mylaya',
+        'ack_subject' => 'Votre demande a bien été reçue – ' . $BRAND_NAME,
         'ack_title' => 'Votre demande a bien été reçue',
         'ack_hello' => 'Bonjour',
         'ack_intro' => 'Merci. Nous avons bien reçu votre demande concernant %s.',
@@ -75,9 +104,9 @@ $T = array(
         'ack_notice' => 'Votre demande a bien été reçue. Notre équipe va vérifier la disponibilité et vous confirmer la réservation. Cet e-mail confirme la réception de votre demande, mais pas encore la disponibilité définitive du service.',
         'ack_notice_q' => 'Notre équipe vous répondra rapidement.',
         'ack_back' => 'Retour à Préparer mon séjour',
-        'ack_url' => 'https://riadmylaya.com/preparer-mon-sejour',
-        'ack_sign' => "À très bientôt,\nL'équipe du Riad Mylaya",
-        'ack_contact' => 'Tél. / WhatsApp : +212 661 351 989 · contact@riadmylaya.com',
+        'ack_url' => $RM_BRAND['ack_url']['fr'],
+        'ack_sign' => "À très bientôt,\nL'équipe " . (isset($RM_BRAND['of_fr']) ? $RM_BRAND['of_fr'] : 'du ' . $BRAND_NAME),
+        'ack_contact' => 'Tél. / WhatsApp : ' . $BRAND_CONTACT,
         'lang' => 'fr',
         'stop_title' => 'Nous n’avons pas pu envoyer votre demande',
         'stop_text' => 'Par sécurité, notre site limite le nombre d’envois successifs. Réessayez dans quelques minutes ou écrivez-nous directement — nous vous répondrons avec plaisir.',
@@ -89,20 +118,20 @@ $T = array(
         'details' => 'Booking details',
         'payment' => 'Payment',
         'total' => 'Total amount',
-        'cash' => 'To be paid on site in cash.',
+        'cash' => 'Payment on site.',
         'confirm' => 'Request to be confirmed by the riad',
         'call' => 'Call',
         'wa' => 'WhatsApp',
         'reply' => 'Reply by email',
         'received' => 'Received on',
         'service' => 'Guest request',
-        'foot' => 'Message sent automatically from riadmylaya.com',
+        'foot' => 'Message sent automatically from ' . $RM_BRAND['domain'],
         'name' => 'Full name on the booking',
         'nomail' => 'The guest did not leave an email address.',
         'booked' => 'Requested service',
         'title_q' => 'New guest question',
         'message' => 'Guest message',
-        'ack_subject' => 'We have received your request – Riad Mylaya',
+        'ack_subject' => 'We have received your request – ' . $BRAND_NAME,
         'ack_title' => 'We have received your request',
         'ack_hello' => 'Hello',
         'ack_intro' => 'Thank you. We have received your request regarding %s.',
@@ -111,9 +140,9 @@ $T = array(
         'ack_notice' => 'Your request has been received. Our team will check availability and confirm the booking. This email confirms that we received your request, but not yet the final availability of the service.',
         'ack_notice_q' => 'Our team will get back to you shortly.',
         'ack_back' => 'Back to Prepare your stay',
-        'ack_url' => 'https://riadmylaya.com/en/prepare-your-stay',
-        'ack_sign' => "See you soon,\nThe Riad Mylaya team",
-        'ack_contact' => 'Phone / WhatsApp: +212 661 351 989 · contact@riadmylaya.com',
+        'ack_url' => $RM_BRAND['ack_url']['en'],
+        'ack_sign' => "See you soon,\nThe " . $BRAND_NAME . ' team',
+        'ack_contact' => 'Phone / WhatsApp: ' . $BRAND_CONTACT,
         'lang' => 'en',
         'stop_title' => 'We could not send your request',
         'stop_text' => 'For security reasons our website limits the number of successive submissions. Please try again in a few minutes, or contact us directly — we will be glad to help.',
@@ -125,20 +154,20 @@ $T = array(
         'details' => 'Detalles de la reserva',
         'payment' => 'Pago',
         'total' => 'Importe total',
-        'cash' => 'A pagar en el riad en efectivo.',
+        'cash' => 'Pago en el lugar.',
         'confirm' => 'Solicitud pendiente de confirmación por el riad',
         'call' => 'Llamar',
         'wa' => 'WhatsApp',
         'reply' => 'Responder por correo',
         'received' => 'Recibida el',
         'service' => 'Solicitud de cliente',
-        'foot' => 'Mensaje enviado automáticamente desde riadmylaya.com',
+        'foot' => 'Mensaje enviado automáticamente desde ' . $RM_BRAND['domain'],
         'name' => 'Nombre completo de la reserva',
         'nomail' => 'El cliente no ha dejado dirección de correo.',
         'booked' => 'Servicio solicitado',
         'title_q' => 'Nueva consulta de un cliente',
         'message' => 'Mensaje del cliente',
-        'ack_subject' => 'Su solicitud ha sido recibida – Riad Mylaya',
+        'ack_subject' => 'Su solicitud ha sido recibida – ' . $BRAND_NAME,
         'ack_title' => 'Su solicitud ha sido recibida',
         'ack_hello' => 'Hola',
         'ack_intro' => 'Gracias. Hemos recibido su solicitud relativa a %s.',
@@ -147,9 +176,9 @@ $T = array(
         'ack_notice' => 'Su solicitud ha sido recibida. Nuestro equipo comprobará la disponibilidad y le confirmará la reserva. Este correo confirma la recepción de su solicitud, pero todavía no la disponibilidad definitiva del servicio.',
         'ack_notice_q' => 'Nuestro equipo le responderá en breve.',
         'ack_back' => 'Volver a Preparar mi estancia',
-        'ack_url' => 'https://riadmylaya.com/es/preparar-mi-estancia',
-        'ack_sign' => "Hasta pronto,\nEl equipo del Riad Mylaya",
-        'ack_contact' => 'Teléfono / WhatsApp: +212 661 351 989 · contact@riadmylaya.com',
+        'ack_url' => $RM_BRAND['ack_url']['es'],
+        'ack_sign' => "Hasta pronto,\nEl equipo " . (isset($RM_BRAND['of_es']) ? $RM_BRAND['of_es'] : 'del ' . $BRAND_NAME),
+        'ack_contact' => 'Teléfono / WhatsApp: ' . $BRAND_CONTACT,
         'lang' => 'es',
         'stop_title' => 'No hemos podido enviar su solicitud',
         'stop_text' => 'Por seguridad, nuestra web limita el número de envíos seguidos. Vuelva a intentarlo en unos minutos o escríbanos directamente — le atenderemos con mucho gusto.',
@@ -256,24 +285,34 @@ function rm_client_ip()
 }
 
 /** Signaux qu'aucun visiteur humain ne produit : champ piège rempli, formulaire
- *  envoyé en une fraction de seconde, horodatage absent alors que le script
- *  anti-robots l'ajoute sur toutes les pages. */
+ *  envoyé en une fraction de seconde, horodatage illisible.
+ *  Le remplissage automatique d'un navigateur peut compléter un champ piège
+ *  (l'ancien champ « _url » recevait l'adresse du site) : un piège rempli ne
+ *  suffit donc jamais seul à écarter une demande dont l'horodatage prouve
+ *  qu'elle a été saisie par une personne. */
 function rm_is_bot($CONFIG)
 {
-    foreach (array('_honey', '_url') as $trapField) {
+    $trapFilled = false;
+    foreach (array('_honey', '_rm_ctrl') as $trapField) {
         if (isset($_POST[$trapField]) && rm_clean($_POST[$trapField]) !== '') {
-            return true;
+            $trapFilled = true;
         }
     }
     if (!isset($_POST['_ts'])) {
-        return false;
+        return $trapFilled;
     }
     $ts = rm_clean($_POST['_ts']);
     if ($ts === '' || !ctype_digit($ts)) {
         return true;
     }
     $elapsed = time() - (int) ($ts / 1000);
-    return $elapsed < (int) $CONFIG['min_fill_seconds'] || $elapsed < 0;
+    if ($elapsed < (int) $CONFIG['min_fill_seconds'] || $elapsed < 0) {
+        return true;
+    }
+    if ($trapFilled) {
+        @error_log('[rm-envoi] piege rempli mais saisie humaine (' . $elapsed . ' s) : demande conservee');
+    }
+    return false;
 }
 
 function rm_rate_dir($CONFIG)
@@ -401,8 +440,20 @@ function rm_turnstile_verdict($CONFIG, $ip)
 }
 
 /** Page d'explication : un visiteur bloqué doit pouvoir nous joindre autrement. */
+function rm_next_ok($next, $origins)
+{
+    if ($next === '' || strpos($next, "\\") !== false || preg_match('/[\r\n]/', $next)) return false;
+    if ($next[0] === '/') return !isset($next[1]) || $next[1] !== '/';
+    foreach ($origins as $o) {
+        $o = rtrim($o, '/');
+        if ($next === $o || strpos($next, $o . '/') === 0 || strpos($next, $o . '?') === 0 || strpos($next, $o . '#') === 0) return true;
+    }
+    return false;
+}
+
 function rm_stop_page($t, $code, $text = '')
 {
+    global $RM_BRAND;
     if ($text === '') {
         $text = $t['stop_text'];
     }
@@ -416,8 +467,8 @@ function rm_stop_page($t, $code, $text = '')
         . '<div style="max-width:520px;margin:8vh auto;padding:28px 24px;background:#fff;border:1px solid #e7ddcd;border-radius:14px;">'
         . '<h1 style="margin:0 0 12px;font:700 22px/1.3 Georgia,\'Times New Roman\',serif;">' . rm_h($t['stop_title']) . '</h1>'
         . '<p style="margin:0 0 18px;">' . rm_h($text) . '</p>'
-        . '<p style="margin:0 0 8px;"><a href="https://wa.me/212661351989" style="display:inline-block;padding:11px 18px;border-radius:8px;background:#25d366;color:#fff;text-decoration:none;font-weight:700;">WhatsApp</a>'
-        . ' <a href="mailto:contact@riadmylaya.com" style="display:inline-block;padding:11px 18px;border-radius:8px;background:#8a6a3b;color:#fff;text-decoration:none;font-weight:700;">contact@riadmylaya.com</a></p>'
+        . '<p style="margin:0 0 8px;"><a href="https://wa.me/' . preg_replace('/\D/', '', $RM_BRAND['phone']) . '" style="display:inline-block;padding:11px 18px;border-radius:8px;background:#25d366;color:#fff;text-decoration:none;font-weight:700;">WhatsApp</a>'
+        . ' <a href="mailto:' . rm_h($RM_BRAND['email']) . '" style="display:inline-block;padding:11px 18px;border-radius:8px;background:#8a6a3b;color:#fff;text-decoration:none;font-weight:700;">' . rm_h($RM_BRAND['email']) . '</a></p>'
         . '<p style="margin:18px 0 0;"><a href="' . rm_h($t['ack_url']) . '" style="color:#8a6a3b;">' . rm_h($t['ack_back']) . '</a></p>'
         . '</div></body></html>';
     exit;
@@ -430,13 +481,17 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
     exit;
 }
 
-$next = isset($_POST['_next']) ? rm_clean($_POST['_next']) : '/merci';
-if (!preg_match('#^(https://riadmylaya\.com|https://www\.riadmylaya\.com|/)#', $next)) {
-    $next = '/merci';
+$next = isset($_POST['_next']) ? rm_clean($_POST['_next']) : $RM_BRAND['default_next'];
+if (!rm_next_ok($next, $RM_BRAND['next_origins'])) {
+    $next = $RM_BRAND['default_next'];
 }
 
 /* pièges à robots : on fait comme si tout allait bien, sans rien envoyer */
 if (rm_is_bot($CONFIG)) {
+    @error_log('[rm-envoi] rejet robot etab=' . $BRAND_NAME . ' ip=' . rm_client_ip()
+        . ' honey=' . (isset($_POST['_honey']) ? strlen((string) $_POST['_honey']) : '-')
+        . ' ctrl=' . (isset($_POST['_rm_ctrl']) ? strlen((string) $_POST['_rm_ctrl']) : '-')
+        . ' ts=' . (isset($_POST['_ts']) ? rm_clean($_POST['_ts']) : '-'));
     header('Location: ' . $next, true, 303);
     exit;
 }
@@ -459,13 +514,14 @@ if (!rm_turnstile_ok($CONFIG, $clientIp)) {
     rm_stop_page($t, 403);
 }
 if (!rm_rate_ok($CONFIG, $clientIp)) {
+    @error_log('[rm-envoi] limite d\'envois atteinte etab=' . $BRAND_NAME . ' ip=' . $clientIp);
     rm_stop_page($t, 429);
 }
 
 $subject = isset($_POST['_subject']) ? rm_clean($_POST['_subject']) : '';
 $service = isset($_POST['_service']) ? rm_clean($_POST['_service']) : '';
 if ($service === '' && $subject !== '') {
-    $service = trim(preg_replace('/\s*[·|\-–]\s*Riad Mylaya\s*$/u', '', $subject));
+    $service = trim(preg_replace('/\s*[·|\-–]\s*' . preg_quote($BRAND_NAME, '/') . '\s*$/u', '', $subject));
 }
 if ($service === '') {
     $service = $t['service'];
@@ -600,7 +656,7 @@ if ($waDigits !== '') {
     $buttons .= rm_btn('https://wa.me/' . $waDigits, $t['wa'], '#25d366', '#ffffff', '#25d366');
 }
 if ($email !== '') {
-    $buttons .= rm_btn('mailto:' . $email . '?subject=' . rawurlencode('Re: ' . $service . ' — Riad Mylaya'), $t['reply'], $terraD, '#ffffff', $terraD);
+    $buttons .= rm_btn('mailto:' . $email . '?subject=' . rawurlencode('Re: ' . $service . ' — ' . $BRAND_NAME), $t['reply'], $terraD, '#ffffff', $terraD);
 }
 
 $clientPlain = array();
@@ -674,7 +730,7 @@ $html = '<!DOCTYPE html><html lang="' . $lang . '"><head><meta charset="utf-8">'
     /* en-tête */
     . '<tr><td style="background:' . $terraD . ';padding:20px 24px;">'
     . '<p style="margin:0;font:700 18px/1.3 Georgia,\'Times New Roman\',serif;color:#ffffff;">' . rm_h($t['title']) . '</p>'
-    . '<p style="margin:4px 0 0;font:400 13px/1.4 Arial,Helvetica,sans-serif;color:#f3e6d6;">Riad Mylaya · ' . rm_h($t['received']) . ' ' . rm_h($received) . '</p>'
+    . '<p style="margin:4px 0 0;font:400 13px/1.4 Arial,Helvetica,sans-serif;color:#f3e6d6;">' . rm_h($BRAND_NAME) . ' · ' . rm_h($t['received']) . ' ' . rm_h($received) . '</p>'
     . '</td></tr>'
 
     /* service + total */
@@ -710,14 +766,14 @@ $html = '<!DOCTYPE html><html lang="' . $lang . '"><head><meta charset="utf-8">'
 
     . '<tr><td style="padding:22px 24px 24px;">'
     . '<p style="margin:0;border-top:1px solid ' . $line . ';padding-top:14px;font:400 12px/1.5 Arial,Helvetica,sans-serif;color:' . $muted . ';">'
-    . rm_h($t['foot']) . '<br>Riad Mylaya — 163 Derb Bounba, Arset Ihiri, Médina, Marrakech</p>'
+    . rm_h($t['foot']) . '<br>' . rm_h($BRAND_SIGN) . '</p>'
     . '</td></tr>'
 
     . '</table></td></tr></table></body></html>';
 
 /* --------------------------------------------------------- version texte */
 
-$textLines = array($t['title'] . ' — Riad Mylaya', $service);
+$textLines = array($t['title'] . ' — ' . $BRAND_NAME, $service);
 if ($total !== '') {
     $textLines[] = $t['total'] . $colon . $total . ' (' . $t['cash'] . ')';
 }
@@ -793,7 +849,7 @@ $ackHtml = '<!DOCTYPE html><html lang="' . $lang . '"><head><meta charset="utf-8
 
     . '<tr><td style="background:' . $terraD . ';padding:20px 24px;">'
     . '<p style="margin:0;font:700 18px/1.3 Georgia,\'Times New Roman\',serif;color:#ffffff;">' . rm_h($t['ack_title']) . '</p>'
-    . '<p style="margin:4px 0 0;font:400 13px/1.4 Arial,Helvetica,sans-serif;color:#f3e6d6;">Riad Mylaya · Marrakech</p>'
+    . '<p style="margin:4px 0 0;font:400 13px/1.4 Arial,Helvetica,sans-serif;color:#f3e6d6;">' . rm_h($BRAND_NAME . ' · ' . $RM_BRAND['city']) . '</p>'
     . '</td></tr>'
 
     . '<tr><td style="padding:22px 24px 0;">'
@@ -829,7 +885,7 @@ $ackHtml = '<!DOCTYPE html><html lang="' . $lang . '"><head><meta charset="utf-8
     . '<tr><td style="padding:20px 24px 24px;">'
     . '<p style="margin:0;font:400 14px/1.6 Arial,Helvetica,sans-serif;color:' . $ink . ';">' . nl2br(rm_h($t['ack_sign'])) . '</p>'
     . '<p style="margin:10px 0 0;border-top:1px solid ' . $line . ';padding-top:14px;font:400 12px/1.5 Arial,Helvetica,sans-serif;color:' . $muted . ';">'
-    . rm_h($t['ack_contact']) . '<br>Riad Mylaya — 163 Derb Bounba, Arset Ihiri, Médina, Marrakech</p>'
+    . rm_h($t['ack_contact']) . '<br>' . rm_h($BRAND_SIGN) . '</p>'
     . '</td></tr>'
 
     . '</table></td></tr></table></body></html>';
@@ -895,7 +951,7 @@ function rm_smtp_send($cfg, $to, $headers, $body, &$err)
     };
 
     $ok = $cmd(null, 220)
-        && $cmd('EHLO riadmylaya.com', 250)
+        && $cmd('EHLO ' . $cfg['ehlo_host'], 250)
         && $cmd('AUTH LOGIN', 334)
         && $cmd(base64_encode($cfg['smtp_user']), 334)
         && $cmd(base64_encode($cfg['smtp_pass']), 235)
@@ -942,7 +998,7 @@ $headers = 'From: ' . rm_mime_header($CONFIG['from_name']) . ' <' . $CONFIG['fro
     . 'To: ' . rm_mime_header($CONFIG['to_name']) . ' <' . $CONFIG['to_email'] . ">\r\n"
     . 'Subject: ' . rm_mime_header($mailSubject) . "\r\n"
     . 'Date: ' . date('r') . "\r\n"
-    . 'Message-ID: <' . bin2hex(random_bytes(10)) . '@riadmylaya.com>' . "\r\n"
+    . 'Message-ID: <' . bin2hex(random_bytes(10)) . '@' . $RM_BRAND['domain'] . '>' . "\r\n"
     . 'MIME-Version: 1.0' . "\r\n"
     . 'Content-Type: multipart/alternative; boundary="' . $boundary . '"' . "\r\n";
 if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -990,11 +1046,11 @@ if ($CONFIG['smtp_pass'] !== '') {
 $ackState = 'none';
 if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $ackBoundary = 'rmack' . bin2hex(random_bytes(12));
-    $ackHeaders = 'From: ' . rm_mime_header('Riad Mylaya') . ' <' . $CONFIG['from_email'] . ">\r\n"
+    $ackHeaders = 'From: ' . rm_mime_header($BRAND_NAME) . ' <' . $CONFIG['from_email'] . ">\r\n"
         . 'To: ' . ($name !== '' ? rm_mime_header($name) . ' ' : '') . '<' . $email . ">\r\n"
         . 'Subject: ' . rm_mime_header($t['ack_subject']) . "\r\n"
         . 'Date: ' . date('r') . "\r\n"
-        . 'Message-ID: <' . bin2hex(random_bytes(10)) . '@riadmylaya.com>' . "\r\n"
+        . 'Message-ID: <' . bin2hex(random_bytes(10)) . '@' . $RM_BRAND['domain'] . '>' . "\r\n"
         . 'Reply-To: ' . rm_mime_header($CONFIG['to_name']) . ' <' . $CONFIG['to_email'] . ">\r\n"
         . 'Auto-Submitted: auto-replied' . "\r\n"
         . 'MIME-Version: 1.0' . "\r\n"
@@ -1010,12 +1066,12 @@ if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
     if (rm_smtp_send($CONFIG, array($email), $ackHeaders, $ackBody, $ackErr)) {
         $ackState = 'ok';
     } else {
-        $ackState = 'ko';
-        @error_log('[rm-envoi] client ack failed: ' . $ackErr);
+        $ackState = 'ko:' . $ackErr;
     }
 }
 
 $fallbackState = 'none';
+
 if (!$sent) {
     /* filet de sécurité : la demande repart vers FormSubmit, rien n'est perdu */
     @error_log('[rm-envoi] SMTP failed: ' . $err);
@@ -1029,7 +1085,7 @@ if (!$sent) {
         CURLOPT_POSTFIELDS => http_build_query($post),
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT => 15,
-        CURLOPT_HTTPHEADER => array('Referer: https://riadmylaya.com/'),
+        CURLOPT_HTTPHEADER => array('Referer: https://' . $RM_BRAND['domain'] . '/'),
     ));
     curl_exec($ch);
     $fallbackCode = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -1037,10 +1093,10 @@ if (!$sent) {
     $fallbackState = ($fallbackCode >= 200 && $fallbackCode < 400) ? 'ok' : 'ko:' . $fallbackCode;
 }
 
-@error_log('[rm-envoi] envoi lang=' . $lang
+@error_log('[rm-envoi] envoi etab=' . $BRAND_NAME . ' lang=' . $lang
     . ' service=' . $service
     . ' client=' . ($email !== '' ? $email : '-')
-    . ' proprietaire=' . ($sent ? 'ok' : 'ko')
+    . ' proprietaire=' . ($sent ? 'ok:' . implode(',', $recipients) : 'ko')
     . ' confirmation=' . $ackState
     . ' secours=' . $fallbackState
     . ($sent ? '' : ' smtp=' . $err));
