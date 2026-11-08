@@ -165,7 +165,10 @@ def build_context(etab, lang, i18n_raw, services_all):
     g = etab["grammar"][lang]
     hub = HUB_URL
     is_hub = etab["site"]["output_dir"].startswith(HUB_HOST)
-    lib = "" if is_hub else hub  # moteurs JS servis par le hub (relatif sur le hub)
+    # site.standalone = dossier (ex. "/sejour") où l'établissement héberge lui-même
+    # bibliothèque, photos, données et formulaire : aucune dépendance au hub.
+    standalone = etab["site"].get("standalone")
+    lib = standalone or ("" if is_hub else hub)
 
     stay = etab["stay"]
     per_lang = lambda v: v[lang] if isinstance(v, dict) else "—"  # noqa: E731  (valeurs à confirmer -> stay.pending)
@@ -241,7 +244,8 @@ def build_context(etab, lang, i18n_raw, services_all):
         brand["turnstile_sitekey"] = etab["site"]["turnstile_sitekey"] or ""
     brand_js = json.dumps(brand, ensure_ascii=False)
 
-    images = {k: (v.replace("{hub}", hub if not is_hub else "") if isinstance(v, str) else v)
+    assets_root = standalone or ("" if is_hub else hub)
+    images = {k: (v.replace("{hub}", assets_root) if isinstance(v, str) else v)
               for k, v in etab["images"].items()}
     hero_abs = images["hero"] if images["hero"].startswith("http") else base.split("/", 3)[0] + "//" + base.split("/", 3)[2] + images["hero"]
 
@@ -251,8 +255,9 @@ def build_context(etab, lang, i18n_raw, services_all):
         lib=lib, hub=hub, is_hub=is_hub, prefix=prefix, version=VERSION,
         transfer=transfer, dinner=dinner, cooking=cooking, excursions=excursions, spa=spa,
         services=svc_conf, brand_js=brand_js, langs=LANGS,
-        envoi="/envoi.php" if is_hub else hub + "/envoi.php",
-        services_js=prefix + "/services-data.js" if is_hub else hub + "/etablissements/%s/services-data.js" % etab["id"],
+        envoi=(standalone or "") + "/envoi.php" if (is_hub or standalone) else hub + "/envoi.php",
+        services_js=(standalone + "/services-data.js" if standalone else
+                     prefix + "/services-data.js" if is_hub else hub + "/etablissements/%s/services-data.js" % etab["id"]),
         services_data=services,
         excursions_more=(etab["site"].get("excursions_more") or {}).get(lang),
     )
@@ -277,20 +282,43 @@ def build_etab(etab, env, i18n, services_all):
         write(out / (etab["site"]["thanks"][lang].lstrip("/") + ".html"), thanks_tpl.render(**ctx))
     data_js = "/* Généré par sejour/build.py — ne pas modifier à la main. */\nwindow.RM_SERVICES = " + \
         json.dumps(merged, ensure_ascii=False, indent=1) + ";\n"
-    if is_hub:
+    standalone = etab["site"].get("standalone")
+    if standalone:
+        # output_dir correspond au dossier web <standalone> du domaine (riadbilkis.com/sejour/).
+        write(out / "services-data.js", data_js)
+        build_standalone(etab, env, out)
+    elif is_hub:
         write(out / "services-data.js", data_js)
     else:
         write(DIST / HUB_HOST / "etablissements" / etab["id"] / "services-data.js", data_js)
     return out
 
 
+def copy_lib(dest):
+    (dest / "lib").mkdir(parents=True, exist_ok=True)
+    for js in SHARED_JS:
+        shutil.copy(PUBLIC / js, dest / "lib" / js)
+    shutil.copy(ROOT / "assets" / "sejour.css", dest / "lib" / "sejour.css")
+    shutil.copy(ROOT / "assets" / "sejour-page.js", dest / "lib" / "sejour-page.js")
+
+
+def build_standalone(etab, env, dest):
+    """Établissement autonome sur son propre domaine : bibliothèque, photos et formulaire
+    (envoi.php + moteur rm-envoi.php) servis depuis dest, sans le hub."""
+    copy_lib(dest)
+    for d in ("common", etab["id"]):
+        if (ROOT / "assets" / d).is_dir():
+            shutil.copytree(ROOT / "assets" / d, dest / "assets" / d, dirs_exist_ok=True)
+    shutil.copy(PUBLIC / "rm-envoi.php", dest / "rm-envoi.php")
+    shutil.copy(ROOT / "hub" / "envoi.php", dest / "envoi.php")
+    for f in (".htaccess", "rm-mail-config.sample.php"):
+        shutil.copy(ROOT / "standalone" / f, dest / f)
+    write(dest / "etablissements.php", env.get_template("etablissements.php.j2").render(etabs=[etab], langs=LANGS, hub=None))
+
+
 def build_hub(etabs, env):
     hub = DIST / HUB_HOST
-    (hub / "lib").mkdir(parents=True, exist_ok=True)
-    for js in SHARED_JS:
-        shutil.copy(PUBLIC / js, hub / "lib" / js)
-    shutil.copy(ROOT / "assets" / "sejour.css", hub / "lib" / "sejour.css")
-    shutil.copy(ROOT / "assets" / "sejour-page.js", hub / "lib" / "sejour-page.js")
+    copy_lib(hub)
     for d in (ROOT / "assets").iterdir():
         if d.is_dir():
             shutil.copytree(d, hub / "assets" / d.name, dirs_exist_ok=True)

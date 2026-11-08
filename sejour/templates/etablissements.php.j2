@@ -17,7 +17,7 @@ return array(
                 '{{ l }}' => {{ (e.site.base_url ~ e.site.paths[l])|php }},
 {% endfor %}
             ),
-            'next_origins' => array({{ ('https://' ~ e.site.base_url.split('/')[2])|php }}, {{ ('https://www.' ~ e.site.base_url.split('/')[2])|php }}, {{ hub|php }}),
+            'next_origins' => array({{ ('https://' ~ e.site.base_url.split('/')[2])|php }}, {{ ('https://www.' ~ e.site.base_url.split('/')[2])|php }}{% if hub %}, {{ hub|php }}{% endif %}),
             'default_next' => {{ (e.site.base_url ~ e.site.thanks.fr)|php }},
         ),
         'mail' => array(

@@ -32,14 +32,21 @@ python3 sejour/build.py riad-bilkis
 | Dossier `dist/`                          | Destination                                              |
 |------------------------------------------|----------------------------------------------------------|
 | `monsejour-marrakech.com/`                 | hub commun **monsejour-marrakech.com** (alias cPanel → `public_html/sejour-hub/`) |
-| `riadbilkis.com/`                        | racine de **riadbilkis.com** (pages seulement)            |
+| `riadbilkis.com/`                        | dossier **riadbilkis.com/sejour/** (autonome : pages, `/lib`, `/assets`, `envoi.php`) |
 | `riadmylaya.com/`                        | version générée de la page Mylaya (référence / contrôle)  |
 
 L'ancien sous-domaine `sejour.riadmylaya.com` redirige (301) vers le hub.
 
 Le hub héberge : la bibliothèque commune (`/lib`), les photos (`/assets`),
 les pages de Dar Le Fennec et Dardabakech (`/dar-le-fennec/…`, `/dardabakech/…`) et le
-point d'entrée unique des formulaires `envoi.php` (les pages Bilkis y postent aussi).
+point d'entrée des formulaires `envoi.php` (Dar Le Fennec et Dardabakech).
+
+Un établissement qui a son propre domaine peut être **autonome** : `"standalone": "/sejour"`
+dans son `site` (cas du Riad Bilkis). Ses pages chargent alors bibliothèque, photos,
+`services-data.js` et formulaire (`envoi.php` + `rm-envoi.php`, réglé pour lui seul) depuis
+son domaine, sans aucune adresse du hub. Copier `rm-mail-config.sample.php` en
+`rm-mail-config.php` dans ce dossier : il relit le compte Gmail hors racine web
+(`/home/<compte>/rb-mail-config.php`).
 
 Après dépôt : copier `rm-mail-config.sample.php` en `rm-mail-config.php` et y mettre le
 mot de passe SMTP (fichier jamais versionné). Ajouter `monsejour-marrakech.com` et

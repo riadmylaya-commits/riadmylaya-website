@@ -23,6 +23,7 @@
     "turnstile_sitekey": null,
     "base_url": "https://riadbilkis.com",
     "output_dir": "riadbilkis.com",
+    "standalone": "/sejour",
     "paths": {
       "fr": "/preparer-mon-sejour",
       "en": "/en/prepare-your-stay",
