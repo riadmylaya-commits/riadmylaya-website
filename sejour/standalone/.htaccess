@@ -1,0 +1,11 @@
+# « Préparer mon séjour » autonome (généré par sejour/build.py) :
+# bibliothèque, photos, données et formulaire servis par le domaine de l'établissement.
+Options -Indexes
+<FilesMatch "^(rm-envoi|etablissements|rm-mail-config.*)\.php$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|jpe?g|png|webp|svg)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+</IfModule>
