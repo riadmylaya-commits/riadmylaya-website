@@ -318,13 +318,15 @@ def build_standalone(etab, env, dest):
 
 def build_hub(etabs, env):
     hub = DIST / HUB_HOST
+    # Un établissement autonome (site.standalone) n'a plus rien sur le hub.
+    standalone_ids = {e["id"] for e in etabs if e["site"].get("standalone")}
+    etabs = [e for e in etabs if e["id"] not in standalone_ids]
     copy_lib(hub)
     for d in (ROOT / "assets").iterdir():
-        if d.is_dir():
+        if d.is_dir() and d.name not in standalone_ids:
             shutil.copytree(d, hub / "assets" / d.name, dirs_exist_ok=True)
     shutil.copy(PUBLIC / "rm-envoi.php", hub / "rm-envoi.php")
-    for f in ("envoi.php", ".htaccess", "rm-mail-config.sample.php", "rm-mail-config-riad-bilkis.sample.php",
-              "index.html"):
+    for f in ("envoi.php", ".htaccess", "rm-mail-config.sample.php", "index.html"):
         shutil.copy(ROOT / "hub" / f, hub / f)
     write(hub / "etablissements.php", env.get_template("etablissements.php.j2").render(etabs=etabs, langs=LANGS, hub=HUB_URL))
 

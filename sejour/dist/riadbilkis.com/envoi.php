@@ -25,7 +25,7 @@ $RM_CONFIG_OVERRIDE = $etabs[$id]['mail'];
 unset($RM_CONFIG_OVERRIDE['from_email']);
 
 /* Compte SMTP propre à l'établissement (expéditeur = sa propre adresse) :
-   rm-mail-config-<id>.php, non versionné, voir rm-mail-config-riad-bilkis.sample.php. */
+   rm-mail-config-<id>.php, non versionné (même format que rm-mail-config.sample.php). */
 $smtpLocal = __DIR__ . '/rm-mail-config-' . $id . '.php';
 if (is_readable($smtpLocal)) {
     $smtp = include $smtpLocal;
