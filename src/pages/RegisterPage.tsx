@@ -416,7 +416,7 @@ export default function RegisterPage() {
             </FormField>
 
             <FormField
-              label={`${t('dateField')} / ${t('dateFieldEn')}`}
+              label={t('dateFieldEn') ? `${t('dateField')} / ${t('dateFieldEn')}` : t('dateField')}
             >
               <input
                 type="date"
